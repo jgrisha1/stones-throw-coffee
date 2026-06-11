@@ -232,7 +232,7 @@ a:hover {
 .wordmark {
   position: absolute;
   left: 1rem;
-  top: 0;
+  top: 0.6rem;
   z-index: 50;
   line-height: 0;
   text-decoration: none;
@@ -246,7 +246,7 @@ a:hover {
 
 .wordmark img {
   width: auto;
-  height: clamp(5rem, 10vw, 11rem);
+  height: clamp(6rem, 11vw, 12rem);
   border-radius: 50%;
   display: block;
 }

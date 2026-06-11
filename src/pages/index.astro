@@ -247,13 +247,15 @@ const fmtDate = (d: Date) =>
     z-index: 1;
   }
 
-  /* Content card — cream panel over the dark background */
+  /* Content card — centered cream panel over the dark background */
   .hero-content-card {
     background: rgba(250, 244, 231, 0.96);
     border-radius: var(--radius);
-    border-left: 5px solid var(--honey);
+    border-top: 5px solid var(--honey);
     padding: var(--space-4);
-    max-width: 40rem;
+    max-width: 52rem;
+    margin-inline: auto;
+    text-align: center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   }
 
@@ -279,6 +281,7 @@ const fmtDate = (d: Date) =>
     font-size: 1.1rem;
     line-height: 1.75;
     max-width: 56ch;
+    margin-inline: auto;
     margin-bottom: var(--space-2);
   }
 
@@ -293,6 +296,7 @@ const fmtDate = (d: Date) =>
 
   .cs-btns {
     margin-top: 0;
+    justify-content: center;
   }
 
   /* sprig colour on this hero */
