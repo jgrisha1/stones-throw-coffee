@@ -224,29 +224,28 @@ a:hover {
 .site-header .wrap {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: var(--space-2);
   min-height: 3.5rem;
 }
 
-/* Logo badge — hard left, bleeds below the header */
+/* Logo badge — sits in the header flow at the left of the content column,
+   vertically centered with the nav (no longer absolutely positioned). */
 .wordmark {
-  position: absolute;
-  left: 1rem;
-  top: 0.6rem;
-  z-index: 50;
+  flex-shrink: 0;
   line-height: 0;
   text-decoration: none;
   background: var(--cream);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.4rem;
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.35),
-    0 0 0 3px var(--honey);
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    0 0 0 2px var(--honey);
 }
 
 .wordmark img {
   width: auto;
-  height: clamp(5rem, 8.5vw, 9rem);
+  height: clamp(74px, 7vw, 108px);
   border-radius: 50%;
   display: block;
 }
@@ -402,11 +401,12 @@ a:hover {
   overflow: hidden;
 }
 
-/* botanical sprig line-art tucked into the hero corners */
+/* botanical sprig line-art tucked into the hero corners — subtle accents,
+   scaled down so they support the centered hero card rather than frame it */
 .hero-sprig {
   position: absolute;
   bottom: 7vw;
-  width: clamp(120px, 18vw, 240px);
+  width: clamp(90px, 13vw, 175px);
   height: auto;
   color: rgba(196, 146, 58, 0.5);
   pointer-events: none;
@@ -421,7 +421,7 @@ a:hover {
   right: -1.5rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .hero-sprig {
     display: none;
   }

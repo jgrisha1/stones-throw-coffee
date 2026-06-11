@@ -61,7 +61,7 @@ const fmtDate = (d: Date) =>
     <div class="wrap hero--coming-soon__wrap">
       <div class="hero-content-card">
         <p class="eyebrow cs-eyebrow">Coming Soon to South Knoxville</p>
-        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee</h1>
+        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee is coming soon.</h1>
         <p class="cs-body">
           A queer-owned coffee shop and community arts space opening soon on Chapman Highway.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art,
@@ -273,7 +273,8 @@ const fmtDate = (d: Date) =>
     border-radius: var(--radius);
     border-top: 5px solid var(--honey);
     padding: var(--space-4);
-    max-width: 52rem;
+    /* card sits centered relative to the page via the .wrap container */
+    width: min(100%, 50rem);
     margin-inline: auto;
     text-align: center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
@@ -284,16 +285,17 @@ const fmtDate = (d: Date) =>
     margin-bottom: var(--space-1);
   }
 
+  /* plain text — no leading star (a single ✦ read as a stray bullet) */
   .cs-eyebrow::before {
-    color: var(--honey);
+    content: none;
   }
 
   .cs-h1 {
     color: var(--pine);
-    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
     margin-top: var(--space-1);
     margin-bottom: var(--space-2);
-    line-height: 1.05;
+    line-height: 1.1;
     text-align: center;
   }
 
@@ -319,6 +321,19 @@ const fmtDate = (d: Date) =>
     justify-content: center;
   }
 
+  /* On phones, stack the three CTAs as a clean centered column */
+  @media (max-width: 560px) {
+    .cs-btns {
+      flex-direction: column;
+      align-items: center;
+    }
+    .cs-btns .btn {
+      width: 100%;
+      max-width: 20rem;
+      text-align: center;
+    }
+  }
+
   /* opening-status strip — sits between hero and first section */
   .opening-strip {
     background: var(--cream-deep);
@@ -327,7 +342,9 @@ const fmtDate = (d: Date) =>
     text-align: center;
   }
   .opening-strip p {
-    margin: 0;
+    /* tight centered block under the hero card — same width as the card */
+    max-width: 48rem;
+    margin: 0 auto;
     font-size: 0.95rem;
     color: var(--ink-soft);
   }
