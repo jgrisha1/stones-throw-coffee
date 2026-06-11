@@ -1,0 +1,162 @@
+---
+import Base from '../layouts/Base.astro';
+import { BUSINESS, fullAddress, has } from '../config';
+
+// ─────────────────────────────────────────────────────────────────────────
+// OWNER / LEGAL REVIEW REQUIRED BEFORE LAUNCH
+// This is an honest, plain-language template built from how the site actually
+// works today (see src/config.ts and the forms). It is NOT legal advice.
+// Before you go live:
+//   • Have someone (ideally counsel) review it for your jurisdiction (TN/US).
+//   • Confirm the named providers below match what you actually switch on:
+//       - Newsletter  → Buttondown / Mailchimp (config.newsletterAction)
+//       - Forms       → Formspree            (config.formspreeEndpoint)
+//       - Analytics   → Cloudflare Web Analytics (config.cloudflareAnalyticsToken)
+//       - Maps        → Google Maps embed (Visit page, click-to-load)
+//     Remove any you don't use; add any you add.
+//   • Update the "Last updated" date whenever you change this page.
+// ─────────────────────────────────────────────────────────────────────────
+
+// TODO(owner): update when you revise this policy.
+const lastUpdated = 'June 11, 2026';
+---
+
+<Base
+  title="Privacy & Cookie Policy | Stone's Throw Coffee"
+  description="How Stone's Throw Coffee handles your information: what we collect, how we use it, the limited cookies we use, and how to reach us with privacy questions."
+>
+  <section class="section">
+    <div class="wrap prose">
+      <p class="eyebrow">The fine print, in plain language</p>
+      <h1>Privacy &amp; Cookie Policy</h1>
+      <p class="lede">
+        {BUSINESS.name} is built to be a welcoming, low-pressure place &mdash; online too. We collect
+        as little as possible, we don&rsquo;t sell your information, and we try to explain the rest
+        in plain English here.
+      </p>
+      <p><em>Last updated: {lastUpdated}.</em></p>
+
+      <h2>Who we are</h2>
+      <p>
+        This policy covers this website. {BUSINESS.name} is a coffee shop and community arts space
+        {has(fullAddress()) && <>at {fullAddress()}</>}. If you have any questions about it, email us
+        at <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+      </p>
+
+      <h2>What we collect</h2>
+      <p><strong>Information you choose to give us.</strong></p>
+      <ul>
+        <li>
+          <strong>Email signups.</strong> If you join our email list, we collect the email address
+          you enter so we can send you shop updates. You can unsubscribe at any time.
+        </li>
+        <li>
+          <strong>Contact &amp; booking forms.</strong> If you message us or pitch an event, art, a
+          reading, or a performance, we collect what you put in the form &mdash; typically your name,
+          email address, and your message &mdash; so we can reply.
+        </li>
+      </ul>
+      <p><strong>Information collected automatically.</strong></p>
+      <ul>
+        <li>
+          <strong>Basic server logs.</strong> Like almost every website, our host records standard
+          technical information (such as your browser type and a truncated IP address) to keep the
+          site secure and working. This is not used to identify you.
+        </li>
+        <li>
+          <strong>Privacy-friendly analytics.</strong> If enabled, we use a cookieless analytics tool
+          (Cloudflare Web Analytics) that reports aggregate, anonymous traffic trends. It does not use
+          cookies, does not fingerprint you, and does not track you across other sites.
+        </li>
+      </ul>
+
+      <h2>How we use your information</h2>
+      <ul>
+        <li>To reply to your message or event request.</li>
+        <li>To send you the updates you asked for (and nothing you didn&rsquo;t).</li>
+        <li>To keep the website secure, working, and a little better over time.</li>
+      </ul>
+      <p>We do not sell your personal information, and we don&rsquo;t use it for targeted advertising.</p>
+
+      <h2>Who we share it with</h2>
+      <p>
+        We share your information only with the service providers that help us run the site, and only
+        as needed for them to do that job:
+      </p>
+      <ul>
+        <li><strong>Email newsletter</strong> &mdash; our newsletter provider stores your email address and sends our updates.</li>
+        <li><strong>Form delivery</strong> &mdash; our form provider passes your message along to our inbox.</li>
+        <li><strong>Website hosting &amp; analytics</strong> &mdash; our host serves the site and provides the privacy-friendly, aggregate analytics described above.</li>
+        <li><strong>Maps</strong> &mdash; our Visit page can show a map embedded from Google. See <a href="#cookies">Cookies &amp; tracking</a> below.</li>
+      </ul>
+      <p>We may also share information if the law requires it. Otherwise, it stays with us.</p>
+
+      <h2 id="cookies">Cookies &amp; tracking</h2>
+      <p>
+        We keep cookies to a minimum. We don&rsquo;t use advertising cookies, and we don&rsquo;t track
+        you across other websites.
+      </p>
+      <ul>
+        <li>
+          <strong>Essential only.</strong> The site itself uses only what&rsquo;s necessary to work,
+          plus a small piece of browser storage to remember that you&rsquo;ve dismissed our cookie
+          notice (so it doesn&rsquo;t keep reappearing). That preference stays on your device.
+        </li>
+        <li>
+          <strong>Analytics.</strong> Our analytics, when enabled, are cookieless &mdash; no analytics
+          cookies are set.
+        </li>
+        <li>
+          <strong>The embedded map.</strong> The map on our <a href="/visit/">Visit page</a> is provided
+          by Google and can set its own cookies. Because of that, it <strong>does not load until you
+          click to load it</strong>. If you&rsquo;d rather not, you can open the location directly in
+          Google Maps in a new tab instead &mdash; your choice, every time.
+        </li>
+      </ul>
+      <p>
+        You can also block or delete cookies in your browser settings at any time; the site will still
+        work.
+      </p>
+
+      <h2>Your choices</h2>
+      <ul>
+        <li><strong>Unsubscribe</strong> from emails any time using the link in any email we send.</li>
+        <li>
+          <strong>Access, correct, or delete</strong> the information you&rsquo;ve given us by emailing
+          <a href={`mailto:${BUSINESS.email}`}> {BUSINESS.email}</a>. We&rsquo;ll take care of it.
+        </li>
+      </ul>
+
+      <h2>How long we keep it</h2>
+      <p>
+        We keep your information only as long as we need it for the purpose you gave it to us &mdash;
+        for example, until you unsubscribe, or for a reasonable time after we&rsquo;ve answered your
+        message &mdash; and then we delete or anonymize it.
+      </p>
+
+      <h2>Children&rsquo;s privacy</h2>
+      <p>
+        Our website isn&rsquo;t directed at children under 13, and we don&rsquo;t knowingly collect
+        their information. Everyone&rsquo;s welcome in the shop, but the forms here are meant for adults.
+      </p>
+
+      <h2>Links to other sites</h2>
+      <p>
+        We link out to places like our GoFundMe and our social pages. Those sites have their own
+        privacy practices, and this policy doesn&rsquo;t cover them.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If we change how we handle your information, we&rsquo;ll update this page and the &ldquo;last
+        updated&rdquo; date above.
+      </p>
+
+      <h2>Contact us</h2>
+      <p>
+        Questions about your privacy? Email <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+        {has(fullAddress()) && <> or write to us at {fullAddress()}</>}. A real human will read it.
+      </p>
+    </div>
+  </section>
+</Base>

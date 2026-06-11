@@ -87,14 +87,43 @@ const socials = [
       </div>
 
       <h2>Map</h2>
-      <iframe
-        class="map-embed"
-        src={mapEmbed}
-        title={`Map showing ${BUSINESS.name} at ${fullAddress()}`}
-        loading="lazy"
-        frameborder="0"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <!-- Privacy by default: the Google embed (which can set its own cookies)
+           is not loaded until the visitor explicitly asks for it. -->
+      <div class="map-consent" id="map-consent">
+        <p class="map-consent__note">
+          The map is embedded from Google and may set its own cookies, so it loads only when you
+          choose to.
+        </p>
+        <button type="button" class="btn btn--clay" id="map-load-btn">Load the Google map</button>
+        <p class="map-consent__alt">
+          Or <a href={mapsUrl} rel="noopener">open the location in Google Maps</a> in a new tab.
+        </p>
+      </div>
+      <template id="map-embed-template">
+        <iframe
+          class="map-embed"
+          src={mapEmbed}
+          title={`Map showing ${BUSINESS.name} at ${fullAddress()}`}
+          loading="lazy"
+          frameborder="0"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </template>
+      <script is:inline>
+        (function () {
+          var box = document.getElementById('map-consent');
+          var tpl = document.getElementById('map-embed-template');
+          var btn = document.getElementById('map-load-btn');
+          if (!box || !tpl || !btn) return;
+          btn.addEventListener('click', function () {
+            var frame = tpl.content.firstElementChild.cloneNode(true);
+            box.replaceWith(frame);
+            // send keyboard focus to the freshly loaded map
+            frame.setAttribute('tabindex', '-1');
+            if (frame.focus) frame.focus();
+          });
+        })();
+      </script>
 
       <h2>Parking</h2>
       <!-- TODO: confirm and expand once you have keys — number of spaces,

@@ -123,7 +123,8 @@ a:hover {
 .site-header :focus-visible,
 .site-footer :focus-visible,
 .section--pine :focus-visible,
-.hero :focus-visible {
+.hero :focus-visible,
+.cookie-notice :focus-visible {
   outline-color: var(--gold);
 }
 
@@ -764,6 +765,75 @@ address {
   width: 100%;
   height: 22rem;
   border-radius: var(--radius);
+}
+
+/* Click-to-load placeholder shown before the Google map iframe is inserted */
+.map-consent {
+  width: 100%;
+  min-height: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  text-align: center;
+  background: var(--cream-deep);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+.map-consent__note {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--ink-soft);
+}
+
+.map-consent__alt {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Cookie / privacy notice — fixed, non-modal bottom banner */
+.cookie-notice {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 80;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--green-deep);
+  color: var(--cream);
+  border-top: 3px solid var(--honey);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* display:flex above would defeat the hidden attribute — restore it */
+.cookie-notice[hidden] {
+  display: none;
+}
+
+.cookie-notice__text {
+  margin: 0;
+  max-width: 64ch;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--cream);
+}
+
+.cookie-notice__text a {
+  color: var(--cream);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cookie-notice__dismiss {
+  flex-shrink: 0;
 }
 
 .divider-note {

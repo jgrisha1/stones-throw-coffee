@@ -1,0 +1,55 @@
+---
+/**
+ * Cookie / privacy notice — a non-modal, dismissible banner.
+ *
+ * The site sets no non-essential cookies on load: analytics (when enabled) are
+ * cookieless, fonts are self-hosted, and the only third-party that sets cookies
+ * (the Google Maps embed) is click-to-load on the Visit page. So this is an
+ * honest transparency *notice*, not a consent gate.
+ *
+ * If a tracking cookie is ever added (ad pixels, non-cookieless analytics, etc.)
+ * this must become a real opt-in consent banner that blocks those until accepted.
+ *
+ * Rendered hidden, then revealed by the inline script only if the visitor
+ * hasn't dismissed it — this avoids a flash on repeat visits. The dismissal is
+ * stored in localStorage (on the visitor's device), not a server-side cookie.
+ */
+---
+
+<aside id="cookie-notice" class="cookie-notice" aria-label="Cookie notice" hidden>
+  <p class="cookie-notice__text">
+    We use only essential cookies and privacy-friendly, cookieless analytics. The map on our
+    Visit page loads only when you choose to. See our
+    <a href="/privacy/#cookies">Privacy &amp; Cookie Policy</a>.
+  </p>
+  <button type="button" class="btn btn--solid cookie-notice__dismiss" id="cookie-notice-dismiss">
+    Got it
+  </button>
+</aside>
+
+<script is:inline>
+  (function () {
+    var KEY = 'stc-cookie-notice';
+    var el = document.getElementById('cookie-notice');
+    if (!el) return;
+    var dismissed = false;
+    try {
+      dismissed = localStorage.getItem(KEY) === 'dismissed';
+    } catch (e) {
+      /* storage blocked — show the notice, dismissal just won't persist */
+    }
+    if (!dismissed) el.hidden = false;
+
+    var btn = document.getElementById('cookie-notice-dismiss');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        el.hidden = true;
+        try {
+          localStorage.setItem(KEY, 'dismissed');
+        } catch (e) {
+          /* ignore — nothing else to do */
+        }
+      });
+    }
+  })();
+</script>

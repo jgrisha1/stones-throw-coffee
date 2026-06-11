@@ -4,6 +4,7 @@ import frauncesWoff2 from '@fontsource-variable/fraunces/files/fraunces-latin-wg
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieNotice from '../components/CookieNotice.astro';
 import { BUSINESS, has } from '../config';
 
 interface Props {
@@ -150,5 +151,6 @@ const schemaBlocks = [localBusiness, ...jsonLd];
       <slot />
     </main>
     <Footer />
+    <CookieNotice />
   </body>
 </html>
