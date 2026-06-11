@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailSignup from '../components/EmailSignup.astro';
+import { MENU, FLAVORS, SEASONAL_ADD_INS, formatPrice } from '../data/menu';
+import { SOURCING, PEOPLE, showPersonalNames } from '../data/partners';
+
+// schema.org Menu structured data, generated from the same data the page
+// renders — prices on the page and prices in search results can't drift.
+const menuId = new URL('/menu/#menu', Astro.site).href;
+const menuSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  '@id': menuId,
+  url: new URL('/menu/', Astro.site).href,
+  name: "Stone's Throw Coffee Menu",
+  inLanguage: 'en',
+  hasMenuSection: MENU.map((section) => ({
+    '@type': 'MenuSection',
+    name: section.name,
+    hasMenuItem: section.items.map((item) => ({
+      '@type': 'MenuItem',
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+      offers: item.prices.map((p) => ({
+        '@type': 'Offer',
+        ...(p.label ? { name: p.label } : {}),
+        price: p.amount.toFixed(2),
+        priceCurrency: 'USD',
+      })),
+    })),
+  })),
+};
+---
+
+<Base
+  title="Menu | Stone's Throw Coffee in South Knoxville"
+  description="The Stone's Throw Coffee menu — handcrafted lattes, dirty chai, drip coffee, and chaga mushroom coffee, priced like a neighborhood shop in South Knoxville."
+  jsonLd={[menuSchema]}
+  menuRef={{ '@id': menuId }}
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Drinks &amp; prices</p>
+      <h1>The Menu</h1>
+      <p class="lede">
+        Handcrafted espresso drinks, chai, cocoa, and coffee — made in South Knoxville, priced
+        like a neighborhood shop. One complimentary flavor is included with any drink, and soy,
+        oat, and almond milk are always available.
+      </p>
+
+      {
+        MENU.map((section) => (
+          <div class="menu-section">
+            <h2>{section.name}</h2>
+            {section.note && <p class="menu-item__desc">{section.note}</p>}
+            <ul style="list-style:none; padding:0; margin:0;">
+              {section.items.map((item) => (
+                <li class="menu-item" style="flex-wrap: wrap;">
+                  <span class="menu-item__name">{item.name}</span>
+                  <span class="menu-item__dots" aria-hidden="true" />
+                  <span class="menu-item__price">
+                    {item.prices.map(formatPrice).join(' / ')}
+                  </span>
+                  {item.description && <p class="menu-item__desc">{item.description}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+
+      <div class="menu-img-accent" aria-hidden="true" style="background: url('/images/menu-flavors-botanical-syrups.png') center / cover no-repeat; aspect-ratio: 16/7; width: 100%; border-radius: var(--radius); margin-block: var(--space-4) var(--space-3);"></div>
+
+      <h2 id="flavors">Flavors &amp; Seasonal Add-Ins</h2>
+      <p>
+        Choose from classic coffeehouse flavors, cozy bakery flavors, nutty favorites,
+        sugar-free options, and locally sourced seasonal add-ins like honey, lavender, and
+        rosemary when available. One flavor is complimentary with each eligible drink;
+        additional flavors are $0.25 each.
+      </p>
+      <ul class="flavor-list">
+        {FLAVORS.map((flavor) => <li>{flavor}</li>)}
+      </ul>
+      <p class="menu-item__desc" style="max-width: var(--measure);">{SEASONAL_ADD_INS}</p>
+
+      <h2 id="mushroom-coffee">About our mushroom coffee</h2>
+      <p>
+        If you&rsquo;ve been searching for mushroom coffee in Knoxville, this is ours: one
+        spoonful of chaga mushroom powder blended into an iced latte. Chaga is earthy and mellow
+        rather than &ldquo;mushroomy,&rdquo; so the drink lands smooth and lightly sweet — a
+        gentler ritual for folks who want something a little different from a straight espresso
+        drink. Ask at the counter and we&rsquo;ll happily talk you through it — or sip one
+        during an <a href="/events/">author reading or acoustic night</a> and
+        <a href="/visit/"> plan your visit</a>.
+      </p>
+      <h2 id="sourcing">Sourcing &amp; Community Partners</h2>
+      <p>
+        At Stone&rsquo;s Throw Coffee, we believe a local coffee shop should be built with local
+        hands whenever possible. Our coffee, tea, syrups, supplies, merch, menu design, website,
+        and community work are shaped by a growing network of Knoxville-area makers, vendors,
+        artists, and neighbors.
+      </p>
+      <ul class="event-meta">
+        {
+          SOURCING.map((s) => (
+            <li>
+              <strong>{s.what}:</strong> {s.from}
+            </li>
+          ))
+        }
+      </ul>
+      {
+        showPersonalNames && (
+          <ul class="event-meta">
+            {PEOPLE.map((p) => (
+              <li>
+                <strong>{p.role}:</strong> {p.name}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      <p>
+        <em>Prices may shift as our costs do — the board in the shop is always the final word.</em>
+      </p>
+    </div>
+  </section>
+  <EmailSignup heading="Menu specials, straight to your inbox" />
+</Base>

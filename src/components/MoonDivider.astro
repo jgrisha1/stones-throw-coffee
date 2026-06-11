@@ -1,0 +1,27 @@
+---
+/**
+ * Decorative moon-phase divider: new → waxing → full → waning → new,
+ * strung on a thin thread. Purely ornamental (aria-hidden).
+ */
+---
+
+<div class="moon-divider" aria-hidden="true">
+  <svg viewBox="0 0 240 18" width="220" height="17" xmlns="http://www.w3.org/2000/svg">
+    <line x1="27" y1="9" x2="63" y2="9" stroke="currentColor" stroke-width="0.6" opacity="0.45"></line>
+    <line x1="77" y1="9" x2="113" y2="9" stroke="currentColor" stroke-width="0.6" opacity="0.45"></line>
+    <line x1="127" y1="9" x2="163" y2="9" stroke="currentColor" stroke-width="0.6" opacity="0.45"></line>
+    <line x1="177" y1="9" x2="213" y2="9" stroke="currentColor" stroke-width="0.6" opacity="0.45"></line>
+    <!-- new moon -->
+    <circle cx="20" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+    <!-- waxing half -->
+    <circle cx="70" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+    <path d="M70 3a6 6 0 0 1 0 12z" fill="currentColor"></path>
+    <!-- full moon -->
+    <circle cx="120" cy="9" r="6.5" fill="currentColor"></circle>
+    <!-- waning half -->
+    <circle cx="170" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+    <path d="M170 3a6 6 0 0 0 0 12z" fill="currentColor"></path>
+    <!-- new moon -->
+    <circle cx="220" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+  </svg>
+</div>

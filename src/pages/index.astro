@@ -1,0 +1,300 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import EmailSignup from '../components/EmailSignup.astro';
+import MoonDivider from '../components/MoonDivider.astro';
+import { BUSINESS, fullAddress, hoursDisplay } from '../config';
+
+const hours = hoursDisplay();
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
+
+const now = new Date();
+const upcoming = (await getCollection('events', ({ data }) => !data.draft && data.start >= now))
+  .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf())
+  .slice(0, 3);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'America/New_York',
+  });
+---
+
+<Base
+  title="Stone's Throw Coffee | Coming Soon to South Knoxville"
+  description="Stone's Throw Coffee is a queer-owned coffee shop and community arts space coming soon to South Knoxville on Chapman Highway. Support the opening, preview the menu, and follow updates."
+>
+
+  <!-- ── Hero ── -->
+  <section class="hero hero--coming-soon">
+    <div class="hero-background" aria-hidden="true"></div>
+
+    <!-- decorative sprigs -->
+    {
+      [false, true].map((right) => (
+        <svg
+          class={`hero-sprig ${right ? 'hero-sprig--right' : 'hero-sprig--left'}`}
+          viewBox="0 0 100 160"
+          fill="none"
+          aria-hidden="true"
+        >
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M50 160 C 50 120, 46 92, 60 26" />
+            <path d="M52 130 C 40 126, 34 118, 30 110" />
+            <path d="M53 118 C 66 114, 74 106, 78 98" />
+            <path d="M51 104 C 39 100, 33 92, 30 84" />
+            <path d="M54 92 C 67 88, 74 80, 77 72" />
+            <path d="M53 78 C 42 74, 36 66, 33 58" />
+            <path d="M56 64 C 68 60, 74 52, 76 44" />
+            <path d="M58 48 C 51 40, 51 31, 57 23" />
+          </g>
+        </svg>
+      ))
+    }
+
+    <div class="wrap hero--coming-soon__wrap">
+      <div class="hero-content-card">
+        <p class="eyebrow cs-eyebrow">Coming Soon &middot; South Knoxville &middot; Chapman Highway</p>
+        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee<br/>is coming soon.</h1>
+        <p class="cs-body">
+          A queer-owned coffee shop and community arts space opening soon in South Knoxville.
+          We&rsquo;re building a sober-friendly gathering place for good coffee, local art,
+          author readings, acoustic music, mutual aid, and community care.
+        </p>
+        <p class="cs-tagline">New name. Familiar space. Same need for community.</p>
+        <div class="btn-row cs-btns">
+          <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">
+            Support the GoFundMe
+          </a>
+          <a class="btn btn--clay" href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">
+            Follow Opening Updates
+          </a>
+          <a class="btn btn--clay-outline" href="/menu/">
+            Preview the Menu
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-ridge" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M0,52 L200,20 L420,58 L640,10 L880,50 L1100,26 L1300,54 L1440,34 L1440,80 L0,80 Z">
+      </path>
+    </svg>
+  </section>
+
+  <!-- ── Menu preview ── -->
+  <section class="section section--tint" aria-labelledby="drinks-heading">
+    <div class="wrap">
+      <p class="eyebrow">Menu preview</p>
+      <h2 id="drinks-heading" style="margin-top:0;">Handcrafted drinks, no fuss</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Espresso, made kindly</h3>
+          <p>
+            Lattes, specialty lattes, cappuccinos, macchiatos, and Americanos — with one
+            complimentary flavor included and soy, oat, or almond milk available.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Chai, cocoa &amp; classics</h3>
+          <p>
+            Dirty chai, hot cocoa, iced coffee, drip coffee, and red eyes for the days that need
+            an extra shot.
+          </p>
+        </div>
+        <div class="card card--pine">
+          <h3>Mushroom coffee</h3>
+          <p>
+            Our wellness-inspired signature: a spoonful of chaga mushroom powder blended into an
+            iced latte. Earthy, smooth, and very South Knoxville.
+            <a href="/menu/#mushroom-coffee">More about our mushroom coffee &rarr;</a>
+          </p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--clay" href="/menu/">See the full menu &amp; prices</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Events ── -->
+  <section class="section" aria-labelledby="events-heading">
+    <div class="wrap">
+      <p class="eyebrow">On the calendar</p>
+      <h2 id="events-heading" style="margin-top:0;">More than coffee</h2>
+      {
+        upcoming.length > 0 ? (
+          <div class="grid">
+            {upcoming.map((event) => (
+              <a class="card event-card" href={`/events/${event.id}/`}>
+                <time datetime={event.data.start.toISOString()}>{fmtDate(event.data.start)}</time>
+                <h3>{event.data.title}</h3>
+                <p>{event.data.description}</p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="grid">
+            <div class="card">
+              <h3>Author readings &amp; poetry</h3>
+              <p>Local authors, Appalachian writers, queer writers, horror nights, memoir, and book clubs.</p>
+            </div>
+            <div class="card">
+              <h3>Acoustic music &amp; open mics</h3>
+              <p>Singer-songwriters, small sets, and low-volume evening music made for conversation, not over it.</p>
+            </div>
+            <div class="card">
+              <h3>Art, zines &amp; makers</h3>
+              <p>Rotating local art on the walls, zine swaps, art markets, and creative workshops.</p>
+            </div>
+            <div class="card">
+              <h3>Community nights</h3>
+              <p>Queer community gatherings and low- and no-alcohol evening events in an LGBTQ+ friendly space. Everyone welcome, nobody pressured.</p>
+            </div>
+          </div>
+        )
+      }
+      <div class="btn-row">
+        <a class="btn btn--clay" href="/events/">See upcoming events</a>
+        <a class="btn btn--clay" href="/contact/">Book or pitch an event</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Support ── -->
+  <section class="section section--pine" aria-labelledby="support-heading">
+    <div class="wrap">
+      <p class="eyebrow" style="color: var(--honey)">Help us open</p>
+      <h2 id="support-heading" style="margin-top:0; color: var(--cream);">We&rsquo;re building this with you.</h2>
+      <p style="max-width: var(--measure); color: #e9e0cb;">
+        Stone&rsquo;s Throw is community-funded and community-built. Every donation to our GoFundMe
+        helps us open faster — and opens a space that belongs to South Knoxville.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
+        <a class="btn btn--outline" href="/support-us/">See all ways to help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Location ── -->
+  <section class="section section--tint" aria-labelledby="location-heading">
+    <div class="wrap">
+      <p class="eyebrow">Where to find us</p>
+      <h2 id="location-heading" style="margin-top:0;">South Knoxville, Chapman Highway</h2>
+      <div class="grid">
+        <div>
+          <address>
+            <strong>{BUSINESS.name}</strong><br />
+            {BUSINESS.address.street}<br />
+            {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
+          </address>
+          <p style="margin-top: var(--space-2);">
+            On Chapman Highway in South Knoxville — an easy hop from downtown, the greenways, and
+            the Urban Wilderness.
+          </p>
+        </div>
+        <div>
+          <h3 style="margin-top:0;">Hours</h3>
+          {
+            hours.length ? (
+              <ul>{hours.map((line) => <li>{line}</li>)}</ul>
+            ) : (
+              <p>Hours coming soon — we&rsquo;ll post them here and on Google before we open.</p>
+            )
+          }
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--clay" href="/visit/">Location &amp; accessibility details</a>
+        <a class="btn btn--clay" href={mapsUrl} rel="noopener">Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <EmailSignup />
+
+</Base>
+
+<style>
+  /* ── Coming-soon hero ── */
+  .hero--coming-soon {
+    background: var(--green-deep);
+    padding-block: var(--space-5) calc(var(--space-4) + 8vw);
+    position: relative;
+    overflow: hidden;
+    color: var(--cream);
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.82) 45%, rgba(20,58,0,0.45) 100%),
+      url('/images/home-hero-forest-coffeehouse.png') center / cover no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero--coming-soon__wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content card — cream panel over the dark background */
+  .hero-content-card {
+    background: rgba(250, 244, 231, 0.96);
+    border-radius: var(--radius);
+    border-left: 5px solid var(--honey);
+    padding: var(--space-4);
+    max-width: 40rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .cs-eyebrow {
+    color: var(--plum);
+    margin-bottom: var(--space-1);
+  }
+
+  .cs-eyebrow::before {
+    color: var(--honey);
+  }
+
+  .cs-h1 {
+    color: var(--pine);
+    font-size: clamp(1.85rem, 4.5vw, 3rem);
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-2);
+    line-height: 1.1;
+  }
+
+  .cs-body {
+    color: var(--ink);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 56ch;
+    margin-bottom: var(--space-2);
+  }
+
+  .cs-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--clay);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-3);
+    max-width: none;
+  }
+
+  .cs-btns {
+    margin-top: 0;
+  }
+
+  /* sprig colour on this hero */
+  .hero--coming-soon .hero-sprig {
+    color: rgba(196, 146, 58, 0.4);
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailSignup from '../components/EmailSignup.astro';
+import { BUSINESS, fullAddress, has, hoursDisplay } from '../config';
+
+const hours = hoursDisplay();
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
+const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress())}&output=embed`;
+const socials = [
+  { label: 'Instagram', url: BUSINESS.social.instagram },
+  { label: 'Facebook', url: BUSINESS.social.facebook },
+  { label: 'Threads', url: BUSINESS.social.threads },
+].filter((s) => has(s.url));
+---
+
+<Base
+  title="Coffee Shop on Chapman Highway | Visit Stone's Throw Coffee"
+  description="Plan your visit to Stone's Throw Coffee in South Knoxville. Find our address, hours, parking information, accessibility notes, menu links, events, and contact details."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Directions, hours &amp; parking</p>
+      <h1>Visit Stone&rsquo;s Throw Coffee</h1>
+      <p class="lede">
+        You&rsquo;ll find us on Chapman Highway in South Knoxville — a few minutes from downtown
+        via the Henley Street Bridge, near the South Knoxville greenways.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Address</h2>
+          <address>
+            {BUSINESS.name}<br />
+            {BUSINESS.address.street}<br />
+            {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
+          </address>
+          <p style="margin-top: var(--space-2);">
+            <a href={mapsUrl} rel="noopener">Open in Google Maps</a>
+          </p>
+        </div>
+        <div class="card">
+          <h2>Hours</h2>
+          {
+            hours.length ? (
+              <ul style="list-style:none; padding:0; margin:0;">
+                {hours.map((line) => (
+                  <li>{line}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>
+                Hours coming soon — we&rsquo;ll post them here and on our Google profile before
+                opening day.
+              </p>
+            )
+          }
+        </div>
+        <div class="card">
+          <h2>Contact</h2>
+          <ul style="list-style:none; padding:0; margin:0;">
+            {
+              has(BUSINESS.phoneDisplay) && has(BUSINESS.phone) && (
+                <li>
+                  <a href={`tel:${BUSINESS.phone}`}>{BUSINESS.phoneDisplay}</a>
+                </li>
+              )
+            }
+            {
+              has(BUSINESS.email) && (
+                <li>
+                  <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+                </li>
+              )
+            }
+            {
+              socials.map((s) => (
+                <li>
+                  <a href={s.url} rel="noopener">
+                    {s.label}
+                  </a>
+                </li>
+              ))
+            }
+            <li><a href="/contact/">Contact form &amp; event booking</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Map</h2>
+      <iframe
+        class="map-embed"
+        src={mapEmbed}
+        title={`Map showing ${BUSINESS.name} at ${fullAddress()}`}
+        loading="lazy"
+        frameborder="0"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <h2>Parking</h2>
+      <!-- TODO: confirm and expand once you have keys — number of spaces,
+           where overflow goes, anything tricky about the lot entrance. -->
+      <p>
+        There is parking at the shop, right off Chapman Highway. Detailed parking notes —
+        including overflow options for event nights — will be posted here before we open.
+      </p>
+
+      <h2>Accessibility</h2>
+      <!-- TODO: replace with concrete details once confirmed in the space:
+           step-free entrance? accessible restroom? table heights? aisle widths? -->
+      <p>
+        We want every visit to be easy. We&rsquo;re documenting the details of the space —
+        entrance, restrooms, seating, and parking — and will publish full accessibility notes
+        here before opening day. In the meantime, <a href="/contact/">reach out</a> with any
+        access questions and we&rsquo;ll give you a straight answer.
+      </p>
+
+      <h2>Getting here</h2>
+      <p>
+        We&rsquo;re on Chapman Highway (US-441), the main road through South Knoxville, a short
+        drive from the Henley Street Bridge and downtown — and just down Chapman Highway from
+        the Knox Pride Community Center at 4028 Chapman Hwy. KAT buses run along Chapman
+        Highway — plan a trip at
+        <a href="https://www.katbus.com" target="_blank" rel="noopener noreferrer">katbus.com</a>.
+        <!-- TODO: confirm the current KAT route number that stops nearest the shop -->
+      </p>
+
+      <h2>While you&rsquo;re in the neighborhood</h2>
+      <p>
+        South Knoxville is worth the wander: the Urban Wilderness trails, Ijams Nature Center,
+        the Mary Vestal and Baker Creek greenways, and a growing stretch of local shops along
+        Chapman Highway and Sevier Avenue are all close by — most of them, fittingly, a
+        stone&rsquo;s throw away.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn btn--clay" href="/menu/">View the menu</a>
+        <a class="btn btn--clay" href="/events/">See upcoming events</a>
+      </div>
+    </div>
+  </section>
+  <EmailSignup />
+</Base>

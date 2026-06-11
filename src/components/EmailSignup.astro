@@ -1,0 +1,57 @@
+---
+import { BUSINESS, has } from '../config';
+
+interface Props {
+  heading?: string;
+}
+
+const { heading = 'Stay in the loop' } = Astro.props;
+const ready = has(BUSINESS.newsletterAction);
+// avoid a circular "the Updates page" link when this band is on /updates/ itself
+const onUpdates = Astro.url.pathname.replace(/\/?$/, '/') === '/updates/';
+---
+
+<section class="section section--pine signup-band" aria-labelledby="signup-heading">
+  <div class="wrap">
+    <h2 id="signup-heading" style="margin-top:0;">{heading}</h2>
+    <p>
+      Get event announcements, menu specials, and local artist features. No spam, no selling your
+      info — just what&rsquo;s happening at the shop.
+    </p>
+    {
+      ready ? (
+        <form action={BUSINESS.newsletterAction} method="post" target="_blank">
+          <label class="visually-hidden" for="signup-email">
+            Email address
+          </label>
+          <input
+            id="signup-email"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+          />
+          <button class="btn btn--solid" type="submit">
+            Sign up
+          </button>
+        </form>
+      ) : (
+        <p>
+          <!-- TODO: set newsletterAction in src/config.ts to replace this fallback with a signup form -->
+          Our email list is opening soon. {has(BUSINESS.social.instagram) ? (
+            <>
+              <a href={BUSINESS.social.instagram} rel="noopener">Follow us on Instagram</a> for
+              announcements in the meantime, or watch{' '}
+              {onUpdates ? 'this page' : <a href="/updates/">the Updates page</a>}.
+            </>
+          ) : onUpdates ? (
+            'Until then, announcements land first right here on this page.'
+          ) : (
+            <>Until then, announcements land first on <a href="/updates/">the Updates page</a>.</>
+          )}
+        </p>
+      )
+    }
+  </div>
+</section>

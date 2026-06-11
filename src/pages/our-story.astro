@@ -1,0 +1,316 @@
+---
+import Base from '../layouts/Base.astro';
+import MoonDivider from '../components/MoonDivider.astro';
+import { BUSINESS } from '../config';
+---
+
+<Base
+  title="Our Story | Stone's Throw Coffee in South Knoxville"
+  description="Meet Casey and Zoey Stone, the founders of Stone's Throw Coffee, a queer-owned South Knoxville coffee shop and community hub opening in the former South Press location."
+>
+
+  <!-- Page header -->
+  <section class="section section--pine story-header">
+    <div class="wrap">
+      <p class="eyebrow">Opening soon &middot; Chapman Highway</p>
+      <h1>Our Story</h1>
+      <p class="story-lede">
+        A queer-owned coffee shop built by and for South Knoxville, opening soon on Chapman Highway.
+      </p>
+    </div>
+
+    <!-- placeholder for our-story hero image -->
+    <div class="story-header__img" aria-hidden="true">
+      <!-- Replace with: public/images/our-story-coffee-plants-books.webp (1600×900) -->
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Meet the founders</p>
+      <h2>Who We Are</h2>
+      <p class="section-lede" style="max-width: var(--measure)">
+        Stone&rsquo;s Throw is owned and operated by Casey and Zoey Stone &mdash; a queer couple
+        who believe South Knoxville deserves a coffee shop that actually belongs to the community.
+      </p>
+
+      <div class="grid founders-grid">
+
+        <!-- Casey card -->
+        <div class="card founder-card">
+          <div class="founder-card__portrait">
+            <img src="/images/portrait-casey.jpg" alt="Casey Stone, co-owner of Stone's Throw Coffee" width="120" height="120" loading="lazy" />
+          </div>
+          <h3>Casey Stone <span class="pronouns">(they/them)</span></h3>
+          <p class="founder-role">Co-owner &amp; founder</p>
+          <p>
+            If Casey looks vaguely familiar, it&rsquo;s probably because you&rsquo;ve spent the
+            last eleven years in the same spaces they have &mdash; catching drag king Danny
+            Valentino on stage, crossing paths at a downtown restaurant or coffee shop, or maybe
+            spotting them in a local stage production or true crime episode filmed right here in
+            Knoxville.
+          </p>
+          <p>
+            Through their years managing a coffee shop, Casey learned every layer of what makes a
+            place actually work: maintenance realities, supply ordering, the precision a great
+            drink requires, the creativity the craft allows, and what people are genuinely looking
+            for in a menu. They&rsquo;ve never met a stranger, and the warmth they bring into a
+            room isn&rsquo;t something you can manufacture.
+          </p>
+          <p>
+            Casey&rsquo;s other interests include making art from ethically sourced animal bones,
+            philosophy, musicals, a 16-year-old soul-cat (plus six other pets), day trips, and
+            brunch.
+          </p>
+        </div>
+
+        <!-- Zoey card -->
+        <div class="card founder-card">
+          <div class="founder-card__portrait">
+            <img src="/images/portrait-zoey.jpg" alt="Zoey Stone, co-owner of Stone's Throw Coffee" width="120" height="120" loading="lazy" />
+          </div>
+          <h3>Zoey Stone <span class="pronouns">(she/her)</span></h3>
+          <p class="founder-role">Co-owner &amp; founder</p>
+          <p>
+            Zoey was born and raised in Tennessee, took a detour through Illinois and Florida, and
+            migrated back home to Knoxville in 2022. She spent most of her twenties as a massage
+            therapist running a private practice in every state she lived in &mdash; the kind of
+            work that teaches you quickly how to read a room and take care of the people in it.
+          </p>
+          <p>
+            When she was ready for something new, she found herself behind the desk at a couple of
+            companies and moved up in rank wherever she landed. That instinct for leadership and
+            entrepreneurship is exactly what she&rsquo;s pouring into Stone&rsquo;s Throw.
+          </p>
+          <p>
+            Right now Zoey is prioritizing the good stuff: running with her dogs, home-making with
+            her family (spouse, kid, and multiple animals), and tending what she will only describe
+            as a positively magical garden. Her interests include Buddhist teachings, plants, roller
+            derby, and hiking in toe shoes &mdash; a cult she will absolutely try to recruit you into.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <MoonDivider />
+
+  <!-- What We Are -->
+  <section class="section section--tint">
+    <div class="wrap prose">
+      <p class="eyebrow">What we are</p>
+      <h2>A coffee shop, an arts space, a gathering place</h2>
+
+      <p>
+        Stone&rsquo;s Throw Coffee is queer-owned and LGBTQIA+ affirming &mdash; and it&rsquo;s
+        built for everyone in South Knoxville. We believe a neighborhood coffee shop should feel
+        like it belongs to the neighborhood: welcoming by design, sober-friendly by default, and
+        full of the kind of local creative energy that makes a place worth living near.
+      </p>
+      <p>
+        We&rsquo;re opening in a space many people already know and love. The former South Press
+        location held years of queer joy, community, art, grief, laughter, and belonging. We honor
+        that history while building something distinctly our own: new name, familiar space, same
+        need for community.
+      </p>
+      <p>
+        The coffee is handcrafted and priced for neighbors, not tourists. The walls rotate local
+        art. The calendar makes room for open mics, author readings, acoustic music, and community
+        nights. And the vibe &mdash; earthy, warm, a little witchy, deeply Appalachian &mdash; is
+        the one we always wanted to walk into.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What we&rsquo;re building</p>
+      <h2>The Vision</h2>
+      <p style="max-width: var(--measure)">
+        We believe coffee shops can be more than a place to buy caffeine. They can be where people
+        read, sing, grieve, laugh, make art, and find each other. Here&rsquo;s the plan, plainly:
+      </p>
+
+      <div class="grid vision-grid">
+        {[
+          {
+            icon: '☕',
+            heading: 'Great coffee at neighborhood prices',
+            body: 'Handcrafted drinks made carefully, from sourced beans you can trace. See the full menu.',
+            link: { href: '/menu/', label: 'See the menu' },
+          },
+          {
+            icon: '🎨',
+            heading: 'Local art on the walls',
+            body: 'Rotating exhibitions, local maker goods, author readings, and acoustic music on the calendar.',
+            link: { href: '/art-and-authors/', label: 'Art & Authors' },
+          },
+          {
+            icon: '🌿',
+            heading: 'Sober-friendly events by design',
+            body: 'Events where nobody needs a drink in hand to belong. Queer-affirming space, full stop.',
+            link: { href: '/events/', label: 'See events' },
+          },
+          {
+            icon: '🏡',
+            heading: 'A room that\'s easy to be in',
+            body: 'For an hour of work, a first date, a hard day, or just coffee and quiet. Come as you are.',
+            link: { href: '/visit/', label: 'Location details' },
+          },
+        ].map(({ icon, heading, body, link }) => (
+          <div class="card vision-card">
+            <div class="vision-card__icon" aria-hidden="true">{icon}</div>
+            <h3>{heading}</h3>
+            <p>{body}</p>
+            <a href={link.href} class="vision-card__link">{link.label} <span aria-hidden="true">→</span></a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="section section--pine" aria-labelledby="story-cta-heading">
+    <div class="wrap" style="text-align: center">
+      <h2 id="story-cta-heading" style="color: var(--cream)">Be part of something brewing.</h2>
+      <p style="color: #e9e0cb; max-width: 50ch; margin-inline: auto;">
+        Stone&rsquo;s Throw is community-funded and opening soon. Support the GoFundMe or follow us for the opening announcement.
+      </p>
+      <div class="btn-row" style="justify-content: center; margin-top: var(--space-3)">
+        <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
+        <a class="btn btn--outline" href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* hero band */
+  .story-header {
+    position: relative;
+    padding-block: var(--space-5);
+  }
+
+  .story-header .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .story-header h1 {
+    color: var(--cream);
+    max-width: 18ch;
+    margin-top: var(--space-2);
+  }
+
+  .story-lede {
+    font-size: 1.15rem;
+    color: #e9e0cb;
+    max-width: 55ch;
+  }
+
+  .story-header__img {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(20,58,0,0.75), rgba(20,58,0,0.5)),
+      url('/images/our-story-coffee-plants-books.png') center / cover no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* founders grid */
+  .founders-grid {
+    margin-top: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  }
+
+  .founder-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .founder-card__portrait {
+    margin-bottom: var(--space-2);
+  }
+
+  .founder-card__portrait img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--line);
+  }
+
+  .founder-card h3 {
+    color: var(--pine);
+    font-size: 1.35rem;
+    margin-top: 0;
+  }
+
+  .pronouns {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-family: var(--font-body);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .founder-role {
+    font-size: 0.9rem;
+    color: var(--plum);
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 var(--space-1);
+  }
+
+  /* vision grid */
+  .vision-grid {
+    margin-top: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  }
+
+  .vision-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .vision-card__icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    margin-bottom: var(--space-1);
+  }
+
+  .vision-card h3 {
+    margin-top: 0;
+    color: var(--pine);
+    font-size: 1.1rem;
+  }
+
+  .vision-card p {
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    margin: 0;
+    flex: 1;
+  }
+
+  .vision-card__link {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    margin-top: var(--space-1);
+  }
+
+  .section-lede {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-4);
+  }
+</style>

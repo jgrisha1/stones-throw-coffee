@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EmailSignup from '../../components/EmailSignup.astro';
+
+const now = new Date();
+const all = await getCollection('events', ({ data }) => !data.draft);
+const upcoming = all
+  .filter((e) => e.data.start >= now)
+  .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf());
+const past = all
+  .filter((e) => e.data.start < now)
+  .sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
+  .slice(0, 6);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'America/New_York',
+  });
+const fmtTime = (d: Date) =>
+  d.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: 'America/New_York',
+  });
+---
+
+<Base
+  title="South Knoxville Events: Readings, Music, Open Mics | Stone's Throw"
+  description="Upcoming events at Stone's Throw Coffee in South Knoxville — local author readings, acoustic music, open mics, art nights, and queer community gatherings."
+>
+  <div aria-hidden="true" style="background: linear-gradient(rgba(20,58,0,0.65), rgba(20,58,0,0.4)), url('/images/events-open-mic-community.png') center / cover no-repeat; aspect-ratio: 16/6; width: 100%;"></div>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What&rsquo;s happening</p>
+      <h1>Events at Stone&rsquo;s Throw Coffee</h1>
+      <p class="lede">
+        Author readings, acoustic music, poetry, open mics, art nights, book clubs, zine swaps,
+        queer community gatherings, and low- and no-alcohol evenings — all in our South Knoxville
+        shop on Chapman Highway.
+      </p>
+
+      <h2>Upcoming events</h2>
+      {
+        upcoming.length > 0 ? (
+          <div class="grid">
+            {upcoming.map((event) => (
+              <a class="card event-card" href={`/events/${event.id}/`}>
+                <time datetime={event.data.start.toISOString()}>
+                  {fmtDate(event.data.start)} · {fmtTime(event.data.start)}
+                </time>
+                <h3>{event.data.title}</h3>
+                <p>{event.data.description}</p>
+                <p class="menu-item__desc">{event.data.cost}</p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="card" style="max-width: 44rem;">
+            <h3>The calendar is warming up</h3>
+            <p>
+              We&rsquo;re booking our first readings, acoustic nights, and community gatherings
+              now. Dates will land here first — and by email once our list is live.
+            </p>
+            <p>
+              Are you a local author, musician, poet, or artist who wants to be part of it?
+              <a href="/art-and-authors/">Apply to be featured</a> or
+              <a href="/contact/">pitch an event</a>.
+            </p>
+          </div>
+        )
+      }
+
+      {
+        past.length > 0 && (
+          <>
+            <h2>Recent events</h2>
+            <div class="grid">
+              {past.map((event) => (
+                <a class="card event-card" href={`/events/${event.id}/`}>
+                  <time datetime={event.data.start.toISOString()}>{fmtDate(event.data.start)}</time>
+                  <h3>{event.data.title}</h3>
+                  <p>{event.data.description}</p>
+                </a>
+              ))}
+            </div>
+          </>
+        )
+      }
+
+      <h2>The kinds of nights we host</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Local author readings</h3>
+          <p>Appalachian writers, queer writers, horror nights, poetry, and memoir.</p>
+        </div>
+        <div class="card">
+          <h3>Acoustic music</h3>
+          <p>Singer-songwriters and small, low-volume sets made for listening.</p>
+        </div>
+        <div class="card">
+          <h3>Open mics &amp; art nights</h3>
+          <p>Open mic evenings, rotating art features, zine swaps, and creative workshops.</p>
+        </div>
+        <div class="card">
+          <h3>Community events</h3>
+          <p>Queer community nights and sober-friendly, low- and no-alcohol evening events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <EmailSignup heading="Get event announcements first" />
+</Base>

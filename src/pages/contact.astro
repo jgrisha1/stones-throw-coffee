@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import { BUSINESS, has } from '../config';
+
+const formReady = has(BUSINESS.formspreeEndpoint);
+const socials = [
+  { label: 'Instagram', url: BUSINESS.social.instagram },
+  { label: 'Facebook', url: BUSINESS.social.facebook },
+  { label: 'Threads', url: BUSINESS.social.threads },
+].filter((s) => has(s.url));
+---
+
+<Base
+  title="Contact & Book an Event | Stone's Throw Coffee in South Knoxville"
+  description="Contact Stone's Throw Coffee in South Knoxville — ask a question, book an author reading or acoustic set, or pitch a community event at our shop."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Say hello</p>
+      <h1>Contact &amp; Book an Event</h1>
+      <p class="lede">
+        Questions, bookings, readings, acoustic sets, art features, community gatherings, press —
+        this is the door. We read everything and reply to real humans like real humans.
+      </p>
+
+      <h2>Booking an event</h2>
+      <p>
+        Our space hosts author readings, poetry nights, acoustic sets, open mics, book clubs,
+        zine swaps, workshops, and queer community gatherings — including low- and no-alcohol
+        evening events. Tell us what you have in mind, roughly how many people you expect, and a
+        couple of dates that could work. We&rsquo;ll take it from there.
+      </p>
+
+      {
+        formReady ? (
+          <form class="stack" action={BUSINESS.formspreeEndpoint} method="POST">
+            <label>
+              Your name
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label>
+              What&rsquo;s this about?
+              <select name="topic" required>
+                <option value="">Choose one</option>
+                <option>General question</option>
+                <option>Book an event</option>
+                <option>Read, perform, or show art</option>
+                <option>Press / media</option>
+                <option>Something else</option>
+              </select>
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="6" required />
+            </label>
+            <input type="hidden" name="_subject" value="Website contact — Stone's Throw Coffee" />
+            <button class="btn btn--clay" type="submit">
+              Send message
+            </button>
+          </form>
+        ) : (
+          <div class="card" style="max-width: 38rem;">
+            <!-- TODO: set formspreeEndpoint in src/config.ts to activate the contact form -->
+            <h3>Reach us directly</h3>
+            <ul style="list-style:none; padding:0; margin:0;">
+              {has(BUSINESS.email) && (
+                <li>
+                  Email: <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+                </li>
+              )}
+              {has(BUSINESS.phoneDisplay) && has(BUSINESS.phone) && (
+                <li>
+                  Phone: <a href={`tel:${BUSINESS.phone}`}>{BUSINESS.phoneDisplay}</a>
+                </li>
+              )}
+              {socials.map((s) => (
+                <li>
+                  <a href={s.url} rel="noopener">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+              {!has(BUSINESS.email) && !has(BUSINESS.phone) && socials.length === 0 && (
+                <li>
+                  Contact details are landing here very soon — we&rsquo;re setting up the phones
+                  and inboxes now. Our address and hours are on the{' '}
+                  <a href="/visit/">Visit page</a>.
+                </li>
+              )}
+            </ul>
+          </div>
+        )
+      }
+
+      <h2>Artists, authors &amp; musicians</h2>
+      <p>
+        Want your work on our walls or your name on our calendar? Head to the
+        <a href="/art-and-authors/#apply">apply to be featured</a> page — same humans, but it
+        asks the right questions.
+      </p>
+    </div>
+  </section>
+</Base>

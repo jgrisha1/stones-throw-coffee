@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EmailSignup from '../../components/EmailSignup.astro';
+import { BUSINESS } from '../../config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const canonical = new URL(`/updates/${post.id}/`, Astro.site).href;
+const postSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  image: [new URL('/og-default.png', Astro.site).href],
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.pubDate.toISOString(),
+  mainEntityOfPage: canonical,
+  author: { '@type': 'Organization', name: BUSINESS.name, url: Astro.site?.href },
+  publisher: { '@type': 'Organization', name: BUSINESS.name, url: Astro.site?.href },
+};
+
+// don't double the brand when a post title already names the shop
+const pageTitle = post.data.title.includes("Stone's Throw Coffee")
+  ? post.data.title
+  : `${post.data.title} | Stone's Throw Coffee`;
+
+// pubDate is date-only frontmatter (parsed as UTC midnight) — format in UTC
+// or the date renders one day early in US timezones.
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<Base
+  title={pageTitle}
+  description={post.data.description}
+  ogType="article"
+  jsonLd={[postSchema]}
+>
+  <article class="section">
+    <div class="wrap prose">
+      <p class="eyebrow"><a href="/updates/">&larr; All updates</a></p>
+      <h1>{post.data.title}</h1>
+      <p class="lede">
+        <time datetime={post.data.pubDate.toISOString()}>{fmtDate(post.data.pubDate)}</time>
+      </p>
+      <Content />
+    </div>
+  </article>
+  <EmailSignup />
+</Base>

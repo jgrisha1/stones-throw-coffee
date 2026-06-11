@@ -1,0 +1,145 @@
+---
+import '@fontsource-variable/fraunces';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { BUSINESS, has } from '../config';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogType?: string;
+  /** Extra JSON-LD blocks (Event, Menu, BlogPosting, ...) added by pages. */
+  jsonLd?: Record<string, unknown>[];
+  /** Error/utility pages: emit robots noindex and skip canonical/og:url. */
+  noindex?: boolean;
+  /** Override the business hasMenu value — /menu/ passes a reference to its Menu node. */
+  menuRef?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og-default.png',
+  ogType = 'website',
+  jsonLd = [],
+  noindex = false,
+  menuRef,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
+
+// CafeOrCoffeeShop structured data, built from src/config.ts on every page.
+// Empty config values are omitted so placeholders never ship to Google.
+const sameAs = Object.values(BUSINESS.social).filter(has);
+const localBusiness: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'CafeOrCoffeeShop',
+  '@id': new URL('/#business', Astro.site).href,
+  name: BUSINESS.name,
+  description: BUSINESS.description,
+  url: Astro.site?.href,
+  image: ogImageUrl.href,
+  servesCuisine: 'Coffee',
+  priceRange: BUSINESS.priceRange,
+  slogan: 'Queer-owned, community-rooted, sober-friendly coffee in South Knoxville',
+  // Machine-readable signals for the differentiators that ARE the brand — so
+  // answer engines can extract them instead of parsing them out of prose.
+  knowsAbout: [
+    'queer-owned coffee shop',
+    'LGBTQ+ community space',
+    'sober-friendly events',
+    'mushroom coffee',
+    'local art',
+    'author readings',
+    'acoustic music',
+  ],
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'LGBTQ+ friendly', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Sober-friendly events', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Local art on display', value: true },
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: BUSINESS.address.street,
+    addressLocality: BUSINESS.address.city,
+    addressRegion: BUSINESS.address.state,
+    postalCode: BUSINESS.address.zip,
+    addressCountry: 'US',
+  },
+  // Same @id reference on every page so the business entity reconciles cleanly
+  // when engines merge the graph across the site.
+  hasMenu: menuRef ?? { '@id': new URL('/menu/#menu', Astro.site).href },
+};
+if (has(BUSINESS.logoPath)) localBusiness.logo = new URL(BUSINESS.logoPath, Astro.site).href;
+if (has(BUSINESS.phone)) localBusiness.telephone = BUSINESS.phone;
+if (has(BUSINESS.email)) localBusiness.email = BUSINESS.email;
+if (has(BUSINESS.geo.latitude) && has(BUSINESS.geo.longitude)) {
+  localBusiness.geo = {
+    '@type': 'GeoCoordinates',
+    latitude: BUSINESS.geo.latitude,
+    longitude: BUSINESS.geo.longitude,
+  };
+}
+if (BUSINESS.hours.length) {
+  localBusiness.openingHoursSpecification = BUSINESS.hours.map((rule) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: rule.days,
+    opens: rule.opens,
+    closes: rule.closes,
+  }));
+}
+if (sameAs.length) localBusiness.sameAs = sameAs;
+
+const schemaBlocks = [localBusiness, ...jsonLd];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical.href} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:site_name" content={BUSINESS.name} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical.href} />}
+    <meta property="og:image" content={ogImageUrl.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {
+      schemaBlocks.map((block) => (
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
+      ))
+    }
+    {
+      has(BUSINESS.cloudflareAnalyticsToken) && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${BUSINESS.cloudflareAnalyticsToken}"}`}
+        />
+      )
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

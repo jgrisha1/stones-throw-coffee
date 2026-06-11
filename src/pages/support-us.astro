@@ -1,0 +1,304 @@
+---
+import Base from '../layouts/Base.astro';
+import MoonDivider from '../components/MoonDivider.astro';
+import { BUSINESS } from '../config';
+
+const gofundme = BUSINESS.gofundme;
+const facebook = BUSINESS.social.facebook;
+
+const tiers = [
+  {
+    range: '$1–$100',
+    perks: ['A thank-you on our donor wall, ready for opening day.'],
+  },
+  {
+    range: '$101–$200',
+    perks: [
+      'A thank-you on our donor wall.',
+      'An invitation to the soft opening for a first look before doors open to the public.',
+    ],
+  },
+  {
+    range: '$201–$300',
+    perks: [
+      'A thank-you on our donor wall.',
+      'An invitation to the soft opening.',
+      "One free Stone’s Throw merch item of your choice at the soft opening.",
+    ],
+  },
+  {
+    range: '$301+',
+    perks: [
+      'A thank-you on our donor wall.',
+      'An invitation to the soft opening.',
+      'One free merch item of your choice at the soft opening.',
+      'Exclusive first-year supporter discounts on select drinks or merch.',
+    ],
+  },
+];
+---
+
+<Base
+  title="Support Stone's Throw Coffee | Help Open a Queer-Owned Coffee Shop in Knoxville"
+  description="Help Stone's Throw Coffee open in South Knoxville. Support our GoFundMe, contribute skills or supplies, join our donor wall, and help build a queer-owned sober-friendly community coffee shop."
+>
+
+  <!-- Hero -->
+  <section class="section--pine support-hero">
+    <div class="wrap">
+      <p class="eyebrow">Community-funded</p>
+      <h1>Help Us Open the Doors</h1>
+      <p class="support-lede">
+        Stone&rsquo;s Throw Coffee is being built with community support from the ground up.
+      </p>
+      <p class="support-lede">
+        Supporting our GoFundMe is one of the best ways to help us open as quickly as possible.
+        Every donation helps us move closer to building a sober-friendly, queer-owned coffee shop
+        where people can gather, create, organize, rest, and belong.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--solid" href={gofundme} target="_blank" rel="noopener noreferrer">
+          Support the GoFundMe
+        </a>
+        {facebook && (
+          <a class="btn btn--outline" href={facebook} target="_blank" rel="noopener noreferrer">
+            Follow Us on Facebook
+          </a>
+        )}
+      </div>
+    </div>
+
+    <!-- placeholder for support hero image -->
+    <div class="support-hero__image" aria-hidden="true">
+      <!-- Replace with: public/images/support-community-hands.webp (1600×900) -->
+    </div>
+  </section>
+
+  <!-- Reward tiers -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Donor appreciation</p>
+      <h2>Support Tiers</h2>
+      <p>
+        Every donation gets a thank-you. Here&rsquo;s what we&rsquo;re offering at each level as a
+        small expression of our gratitude.
+      </p>
+
+      <div class="tier-grid">
+        {tiers.map((tier, i) => (
+          <div class={`tier-card ${i === tiers.length - 1 ? 'tier-card--featured' : ''}`}>
+            <div class="tier-range">{tier.range}</div>
+            <ul class="tier-perks">
+              {tier.perks.map((perk) => (
+                <li>{perk}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <p class="tier-note">
+        Soft opening invitations and merch will be coordinated through the GoFundMe and Facebook
+        after your contribution is processed. No action needed on your end &mdash; we&rsquo;ll
+        reach out.
+      </p>
+    </div>
+  </section>
+
+  <MoonDivider />
+
+  <!-- Donor wall -->
+  <section class="section section--tint">
+    <div class="wrap prose">
+      <p class="eyebrow">Recognition</p>
+      <h2>Donor Wall</h2>
+      <p>
+        Every donation will have the option to be recognized on our donor wall, ready for opening
+        day. Whether you give $5 or $500, if you want your name on that wall, it will be there.
+      </p>
+      <p>
+        You choose whether to be listed publicly. Anonymous donations are just as valued &mdash;
+        and just as impactful.
+      </p>
+    </div>
+  </section>
+
+  <!-- Other ways to help -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Beyond the dollar</p>
+      <h2>Other Ways to Help</h2>
+      <p style="max-width: var(--measure)">
+        Money is not the only way to support Stone&rsquo;s Throw. We also welcome help from people
+        with:
+      </p>
+
+      <div class="grid skills-grid">
+        {[
+          { icon: '🔨', label: 'Trades & construction', desc: 'Carpentry, electrical, plumbing, painting, tiling — any hands-on build skills.' },
+          { icon: '🎨', label: 'Art & design', desc: 'Visual art, illustration, graphic design, signage, interior styling, mural work.' },
+          { icon: '🌿', label: 'Tools & supplies', desc: 'Equipment, furniture, fixtures, or materials we can borrow, buy, or put to use.' },
+          { icon: '📣', label: 'Organizing & outreach', desc: 'Community organizing experience, event planning, flyers, tabling, or just spreading the word.' },
+          { icon: '🤝', label: 'Community connections', desc: 'Know a vendor, a local press contact, a grant source, or someone who should know about us?' },
+          { icon: '📚', label: 'Other expertise', desc: 'Legal, accounting, web, social media, accessibility consulting, writing — all helpful.' },
+        ].map(({ icon, label, desc }) => (
+          <div class="card skills-card">
+            <div class="skills-card__icon" aria-hidden="true">{icon}</div>
+            <h3>{label}</h3>
+            <p>{desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p style="margin-top: var(--space-3); max-width: var(--measure)">
+        If you have something to contribute, reach out through our{' '}
+        <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a>{' '}
+        or our <a href="/contact/">contact form</a>. We&rsquo;re genuinely grateful for all of it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Second CTA -->
+  <section class="section--pine section support-cta">
+    <div class="wrap" style="text-align: center">
+      <h2 style="color: var(--cream)">Ready to help?</h2>
+      <p style="color: var(--cream); max-width: 52ch; margin-inline: auto">
+        Every contribution &mdash; dollars, skills, tools, or signal boosts &mdash; brings us
+        closer to opening day. Thank you for believing in this space.
+      </p>
+      <div class="btn-row" style="justify-content: center">
+        <a class="btn btn--solid" href={gofundme} target="_blank" rel="noopener noreferrer">
+          Support the GoFundMe
+        </a>
+        {facebook && (
+          <a class="btn btn--outline" href={facebook} target="_blank" rel="noopener noreferrer">
+            Follow on Facebook
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .support-hero {
+    padding-block: var(--space-5);
+    position: relative;
+  }
+
+  .support-hero .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .support-hero h1 {
+    color: var(--cream);
+    max-width: 20ch;
+    margin-top: var(--space-2);
+  }
+
+  .support-lede {
+    font-size: 1.125rem;
+    color: #e9e0cb;
+    max-width: 58ch;
+    margin-bottom: var(--space-2);
+  }
+
+  .support-hero__image {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(20,58,0,0.72), rgba(20,58,0,0.55)),
+      url('/images/support-community-hands.png') center / cover no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Tier grid */
+  .tier-grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    margin-block: var(--space-3) 0;
+  }
+
+  .tier-card {
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .tier-card--featured {
+    border-color: var(--clay);
+    box-shadow: 0 0 0 2px var(--clay);
+  }
+
+  .tier-range {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pine);
+  }
+
+  .tier-card--featured .tier-range {
+    color: var(--clay);
+  }
+
+  .tier-perks {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tier-perks li + li {
+    margin-top: 0.5rem;
+  }
+
+  .tier-note {
+    margin-top: var(--space-3);
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+    font-style: italic;
+  }
+
+  /* Skills grid */
+  .skills-grid {
+    margin-top: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  }
+
+  .skills-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .skills-card__icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .skills-card h3 {
+    margin-top: 0;
+    color: var(--pine);
+    font-size: 1.05rem;
+  }
+
+  .skills-card p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+  }
+
+  .support-cta {
+    text-align: center;
+  }
+</style>

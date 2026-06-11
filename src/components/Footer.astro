@@ -1,0 +1,83 @@
+---
+import { BUSINESS, fullAddress, has, hoursDisplay } from '../config';
+
+const hours = hoursDisplay();
+const year = new Date().getFullYear();
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
+const socials = [
+  { label: 'Instagram', url: BUSINESS.social.instagram },
+  { label: 'Facebook', url: BUSINESS.social.facebook },
+  { label: 'Threads', url: BUSINESS.social.threads },
+].filter((s) => has(s.url));
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Visit Us</h2>
+        <address>
+          {BUSINESS.name}<br />
+          {BUSINESS.address.street}<br />
+          {BUSINESS.address.city}, {BUSINESS.address.state}
+          {BUSINESS.address.zip}
+        </address>
+        <p><a href={mapsUrl} rel="noopener">Get directions</a></p>
+        <h2>Hours</h2>
+        {
+          hours.length ? (
+            <ul style="list-style:none; padding:0; margin:0;">
+              {hours.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Hours coming soon — follow along for our opening announcement.</p>
+          )
+        }
+      </div>
+      <div>
+        <h2>Connect</h2>
+        <ul style="list-style:none; padding:0; margin:0;">
+          {
+            has(BUSINESS.phoneDisplay) && has(BUSINESS.phone) && (
+              <li>
+                <a href={`tel:${BUSINESS.phone}`}>{BUSINESS.phoneDisplay}</a>
+              </li>
+            )
+          }
+          {
+            has(BUSINESS.email) && (
+              <li>
+                <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+              </li>
+            )
+          }
+          {
+            socials.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener noreferrer">
+                  {s.label}
+                </a>
+              </li>
+            ))
+          }
+          <li><a href="/contact/">Contact &amp; event booking</a></li>
+          <li><a href="/art-and-authors/">Apply to be featured</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>{BUSINESS.name}</h2>
+        <p>
+          A queer-owned coffee shop, arts space, and community gathering place on Chapman Highway
+          in South Knoxville.
+        </p>
+        <p><em>New name. Familiar space. Same need for community.</em></p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; {year} {BUSINESS.name} &middot; South Knoxville, TN</span>
+      <span>Queer-owned &middot; community-rooted &middot; sober-friendly</span>
+    </div>
+  </div>
+</footer>

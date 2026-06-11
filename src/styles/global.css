@@ -1,0 +1,795 @@
+/* ------------------------------------------------------------------
+   Stone's Throw Coffee — design system
+   Green-witch / Appalachian: living forest green, parchment cream, and
+   woodland mushroom brown, pulled straight from the logo. Moonlit, herbal,
+   warm — never corporate. All text colors meet WCAG AA on their backgrounds.
+   (Legacy variable names kept; values repointed to the brand palette.)
+------------------------------------------------------------------- */
+
+:root {
+  /* palette — sampled from the logo */
+  --cream: #faf4e7;
+  --cream-deep: #f1e6d0;
+  --green: #186000; /* brand forest green — headings, wordmark, accents */
+  --green-deep: #143a00; /* deep forest — header, hero, footer */
+  --brown: #8a5a30; /* mushroom + botanical brown — links, buttons, line-art */
+  --honey: #c4923a; /* honey/moon accent on dark backgrounds */
+
+  /* legacy aliases (existing rules reference these) */
+  --night: var(--green-deep); /* dark sections are now deep forest, not midnight */
+  --pine: var(--green);
+  --pine-deep: var(--green-deep);
+  --clay: var(--brown);
+  --clay-bright: #a06a38; /* lighter brown — button hover */
+  --gold: var(--honey);
+  --plum: #6f4626; /* eyebrows are now woodland brown, not dusk purple */
+  --moonlight: #cfdcc4; /* pale sage — decorative accents only, not text */
+  --ink: #23291c;
+  --ink-soft: #49513f;
+  --line: #ded2b8;
+
+  /* type */
+  --font-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  /* rhythm */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --radius: 10px;
+  --measure: 64ch;
+  --site-width: 70rem;
+}
+
+/* --- reset-lite --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- typography --- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 580;
+  line-height: 1.15;
+  color: var(--pine);
+  margin: 0 0 var(--space-2);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.125rem);
+  margin-top: var(--space-4);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: var(--space-3);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--space-2);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--clay);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  /* deeper brown on hover — 7:1 on cream */
+  color: #6f4626;
+}
+
+:focus-visible {
+  /* clay passes the 3:1 non-text minimum on cream/cream-deep/card
+     backgrounds; gold (which doesn't) is reinstated on dark sections below */
+  outline: 3px solid var(--clay);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.site-header :focus-visible,
+.site-footer :focus-visible,
+.section--pine :focus-visible,
+.hero :focus-visible {
+  outline-color: var(--gold);
+}
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: var(--space-1);
+}
+
+.eyebrow::before {
+  content: '✦ ';
+  /* alt-text syntax keeps screen readers from announcing the glyph */
+  content: '✦ ' / '';
+  color: var(--gold);
+}
+
+/* --- layout --- */
+.wrap {
+  width: min(var(--site-width), 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-5);
+}
+
+.section--tint {
+  background: var(--cream-deep);
+}
+
+.section--pine {
+  background:
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(245, 233, 200, 0.7) 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 88% 30%, rgba(196, 146, 58, 0.6) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 70% 72%, rgba(245, 233, 200, 0.45) 50%, transparent 51%),
+    linear-gradient(165deg, var(--green-deep), var(--green));
+  color: var(--cream);
+}
+
+.section--pine h2,
+.section--pine h3 {
+  color: var(--cream);
+}
+
+.section--pine a {
+  /* cream (not honey) stays >6:1 across the whole green gradient */
+  color: var(--cream);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* eyebrow on dark-green sections: plum (#6f4626) on pine-deep (#143a00) = ~1.6:1 — fails.
+   Honey (#c4923a) on pine-deep = 4.55:1 — passes AA. */
+.section--pine .eyebrow,
+.hero .eyebrow {
+  color: var(--honey);
+}
+
+.section--pine .eyebrow::before,
+.hero .eyebrow::before {
+  color: var(--cream);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--pine);
+  color: var(--cream);
+  padding: 0.6rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* --- header --- */
+.site-header {
+  background: var(--night);
+  color: var(--cream);
+  padding-block: var(--space-1);
+  border-bottom: 4px solid var(--gold);
+  position: relative;
+  overflow: visible;
+  z-index: 40;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 3.5rem;
+}
+
+/* Logo badge — hard left, bleeds below the header */
+.wordmark {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  z-index: 50;
+  line-height: 0;
+  text-decoration: none;
+  background: var(--cream);
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 3px var(--honey);
+}
+
+.wordmark img {
+  width: auto;
+  height: clamp(5rem, 10vw, 11rem);
+  border-radius: 50%;
+  display: block;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.site-nav a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  padding: 0.35rem 0.15rem;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current='page'] {
+  color: #fff;
+  border-bottom-color: var(--gold);
+}
+
+/* Support Us — golden pill that draws the eye as primary nav CTA */
+.site-nav a.nav-cta {
+  background: var(--honey);
+  color: var(--pine-deep);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  border-bottom-color: transparent;
+  font-weight: 600;
+}
+
+.site-nav a.nav-cta:hover {
+  background: #d8a93f;
+  color: var(--pine-deep);
+  border-bottom-color: transparent;
+}
+
+/* ── Mobile navigation ─────────────────────────────────────────── */
+/* Hamburger toggle — hidden on wide screens */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 0;
+  border-radius: 4px;
+}
+
+.nav-toggle:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.nav-toggle .icon-close {
+  display: none;
+}
+
+.nav-toggle[aria-expanded='true'] .icon-menu {
+  display: none;
+}
+
+.nav-toggle[aria-expanded='true'] .icon-close {
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Nav becomes an absolutely-positioned dropdown below the header.
+     .site-header has position:relative so this anchors correctly. */
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 45;
+  }
+
+  .site-nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--green-deep);
+    border-top: 2px solid var(--gold);
+    border-bottom: 4px solid var(--gold);
+    padding: var(--space-1) 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .site-nav.is-open ul {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 0.8rem 1.5rem;
+    border-bottom: 1px solid rgba(250, 244, 231, 0.1);
+    display: block;
+  }
+
+  .site-nav li:last-child a {
+    border-bottom: none;
+  }
+
+  /* Keep the CTA pill readable but fit the list layout */
+  .site-nav a.nav-cta {
+    border-radius: 0;
+    padding: 0.8rem 1.5rem;
+    margin: 0;
+    background: rgba(196, 146, 58, 0.15);
+    color: var(--honey);
+    border-bottom-color: rgba(250, 244, 231, 0.1);
+  }
+
+  .site-nav a.nav-cta:hover {
+    background: rgba(196, 146, 58, 0.25);
+    color: var(--honey);
+  }
+}
+
+/* --- hero --- */
+.hero {
+  /* moonlit forest: a few honey/cream sparkles (echoing the logo's latte
+     art) and a soft honey moonglow over a deep-forest-to-green gradient.
+     The botanical sprigs and crescent moon are layered in as SVG. */
+  background:
+    radial-gradient(1.6px 1.6px at 18% 24%, rgba(245, 233, 200, 0.85) 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 44% 16%, rgba(196, 146, 58, 0.8) 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 66% 30%, rgba(245, 233, 200, 0.7) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 80% 20%, rgba(245, 233, 200, 0.6) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 30% 64%, rgba(196, 146, 58, 0.55) 50%, transparent 51%),
+    radial-gradient(ellipse 70% 55% at 84% 8%, rgba(196, 146, 58, 0.16), transparent 62%),
+    radial-gradient(ellipse 80% 70% at 12% 100%, rgba(24, 96, 0, 0.55), transparent 68%),
+    linear-gradient(180deg, var(--green-deep) 0%, var(--green) 130%);
+  color: var(--cream);
+  /* extra bottom padding keeps content clear of the ridge silhouette,
+     which scales with viewport width (viewBox ratio ≈ width / 18) */
+  padding-block: var(--space-5) calc(var(--space-4) + 8vw);
+  position: relative;
+  overflow: hidden;
+}
+
+/* botanical sprig line-art tucked into the hero corners */
+.hero-sprig {
+  position: absolute;
+  bottom: 7vw;
+  width: clamp(120px, 18vw, 240px);
+  height: auto;
+  color: rgba(196, 146, 58, 0.5);
+  pointer-events: none;
+}
+
+.hero-sprig--left {
+  left: -1.5rem;
+  transform: scaleX(-1);
+}
+
+.hero-sprig--right {
+  right: -1.5rem;
+}
+
+@media (max-width: 720px) {
+  .hero-sprig {
+    display: none;
+  }
+}
+
+.hero-moon {
+  position: absolute;
+  top: 2.25rem;
+  right: 6%;
+  width: clamp(54px, 8.5vw, 104px);
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* on narrow screens the wrapped eyebrow text reaches the right edge —
+   tuck the moon out of the way instead of overlapping it */
+@media (max-width: 640px) {
+  .hero-moon {
+    display: none;
+  }
+}
+
+.hero h1 {
+  color: var(--cream);
+  max-width: 22ch;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 56ch;
+  color: #e9e0cb;
+}
+
+.hero-ridge {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2px;
+  width: 100%;
+  height: auto;
+  color: var(--cream);
+  pointer-events: none;
+}
+
+/* --- buttons --- */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn--solid {
+  background: var(--gold);
+  color: var(--pine-deep);
+}
+
+.btn--solid:hover {
+  background: #d8a93f;
+  color: var(--pine-deep);
+}
+
+.btn--outline {
+  border-color: var(--cream);
+  color: var(--cream);
+}
+
+.btn--outline:hover {
+  background: rgba(250, 244, 231, 0.12);
+  color: #fff;
+}
+
+.btn--clay {
+  background: var(--clay);
+  color: var(--cream);
+}
+
+.btn--clay:hover {
+  background: var(--clay-bright);
+  color: #fff;
+}
+
+/* Light-background outline variant — border + text in clay, fills on hover */
+.btn--clay-outline {
+  border-color: var(--clay);
+  color: var(--clay);
+  background: transparent;
+}
+
+.btn--clay-outline:hover {
+  background: var(--clay);
+  color: var(--cream);
+}
+
+/* Smooth hover transitions on all button variants */
+.btn {
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* --- cards & grids --- */
+.grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+
+.card {
+  background: #fffdf6;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* cards whose headings are top-level page sections use h2 for a correct
+   document outline, styled down to the card size */
+.card h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+.card--pine {
+  background: var(--pine-deep);
+  border-color: var(--pine-deep);
+  color: var(--cream);
+}
+
+.card--pine h3 {
+  color: var(--gold);
+}
+
+/* --- menu --- */
+.menu-section {
+  margin-bottom: var(--space-4);
+}
+
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-block: 0.55rem;
+  border-bottom: 1px dotted var(--line);
+  max-width: var(--measure);
+}
+
+.menu-item__name {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  color: var(--pine);
+}
+
+.menu-item__dots {
+  flex: 1;
+}
+
+.menu-item__price {
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+
+.menu-item__desc {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0.15rem 0 0;
+  width: 100%;
+}
+
+.flavor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-2);
+  columns: 10rem 3;
+  column-gap: var(--space-3);
+  max-width: var(--measure);
+}
+
+.flavor-list li {
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--line);
+  break-inside: avoid;
+}
+
+/* --- events --- */
+.event-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.event-card time {
+  font-family: var(--font-display);
+  color: var(--clay);
+  font-size: 0.95rem;
+}
+
+.event-meta {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 var(--space-3);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.event-meta li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.event-meta li::before {
+  content: '✦';
+  content: '✦' / '';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* --- forms --- */
+form.stack {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 38rem;
+}
+
+label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--pine);
+  display: grid;
+  gap: 0.35rem;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--ink);
+  background: #fffdf6;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--pine);
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+/* --- newsletter band --- */
+.signup-band form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  max-width: 34rem;
+}
+
+.signup-band input[type='email'] {
+  flex: 1 1 14rem;
+}
+
+/* --- footer --- */
+.site-footer {
+  background: var(--night);
+  color: #d8d2bd;
+  margin-top: var(--space-5);
+  padding-block: var(--space-4) var(--space-3);
+  font-size: 0.97rem;
+}
+
+.site-footer h2 {
+  font-size: 1.05rem;
+  color: var(--gold);
+  margin: 0 0 var(--space-1);
+}
+
+.site-footer a {
+  color: var(--cream);
+}
+
+.site-footer .grid {
+  gap: var(--space-3);
+}
+
+.site-footer .legal {
+  border-top: 1px solid rgba(250, 244, 231, 0.18);
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  justify-content: space-between;
+}
+
+address {
+  font-style: normal;
+}
+
+/* --- misc --- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.map-embed {
+  border: 0;
+  width: 100%;
+  height: 22rem;
+  border-radius: var(--radius);
+}
+
+.divider-note {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  font-style: italic;
+  color: var(--plum);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 30ch;
+}
+
+.moon-divider {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto var(--space-2);
+  color: var(--gold);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.45rem 1.25rem 0.45rem 0;
+  border-bottom: 1px dotted var(--line);
+}
+
+.prose :is(h2, h3) {
+  max-width: var(--measure);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
