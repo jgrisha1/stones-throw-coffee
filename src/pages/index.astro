@@ -283,6 +283,9 @@ const fmtDate = (d: Date) =>
   .cs-eyebrow {
     color: var(--plum);
     margin-bottom: var(--space-1);
+    /* override inherited .hero p max-width so the box can't anchor left */
+    max-width: none;
+    margin-inline: auto;
   }
 
   /* plain text — no leading star (a single ✦ read as a stray bullet) */
@@ -295,6 +298,9 @@ const fmtDate = (d: Date) =>
     font-size: clamp(2rem, 4.5vw, 3rem);
     margin-top: var(--space-1);
     margin-bottom: var(--space-2);
+    /* .hero h1 sets max-width:22ch with no auto margin → box anchors left.
+       Center the box so the centered text actually sits mid-card. */
+    margin-inline: auto;
     line-height: 1.1;
     text-align: center;
   }
@@ -314,6 +320,9 @@ const fmtDate = (d: Date) =>
     color: var(--clay);
     font-size: 1.05rem;
     margin-bottom: var(--space-3);
+    /* inherits .hero p max-width:56ch — center its box too */
+    max-width: none;
+    margin-inline: auto;
   }
 
   .cs-btns {
