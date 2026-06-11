@@ -443,6 +443,11 @@ a:hover {
   .hero-moon {
     display: none;
   }
+  /* tighter vertical rhythm on phones — 4rem of section padding top+bottom
+     reads as dead space on a small screen */
+  .section {
+    padding-block: var(--space-4);
+  }
 }
 
 .hero h1 {
