@@ -245,7 +245,9 @@ const fmtDate = (d: Date) =>
   /* ── Coming-soon hero ── */
   .hero--coming-soon {
     background: var(--green-deep);
-    padding-block: var(--space-5) calc(var(--space-4) + 8vw);
+    /* extra top padding clears the logo bubble that spills down from the
+       header, so the card never collides with it at any width */
+    padding-block: 5rem calc(var(--space-4) + 8vw);
     position: relative;
     overflow: hidden;
     color: var(--cream);
@@ -389,8 +391,8 @@ const fmtDate = (d: Date) =>
   /* ── Mobile hero tuning ── */
   @media (max-width: 600px) {
     .hero--coming-soon {
-      /* less top space + a shorter ridge clearance on small screens */
-      padding-block: var(--space-4) calc(var(--space-3) + 9vw);
+      /* keep enough top space for the spilling logo bubble; trim the ridge */
+      padding-block: var(--space-5) calc(var(--space-3) + 9vw);
     }
     .hero-content-card {
       /* 40px padding eats too much of a ~350px screen — pull it in */
