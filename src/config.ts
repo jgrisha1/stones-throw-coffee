@@ -46,17 +46,16 @@ export const BUSINESS = {
   // phoneDisplay is what humans see.
   phone: '', // e.g. '+18655551234'
   phoneDisplay: '', // e.g. '(865) 555-1234'
-  email: '', // e.g. 'hello@stonesthrowcoffee.com'
+  email: 'stonesthrowcoffee@gmail.com',
 
   // --- Hours ---
-  // TODO: set real hours, then keep them in sync with Google Business
-  // Profile. Leave the array empty to show "Hours coming soon."
-  hours: [] as HoursRule[],
-  // Example:
-  // hours: [
-  //   { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '18:00' },
-  //   { days: ['Saturday', 'Sunday'], opens: '08:00', closes: '17:00' },
-  // ],
+  hours: [
+    {
+      days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '06:00',
+      closes: '18:00',
+    },
+  ] as HoursRule[],
 
   // TODO: 'YYYY-MM-DD' opening date — also add it to your Google Business Profile.
   openingDate: '',

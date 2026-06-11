@@ -54,7 +54,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 800,
     format: 'webp',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A handcrafted specialty latte on a warm wooden table surrounded by botanical accents, ferns, cinnamon, coffee beans, syrup bottles, and a subtle cozy witchy café mood. Earth tones, soft light, realistic coffee texture, no readable text, no hands, no logo.',
     sourceNote: 'Canva AI or Unsplash (search: "specialty latte botanical").',
@@ -147,7 +147,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 630,
     format: 'webp',
     lazy: false,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A warm, plant-filled, earthy coffee shop scene with coffee cups, books, mushrooms, ferns, and cozy lighting. Leave clear negative space for optional logo/text overlay. Queer-owned South Knoxville community coffeehouse feeling. No readable generated text, no fake logo.',
     sourceNote: 'Canva — create at 1200×630px. Overlay logo + site name in Canva text layer.',
@@ -196,7 +196,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 512,
     format: 'png',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'Vintage botanical line art illustration of a fern frond, transparent background, simple deep green linework, hand-drawn, earthy, witchy, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
@@ -211,7 +211,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 512,
     format: 'png',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'Vintage botanical line art illustration of a mushroom (cap and stem), transparent background, deep green or brown linework, hand-drawn, earthy, witchy, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
@@ -226,7 +226,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 512,
     format: 'png',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'Vintage botanical line art illustration of a steaming coffee cup with a latte art leaf, transparent background, warm brown or deep green linework, hand-drawn, cozy witchy coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
@@ -241,7 +241,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 512,
     format: 'png',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'Vintage botanical line art illustration of a crescent moon with small sparkle stars, transparent background, honey or cream linework, hand-drawn, witchy, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
@@ -256,7 +256,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 512,
     format: 'png',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'Vintage botanical line art illustration of a tied herb bundle (lavender, rosemary, thyme), transparent background, deep green linework, hand-drawn, earthy apothecary style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',

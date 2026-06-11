@@ -29,6 +29,8 @@ const JOBS = [
   ['portrait-zoey.jpg', 'portrait-zoey.webp', 480, 82],
   // logo renders up to ~176px in the header badge — 512px covers retina
   ['logo.png', 'logo.webp', 512, 90],
+  ['menu-specialty-latte.png', 'menu-specialty-latte.webp', 1200, 82],
+  ['og-stones-throw-coffee.png', 'og-stones-throw-coffee.webp', 1200, 85],
 ];
 
 const fresh = async (src, out) => {
