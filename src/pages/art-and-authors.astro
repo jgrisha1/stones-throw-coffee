@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailSignup from '../components/EmailSignup.astro';
 import { BUSINESS, has } from '../config';
 
 const formReady = has(BUSINESS.formspreeEndpoint);
@@ -109,4 +110,5 @@ const formReady = has(BUSINESS.formspreeEndpoint);
       }
     </div>
   </section>
+  <EmailSignup heading="Get notified when featured artist applications open" />
 </Base>

@@ -166,15 +166,14 @@ const tiers = [
 
       <div class="grid skills-grid">
         {[
-          { icon: '🔨', label: 'Trades & construction', desc: 'Carpentry, electrical, plumbing, painting, tiling — any hands-on build skills.' },
-          { icon: '🎨', label: 'Art & design', desc: 'Visual art, illustration, graphic design, signage, interior styling, mural work.' },
-          { icon: '🌿', label: 'Tools & supplies', desc: 'Equipment, furniture, fixtures, or materials we can borrow, buy, or put to use.' },
-          { icon: '📣', label: 'Organizing & outreach', desc: 'Community organizing experience, event planning, flyers, tabling, or just spreading the word.' },
-          { icon: '🤝', label: 'Community connections', desc: 'Know a vendor, a local press contact, a grant source, or someone who should know about us?' },
-          { icon: '📚', label: 'Other expertise', desc: 'Legal, accounting, web, social media, accessibility consulting, writing — all helpful.' },
-        ].map(({ icon, label, desc }) => (
+          { label: 'Trades & construction', desc: 'Carpentry, electrical, plumbing, painting, tiling — any hands-on build skills.' },
+          { label: 'Art & design', desc: 'Visual art, illustration, graphic design, signage, interior styling, mural work.' },
+          { label: 'Tools & supplies', desc: 'Equipment, furniture, fixtures, or materials we can borrow, buy, or put to use.' },
+          { label: 'Organizing & outreach', desc: 'Community organizing experience, event planning, flyers, tabling, or just spreading the word.' },
+          { label: 'Community connections', desc: 'Know a vendor, a local press contact, a grant source, or someone who should know about us?' },
+          { label: 'Other expertise', desc: 'Legal, accounting, web, social media, accessibility consulting, writing — all helpful.' },
+        ].map(({ label, desc }) => (
           <div class="card skills-card">
-            <div class="skills-card__icon" aria-hidden="true">{icon}</div>
             <h3>{label}</h3>
             <p>{desc}</p>
           </div>
@@ -340,11 +339,6 @@ const tiers = [
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-  }
-
-  .skills-card__icon {
-    font-size: 1.5rem;
-    line-height: 1;
   }
 
   /* FAQ accordion */

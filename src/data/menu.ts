@@ -68,7 +68,7 @@ export const MENU: MenuSection[] = [
     name: 'Specialty & Wellness-Inspired',
     items: [
       {
-        name: 'Mushroom Coffee',
+        name: 'Chaga Coffee',
         description:
           'A spoonful of chaga mushroom powder blended into an iced latte. Earthy, smooth, and easy to love.',
         prices: [{ label: 'Medium', amount: 6.75 }, { label: 'Large', amount: 7.0 }],

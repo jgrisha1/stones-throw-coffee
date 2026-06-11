@@ -29,7 +29,7 @@ Stone's Throw Coffee is building that into the foundation, not bolting it on:
   art features](/art-and-authors/) — a reason to be in the room beyond a
   beverage.
 - **Drinks that feel like a treat.** Specialty lattes, dirty chai, hot
-  cocoa, and our chaga [mushroom coffee](/menu/) — nobody's standing around
+  cocoa, and our [chaga coffee](/menu/) — nobody's standing around
   with an empty hand.
 
 If you've been waiting for a third place that isn't a bar and isn't your

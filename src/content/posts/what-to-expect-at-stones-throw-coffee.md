@@ -12,7 +12,7 @@ exactly what Stone's Throw Coffee will be when you walk in.
 **The drinks.** Espresso drinks (lattes from $4.75, cappuccinos, macchiatos,
 Americanos), dirty chai, hot cocoa, iced and drip coffee, and red eyes for
 the rough mornings. One flavor is always included free, and soy, oat, and
-almond milk are available. Our signature is the mushroom coffee — a spoonful
+almond milk are available. Our signature is the chaga coffee — a spoonful
 of chaga powder blended into an iced latte, earthier and smoother than it
 sounds. The full [menu with prices](/menu/) is on the site, in real text, not
 a blurry photo.

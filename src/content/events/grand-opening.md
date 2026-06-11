@@ -14,7 +14,7 @@ draft: true
 ---
 
 This is the day the lights come on. We'll be pouring lattes, dirty chai, and
-our chaga mushroom coffee from open to close, with local art on the walls and
+our chaga coffee from open to close, with local art on the walls and
 a low-key acoustic set in the afternoon.
 
 If you've been waiting for a place like this, come see it on day one —
