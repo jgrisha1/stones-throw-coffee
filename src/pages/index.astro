@@ -25,6 +25,8 @@ const fmtDate = (d: Date) =>
 <Base
   title="Stone's Throw Coffee | Coming Soon to South Knoxville"
   description="Stone's Throw Coffee is a queer-owned coffee shop and community arts space coming soon to South Knoxville on Chapman Highway. Support the opening, preview the menu, and follow updates."
+  ogTitle="Stone's Throw Coffee Is Coming Soon to South Knoxville"
+  ogDescription="A queer-owned South Knoxville coffee shop and community arts space built around coffee, local art, sober-friendly events, mutual aid, and community care."
 >
   <!-- hero background is the LCP element but loads via CSS — preload it -->
   <link slot="head" rel="preload" as="image" href="/images/home-hero-forest-coffeehouse.webp" />
@@ -33,9 +35,9 @@ const fmtDate = (d: Date) =>
   <section class="hero hero--coming-soon">
     <div class="hero-background" aria-hidden="true"></div>
 
-    <!-- decorative sprigs -->
+    <!-- decorative sprig — left side only; single sprig feels more organic -->
     {
-      [false, true].map((right) => (
+      [false].map((right) => (
         <svg
           class={`hero-sprig ${right ? 'hero-sprig--right' : 'hero-sprig--left'}`}
           viewBox="0 0 100 160"
@@ -58,19 +60,20 @@ const fmtDate = (d: Date) =>
 
     <div class="wrap hero--coming-soon__wrap">
       <div class="hero-content-card">
-        <p class="eyebrow cs-eyebrow">Coming Soon &middot; South Knoxville &middot; Chapman Highway</p>
+        <p class="eyebrow cs-eyebrow">Coming Soon to South Knoxville</p>
         <h1 class="cs-h1">Stone&rsquo;s Throw Coffee<br/>is coming soon.</h1>
         <p class="cs-body">
-          A queer-owned coffee shop and community arts space opening soon in South Knoxville.
+          A queer-owned coffee shop and community arts space opening soon on Chapman Highway.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art,
           author readings, acoustic music, mutual aid, and community care.
         </p>
+        <p class="cs-tagline">Just a Stone&rsquo;s Throw away.</p>
         <div class="btn-row cs-btns">
           <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">
             Support the GoFundMe
           </a>
           <a class="btn btn--clay" href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">
-            Follow Opening Updates
+            Follow on Facebook
           </a>
           <a class="btn btn--clay-outline" href="/menu/">
             Preview the Menu
@@ -79,15 +82,6 @@ const fmtDate = (d: Date) =>
       </div>
     </div>
 
-    <img
-      src="/images/decor-mushroom.png"
-      alt=""
-      width="180"
-      height="180"
-      loading="lazy"
-      aria-hidden="true"
-      class="hero-mushroom"
-    />
     <svg class="hero-ridge" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
       <path
         fill="currentColor"
@@ -95,6 +89,18 @@ const fmtDate = (d: Date) =>
       </path>
     </svg>
   </section>
+
+  <!-- ── Opening status strip ── -->
+  <div class="opening-strip" role="status">
+    <div class="wrap">
+      <p>
+        We&rsquo;re currently building out the space. Follow along and support the opening.
+        &ensp;<a href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
+        <span aria-hidden="true"> &middot; </span>
+        <a href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
+      </p>
+    </div>
+  </div>
 
   <!-- ── Menu preview ── -->
   <section class="section section--tint" aria-labelledby="drinks-heading">
@@ -245,7 +251,7 @@ const fmtDate = (d: Date) =>
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.82) 45%, rgba(20,58,0,0.45) 100%),
+      linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.88) 45%, rgba(20,58,0,0.70) 100%),
       url('/images/home-hero-forest-coffeehouse.webp') center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
@@ -294,13 +300,43 @@ const fmtDate = (d: Date) =>
     margin-bottom: var(--space-2);
   }
 
+  .cs-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--clay);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-3);
+  }
+
   .cs-btns {
     margin-top: 0;
     justify-content: center;
   }
 
+  /* opening-status strip — sits between hero and first section */
+  .opening-strip {
+    background: var(--cream-deep);
+    border-bottom: 1px solid var(--line);
+    padding-block: var(--space-2);
+    text-align: center;
+  }
+  .opening-strip p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .opening-strip a {
+    font-weight: 600;
+    color: var(--pine);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+  }
+  .opening-strip a:hover {
+    text-decoration-color: currentColor;
+  }
+
   /* sprig colour on this hero */
   .hero--coming-soon .hero-sprig {
-    color: rgba(196, 146, 58, 0.4);
+    color: rgba(196, 146, 58, 0.28);
   }
 </style>

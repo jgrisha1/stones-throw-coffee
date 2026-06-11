@@ -246,7 +246,7 @@ a:hover {
 
 .wordmark img {
   width: auto;
-  height: clamp(6rem, 11vw, 12rem);
+  height: clamp(5rem, 8.5vw, 9rem);
   border-radius: 50%;
   display: block;
 }
@@ -322,7 +322,7 @@ a:hover {
   display: block;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .nav-toggle {
     display: flex;
     align-items: center;
