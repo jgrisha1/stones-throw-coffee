@@ -22,7 +22,12 @@ const socials = [
           {BUSINESS.address.city}, {BUSINESS.address.state}
           {BUSINESS.address.zip}
         </address>
-        <p><a href={mapsUrl} rel="noopener">Get directions</a></p>
+        <p>
+          <a href={mapsUrl} rel="noopener">Get directions</a>
+          {has(BUSINESS.googleBusinessProfile) && (
+            <Fragment> &middot; <a href={BUSINESS.googleBusinessProfile} target="_blank" rel="noopener noreferrer">Google Business</a></Fragment>
+          )}
+        </p>
         <h2>Hours</h2>
         {
           hours.length ? (

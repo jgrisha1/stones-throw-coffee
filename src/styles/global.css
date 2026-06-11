@@ -793,3 +793,9 @@ td {
     scroll-behavior: smooth;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

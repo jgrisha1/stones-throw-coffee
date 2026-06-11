@@ -79,6 +79,12 @@ export const BUSINESS = {
   // --- Community funding ---
   gofundme: 'https://www.gofundme.com/f/stones-throw-community-coffee-shop',
 
+  // --- Google Business Profile ---
+  // TODO: Claim and verify your GBP at https://business.google.com, then paste
+  // the public profile URL here. It feeds the footer and Visit page.
+  // Format: 'https://maps.app.goo.gl/YOURLINK' or the full g.co URL.
+  googleBusinessProfile: '',
+
   // --- Integrations ---
   // TODO: create a free form at https://formspree.io and paste the endpoint
   // (looks like https://formspree.io/f/abcdwxyz). Powers the Contact/Booking

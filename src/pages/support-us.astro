@@ -39,8 +39,39 @@ const tiers = [
 ---
 
 <Base
-  title="Support Stone's Throw Coffee | Help Open a Queer-Owned Coffee Shop in Knoxville"
+  title="Support Our Opening | Stone's Throw Coffee"
   description="Help Stone's Throw Coffee open in South Knoxville. Support our GoFundMe, contribute skills or supplies, join our donor wall, and help build a queer-owned sober-friendly community coffee shop."
+  jsonLd={[{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: "Do I have to donate to come in once you're open?",
+        acceptedAnswer: { '@type': 'Answer', text: "Not at all. The GoFundMe helps us cover opening costs and equipment. Once we're open, Stone's Throw is open to everyone — no membership, no minimum purchase, no pressure. Just walk in." }
+      },
+      {
+        '@type': 'Question',
+        name: "What happens if the GoFundMe doesn't reach its goal?",
+        acceptedAnswer: { '@type': 'Answer', text: "We're still opening. Our GoFundMe goal helps us get there sooner and better-equipped. Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out." }
+      },
+      {
+        '@type': 'Question',
+        name: "Is Stone's Throw really queer-owned?",
+        acceptedAnswer: { '@type': 'Answer', text: "Yes. Stone's Throw is co-owned by Casey and Zoey Stone, who are both LGBTQ+. Creating a genuinely welcoming space for queer and queer-adjacent community is the whole point." }
+      },
+      {
+        '@type': 'Question',
+        name: 'What does "sober-friendly" mean?',
+        acceptedAnswer: { '@type': 'Answer', text: "We're a coffee shop, not a bar. Our space and events are designed to be genuinely welcoming to people in recovery, those who are sober-curious, and anyone who prefers a night out that doesn't revolve around alcohol. No alcohol will be served." }
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I contribute supplies or skills instead of money?',
+        acceptedAnswer: { '@type': 'Answer', text: "Absolutely. We welcome trades, art, tools, organizing help, community connections, and professional expertise. Reach out through our Facebook page or contact form." }
+      }
+    ]
+  }]}
 >
 
   <!-- Hero -->
@@ -158,6 +189,36 @@ const tiers = [
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-heading">
+    <div class="wrap">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-heading" style="margin-top: 0">Common questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Do I have to donate to come in once you&rsquo;re open?</summary>
+          <p>Not at all. The GoFundMe helps us cover opening costs and equipment. Once we&rsquo;re open, Stone&rsquo;s Throw is open to everyone &mdash; no membership, no minimum purchase, no pressure. Just walk in.</p>
+        </details>
+        <details>
+          <summary>What happens if the GoFundMe doesn&rsquo;t reach its goal?</summary>
+          <p>We&rsquo;re still opening. Our GoFundMe goal helps us get there sooner and better-equipped. Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out. Contributions matter at any level.</p>
+        </details>
+        <details>
+          <summary>Is Stone&rsquo;s Throw really queer-owned?</summary>
+          <p>Yes. Stone&rsquo;s Throw is co-owned by Casey and Zoey Stone, who are both LGBTQ+. This is personal, not just branding &mdash; creating a genuinely welcoming space for queer and queer-adjacent community is the whole point.</p>
+        </details>
+        <details>
+          <summary>What does &ldquo;sober-friendly&rdquo; mean?</summary>
+          <p>We&rsquo;re a coffee shop, not a bar. Our space and events are designed to be genuinely welcoming to people in recovery, those who are sober-curious, and anyone who just prefers a night out that doesn&rsquo;t revolve around alcohol. No alcohol will be served.</p>
+        </details>
+        <details>
+          <summary>Can I contribute supplies or skills instead of money?</summary>
+          <p>Absolutely. See the &ldquo;Other ways to help&rdquo; section above &mdash; we welcome trades, art, tools, organizing help, community connections, and professional expertise. Reach out through our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a> or <a href="/contact/">contact form</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- Second CTA -->
   <section class="section--pine section support-cta">
     <div class="wrap" style="text-align: center">
@@ -210,7 +271,7 @@ const tiers = [
     inset: 0;
     background:
       linear-gradient(rgba(20,58,0,0.72), rgba(20,58,0,0.55)),
-      url('/images/support-community-hands.png') center / cover no-repeat;
+      url('/images/support-community-hands.webp') center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
   }
@@ -284,6 +345,60 @@ const tiers = [
   .skills-card__icon {
     font-size: 1.5rem;
     line-height: 1;
+  }
+
+  /* FAQ accordion */
+  .faq-list {
+    max-width: var(--measure);
+  }
+
+  .faq-list details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-list details:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-list summary {
+    font-weight: 600;
+    padding: var(--space-2) 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--pine-deep);
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-list summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--honey);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-list details[open] summary::after {
+    content: '−';
+  }
+
+  .faq-list details p {
+    padding-bottom: var(--space-2);
+    color: var(--ink-soft);
+    max-width: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-list summary::after {
+      transition: none;
+    }
   }
 
   .skills-card h3 {

@@ -26,6 +26,8 @@ const fmtDate = (d: Date) =>
   title="Stone's Throw Coffee | Coming Soon to South Knoxville"
   description="Stone's Throw Coffee is a queer-owned coffee shop and community arts space coming soon to South Knoxville on Chapman Highway. Support the opening, preview the menu, and follow updates."
 >
+  <!-- hero background is the LCP element but loads via CSS — preload it -->
+  <link slot="head" rel="preload" as="image" href="/images/home-hero-forest-coffeehouse.webp" />
 
   <!-- ── Hero ── -->
   <section class="hero hero--coming-soon">
@@ -235,7 +237,7 @@ const fmtDate = (d: Date) =>
     inset: 0;
     background:
       linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.82) 45%, rgba(20,58,0,0.45) 100%),
-      url('/images/home-hero-forest-coffeehouse.png') center / cover no-repeat;
+      url('/images/home-hero-forest-coffeehouse.webp') center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
   }

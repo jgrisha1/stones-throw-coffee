@@ -39,7 +39,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 900,
     format: 'webp',
     lazy: false,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'Cozy queer-owned South Knoxville coffee shop interior with a maximalist forest aesthetic: lush plants, ferns, warm beige walls, deep green accents, cozy seating, coffee cups, local art on the walls, books, soft natural light, subtle witchy botanical details, mushrooms and herbs as decor, welcoming community atmosphere, Appalachian creative energy, not corporate, not overly polished, no readable text, no fake logos, no distorted people, warm and inviting.',
     sourceNote: 'Generate in Canva AI (Magic Media) or source from Unsplash/Pexels (creative commons).',
@@ -69,7 +69,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 800,
     format: 'webp',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A warm botanical still life with coffee syrups, herbs, honey, lavender, rosemary, orange peel, cinnamon, vanilla, hazelnuts, and coffee beans arranged in a cozy apothecary coffeehouse style. Earthy green and beige palette, vintage botanical mood, no readable labels, no brand names.',
     sourceNote: 'Canva AI or Unsplash (search: "botanical coffee syrup flat lay").',
@@ -84,7 +84,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 900,
     format: 'webp',
     lazy: false,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A cozy small coffee shop stage corner with a microphone, acoustic guitar, books, plants, warm lighting, local art wall, and a welcoming community gathering vibe. Subtle queer-affirming energy without rainbow overload, earthy forest café aesthetic, no readable text, no distorted people.',
     sourceNote: 'Canva AI or Unsplash (search: "coffee shop open mic stage plants").',
@@ -99,7 +99,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 900,
     format: 'webp',
     lazy: false,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A warm coffee shop art wall featuring local handmade art, small maker shelves, ceramics, zines, prints, plants, and cozy forest-inspired decor. Earthy colors, maximalist but welcoming, no readable text, no fake brand names.',
     sourceNote: 'Canva AI or Unsplash (search: "indie coffee shop art wall maker").',
@@ -114,7 +114,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 900,
     format: 'webp',
     lazy: false,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A symbolic community support image for a queer-owned coffee shop: hands placing coffee cups, small plants, tools, art supplies, and donation items on a wooden table. Warm, hopeful, earthy, community-built feeling. Avoid distorted hands. No readable text. No logos.',
     sourceNote: 'Canva AI. Note: avoid AI hands — use objects-on-table composition instead.',
@@ -129,7 +129,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 900,
     format: 'webp',
     lazy: false,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt:
       'A cozy storytelling scene inside an earthy coffee shop: two coffee cups on a table, books, plants, candles, botanical art, warm light, forest-inspired decor, intimate and welcoming mood. No readable text, no fake people, no logos.',
     sourceNote: 'Canva AI or Unsplash (search: "cozy coffee books plants candle table").',
@@ -165,7 +165,7 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 600,
     format: 'webp',
     lazy: true,
-    status: 'needed',
+    status: 'approved',
     canvaPrompt: 'N/A — use a real photo provided by Casey.',
     sourceNote: 'Owner-supplied photo only. Crop to square, optimize to WebP at 600×600.',
   },
