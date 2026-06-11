@@ -35,9 +35,9 @@ const fmtDate = (d: Date) =>
   <section class="hero hero--coming-soon">
     <div class="hero-background" aria-hidden="true"></div>
 
-    <!-- decorative sprig — left side only; single sprig feels more organic -->
+    <!-- decorative sprigs — mirrored pair for visual balance -->
     {
-      [false].map((right) => (
+      [false, true].map((right) => (
         <svg
           class={`hero-sprig ${right ? 'hero-sprig--right' : 'hero-sprig--left'}`}
           viewBox="0 0 100 160"
@@ -61,7 +61,7 @@ const fmtDate = (d: Date) =>
     <div class="wrap hero--coming-soon__wrap">
       <div class="hero-content-card">
         <p class="eyebrow cs-eyebrow">Coming Soon to South Knoxville</p>
-        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee<br/>is coming soon.</h1>
+        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee</h1>
         <p class="cs-body">
           A queer-owned coffee shop and community arts space opening soon on Chapman Highway.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art,
@@ -181,6 +181,8 @@ const fmtDate = (d: Date) =>
     </div>
   </section>
 
+  <MoonDivider />
+
   <!-- ── Support ── -->
   <section class="section section--pine section--botanical" aria-labelledby="support-heading">
     <img src="/images/decor-fern.png" alt="" width="220" height="220" loading="lazy" aria-hidden="true" class="botanical botanical--tr" />
@@ -197,6 +199,8 @@ const fmtDate = (d: Date) =>
       </div>
     </div>
   </section>
+
+  <MoonDivider />
 
   <!-- ── Location ── -->
   <section class="section section--tint" aria-labelledby="location-heading">
@@ -260,6 +264,7 @@ const fmtDate = (d: Date) =>
   .hero--coming-soon__wrap {
     position: relative;
     z-index: 1;
+    text-align: center;
   }
 
   /* Content card — centered cream panel over the dark background */
@@ -285,10 +290,11 @@ const fmtDate = (d: Date) =>
 
   .cs-h1 {
     color: var(--pine);
-    font-size: clamp(1.85rem, 4.5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     margin-top: var(--space-1);
     margin-bottom: var(--space-2);
-    line-height: 1.1;
+    line-height: 1.05;
+    text-align: center;
   }
 
   .cs-body {
