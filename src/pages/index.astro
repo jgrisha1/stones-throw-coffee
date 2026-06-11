@@ -92,14 +92,14 @@ const fmtDate = (d: Date) =>
 
   <!-- ── Opening status strip ── -->
   <div class="opening-strip" role="status">
-    <div class="wrap">
-      <p>
-        We&rsquo;re currently building out the space. Follow along and support the opening.
-        &ensp;<a href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
-        <span aria-hidden="true"> &middot; </span>
-        <a href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
-      </p>
-    </div>
+    <p class="opening-strip__msg">
+      We&rsquo;re currently building out the space. Follow along and support the opening.
+    </p>
+    <p class="opening-strip__links">
+      <a href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
+      <span class="opening-strip__dot" aria-hidden="true">&middot;</span>
+      <a href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
+    </p>
   </div>
 
   <!-- ── Menu preview ── -->
@@ -338,24 +338,38 @@ const fmtDate = (d: Date) =>
   .opening-strip {
     background: var(--cream-deep);
     border-bottom: 1px solid var(--line);
-    padding-block: var(--space-2);
+    padding: var(--space-2) 1.25rem;
     text-align: center;
   }
   .opening-strip p {
-    /* tight centered block under the hero card — same width as the card */
-    max-width: 48rem;
-    margin: 0 auto;
+    max-width: 52rem;
     font-size: 0.95rem;
     color: var(--ink-soft);
   }
-  .opening-strip a {
+  .opening-strip__msg {
+    margin: 0 auto 0.4rem;
+  }
+  /* links as a centered group — labels never break mid-phrase */
+  .opening-strip__links {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem 0.85rem;
+  }
+  .opening-strip__links a {
     font-weight: 600;
     color: var(--pine);
+    white-space: nowrap;
     text-decoration: underline;
     text-decoration-color: transparent;
   }
-  .opening-strip a:hover {
+  .opening-strip__links a:hover {
     text-decoration-color: currentColor;
+  }
+  .opening-strip__dot {
+    color: var(--line);
   }
 
   /* sprig colour on this hero */
