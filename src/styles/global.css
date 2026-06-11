@@ -799,3 +799,69 @@ td {
     transition: none;
   }
 }
+
+/* ── Botanical decorative accents ── */
+
+/* Parent section — enables absolute child positioning */
+.section--botanical {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base styles shared by all absolute botanicals */
+.botanical {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+}
+
+/* Light ghost variant — for dark (pine/night) backgrounds */
+.botanical--tr {
+  top: -24px;
+  right: -32px;
+  width: 220px;
+  height: 220px;
+  filter: brightness(0) invert(1);
+  opacity: 0.13;
+  transform: rotate(18deg);
+}
+
+/* Hero mushroom — bottom-right, partially behind ridge wave */
+.hero-mushroom {
+  position: absolute;
+  bottom: 48px;
+  right: 3vw;
+  width: clamp(80px, 12vw, 160px);
+  height: clamp(80px, 12vw, 160px);
+  filter: brightness(0) invert(1);
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Footer moon ornament */
+.footer-moon {
+  text-align: center;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-1);
+}
+.footer-moon img {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) invert(1);
+  opacity: 0.35;
+}
+
+/* Inline botanical divider — centered ornament before a heading */
+.botanical-divider {
+  text-align: center;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-1);
+}
+.botanical-divider img {
+  width: 52px;
+  height: 52px;
+  opacity: 0.55;
+}
