@@ -30,6 +30,7 @@ const menuSchema = {
     })),
   })),
 };
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -41,7 +42,7 @@ const menuSchema = {
   <section class="section">
     <div class="wrap">
       <img
-        src="/images/menu-specialty-latte.webp"
+        src={`${base}/images/menu-specialty-latte.webp`}
         alt="Handcrafted specialty latte with botanical accents on a warm wooden table"
         width="1200"
         height="600"
@@ -77,10 +78,10 @@ const menuSchema = {
         ))
       }
 
-      <div class="menu-img-accent" aria-hidden="true" style="background: url('/images/menu-flavors-botanical-syrups.webp') center / cover no-repeat; aspect-ratio: 16/7; width: 100%; border-radius: var(--radius); margin-block: var(--space-4) var(--space-3);"></div>
+      <div class="menu-img-accent" aria-hidden="true" style={`background: url('${base}/images/menu-flavors-botanical-syrups.webp') center / cover no-repeat; aspect-ratio: 16/7; width: 100%; border-radius: var(--radius); margin-block: var(--space-4) var(--space-3);`}></div>
 
       <div class="botanical-divider" aria-hidden="true">
-        <img src="/images/decor-herbs.png" alt="" width="56" height="56" loading="lazy" />
+        <img src={`${base}/images/decor-herbs.png`} alt="" width="56" height="56" loading="lazy" />
       </div>
       <h2 id="flavors">Flavors &amp; Seasonal Add-Ins</h2>
       <p>
@@ -95,7 +96,7 @@ const menuSchema = {
       <p class="menu-item__desc" style="max-width: var(--measure);">{SEASONAL_ADD_INS}</p>
 
       <div class="botanical-divider" aria-hidden="true">
-        <img src="/images/decor-mushroom.png" alt="" width="56" height="56" loading="lazy" />
+        <img src={`${base}/images/decor-mushroom.png`} alt="" width="56" height="56" loading="lazy" />
       </div>
       <h2 id="chaga-coffee">About our chaga coffee</h2>
       <p>
@@ -104,8 +105,8 @@ const menuSchema = {
         rather than &ldquo;mushroomy,&rdquo; so the drink lands smooth and lightly sweet — a
         gentler ritual for folks who want something a little different from a straight espresso
         drink. Ask at the counter and we&rsquo;ll happily talk you through it — or sip one
-        during an <a href="/events/">author reading or acoustic night</a> and
-        <a href="/visit/"> plan your visit</a>.
+        during an <a href={`${base}/events/`}>author reading or acoustic night</a> and
+        <a href={`${base}/visit/`}> plan your visit</a>.
       </p>
       <h2 id="sourcing">Sourcing &amp; Community Partners</h2>
       <p>
