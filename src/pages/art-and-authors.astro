@@ -4,6 +4,7 @@ import EmailSignup from '../components/EmailSignup.astro';
 import { BUSINESS, has } from '../config';
 
 const formReady = has(BUSINESS.formspreeEndpoint);
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -35,14 +36,14 @@ const formReady = has(BUSINESS.formspreeEndpoint);
         Local authors are at the heart of our calendar: Appalachian writing, queer writers,
         poetry, memoir, fiction, and the occasional horror night with the lights turned low.
         Readings are intimate, friendly, and built so writers actually sell books and meet
-        readers. Upcoming dates are on the <a href="/events/">events calendar</a>.
+        readers. Upcoming dates are on the <a href={`${base}/events/`}>events calendar</a>.
       </p>
 
       <h2>Acoustic music</h2>
       <p>
         Singer-songwriters and small acoustic sets, kept at a volume where you can still hear the
         person across the table. Evening sets are sober-friendly — great music with no pressure
-        to drink anything stronger than a double shot. See <a href="/events/">what&rsquo;s
+        to drink anything stronger than a double shot. See <a href={`${base}/events/`}>what&rsquo;s
         coming up</a>.
       </p>
 
@@ -100,7 +101,7 @@ const formReady = has(BUSINESS.formspreeEndpoint);
               ) : (
                 <>
                   Our application form opens soon. Check back here, or watch{' '}
-                  <a href="/updates/">the Updates page</a> — we&rsquo;ll announce the moment
+                  <a href={`${base}/updates/`}>the Updates page</a> — we&rsquo;ll announce the moment
                   it&rsquo;s live.
                 </>
               )}
