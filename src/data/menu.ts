@@ -108,8 +108,6 @@ export const FLAVORS = [
   'White chocolate',
 ];
 
-export const SEASONAL_ADD_INS =
-  'Seasonal and local add-ins may include honey, lavender, rosemary, and other locally sourced flavors when available.';
 
 export const formatPrice = (p: Price) =>
   `${p.label ? `${p.label} ` : ''}$${p.amount.toFixed(2).replace(/\.00$/, '')}`;
