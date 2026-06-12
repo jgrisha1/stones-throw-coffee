@@ -77,6 +77,7 @@ if (image) eventSchema.image = new URL(image, Astro.site).href;
 if (performers.length) {
   eventSchema.performer = performers.map((p) => ({ '@type': 'Person', name: p.name }));
 }
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -88,7 +89,7 @@ if (performers.length) {
 >
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow"><a href="/events/">&larr; All events</a></p>
+      <p class="eyebrow"><a href={`${base}/events/`}>&larr; All events</a></p>
       <h1>{title}</h1>
       <p class="lede">{description}</p>
 
@@ -107,7 +108,7 @@ if (performers.length) {
       <div class="btn-row" style="margin-bottom: var(--space-4);">
         {rsvpUrl && <a class="btn btn--clay" href={rsvpUrl} rel="noopener">RSVP</a>}
         <a class="btn btn--clay" href={gcalUrl} rel="noopener">Add to Google Calendar</a>
-        <a class="btn btn--clay" href="/visit/">Parking &amp; directions</a>
+        <a class="btn btn--clay" href={`${base}/visit/`}>Parking &amp; directions</a>
       </div>
 
       <div class="prose">
