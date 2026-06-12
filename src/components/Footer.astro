@@ -1,6 +1,5 @@
 ---
 import { BUSINESS, fullAddress, has, hoursDisplay } from '../config';
-
 const hours = hoursDisplay();
 const year = new Date().getFullYear();
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
@@ -9,6 +8,8 @@ const socials = [
   { label: 'Facebook', url: BUSINESS.social.facebook },
   { label: 'Threads', url: BUSINESS.social.threads },
 ].filter((s) => has(s.url));
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <footer class="site-footer">
@@ -67,8 +68,8 @@ const socials = [
               </li>
             ))
           }
-          <li><a href="/contact/">Contact &amp; event booking</a></li>
-          <li><a href="/art-and-authors/">Apply to be featured</a></li>
+          <li><a href={`${base}/contact/`}>Contact &amp; event booking</a></li>
+          <li><a href={`${base}/art-and-authors/`}>Apply to be featured</a></li>
         </ul>
       </div>
       <div>
@@ -80,12 +81,12 @@ const socials = [
       </div>
     </div>
     <div class="footer-moon" aria-hidden="true">
-      <img src="/images/decor-moon-stars.png" alt="" width="56" height="56" loading="lazy" />
+      <img src={`${base}/images/decor-moon-stars.png`} alt="" width="56" height="56" loading="lazy" />
     </div>
     <div class="legal">
       <span>&copy; {year} {BUSINESS.name} &middot; South Knoxville, TN</span>
       <span>Queer-owned &middot; community-rooted &middot; sober-friendly</span>
-      <span><a href="/privacy/">Privacy &amp; Cookie Policy</a></span>
+      <span><a href={`${base}/privacy/`}>Privacy &amp; Cookie Policy</a></span>
     </div>
   </div>
 </footer>
