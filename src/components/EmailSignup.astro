@@ -7,8 +7,9 @@ interface Props {
 
 const { heading = 'Stay in the loop' } = Astro.props;
 const ready = has(BUSINESS.newsletterAction);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // avoid a circular "the Updates page" link when this band is on /updates/ itself
-const onUpdates = Astro.url.pathname.replace(/\/?$/, '/') === '/updates/';
+const onUpdates = Astro.url.pathname.replace(/\/?$/, '/') === `${base}/updates/`;
 ---
 
 <section class="section section--pine signup-band" aria-labelledby="signup-heading">
@@ -43,12 +44,12 @@ const onUpdates = Astro.url.pathname.replace(/\/?$/, '/') === '/updates/';
             <>
               <a href={BUSINESS.social.instagram} rel="noopener">Follow us on Instagram</a> for
               announcements in the meantime, or watch{' '}
-              {onUpdates ? 'this page' : <a href="/updates/">the Updates page</a>}.
+              {onUpdates ? 'this page' : <a href={`${base}/updates/`}>the Updates page</a>}.
             </>
           ) : onUpdates ? (
             'Until then, announcements land first right here on this page.'
           ) : (
-            <>Until then, announcements land first on <a href="/updates/">the Updates page</a>.</>
+            <>Until then, announcements land first on <a href={`${base}/updates/`}>the Updates page</a>.</>
           )}
         </p>
       )
