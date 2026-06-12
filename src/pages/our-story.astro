@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import MoonDivider from '../components/MoonDivider.astro';
 import { BUSINESS } from '../config';
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -40,7 +41,7 @@ import { BUSINESS } from '../config';
         <!-- Casey card -->
         <div class="card founder-card">
           <div class="founder-card__portrait">
-            <img src="/images/portrait-casey.webp" alt="Casey Stone, co-owner of Stone's Throw Coffee" width="120" height="120" loading="lazy" />
+            <img src={`${base}/images/portrait-casey.webp`} alt="Casey Stone, co-owner of Stone's Throw Coffee" width="120" height="120" loading="lazy" />
           </div>
           <h3>Casey Stone <span class="pronouns">(they/them)</span></h3>
           <p class="founder-role">Co-owner &amp; founder</p>
@@ -68,7 +69,7 @@ import { BUSINESS } from '../config';
         <!-- Zoey card -->
         <div class="card founder-card">
           <div class="founder-card__portrait">
-            <img src="/images/portrait-zoey.webp" alt="Zoey Stone, co-owner of Stone's Throw Coffee" width="120" height="120" loading="lazy" />
+            <img src={`${base}/images/portrait-zoey.webp`} alt="Zoey Stone, co-owner of Stone's Throw Coffee" width="120" height="120" loading="lazy" />
           </div>
           <h3>Zoey Stone <span class="pronouns">(she/her)</span></h3>
           <p class="founder-role">Co-owner &amp; founder</p>
