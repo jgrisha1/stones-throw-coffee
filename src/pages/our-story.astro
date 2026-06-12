@@ -188,7 +188,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 </Base>
 
-<style>
+<style define:vars={{ storyImg: `url(${base}/images/our-story-coffee-plants-books.webp)` }}>
   /* hero band */
   .story-header {
     position: relative;
@@ -217,7 +217,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     inset: 0;
     background:
       linear-gradient(rgba(20,58,0,0.75), rgba(20,58,0,0.5)),
-      url('/images/our-story-coffee-plants-books.webp') center / cover no-repeat;
+      var(--storyImg) center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
   }
