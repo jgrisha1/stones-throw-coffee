@@ -20,6 +20,7 @@ const fmtDate = (d: Date) =>
     day: 'numeric',
     timeZone: 'America/New_York',
   });
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -75,7 +76,7 @@ const fmtDate = (d: Date) =>
           <a class="btn btn--clay" href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">
             Follow on Facebook
           </a>
-          <a class="btn btn--clay-outline" href="/menu/">
+          <a class="btn btn--clay-outline" href={`${base}/menu/`}>
             Preview the Menu
           </a>
         </div>
@@ -127,12 +128,12 @@ const fmtDate = (d: Date) =>
           <p>
             Our wellness-inspired signature: a spoonful of chaga powder blended into an iced latte.
             Earthy, smooth, and very South Knoxville.
-            <a href="/menu/#chaga-coffee">More about our chaga coffee &rarr;</a>
+            <a href={`${base}/menu/#chaga-coffee`}>More about our chaga coffee &rarr;</a>
           </p>
         </div>
       </div>
       <div class="btn-row">
-        <a class="btn btn--clay" href="/menu/">See the full menu &amp; prices</a>
+        <a class="btn btn--clay" href={`${base}/menu/`}>See the full menu &amp; prices</a>
       </div>
     </div>
   </section>
@@ -175,8 +176,8 @@ const fmtDate = (d: Date) =>
         )
       }
       <div class="btn-row">
-        <a class="btn btn--clay" href="/events/">See upcoming events</a>
-        <a class="btn btn--clay" href="/contact/">Book or pitch an event</a>
+        <a class="btn btn--clay" href={`${base}/events/`}>See upcoming events</a>
+        <a class="btn btn--clay" href={`${base}/contact/`}>Book or pitch an event</a>
       </div>
     </div>
   </section>
@@ -185,7 +186,7 @@ const fmtDate = (d: Date) =>
 
   <!-- ── Support ── -->
   <section class="section section--pine section--botanical" aria-labelledby="support-heading">
-    <img src="/images/decor-fern.png" alt="" width="220" height="220" loading="lazy" aria-hidden="true" class="botanical botanical--tr" />
+    <img src={`${base}/images/decor-fern.png`} alt="" width="220" height="220" loading="lazy" aria-hidden="true" class="botanical botanical--tr" />
     <div class="wrap">
       <p class="eyebrow" style="color: var(--honey)">Help us open</p>
       <h2 id="support-heading" style="margin-top:0; color: var(--cream);">We&rsquo;re building this with you.</h2>
@@ -195,7 +196,7 @@ const fmtDate = (d: Date) =>
       </p>
       <div class="btn-row">
         <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
-        <a class="btn btn--outline" href="/support-us/">See all ways to help</a>
+        <a class="btn btn--outline" href={`${base}/support-us/`}>See all ways to help</a>
       </div>
     </div>
   </section>
@@ -231,7 +232,7 @@ const fmtDate = (d: Date) =>
         </div>
       </div>
       <div class="btn-row">
-        <a class="btn btn--clay" href="/visit/">Location &amp; accessibility details</a>
+        <a class="btn btn--clay" href={`${base}/visit/`}>Location &amp; accessibility details</a>
         <a class="btn btn--clay" href={mapsUrl} rel="noopener">Open in Google Maps</a>
       </div>
     </div>
@@ -258,7 +259,7 @@ const fmtDate = (d: Date) =>
     inset: 0;
     background:
       linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.88) 45%, rgba(20,58,0,0.70) 100%),
-      url('/images/home-hero-forest-coffeehouse.webp') center / cover no-repeat;
+      url('${base}/images/home-hero-forest-coffeehouse.webp') center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
   }
