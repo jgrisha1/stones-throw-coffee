@@ -40,6 +40,7 @@ const fmtDate = (d: Date) =>
     year: 'numeric',
     timeZone: 'UTC',
   });
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -50,7 +51,7 @@ const fmtDate = (d: Date) =>
 >
   <article class="section">
     <div class="wrap prose">
-      <p class="eyebrow"><a href="/updates/">&larr; All updates</a></p>
+      <p class="eyebrow"><a href={`${base}/updates/`}>&larr; All updates</a></p>
       <h1>{post.data.title}</h1>
       <p class="lede">
         <time datetime={post.data.pubDate.toISOString()}>{fmtDate(post.data.pubDate)}</time>
