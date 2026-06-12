@@ -11,6 +11,7 @@ const socials = [
   { label: 'Facebook', url: BUSINESS.social.facebook },
   { label: 'Threads', url: BUSINESS.social.threads },
 ].filter((s) => has(s.url));
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -81,7 +82,7 @@ const socials = [
                 </li>
               ))
             }
-            <li><a href="/contact/">Contact form &amp; event booking</a></li>
+            <li><a href={`${base}/contact/`}>Contact form &amp; event booking</a></li>
           </ul>
         </div>
       </div>
@@ -139,7 +140,7 @@ const socials = [
       <p>
         We want every visit to be easy. We&rsquo;re documenting the details of the space —
         entrance, restrooms, seating, and parking — and will publish full accessibility notes
-        here before opening day. In the meantime, <a href="/contact/">reach out</a> with any
+        here before opening day. In the meantime, <a href={`${base}/contact/`}>reach out</a> with any
         access questions and we&rsquo;ll give you a straight answer.
       </p>
 
@@ -162,8 +163,8 @@ const socials = [
       </p>
 
       <div class="btn-row">
-        <a class="btn btn--clay" href="/menu/">View the menu</a>
-        <a class="btn btn--clay" href="/events/">See upcoming events</a>
+        <a class="btn btn--clay" href={`${base}/menu/`}>View the menu</a>
+        <a class="btn btn--clay" href={`${base}/events/`}>See upcoming events</a>
       </div>
     </div>
   </section>
