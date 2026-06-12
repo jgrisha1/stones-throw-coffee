@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import { MENU, FLAVORS, SEASONAL_ADD_INS, formatPrice } from '../data/menu';
+import { MENU, FLAVORS, formatPrice } from '../data/menu';
 import { SOURCING, PEOPLE, showPersonalNames } from '../data/partners';
 
 // schema.org Menu structured data, generated from the same data the page
@@ -83,17 +83,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <div class="botanical-divider" aria-hidden="true">
         <img src={`${base}/images/decor-herbs.png`} alt="" width="56" height="56" loading="lazy" />
       </div>
-      <h2 id="flavors">Flavors &amp; Seasonal Add-Ins</h2>
+      <h2 id="flavors">Flavors</h2>
       <p>
-        Choose from classic coffeehouse flavors, cozy bakery flavors, nutty favorites,
-        sugar-free options, and locally sourced seasonal add-ins like honey, lavender, and
-        rosemary when available. One flavor is complimentary with each eligible drink;
-        additional flavors are $0.25 each.
+        Choose from classic coffeehouse flavors, cozy bakery flavors, nutty favorites, and
+        sugar-free options. One flavor is complimentary with each eligible drink; additional
+        flavors are $0.25 each.
       </p>
       <ul class="flavor-list">
         {FLAVORS.map((flavor) => <li>{flavor}</li>)}
       </ul>
-      <p class="menu-item__desc" style="max-width: var(--measure);">{SEASONAL_ADD_INS}</p>
 
       <div class="botanical-divider" aria-hidden="true">
         <img src={`${base}/images/decor-mushroom.png`} alt="" width="56" height="56" loading="lazy" />
@@ -101,7 +99,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <h2 id="chaga-coffee">About our chaga coffee</h2>
       <p>
         If you&rsquo;ve been searching for chaga coffee in Knoxville, this is ours: one
-        spoonful of chaga powder blended into an iced latte. Chaga is earthy and mellow
+        spoonful of chaga powder blended into iced lattes. Chaga is earthy and mellow
         rather than &ldquo;mushroomy,&rdquo; so the drink lands smooth and lightly sweet — a
         gentler ritual for folks who want something a little different from a straight espresso
         drink. Ask at the counter and we&rsquo;ll happily talk you through it — or sip one
