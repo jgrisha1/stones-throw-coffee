@@ -46,7 +46,7 @@ export const BUSINESS = {
   // phoneDisplay is what humans see.
   phone: '', // e.g. '+18655551234'
   phoneDisplay: '', // e.g. '(865) 555-1234'
-  email: 'stonesthrowcoffee@gmail.com',
+    email: 'stonesthrowcoffee@stonesthrowcoffeeco.com',
 
   // --- Hours ---
   hours: [
