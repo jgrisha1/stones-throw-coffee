@@ -242,7 +242,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 </Base>
 
-<style>
+<style define:vars={{ heroBg: `url(${base}/images/home-hero-forest-coffeehouse.webp)` }}>
   /* ── Coming-soon hero ── */
   .hero--coming-soon {
     background: var(--green-deep);
@@ -259,7 +259,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     inset: 0;
     background:
       linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.88) 45%, rgba(20,58,0,0.70) 100%),
-      url('${base}/images/home-hero-forest-coffeehouse.webp') center / cover no-repeat;
+      var(--heroBg) center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
   }
