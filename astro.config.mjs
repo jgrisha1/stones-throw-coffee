@@ -7,5 +7,6 @@ import sitemap from '@astrojs/sitemap';
 // URLs, and Open Graph URLs are all generated from this value.
 export default defineConfig({
   site: 'https://stonesthrowcoffee.com',
+  base: '/stones-throw-coffee',
   integrations: [sitemap()],
 });
