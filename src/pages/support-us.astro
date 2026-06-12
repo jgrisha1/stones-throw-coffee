@@ -36,6 +36,7 @@ const tiers = [
     ],
   },
 ];
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -183,7 +184,7 @@ const tiers = [
       <p style="margin-top: var(--space-3); max-width: var(--measure)">
         If you have something to contribute, reach out through our{' '}
         <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a>{' '}
-        or our <a href="/contact/">contact form</a>. We&rsquo;re genuinely grateful for all of it.
+        or our <a href={`${base}/contact/`}>contact form</a>. We&rsquo;re genuinely grateful for all of it.
       </p>
     </div>
   </section>
@@ -212,7 +213,7 @@ const tiers = [
         </details>
         <details>
           <summary>Can I contribute supplies or skills instead of money?</summary>
-          <p>Absolutely. See the &ldquo;Other ways to help&rdquo; section above &mdash; we welcome trades, art, tools, organizing help, community connections, and professional expertise. Reach out through our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a> or <a href="/contact/">contact form</a>.</p>
+          <p>Absolutely. See the &ldquo;Other ways to help&rdquo; section above &mdash; we welcome trades, art, tools, organizing help, community connections, and professional expertise. Reach out through our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a> or <a href={`${base}/contact/`}>contact form</a>.</p>
         </details>
       </div>
     </div>
