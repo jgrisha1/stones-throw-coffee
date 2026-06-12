@@ -27,13 +27,14 @@ const fmtTime = (d: Date) =>
     minute: '2-digit',
     timeZone: 'America/New_York',
   });
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
   title="South Knoxville Events: Readings, Music, Open Mics | Stone's Throw"
   description="Upcoming events at Stone's Throw Coffee in South Knoxville — local author readings, acoustic music, open mics, art nights, and queer community gatherings."
 >
-  <div aria-hidden="true" style="background: linear-gradient(rgba(20,58,0,0.65), rgba(20,58,0,0.4)), url('/images/events-open-mic-community.webp') center / cover no-repeat; aspect-ratio: 16/6; width: 100%;"></div>
+  <div aria-hidden="true" style={`background: linear-gradient(rgba(20,58,0,0.65), rgba(20,58,0,0.4)), url('${base}/images/events-open-mic-community.webp') center / cover no-repeat; aspect-ratio: 16/6; width: 100%;`}></div>
 
   <section class="section">
     <div class="wrap">
@@ -50,7 +51,7 @@ const fmtTime = (d: Date) =>
         upcoming.length > 0 ? (
           <div class="grid">
             {upcoming.map((event) => (
-              <a class="card event-card" href={`/events/${event.id}/`}>
+              <a class="card event-card" href={`${base}/events/${event.id}/`}>
                 <time datetime={event.data.start.toISOString()}>
                   {fmtDate(event.data.start)} · {fmtTime(event.data.start)}
                 </time>
@@ -69,8 +70,8 @@ const fmtTime = (d: Date) =>
             </p>
             <p>
               Are you a local author, musician, poet, or artist who wants to be part of it?
-              <a href="/art-and-authors/">Apply to be featured</a> or
-              <a href="/contact/">pitch an event</a>.
+              <a href={`${base}/art-and-authors/`}>Apply to be featured</a> or
+              <a href={`${base}/contact/`}>pitch an event</a>.
             </p>
           </div>
         )
@@ -82,7 +83,7 @@ const fmtTime = (d: Date) =>
             <h2>Recent events</h2>
             <div class="grid">
               {past.map((event) => (
-                <a class="card event-card" href={`/events/${event.id}/`}>
+                <a class="card event-card" href={`${base}/events/${event.id}/`}>
                   <time datetime={event.data.start.toISOString()}>{fmtDate(event.data.start)}</time>
                   <h3>{event.data.title}</h3>
                   <p>{event.data.description}</p>
