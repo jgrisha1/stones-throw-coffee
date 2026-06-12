@@ -19,6 +19,7 @@ import { BUSINESS, fullAddress, has } from '../config';
 
 // TODO(owner): update when you revise this policy.
 const lastUpdated = 'June 11, 2026';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base
@@ -107,7 +108,7 @@ const lastUpdated = 'June 11, 2026';
           cookies are set.
         </li>
         <li>
-          <strong>The embedded map.</strong> The map on our <a href="/visit/">Visit page</a> is provided
+          <strong>The embedded map.</strong> The map on our <a href={`${base}/visit/`}>Visit page</a> is provided
           by Google and can set its own cookies. Because of that, it <strong>does not load until you
           click to load it</strong>. If you&rsquo;d rather not, you can open the location directly in
           Google Maps in a new tab instead &mdash; your choice, every time.
