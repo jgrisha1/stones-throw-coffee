@@ -357,6 +357,12 @@ a:hover {
 
   .site-nav.is-open ul {
     display: flex;
+    /* clear the logo bubble that spills down over the top of the dropdown */
+    padding-top: calc(var(--space-1) + 4.5rem);
+    /* keep the menu fully reachable on short screens instead of running
+       off the bottom of the viewport */
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: auto;
   }
 
   .site-nav a {
