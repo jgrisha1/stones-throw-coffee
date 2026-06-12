@@ -8,6 +8,7 @@ const socials = [
   { label: 'Facebook', url: BUSINESS.social.facebook },
   { label: 'Threads', url: BUSINESS.social.threads },
 ].filter((s) => has(s.url));
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base
@@ -88,7 +89,7 @@ const socials = [
                 <li>
                   Contact details are landing here very soon — we&rsquo;re setting up the phones
                   and inboxes now. Our address and hours are on the{' '}
-                  <a href="/visit/">Visit page</a>.
+                  <a href={`${base}/visit/`}>Visit page</a>.
                 </li>
               )}
             </ul>
@@ -99,7 +100,7 @@ const socials = [
       <h2>Artists, authors &amp; musicians</h2>
       <p>
         Want your work on our walls or your name on our calendar? Head to the
-        <a href="/art-and-authors/#apply">apply to be featured</a> page — same humans, but it
+        <a href={`${base}/art-and-authors/#apply`}>apply to be featured</a> page — same humans, but it
         asks the right questions.
       </p>
     </div>
