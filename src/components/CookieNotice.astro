@@ -14,13 +14,14 @@
  * hasn't dismissed it — this avoids a flash on repeat visits. The dismissal is
  * stored in localStorage (on the visitor's device), not a server-side cookie.
  */
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <aside id="cookie-notice" class="cookie-notice" aria-label="Cookie notice" hidden>
   <p class="cookie-notice__text">
     We use only essential cookies and privacy-friendly, cookieless analytics. The map on our
     Visit page loads only when you choose to. See our
-    <a href="/privacy/#cookies">Privacy &amp; Cookie Policy</a>.
+    <a href={`${base}/privacy/#cookies`}>Privacy &amp; Cookie Policy</a>.
   </p>
   <button type="button" class="btn btn--solid cookie-notice__dismiss" id="cookie-notice-dismiss">
     Got it
