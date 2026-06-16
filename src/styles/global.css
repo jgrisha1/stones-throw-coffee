@@ -638,6 +638,13 @@ a:hover {
   width: 100%;
 }
 
+.menu-section__note {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--green-deep);
+  margin: 0.15rem 0 0.75rem;
+}
+
 .flavor-list {
   list-style: none;
   padding: 0;

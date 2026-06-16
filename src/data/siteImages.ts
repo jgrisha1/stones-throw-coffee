@@ -21,9 +21,10 @@ export interface SiteImage {
   height: number;
   format: 'webp' | 'png' | 'svg' | 'jpg';
   lazy: boolean;
-  status: 'needed' | 'placeholder' | 'created' | 'approved';
+  status: 'needed' | 'placeholder' | 'created' | 'approved' | 'rejected';
   canvaPrompt: string;
   sourceNote: string;
+  rejectedNote?: string;
 }
 
 export const SITE_IMAGES: SiteImage[] = [
@@ -54,7 +55,9 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 800,
     format: 'webp',
     lazy: true,
-    status: 'approved',
+    status: 'rejected',
+    rejectedNote:
+      'Sourced asset is a Canva ad/poster template ("Discover LATTES" / "Experience the Magic" badge) with large baked-in text and dead space — does not match the no-text spec below, and reads as fragmented/wonky on mobile. Removed from menu.astro; needs a real replacement photo before re-adding.',
     canvaPrompt:
      'An "Artisan Lattes" poster-style graphic: "Discover Lattes" heading and "Experience the Magic" badge over a warm wooden table scene with coffee, cinnamon, and botanical accents. Earth tones, soft light, no readable extra text, no hands, no logo.',
     sourceNote: 'Canva AI or Unsplash (search: "specialty latte botanical").',
@@ -84,10 +87,26 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 900,
     format: 'webp',
     lazy: false,
-    status: 'approved',
+    status: 'rejected',
+    rejectedNote:
+      'Sourced asset is actually a full Canva event-flyer template (portrait, ~1587x2245) with baked-in placeholder copy — "Warm, Witchy Gatherings", a fake address ("123 Anywhere St."), fake dates, and "reallygreatsite.com" — cropped into the banner this shows as fragmented, unreadable-on-purpose text. Replaced on the live page by events-cafe-interior.webp, a clean crop of the same flyer\'s embedded photo with all text removed.',
     canvaPrompt:
       'A cozy small coffee shop stage corner with a microphone, acoustic guitar, books, plants, warm lighting, local art wall, and a welcoming community gathering vibe. Subtle queer-affirming energy without rainbow overload, forest café aesthetic, no readable text, no distorted people.',
     sourceNote: 'Canva AI or Unsplash (search: "coffee shop open mic stage plants").',
+  },
+  {
+    filename: 'events-cafe-interior.webp',
+    page: 'Events',
+    section: 'Page hero / card',
+    purpose: 'Anchors the events page; signals a cozy gathering space, with no baked-in text.',
+    alt: 'Wooden café tables and chairs on a patterned rug, with steaming mugs and a plant in the foreground.',
+    width: 510,
+    height: 280,
+    format: 'webp',
+    lazy: false,
+    status: 'approved',
+    canvaPrompt: 'N/A — cropped from events-open-mic-community.webp to isolate a text-free band of the cafe interior.',
+    sourceNote: 'Cropped in-repo from events-open-mic-community.webp; consider sourcing a higher-resolution dedicated photo before launch.',
   },
   {
     filename: 'local-art-makers-wall.webp',
@@ -226,10 +245,26 @@ export const SITE_IMAGES: SiteImage[] = [
     height: 512,
     format: 'png',
     lazy: true,
-    status: 'approved',
+    status: 'rejected',
+    rejectedNote:
+      'Exported with an opaque white background instead of a transparent one (despite the canvaPrompt below), so it rendered as a visible light rectangle in the dark-green footer. Replaced on the live page by decor-moon-stars-transparent.png, an in-repo alpha-fix of the same artwork.',
     canvaPrompt:
       'Vintage botanical line art illustration of a crescent moon with small sparkle stars, transparent background, honey or cream linework, hand-drawn, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
+  },
+  {
+    filename: 'decor-moon-stars-transparent.png',
+    page: 'Site-wide decorative',
+    section: 'Dividers / footer accents',
+    purpose: 'Crescent moon and stars illustration matching the logo crescent, with a real transparent background.',
+    alt: '',
+    width: 512,
+    height: 512,
+    format: 'png',
+    lazy: true,
+    status: 'approved',
+    canvaPrompt: 'N/A — alpha-fixed in-repo from decor-moon-stars.png (near-white pixels keyed to transparent).',
+    sourceNote: 'Generated in-repo; if re-exporting from Canva, just remember to export with a transparent background.',
   },
   {
     filename: 'decor-herbs.png',
