@@ -17,8 +17,19 @@ const descs = {};
 for (const f of htmlFiles) {
   const html = fs.readFileSync(f, 'utf8');
   const rel = path.relative(DIST, f).split(path.sep).join('/');
-  const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
-  const desc = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+  const decode = (s) =>
+    s
+      .replace(/&#39;|&#x27;/g, "'")
+      .replace(/&rsquo;|&#8217;|&#x2019;/g, '’')
+      .replace(/&lsquo;/g, '‘')
+      .replace(/&rdquo;|&ldquo;/g, '”')
+      .replace(/&mdash;/g, '—')
+      .replace(/&ndash;/g, '–')
+      .replace(/&amp;/g, '&')
+      .replace(/&middot;/g, '·')
+      .replace(/&hellip;/g, '…');
+  const title = decode((html.match(/<title>([^<]*)<\/title>/) || [])[1] || '');
+  const desc = decode((html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '');
   const h1s = (html.match(/<h1[ >]/g) || []).length;
   const lang = (html.match(/<html lang="([^"]*)"/) || [])[1] || '';
   const canonical = /rel="canonical"/.test(html);
