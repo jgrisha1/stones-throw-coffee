@@ -899,6 +899,14 @@ td {
   max-width: var(--measure);
 }
 
+.values-prose {
+  text-align: center;
+}
+
+.values-prose :is(p, h2, h3, ul, ol) {
+  margin-inline: auto;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
