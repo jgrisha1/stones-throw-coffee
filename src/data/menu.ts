@@ -35,7 +35,7 @@ export const MENU: MenuSection[] = [
           },
           { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.5 }, { label: 'Medium', amount: 4.75 }] },
           { name: 'Macchiato', prices: [{ amount: 4.25 }] },
-          { name: 'Americano', prices: [{ label: 'Medium', amount: 3.95 }, { label: 'Large', amount: 4.2 }] },
+          { name: 'Americano', prices: [{ label: 'Medium', amount: 4.0 }, { label: 'Large', amount: 4.25 }] },
           { name: 'Double Shot', prices: [{ amount: 2.5 }] },
           { name: 'Add One Shot', prices: [{ amount: 0.5 }] },
           { name: 'Add Two Shots', prices: [{ amount: 1.0 }] },
@@ -43,18 +43,24 @@ export const MENU: MenuSection[] = [
   },
   {
         name: 'Tea, Chai & Cocoa',
+        note: 'Specialty teas and matcha are also available — ask what’s on the board.',
         items: [
           {
                     name: 'Premium Loose Leaf Tea',
                     description: 'Hand-steeped specialty loose leaf — Black, Oolong, White, Green, Earl Grey, or Citrus Chamomile.',
-                    prices: [{ amount: 5.0 }],
+                    prices: [{ label: 'Medium', amount: 5.15 }, { label: 'Large', amount: 5.35 }],
+          },
+          {
+                    name: 'Chai',
+                    description: 'Spiced chai latte.',
+                    prices: [{ label: 'Medium', amount: 4.25 }, { label: 'Large', amount: 4.5 }],
           },
           {
                     name: 'Dirty Chai',
                     description: 'Spiced chai latte with a shot of espresso.',
                     prices: [{ label: 'Medium', amount: 4.75 }, { label: 'Large', amount: 5.0 }],
           },
-          { name: 'Hot Cocoa', prices: [{ label: 'Medium', amount: 4.0 }, { label: 'Large', amount: 4.0 }] },
+          { name: 'Hot Cocoa', prices: [{ label: 'Medium', amount: 4.0 }, { label: 'Large', amount: 4.25 }] },
               ],
   },
   {
@@ -65,24 +71,25 @@ export const MENU: MenuSection[] = [
           {
                     name: 'Red Eye',
                     description: 'Drip coffee with a shot of espresso.',
-                    prices: [{ label: 'Medium', amount: 4.2 }, { label: 'Large', amount: 4.5 }],
+                    prices: [{ label: 'Medium', amount: 4.25 }, { label: 'Large', amount: 4.5 }],
           },
               ],
   },
   {
-        name: 'Specialty & Wellness-Inspired',
+        name: 'Specialty Drinks',
         items: [
           {
                     name: 'Chaga Coffee',
-                    description:
-                                'A spoonful of chaga mushroom powder blended into an iced latte. Earthy, smooth, and easy to love.',
+                    // Owner review needed: health-related claims such as immunity support and
+                    // anti-aging should be verified against supplier-approved language before launch.
+                    description: 'Smooth, jitter-free energy with an immunity-supporting boost.',
                     prices: [{ label: 'Medium', amount: 6.75 }, { label: 'Large', amount: 7.0 }],
           },
               ],
   },
   {
         name: 'Customizations',
-        note: 'One complimentary flavor is included with any drink.',
+        note: 'One complimentary flavor is included with any drink. Whole milk and half and half are standard; soy, oat, and almond milk are available.',
         items: [
           { name: 'Additional Flavor', prices: [{ amount: 0.25 }] },
           { name: 'Alt Milk — soy, oat, or almond', prices: [{ amount: 0.5 }] },

@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 <Base
   title="Menu | Stone's Throw Coffee in South Knoxville"
-  description="The Stone's Throw Coffee menu — handcrafted lattes, dirty chai, drip coffee, and chaga coffee, priced like a neighborhood shop in South Knoxville."
+  description="The Stone's Throw Coffee menu — handcrafted lattes, dirty chai, specialty teas, matcha, drip coffee, and chaga coffee, priced like a neighborhood shop in South Knoxville."
   jsonLd={[menuSchema]}
   menuRef={{ '@id': menuId }}
 >
@@ -52,9 +52,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <p class="eyebrow">Drinks &amp; prices</p>
       <h1>The Menu</h1>
       <p class="lede">
-        Handcrafted espresso drinks, chai, cocoa, and coffee — made in South Knoxville, priced
-        like a neighborhood shop. One complimentary flavor is included with any drink, and soy,
-        oat, and almond milk are always available.
+        Handcrafted espresso drinks, chai, specialty teas, matcha, cocoa, and coffee — made in
+        South Knoxville, priced like a neighborhood shop. One complimentary flavor is included
+        with any drink, and whole milk, half and half, soy, oat, and almond milk are always
+        available.
       </p>
 
       {
@@ -78,7 +79,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         ))
       }
 
-      <div class="menu-img-accent" aria-hidden="true" style={`background: url('${base}/images/menu-flavors-botanical-syrups.webp') center / cover no-repeat; aspect-ratio: 16/7; width: 100%; border-radius: var(--radius); margin-block: var(--space-4) var(--space-3);`}></div>
+      <div class="media-banner" aria-hidden="true" style={`background-image: url('${base}/images/menu-flavors-botanical-syrups.webp'); margin-top: var(--space-4);`}></div>
 
       <div class="botanical-divider" aria-hidden="true">
         <img src={`${base}/images/decor-herbs.png`} alt="" width="56" height="56" loading="lazy" />
@@ -97,14 +98,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <img src={`${base}/images/decor-mushroom.png`} alt="" width="56" height="56" loading="lazy" />
       </div>
       <h2 id="chaga-coffee">About our chaga coffee</h2>
+      {/* Owner review needed: health-related claims such as immunity support and
+          anti-aging should be verified against supplier-approved language before launch. */}
       <p>
-        If you&rsquo;ve been searching for chaga coffee in Knoxville, this is ours: one
-        spoonful of chaga powder blended into iced lattes. Chaga is earthy and mellow
-        rather than &ldquo;mushroomy,&rdquo; so the drink lands smooth and lightly sweet — a
-        gentler ritual for folks who want something a little different from a straight espresso
-        drink. Ask at the counter and we&rsquo;ll happily talk you through it — or sip one
-        during an <a href={`${base}/events/`}>author reading or acoustic night</a> and
-        <a href={`${base}/visit/`}> plan your visit</a>.
+        If you&rsquo;ve been searching for chaga coffee in Knoxville, this is ours. Our Chaga
+        Coffee adds chaga to an iced latte for a smooth, jitter-free coffee experience. The
+        product is marketed for immunity support, anti-aging benefits, and steady energy without
+        the usual coffee jitters. Ask at the counter and we&rsquo;ll happily talk you through it
+        — or sip one during an <a href={`${base}/events/`}>author reading or acoustic night</a>
+        and <a href={`${base}/visit/`}> plan your visit</a>.
       </p>
       <h2 id="sourcing">Sourcing &amp; Community Partners</h2>
       <p>

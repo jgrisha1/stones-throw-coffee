@@ -113,21 +113,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           <h3>Espresso, made kindly</h3>
           <p>
             Lattes, specialty lattes, cappuccinos, macchiatos, and Americanos — with one
-            complimentary flavor included and soy, oat, or almond milk available.
+            complimentary flavor included and whole milk, half and half, soy, oat, or almond
+            milk available.
           </p>
         </div>
         <div class="card">
           <h3>Chai, cocoa &amp; classics</h3>
           <p>
-            Dirty chai, hot cocoa, iced coffee, drip coffee, and red eyes for the days that need
-            an extra shot.
+            Chai, dirty chai, specialty teas, matcha, hot cocoa, iced coffee, drip coffee, and
+            red eyes for the days that need an extra shot.
           </p>
         </div>
         <div class="card card--pine">
           <h3>Chaga coffee</h3>
+          {/* Owner review needed: health-related claims such as immunity support and
+              anti-aging should be verified against supplier-approved language before launch. */}
           <p>
-            Our wellness-inspired signature: a spoonful of chaga powder blended into iced lattes.
-            Earthy, smooth, and very South Knoxville.
+            Made with chaga for smooth, jitter-free energy and an immunity-supporting boost.
             <a href={`${base}/menu/#chaga-coffee`}>More about our chaga coffee &rarr;</a>
           </p>
         </div>
@@ -156,21 +158,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           </div>
         ) : (
           <div class="grid">
+            <div class="card card--pine">
+              <h3>Drag shows</h3>
+              <p>A central part of our community: drag performances and showcases that celebrate queer artistry and bring people together.</p>
+            </div>
             <div class="card">
               <h3>Author readings &amp; poetry</h3>
-              <p>Local authors, Appalachian writers, queer writers, horror nights, memoir, and book clubs.</p>
+              <p>Local authors, Appalachian writers, queer writers, poetry, and book clubs.</p>
             </div>
             <div class="card">
               <h3>Acoustic music &amp; open mics</h3>
               <p>Singer-songwriters, small sets, and low-volume evening music made for conversation, not over it.</p>
             </div>
             <div class="card">
-              <h3>Art, zines &amp; makers</h3>
-              <p>Rotating local art on the walls, zine swaps, art markets, and creative workshops.</p>
+              <h3>Art, makers &amp; markets</h3>
+              <p>Rotating local art on the walls, local vendor markets, and creative workshops.</p>
             </div>
             <div class="card">
               <h3>Community nights</h3>
-              <p>Queer community gatherings and low- and no-alcohol evening events in an LGBTQ+ friendly space. Everyone welcome, nobody pressured.</p>
+              <p>Queer community gatherings and sober-friendly evening events in an LGBTQIA2S+ affirming space. Everyone welcome, nobody pressured.</p>
             </div>
           </div>
         )

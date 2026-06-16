@@ -19,8 +19,9 @@ Here's what we're building, plainly:
 - **Local art on the walls.** Rotating features for Knoxville artists and
   makers, with bios and links so the work goes home with people.
   [Apply to be featured](/art-and-authors/) — we're booking now.
-- **Readings and acoustic music.** Local authors, Appalachian writers, queer
-  writers, poetry, and low-volume sets on the [events calendar](/events/).
+- **Drag shows, readings, and music.** Drag performances, local authors,
+  Appalachian writers, queer writers, poetry, and low-volume acoustic sets on
+  the [events calendar](/events/).
 - **Sober-friendly community nights.** Evening gatherings where nobody needs
   a drink in hand to belong.
 

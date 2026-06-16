@@ -22,7 +22,7 @@ Almost everything that still needs a human decision lives in **one file**:
 - [ ] **Domain** — also update `site` in `astro.config.mjs` and the
       `Sitemap:` line in `public/robots.txt`
 - [ ] **Phone + email**
-- [ ] **Hours** (uncomment the example and edit)
+- [ ] **Hours** — set to 7 AM–6 PM daily in `src/config.ts`; confirm before launch
 - [ ] **Opening date**
 - [ ] **GPS coordinates** (right-click your pin in Google Maps)
 - [ ] **Social URLs** (Instagram, Facebook, Threads)
@@ -122,12 +122,16 @@ photos — is in [`docs/LAUNCH-CHECKLIST.md`](docs/LAUNCH-CHECKLIST.md).
 
 ## Brand rules
 
-- **South Press gets exactly one acknowledgement**, on the Our Story page.
-  Don't reference it anywhere else on the site — Stone's Throw stands on its
-  own name. (Code comments and internal docs don't count.)
-- Voice: warm, plainspoken, grounded, a little witchy-Appalachian. Never
-  corporate. Core line: *"New name. Familiar space. Same need for
-  community."*
+- **South Press gets at most one respectful nod**, on the Our Story page, and
+  only if it's already phrased carefully. Don't reference it anywhere else on
+  the site, don't frame Stone's Throw as replacing South Press, and don't say
+  South Press is "back" — Stone's Throw stands on its own name. (Code comments
+  and internal docs don't count.)
+- **Coming soon.** Stone's Throw is opening soon in South Knoxville — never
+  write copy that implies the café is already open.
+- Voice: warm, plainspoken, grounded, deeply Appalachian. Never corporate.
+- Queer-owned, sober-friendly, and LGBTQIA2S+ affirming. Drag shows are a
+  central part of the community/events identity, not an afterthought.
 - Queer-affirming should be clear but tasteful — no rainbow overload.
 - **Look is green-witch, not celestial.** Palette is sampled from the logo:
   forest green `#186000` / deep `#143a00`, cream `#faf4e7`, mushroom brown

@@ -12,16 +12,15 @@ exactly what Stone's Throw Coffee will be when you walk in.
 **The drinks.** Espresso drinks (lattes from $4.75, cappuccinos, macchiatos,
 Americanos), dirty chai, hot cocoa, iced and drip coffee, and red eyes for
 the rough mornings. One flavor is always included free, and soy, oat, and
-almond milk are available. Our signature is the chaga coffee — a spoonful
-of chaga powder blended into an iced latte, earthier and smoother than it
-sounds. The full [menu with prices](/menu/) is on the site, in real text, not
-a blurry photo.
+almond milk are available. Our specialty is the chaga coffee — a spoonful
+of chaga powder stirred into an iced latte, smoother than it sounds. The full
+[menu with prices](/menu/) is on the site, in real text, not a blurry photo.
 
 **The walls.** Local art, rotating regularly, with artist bios and links.
 When you buy something off the wall, a Knoxville artist gets paid.
 
-**The calendar.** Author readings, poetry, acoustic sets, open mics, book
-clubs, zine swaps, and queer community nights — most of them free, all of
+**The calendar.** Drag shows, author readings, poetry, acoustic sets, open
+mics, book clubs, and queer community nights — most of them free, all of
 them listed on the [events page](/events/) with dates, times, parking notes,
 and who's performing.
 

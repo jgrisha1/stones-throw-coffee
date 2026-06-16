@@ -951,3 +951,36 @@ td {
   height: 52px;
   opacity: 0.55;
 }
+
+/* ── Banner / page-hero images ──────────────────────────────────────
+   One consistent treatment for the large photo at the top (or middle) of
+   a content page. Lives inside `.wrap`, so it aligns to the same column as
+   the copy instead of floating full-bleed and disconnected. Works as an
+   <img> or as a background <div>. */
+.media-banner,
+.page-hero-img {
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(20, 58, 0, 0.12);
+  margin-bottom: var(--space-4);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 640px) {
+  /* a taller crop reads better on a narrow screen and avoids a thin,
+     awkward strip with dead space around it */
+  .media-banner,
+  .page-hero-img {
+    aspect-ratio: 16 / 9;
+    margin-bottom: var(--space-3);
+    border-radius: 8px;
+  }
+  /* absolute decorative botanicals can crowd narrow layouts — drop them */
+  .botanical {
+    display: none;
+  }
+}

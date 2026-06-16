@@ -22,15 +22,15 @@ joy in the same room, nobody checking what's in your cup.
 
 Stone's Throw Coffee is building that into the foundation, not bolting it on:
 
-- **Evening events that are sober-friendly by default.** Low- and no-alcohol
+- **Evening events that are sober-friendly by default.** Sober-friendly
   gatherings on the regular [events calendar](/events/), not as a special
   occasion.
 - **Things to actually do.** [Author readings, acoustic music, open mics,
   art features](/art-and-authors/) — a reason to be in the room beyond a
   beverage.
-- **Drinks that feel like a treat.** Specialty lattes, dirty chai, hot
-  cocoa, and our [chaga coffee](/menu/) — nobody's standing around
-  with an empty hand.
+- **Drinks that feel like a treat.** Specialty lattes, specialty teas, matcha,
+  dirty chai, hot cocoa, and our [chaga coffee](/menu/) — nobody's standing
+  around with an empty hand.
 
 If you've been waiting for a third place that isn't a bar and isn't your
 couch, we're building it on Chapman Highway. [Come find us](/visit/).

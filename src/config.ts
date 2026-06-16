@@ -24,7 +24,7 @@ export const BUSINESS = {
   name: "Stone's Throw Coffee",
   tagline: 'Coffee, community, and local art in South Knoxville.',
   description:
-    "Stone's Throw Coffee is a queer-owned coffee shop and community arts space opening soon on Chapman Highway in South Knoxville, serving handcrafted drinks, local art, author readings, acoustic music, and welcoming community events.",
+    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon on Chapman Highway in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and chaga coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
 
   // --- Location (the former South Press space) ---
   // Street address cross-checked against the Knoxville LGBTQ Business
@@ -49,10 +49,11 @@ export const BUSINESS = {
       email: 'stonesthrowcoffeeco@gmail.com',
 
   // --- Hours ---
+  // 7 AM – 6 PM, seven days a week.
   hours: [
     {
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '06:00',
+      opens: '07:00',
       closes: '18:00',
     },
   ] as HoursRule[],

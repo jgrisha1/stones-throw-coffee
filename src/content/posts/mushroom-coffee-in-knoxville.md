@@ -1,6 +1,6 @@
 ---
 title: "Mushroom Coffee in Knoxville: What We Serve and Why"
-description: "Stone's Throw Coffee serves chaga mushroom coffee in South Knoxville — a spoonful of chaga powder blended into an iced latte. Here's what it tastes like and why we make it."
+description: "Stone's Throw Coffee serves chaga mushroom coffee in South Knoxville — a spoonful of chaga powder stirred into an iced latte. Here's what it tastes like and why we make it."
 # Content-calendar week 3 — review, then set draft: false to publish.
 pubDate: 2026-06-24
 draft: true
@@ -8,10 +8,10 @@ draft: true
 
 Yes, we serve mushroom coffee. No, it doesn't taste like mushrooms.
 
-Ours is simple: one spoonful of chaga powder blended into an iced latte —
+Ours is simple: one spoonful of chaga powder stirred into an iced latte —
 medium $6.75, large $7. Chaga is a birch-forest fungus that people in
 Appalachia and far colder places have been brewing into tea for generations.
-It doesn't taste "mushroomy" at all — it's earthy and mellow, closer to a
+It doesn't taste "mushroomy" at all — it's smooth and mellow, closer to a
 soft cocoa note than anything savory, and it settles beautifully into
 espresso and milk.
 
