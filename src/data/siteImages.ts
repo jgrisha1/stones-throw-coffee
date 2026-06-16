@@ -34,21 +34,21 @@ export const SITE_IMAGES: SiteImage[] = [
     page: 'Homepage',
     section: 'Hero background',
     purpose: 'Warm first impression; reinforces green-witch / Appalachian forest café identity.',
-    alt: 'Cozy plant-filled coffee shop interior with local art, books, warm lighting, and earthy green decor.',
+    alt: 'Cozy plant-filled coffee shop interior with local art, books, warm lighting, and warm green decor.',
     width: 1600,
     height: 900,
     format: 'webp',
     lazy: false,
     status: 'approved',
     canvaPrompt:
-      'Cozy queer-owned South Knoxville coffee shop interior with a maximalist forest aesthetic: lush plants, ferns, warm beige walls, deep green accents, cozy seating, coffee cups, local art on the walls, books, soft natural light, subtle witchy botanical details, mushrooms and herbs as decor, welcoming community atmosphere, Appalachian creative energy, not corporate, not overly polished, no readable text, no fake logos, no distorted people, warm and inviting.',
+      'Cozy queer-owned South Knoxville coffee shop interior with a maximalist forest aesthetic: lush plants, ferns, warm beige walls, deep green accents, cozy seating, coffee cups, local art on the walls, books, soft natural light, subtle botanical details, mushrooms and herbs as decor, welcoming community atmosphere, Appalachian creative energy, not corporate, not overly polished, no readable text, no fake logos, no distorted people, warm and inviting.',
     sourceNote: 'Generate in Canva AI (Magic Media) or source from Unsplash/Pexels (creative commons).',
   },
   {
     filename: 'menu-specialty-latte.webp',
     page: 'Menu',
     section: 'Page header / featured drink',
-    purpose: 'Visual anchor for the menu page; sets earthy coffeehouse mood.',
+    purpose: 'Visual anchor for the menu page; sets a warm coffeehouse mood.',
   alt: 'Discover Lattes — Artisan Lattes poster with a cup of coffee, cinnamon, and botanical accents on a wooden table.',
     width: 1200,
     height: 800,
@@ -71,7 +71,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: true,
     status: 'approved',
     canvaPrompt:
-      'A warm botanical still life with coffee syrups, herbs, honey, lavender, rosemary, orange peel, cinnamon, vanilla, hazelnuts, and coffee beans arranged in a cozy apothecary coffeehouse style. Earthy green and beige palette, vintage botanical mood, no readable labels, no brand names.',
+      'A warm botanical still life with coffee syrups, herbs, honey, lavender, rosemary, orange peel, cinnamon, vanilla, hazelnuts, and coffee beans arranged in a cozy apothecary coffeehouse style. Woodsy green and beige palette, vintage botanical mood, no readable labels, no brand names.',
     sourceNote: 'Canva AI or Unsplash (search: "botanical coffee syrup flat lay").',
   },
   {
@@ -86,7 +86,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: false,
     status: 'approved',
     canvaPrompt:
-      'A cozy small coffee shop stage corner with a microphone, acoustic guitar, books, plants, warm lighting, local art wall, and a welcoming community gathering vibe. Subtle queer-affirming energy without rainbow overload, earthy forest café aesthetic, no readable text, no distorted people.',
+      'A cozy small coffee shop stage corner with a microphone, acoustic guitar, books, plants, warm lighting, local art wall, and a welcoming community gathering vibe. Subtle queer-affirming energy without rainbow overload, forest café aesthetic, no readable text, no distorted people.',
     sourceNote: 'Canva AI or Unsplash (search: "coffee shop open mic stage plants").',
   },
   {
@@ -101,7 +101,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: false,
     status: 'approved',
     canvaPrompt:
-      'A warm coffee shop art wall featuring local handmade art, small maker shelves, ceramics, zines, prints, plants, and cozy forest-inspired decor. Earthy colors, maximalist but welcoming, no readable text, no fake brand names.',
+      'A warm coffee shop art wall featuring local handmade art, small maker shelves, ceramics, zines, prints, plants, and cozy forest-inspired decor. Woodsy colors, maximalist but welcoming, no readable text, no fake brand names.',
     sourceNote: 'Canva AI or Unsplash (search: "indie coffee shop art wall maker").',
   },
   {
@@ -116,7 +116,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: false,
     status: 'approved',
     canvaPrompt:
-      'A symbolic community support image for a queer-owned coffee shop: hands placing coffee cups, small plants, tools, art supplies, and donation items on a wooden table. Warm, hopeful, earthy, community-built feeling. Avoid distorted hands. No readable text. No logos.',
+      'A symbolic community support image for a queer-owned coffee shop: hands placing coffee cups, small plants, tools, art supplies, and donation items on a wooden table. Warm, hopeful, community-built feeling. Avoid distorted hands. No readable text. No logos.',
     sourceNote: 'Canva AI. Note: avoid AI hands — use objects-on-table composition instead.',
   },
   {
@@ -131,7 +131,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: false,
     status: 'approved',
     canvaPrompt:
-      'A cozy storytelling scene inside an earthy coffee shop: two coffee cups on a table, books, plants, candles, botanical art, warm light, forest-inspired decor, intimate and welcoming mood. No readable text, no fake people, no logos.',
+      'A cozy storytelling scene inside a warm coffee shop: two coffee cups on a table, books, plants, candles, botanical art, warm light, forest-inspired decor, intimate and welcoming mood. No readable text, no fake people, no logos.',
     sourceNote: 'Canva AI or Unsplash (search: "cozy coffee books plants candle table").',
   },
 
@@ -149,7 +149,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: false,
     status: 'approved',
     canvaPrompt:
-      'A warm, plant-filled, earthy coffee shop scene with coffee cups, books, mushrooms, ferns, and cozy lighting. Leave clear negative space for optional logo/text overlay. Queer-owned South Knoxville community coffeehouse feeling. No readable generated text, no fake logo.',
+      'A warm, plant-filled coffee shop scene with coffee cups, books, mushrooms, ferns, and cozy lighting. Leave clear negative space for optional logo/text overlay. Queer-owned South Knoxville community coffeehouse feeling. No readable generated text, no fake logo.',
     sourceNote: 'Canva — create at 1200×630px. Overlay logo + site name in Canva text layer.',
   },
 
@@ -198,7 +198,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: true,
     status: 'approved',
     canvaPrompt:
-      'Vintage botanical line art illustration of a fern frond, transparent background, simple deep green linework, hand-drawn, earthy, witchy, coffeehouse style, no text, isolated element.',
+      'Vintage botanical line art illustration of a fern frond, transparent background, simple deep green linework, hand-drawn, woodsy, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
   },
   {
@@ -213,7 +213,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: true,
     status: 'approved',
     canvaPrompt:
-      'Vintage botanical line art illustration of a mushroom (cap and stem), transparent background, deep green or brown linework, hand-drawn, earthy, witchy, coffeehouse style, no text, isolated element.',
+      'Vintage botanical line art illustration of a mushroom (cap and stem), transparent background, deep green or brown linework, hand-drawn, woodsy, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
   },
   {
@@ -228,7 +228,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: true,
     status: 'approved',
     canvaPrompt:
-      'Vintage botanical line art illustration of a crescent moon with small sparkle stars, transparent background, honey or cream linework, hand-drawn, witchy, coffeehouse style, no text, isolated element.',
+      'Vintage botanical line art illustration of a crescent moon with small sparkle stars, transparent background, honey or cream linework, hand-drawn, coffeehouse style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
   },
   {
@@ -243,7 +243,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: true,
     status: 'approved',
     canvaPrompt:
-      'Vintage botanical line art illustration of a tied herb bundle (lavender, rosemary, thyme), transparent background, deep green linework, hand-drawn, earthy apothecary style, no text, isolated element.',
+      'Vintage botanical line art illustration of a tied herb bundle (lavender, rosemary, thyme), transparent background, deep green linework, hand-drawn, woodsy apothecary style, no text, isolated element.',
     sourceNote: 'Canva AI or Vecteezy (free license). Export PNG with transparent background.',
   },
 ];
