@@ -297,6 +297,19 @@ a:hover {
   border-bottom-color: transparent;
 }
 
+/* "What We Stand For" — always-visible accent so it reads as a stated
+   commitment, not a buried link */
+.site-nav a.nav-values {
+  font-weight: 700;
+  border-bottom-color: var(--gold);
+}
+
+.site-nav a.nav-values:hover,
+.site-nav a.nav-values[aria-current='page'] {
+  color: #fff;
+  border-bottom-color: var(--gold);
+}
+
 /* ── Mobile navigation ─────────────────────────────────────────── */
 /* Hamburger toggle — hidden on wide screens */
 .nav-toggle {
@@ -388,6 +401,11 @@ a:hover {
   .site-nav a.nav-cta:hover {
     background: rgba(196, 146, 58, 0.25);
     color: var(--honey);
+  }
+
+  .site-nav a.nav-values {
+    color: var(--honey);
+    font-weight: 700;
   }
 }
 
