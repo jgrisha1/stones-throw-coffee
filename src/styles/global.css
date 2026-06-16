@@ -318,7 +318,10 @@ a:hover {
   border: none;
   color: var(--cream);
   cursor: pointer;
-  padding: 0.5rem;
+  /* 22px icon + padding → meets the 44px minimum touch-target size */
+  padding: 0.65rem;
+  min-width: 44px;
+  min-height: 44px;
   line-height: 0;
   border-radius: 4px;
 }

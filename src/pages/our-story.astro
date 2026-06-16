@@ -166,7 +166,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
             <div class="vision-card__icon" aria-hidden="true">{icon}</div>
             <h3>{heading}</h3>
             <p>{body}</p>
-            <a href={link.href} class="vision-card__link">{link.label} <span aria-hidden="true">→</span></a>
+            <a href={`${base}${link.href}`} class="vision-card__link">{link.label} <span aria-hidden="true">→</span></a>
           </div>
         ))}
       </div>
