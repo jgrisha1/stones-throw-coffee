@@ -30,7 +30,7 @@ export const MENU: MenuSection[] = [
           { name: 'Latte', prices: [{ label: 'Medium', amount: 4.75 }, { label: 'Large', amount: 5.0 }] },
           {
                     name: 'Specialty Latte',
-                    description: 'Rotating house flavors — ask what’s on the board.',
+                    description: 'Rotating house flavors — announced as we get closer to opening.',
                     prices: [{ label: 'Medium', amount: 5.25 }, { label: 'Large', amount: 5.5 }],
           },
           { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.5 }, { label: 'Medium', amount: 4.75 }] },
@@ -43,7 +43,7 @@ export const MENU: MenuSection[] = [
   },
   {
         name: 'Tea, Chai & Cocoa',
-        note: 'Specialty teas and matcha are also available — ask what’s on the board.',
+        note: 'Specialty teas and matcha are also available — selections will be announced as we get closer to opening.',
         items: [
           {
                     name: 'Premium Loose Leaf Tea',
@@ -80,8 +80,9 @@ export const MENU: MenuSection[] = [
         items: [
           {
                     name: 'Chaga Coffee',
-                    // Owner review needed: health-related claims such as immunity support and
-                    // anti-aging should be verified against supplier-approved language before launch.
+                    // Owner review needed before launch: health-related claims such as immunity
+                    // support and anti-aging should be verified against supplier-approved
+                    // language and applicable advertising guidance.
                     description: 'Smooth, jitter-free energy with an immunity-supporting boost.',
                     prices: [{ label: 'Medium', amount: 6.75 }, { label: 'Large', amount: 7.0 }],
           },

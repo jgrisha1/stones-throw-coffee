@@ -27,8 +27,8 @@ Why put it on the menu? A few reasons:
   from a straight espresso drink — or who just like trying the weird thing
   on the board — deserve an option that's actually good.
 
-If you're curious, ask at the counter and we'll talk you through it before
-you commit. And if mushrooms in coffee are simply never going to be your
+If you're curious, once we're open just ask at the counter and we'll talk
+you through it before you commit. And if mushrooms in coffee are simply never going to be your
 thing, the rest of the [menu](/menu/) — lattes, dirty chai, red eyes, hot
 cocoa — has you covered.
 

@@ -115,7 +115,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
               {has(BUSINESS.email) ? (
                 <>
                   Our application form opens soon. Until then, email us at{' '}
-                  <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> with a link to your
+                  <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> or message us on{' '}
+                  <a href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a> with a link to your
                   work.
                 </>
               ) : (

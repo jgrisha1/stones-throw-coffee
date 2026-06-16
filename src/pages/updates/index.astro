@@ -16,6 +16,7 @@ const fmtDate = (d: Date) =>
     year: 'numeric',
     timeZone: 'UTC',
   });
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
@@ -27,14 +28,14 @@ const fmtDate = (d: Date) =>
       <p class="eyebrow">From the shop</p>
       <h1>Updates &amp; News</h1>
       <p class="lede">
-        Opening progress, menu news, featured artists and authors, and everything happening at
-        the shop — written by us, not a marketing robot.
+        Opening progress, menu news, featured artists and authors, and everything happening as we
+        build the shop — written by us, not a marketing robot.
       </p>
       {
         posts.length > 0 ? (
           <div class="grid">
             {posts.map((post) => (
-              <a class="card event-card" href={`/updates/${post.id}/`}>
+              <a class="card event-card" href={`${base}/updates/${post.id}/`}>
                 <time datetime={post.data.pubDate.toISOString()}>{fmtDate(post.data.pubDate)}</time>
                 <h2>{post.data.title}</h2>
                 <p>{post.data.description}</p>
