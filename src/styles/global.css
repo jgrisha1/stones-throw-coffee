@@ -722,6 +722,14 @@ a:hover {
   max-width: var(--measure);
 }
 
+/* Whole resources page centered, matching the hero and the Values page. */
+.resources-centered {
+  text-align: center;
+}
+.resources-centered :is(.resource-group__blurb, .resource-footnote) {
+  margin-inline: auto;
+}
+
 .flavor-list {
   list-style: none;
   padding: 0;
