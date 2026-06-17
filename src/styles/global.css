@@ -648,6 +648,80 @@ a:hover {
   margin: 0.15rem 0 0.75rem;
 }
 
+/* --- Queer resources page --- */
+.callout {
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin: var(--space-4) 0;
+  max-width: var(--measure);
+}
+.callout--crisis {
+  background: #fffdf6;
+  border: 2px solid var(--brown);
+  border-left-width: 6px;
+}
+.callout--crisis h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: var(--green-deep);
+}
+.callout--crisis ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.callout--crisis li + li {
+  margin-top: 0.6rem;
+}
+
+.resource-group {
+  margin-top: var(--space-4);
+}
+.resource-group__blurb {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: -0.35rem;
+  max-width: var(--measure);
+}
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+@media (min-width: 720px) {
+  .resource-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.resource {
+  background: #fffdf6;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+.resource__name {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+.resource__desc {
+  margin: 0;
+  max-width: none;
+}
+.resource__meta {
+  margin: 0.6rem 0 0;
+  max-width: none;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.resource-footnote {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
 .flavor-list {
   list-style: none;
   padding: 0;

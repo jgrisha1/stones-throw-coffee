@@ -1,0 +1,257 @@
+---
+import Base from '../layouts/Base.astro';
+import { BUSINESS } from '../config';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+interface Resource {
+  name: string;
+  url: string;
+  desc: string;
+  meta?: string[];
+}
+interface Category {
+  id: string;
+  heading: string;
+  blurb?: string;
+  resources: Resource[];
+}
+
+// Local-first, then statewide, then national. Links and details were verified
+// in June 2026 — see the "last reviewed" note at the foot of the page. If a
+// link breaks or details change, update this array.
+const categories: Category[] = [
+  {
+    id: 'community',
+    heading: 'LGBTQIA2S+ community',
+    blurb: 'Local hubs for connection, mutual aid, events, and our shared history.',
+    resources: [
+      {
+        name: 'Knox Pride',
+        url: 'https://www.knoxpride.com/',
+        desc: 'Knoxville’s central LGBTQIA2S+ hub. The Knox Pride Center and Thriftique offer support groups, mental health services, life-skills classes, a food and clothing pantry, community events, and resource fairs.',
+        meta: [
+          'Knox Pride Center — 4028 Chapman Hwy',
+          'Thriftique — 4044A Chapman Hwy, Knoxville',
+        ],
+      },
+      {
+        name: 'SoKno Pride',
+        url: 'https://www.soknopride.org/',
+        desc: 'South Knoxville’s own LGBTQIA+ community organization, behind the SoKno Pride Festival on Sevier Avenue — performances, local vendors, and neighborhood celebration. Partners with Knox Pride on LGBTQIA+ micro-grants.',
+      },
+      {
+        name: 'Knoxville Rainbow Library + Archive',
+        url: 'https://www.knoxvillerainbowlibrary.org/',
+        desc: 'A lending library of thousands of queer books, with a searchable catalog, multiple branches (including a KnoxFill location at 6204 Chapman Highway), and a 24-hour drop box. Close to our heart as a book-and-coffee shop.',
+      },
+      {
+        name: 'Knoxville Queer History',
+        url: 'https://www.knoxvillequeerhistory.org/',
+        desc: 'Working to “collect, preserve, and share East Tennessee’s Queer History and Culture” — 53 oral histories and counting, plus artifacts and documents tracing queer life across Knoxville and Appalachia.',
+      },
+    ],
+  },
+  {
+    id: 'health',
+    heading: 'Health, HIV, STI & gender-affirming care',
+    resources: [
+      {
+        name: 'Choice Health Network / Positively Living',
+        url: 'https://choicehealthnetwork.org/',
+        desc: 'Comprehensive local care: HIV care and prevention, testing, harm reduction, pharmacy, telehealth, mental health, housing, peer support, food, and transportation. A Tennessee HIV/AIDS Center of Excellence.',
+        meta: ['1925 Ailor Ave, Knoxville', '(865) 525-1540'],
+      },
+      {
+        name: 'Planned Parenthood — Knoxville Health Center',
+        url: 'https://www.plannedparenthood.org/health-center/tennessee/knoxville/37914/knoxville-health-center-2610-91550',
+        desc: 'Reproductive and sexual health care — contraception and emergency contraception, STI and HIV testing, and gender-affirming care, in person and via Tennessee telehealth.',
+        meta: ['710 N Cherry St, Knoxville', '(866) 711-1717'],
+      },
+    ],
+  },
+  {
+    id: 'mental-health',
+    heading: 'Mental health & support groups',
+    resources: [
+      {
+        name: 'UT Psychological Clinic',
+        url: 'https://psychclinic.utk.edu/',
+        desc: 'Low-cost, sliding-scale therapy and psychological testing open to the Knoxville community, with LGBTQ-affirming therapists. No insurance required.',
+        meta: ['(865) 974-2161'],
+      },
+      {
+        name: 'Knox Pride — programs & support groups',
+        url: 'https://www.knoxpride.com/knox-pride-network',
+        desc: 'Specific groups and gatherings: a Trans/NB Support Group, Rainbow Teen Social Club, KQYA young-adult meetup, a Friendship Circle for neurodivergent and autistic folks, Queer Cinema Club, life-skills classes, and resource fairs.',
+      },
+    ],
+  },
+  {
+    id: 'legal',
+    heading: 'Legal & advocacy',
+    resources: [
+      {
+        name: 'ACLU of Tennessee — LGBT Youth Resource Center',
+        url: 'https://www.aclu-tn.org/lgbt-youth-resource-center/',
+        desc: 'For students, parents, educators, and administrators: know-your-rights materials, GSA support, and guidance for LGBTQ youth who have the right to be safe and visible in schools.',
+      },
+      {
+        name: 'Tennessee Equality Project',
+        url: 'https://www.tnep.org/',
+        desc: 'Statewide LGBTQ legislative advocacy — lobbying the Tennessee General Assembly and local governments, and helping people contact officials on LGBTQ policy.',
+      },
+    ],
+  },
+  {
+    id: 'social',
+    heading: 'Social, arts & community connection',
+    resources: [
+      {
+        name: 'Appalachian Equality Chorus',
+        url: 'https://appalachianequalitychorus.org/',
+        desc: 'An Appalachian LGBTQ+ chorus rooted in inclusion, empathy, and community partnership. Began in 2012 as the Knoxville Gay Men’s Chorus and grew into something broader.',
+        meta: ['(865) 888-6788'],
+      },
+      {
+        name: 'Knox Pride — social groups',
+        url: 'https://www.knoxpride.com/resources',
+        desc: 'A hub for local social groups, including Appalachian Equality Chorus, Gyrlgroove, the Knoxville Gay Men’s Discussion Group, and the Lesbian Social Group — with descriptions and contacts.',
+      },
+      {
+        name: 'Lesbian Social Group of Knoxville',
+        url: 'http://www.lesbiansocialgroup.com/',
+        desc: 'A long-running, casual sapphic community group — women’s dances, hikes, bike rides, cookouts, and support. Around since 1997.',
+      },
+      {
+        name: 'Sapphics of Knoxville',
+        url: 'https://www.meetup.com/find/us--tn--knoxville/lgbtq/',
+        desc: 'A community for sapphics — lesbian, bisexual, nonbinary, and GNC folks — to connect through meetups around town (look for gatherings at spots like Fable Hollow). Find current events on Meetup.',
+      },
+    ],
+  },
+  {
+    id: 'crisis',
+    heading: 'Crisis & national support',
+    blurb: 'Free, confidential, and available when you need someone right now.',
+    resources: [
+      {
+        name: 'The Trevor Project',
+        url: 'https://www.thetrevorproject.org/',
+        desc: 'Crisis support for LGBTQ+ young people — counselors available 24/7/365 by text, chat, or phone. Free and confidential.',
+        meta: ['Call 1-866-488-7386', 'Text START to 678-678'],
+      },
+      {
+        name: 'Trans Lifeline',
+        url: 'https://translifeline.org/',
+        desc: 'A trans-led peer-support hotline connecting trans people to support and resources — answered by trans people, with no intake questions and no non-consensual emergency calls.',
+        meta: ['(877) 565-8860'],
+      },
+      {
+        name: '988 Suicide & Crisis Lifeline',
+        url: 'https://988lifeline.org/',
+        desc: 'Immediate mental-health crisis support, 24/7. LGBTQI+ youth and young adults can reach a counselor by call, text, or chat.',
+        meta: ['Call or text 988'],
+      },
+    ],
+  },
+];
+---
+
+<Base
+  title="Queer Resources in Knoxville | Stone's Throw Coffee"
+  description="LGBTQIA2S+ resources in Knoxville & East Tennessee — community groups, health and mental health care, trans support, queer history, advocacy, and crisis lines."
+>
+  <!-- Page header -->
+  <section class="section section--pine">
+    <div class="wrap" style="text-align: center;">
+      <p class="eyebrow" style="color: var(--honey);">Community care</p>
+      <h1 style="color: var(--cream); max-width: 22ch; margin-inline: auto;">
+        Queer Resources in Knoxville
+      </h1>
+      <p style="color: #e9e0cb; max-width: 46ch; margin-inline: auto; font-size: 1.1rem;">
+        Community-centered coffee means community-centered care.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro + crisis callout -->
+  <section class="section">
+    <div class="wrap">
+      <div class="prose" style="max-width: var(--measure);">
+        <p>
+          Stone&rsquo;s Throw Coffee is not a crisis center, clinic, legal office, shelter, or
+          counseling provider. But we believe a good community space should help people find
+          support when they need it.
+        </p>
+        <p>
+          This page gathers LGBTQIA2S+ resources in Knoxville and East Tennessee &mdash; community
+          groups, health care, mental health support, trans and nonbinary resources, queer history,
+          legal advocacy, sober social connection, and crisis support.
+        </p>
+      </div>
+
+      <aside class="callout callout--crisis" aria-labelledby="crisis-heading">
+        <h2 id="crisis-heading">If you need help right now</h2>
+        <ul>
+          <li>
+            <strong>In immediate danger?</strong> Call <a href="tel:911">911</a>.
+          </li>
+          <li>
+            <strong>Mental health crisis?</strong> Call or text
+            <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline), 24/7.
+          </li>
+          <li>
+            <strong>LGBTQ+ and young?</strong> The
+            <a href="https://www.thetrevorproject.org/" target="_blank" rel="noopener noreferrer">Trevor
+            Project</a> offers free, confidential crisis support &mdash; call
+            <a href="tel:18664887386">1-866-488-7386</a> or text START to 678-678.
+          </li>
+          <li>
+            <strong>Trans peer support:</strong>
+            <a href="https://translifeline.org/" target="_blank" rel="noopener noreferrer">Trans
+            Lifeline</a> &mdash; <a href="tel:18775658860">(877) 565-8860</a>.
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Resource categories -->
+      {
+        categories.map((cat) => (
+          <div class="resource-group">
+            <h2 id={cat.id}>{cat.heading}</h2>
+            {cat.blurb && <p class="resource-group__blurb">{cat.blurb}</p>}
+            <ul class="resource-list">
+              {cat.resources.map((r) => (
+                <li class="resource">
+                  <h3 class="resource__name">
+                    <a href={r.url} target="_blank" rel="noopener noreferrer">
+                      {r.name}
+                    </a>
+                  </h3>
+                  <p class="resource__desc">{r.desc}</p>
+                  {r.meta && (
+                    <p class="resource__meta">
+                      {r.meta.map((m, i) => (
+                        <>
+                          {i > 0 && <span aria-hidden="true"> &middot; </span>}
+                          {m}
+                        </>
+                      ))}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+
+      <p class="resource-footnote">
+        Stone&rsquo;s Throw Coffee shares these as a community service; we don&rsquo;t run or
+        endorse every program, and details change. Links and details last reviewed June 2026 &mdash;
+        if something here is out of date,
+        <a href={`${base}/contact/`}>let us know</a> and we&rsquo;ll fix it.
+      </p>
+    </div>
+  </section>
+</Base>
