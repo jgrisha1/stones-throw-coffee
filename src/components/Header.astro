@@ -5,22 +5,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const links = [
   { href: `${base}/menu/`, label: 'Menu' },
-  { href: `${base}/events/`, label: 'Events' },
+  // "Events & Art" also covers the Local Art & Makers page, so it stays
+  // highlighted there too.
+  { href: `${base}/events/`, label: 'Events & Art', match: `${base}/art-and-authors/` },
   { href: `${base}/our-story/`, label: 'Our Story' },
   { href: `${base}/values/`, label: 'What We Stand For', values: true },
   { href: `${base}/resources/`, label: 'Queer Resources' },
   { href: `${base}/support-us/`, label: 'Support Us', cta: true },
-  { href: `${base}/art-and-authors/`, label: 'Local Art & Makers' },
   { href: `${base}/visit/`, label: 'Visit Us' },
   { href: `${base}/contact/`, label: 'Contact' },
 ];
 
 const path = Astro.url.pathname.replace(/\/?$/, '/');
-const isActive = (href: string) => {
+const matches = (href: string) => {
   // Strip base prefix for comparison so active state works correctly
   const stripped = href.replace(base, '') || '/';
   return path.endsWith(stripped) || (stripped !== '/' && path.includes(stripped));
 };
+const isActive = (link: { href: string; match?: string }) =>
+  matches(link.href) || (link.match ? matches(link.match) : false);
 ---
 
 <header class="site-header">
@@ -52,7 +55,7 @@ const isActive = (href: string) => {
             <li>
               <a
                 href={link.href}
-                aria-current={isActive(link.href) ? 'page' : undefined}
+                aria-current={isActive(link) ? 'page' : undefined}
                 class={link.cta ? 'nav-cta' : link.values ? 'nav-values' : undefined}
               >
                 {link.label}
