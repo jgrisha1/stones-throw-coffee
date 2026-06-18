@@ -58,8 +58,8 @@ export const BUSINESS = {
     },
   ] as HoursRule[],
 
-  // TODO: 'YYYY-MM-DD' opening date — also add it to your Google Business Profile.
-  openingDate: '',
+  // Tentative opening date. Update on your Google Business Profile too once firm.
+  openingDate: '2026-09-01',
 
   priceRange: '$',
 
