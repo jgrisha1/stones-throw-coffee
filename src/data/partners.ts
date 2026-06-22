@@ -14,7 +14,6 @@ export const showPersonalNames = false;
 
 /** Public-facing vendor/sourcing lines — business names only. */
 export const SOURCING = [
-  { what: 'Coffee', from: 'KBrew (Knoxville)' },
   { what: 'Tea', from: 'Spirit Tea and Barista Underground' },
   { what: 'Syrups & flavors', from: 'Monin, plus small-batch and locally sourced ingredients — honey, lavender, rosemary, and seasonal flavors when available' },
   { what: 'Shop supplies', from: 'Barista Underground' },

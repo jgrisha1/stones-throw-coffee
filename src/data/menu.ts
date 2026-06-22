@@ -43,12 +43,17 @@ export const MENU: MenuSection[] = [
   },
   {
         name: 'Tea, Chai & Cocoa',
-        note: 'Specialty teas and matcha are also available — selections will be announced as we get closer to opening.',
+        note: 'Specialty teas are also available — selections will be announced as we get closer to opening.',
         items: [
           {
                     name: 'Premium Loose Leaf Tea',
                     description: 'Hand-steeped specialty loose leaf — Black, Oolong, White, Green, Earl Grey, or Citrus Chamomile.',
                     prices: [{ label: 'Medium', amount: 5.15 }, { label: 'Large', amount: 5.35 }],
+          },
+          {
+                    name: 'Matcha Latte',
+                    description: 'Stone-ground green tea, whisked and served with steamed milk.',
+                    prices: [{ label: 'Medium', amount: 5.25 }, { label: 'Large', amount: 5.5 }],
           },
           {
                     name: 'Chai',
