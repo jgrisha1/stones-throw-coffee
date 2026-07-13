@@ -181,14 +181,13 @@ a:hover {
 }
 
 .section--pine a {
-  /* cream (not honey) stays >6:1 across the whole green gradient */
+  /* Cream links remain readable against the dark-green section. */
   color: var(--cream);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
-/* eyebrow on dark-green sections: plum (#6f4626) on pine-deep (#143a00) = ~1.6:1 — fails.
-   Honey (#c4923a) on pine-deep = 4.55:1 — passes AA. */
+/* Eyebrows use the lighter honey accent for AA contrast on pine-deep. */
 .section--pine .eyebrow,
 .hero .eyebrow {
   color: var(--honey);
@@ -536,6 +535,13 @@ a:hover {
   color: var(--pine-deep);
 }
 
+/* The dark-section link rule is more specific than a button class. Keep
+   solid-button text dark on its gold background. */
+.section--pine a.btn--solid,
+.section--pine a.btn--solid:hover {
+  color: var(--pine-deep);
+}
+
 .btn--outline {
   border-color: var(--cream);
   color: var(--cream);
@@ -606,6 +612,14 @@ a:hover {
 
 .card--pine h3 {
   color: var(--gold);
+}
+
+.card--pine a {
+  color: var(--honey);
+}
+
+.card--pine a:hover {
+  color: var(--cream);
 }
 
 /* --- menu --- */
