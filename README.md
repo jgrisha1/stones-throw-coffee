@@ -1,7 +1,7 @@
 # Stone's Throw Coffee — website
 
-Queer-owned coffee shop, arts space, and community gathering place on
-Chapman Highway in South Knoxville. This repo is the whole website: a fast, static [Astro](https://astro.build) site built for local
+Queer-owned coffee shop, arts space, and community gathering place coming to
+South Knoxville. This repo is the whole website: a fast, static [Astro](https://astro.build) site built for local
 SEO, designed to deploy on Cloudflare Pages with GitHub as the source of
 truth.
 
@@ -21,19 +21,19 @@ Almost everything that still needs a human decision lives in **one file**:
 
 - [ ] **Domain** — also update `site` in `astro.config.mjs` and the
       `Sitemap:` line in `public/robots.txt`
-- [ ] **Phone + email**
-- [ ] **Hours** — set to 7 AM–6 PM daily in `src/config.ts`; confirm before launch
-- [ ] **Opening date**
-- [ ] **GPS coordinates** (right-click your pin in Google Maps)
-- [ ] **Social URLs** (Instagram, Facebook, Threads)
-- [ ] **Formspree endpoint** — activates the Contact and
-      artist-application forms (free at formspree.io)
+- [x] **Contact email** — `stonesthrowcoffeeco@gmail.com`
+- [ ] **Phone** — add the confirmed public number before launch
+- [ ] **Confirmed hours** — add after the location and staffing plan are set
+- [x] **Tentative opening date** — September 1, 2026
+- [ ] **GPS coordinates** — add after the lease is signed
+- [ ] **Remaining social URLs** — Facebook is configured; add Instagram and Threads when ready
+- [ ] **Existing Formspree endpoint** — the account is registered under
+      `stonesthrowcoffeeco@gmail.com`; retrieve the endpoint when account access is restored to
+      activate the Contact and artist-application forms
 - [ ] **Newsletter action URL** — activates the email signup bands
       (free at buttondown.com)
 - [ ] **Cloudflare Web Analytics token** — privacy-friendly analytics
-- [ ] **Verify the address** — `3615 Chapman Hwy, Suite A, Knoxville, TN 37920`
-      was confirmed against the old South Press listings; double-check the
-      suite letter and ZIP against your lease
+- [ ] **Confirmed street address** — add it only after the lease is signed
 
 A few content TODOs live as HTML comments in the pages themselves — search
 the repo for `TODO`:
@@ -93,7 +93,7 @@ structured data update together.
    `npm run build`, output directory `dist`.
 4. Add your custom domain under the Pages project → Custom domains
    (Cloudflare will walk you through DNS).
-5. Every push to `main` deploys automatically.
+5. Every push to `master` deploys automatically.
 
 After the first deploy with the real domain:
 
@@ -122,11 +122,8 @@ photos — is in [`docs/LAUNCH-CHECKLIST.md`](docs/LAUNCH-CHECKLIST.md).
 
 ## Brand rules
 
-- **South Press gets at most one respectful nod**, on the Our Story page, and
-  only if it's already phrased carefully. Don't reference it anywhere else on
-  the site, don't frame Stone's Throw as replacing South Press, and don't say
-  South Press is "back" — Stone's Throw stands on its own name. (Code comments
-  and internal docs don't count.)
+- **Do not claim a prior venue or exact address** until the lease is signed.
+  Stone's Throw stands on its own name and is coming to South Knoxville.
 - **Coming soon.** Stone's Throw is opening soon in South Knoxville — never
   write copy that implies the café is already open.
 - Voice: warm, plainspoken, grounded, deeply Appalachian. Never corporate.
@@ -135,7 +132,7 @@ photos — is in [`docs/LAUNCH-CHECKLIST.md`](docs/LAUNCH-CHECKLIST.md).
 - Queer-affirming should be clear but tasteful — no rainbow overload.
 - **Look is green-witch, not celestial.** Palette is sampled from the logo:
   forest green `#186000` / deep `#143a00`, cream `#faf4e7`, mushroom brown
-  `#8a5a30`, honey accent `#c4923a` (all in `src/styles/global.css`, with
+  `#8a5a30`, honey accent `#d3a13d` (all in `src/styles/global.css`, with
   legacy variable names repointed). Motifs are woodland — mushrooms,
   botanical fern sprigs, a crescent moon, a few sparkles. The real logo is
   `public/images/logo.png` (white background keyed to transparent); drop a

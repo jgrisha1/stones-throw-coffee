@@ -79,10 +79,10 @@ export const BUSINESS = {
   googleBusinessProfile: '',
 
   // --- Integrations ---
-  // TODO: create a free form at https://formspree.io and paste the endpoint
-  // (looks like https://formspree.io/f/abcdwxyz). Powers the Contact/Booking
-  // and artist-application forms. Can be swapped for a Cloudflare Pages
-  // Function later.
+  // The existing Formspree account is registered under BUSINESS.email. When
+  // account access is restored, paste its endpoint here (for example,
+  // https://formspree.io/f/abcdwxyz) to activate the Contact/Booking and
+  // artist-application forms.
   formspreeEndpoint: '',
   // TODO: newsletter — create a free https://buttondown.com account and paste
   // your embed action URL (https://buttondown.com/api/emails/embed-subscribe/YOURNAME),
