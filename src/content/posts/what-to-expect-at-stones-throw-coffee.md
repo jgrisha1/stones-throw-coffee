@@ -28,8 +28,8 @@ and who's performing.
 means evening events that don't revolve around alcohol. A place you can work
 for an hour, meet somebody, or just sit with a book and not be hurried out.
 
-**The location.** Chapman Highway, South Knoxville, in the former South
-Press space — directions, parking, and accessibility notes are on the
-[visit page](/visit/).
+**The location.** We're looking for the right South Knoxville home. The
+confirmed address, directions, parking, and accessibility notes will be added
+to the [visit page](/visit/) before opening.
 
 Opening details are coming soon. Sign up below and you'll hear it first.

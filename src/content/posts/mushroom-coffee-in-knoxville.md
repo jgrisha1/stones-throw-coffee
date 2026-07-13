@@ -23,7 +23,7 @@ Why put it on the menu? A few reasons:
 - **People kept asking for one.** Mushroom coffee has been having a moment
   for years, but in Knoxville it's still surprisingly hard to find made
   fresh at a counter instead of from a packet.
-- **It's a gentler ritual.** Folks who want something a little different
+- **It's a different ritual.** Folks who want something a little different
   from a straight espresso drink — or who just like trying the weird thing
   on the board — deserve an option that's actually good.
 
@@ -32,4 +32,4 @@ you through it before you commit. And if mushrooms in coffee are simply never go
 thing, the rest of the [menu](/menu/) — lattes, dirty chai, red eyes, hot
 cocoa — has you covered.
 
-We're on Chapman Highway in South Knoxville — [come try it](/visit/).
+We're coming to South Knoxville — [follow the opening details](/visit/).

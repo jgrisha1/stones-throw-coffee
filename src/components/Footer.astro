@@ -1,8 +1,11 @@
 ---
-import { BUSINESS, fullAddress, has, hoursDisplay } from '../config';
+import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay } from '../config';
 const hours = hoursDisplay();
 const year = new Date().getFullYear();
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
+const hasLocation = hasStreetAddress();
+const mapsUrl = hasLocation
+  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`
+  : '';
 const socials = [
   { label: 'Instagram', url: BUSINESS.social.instagram },
   { label: 'Facebook', url: BUSINESS.social.facebook },
@@ -17,18 +20,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="grid">
       <div>
         <h2>Visit Us</h2>
-        <address>
-          {BUSINESS.name}<br />
-          {BUSINESS.address.street}<br />
-          {BUSINESS.address.city}, {BUSINESS.address.state}
-          {BUSINESS.address.zip}
-        </address>
-        <p>
-          <a href={mapsUrl} rel="noopener">Get directions</a>
-          {has(BUSINESS.googleBusinessProfile) && (
-            <Fragment> &middot; <a href={BUSINESS.googleBusinessProfile} target="_blank" rel="noopener noreferrer">Google Business</a></Fragment>
-          )}
-        </p>
+        {hasLocation ? (
+          <>
+            <address>
+              {BUSINESS.name}<br />
+              {BUSINESS.address.street}<br />
+              {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
+            </address>
+            <p>
+              <a href={mapsUrl} rel="noopener">Get directions</a>
+              {has(BUSINESS.googleBusinessProfile) && (
+                <Fragment> &middot; <a href={BUSINESS.googleBusinessProfile} target="_blank" rel="noopener noreferrer">Google Business</a></Fragment>
+              )}
+            </p>
+          </>
+        ) : (
+          <p>Coming to South Knoxville. Exact location to be announced.</p>
+        )}
         <h2>Hours</h2>
         {
           hours.length ? (
@@ -77,8 +85,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div>
         <h2>{BUSINESS.name}</h2>
         <p>
-          A queer-owned coffee shop, arts space, and community gathering place on Chapman Highway
-          in South Knoxville.
+          A queer-owned coffee shop, arts space, and community gathering place coming to South
+          Knoxville.
         </p>
       </div>
     </div>

@@ -1,11 +1,10 @@
 ---
 import '@fontsource-variable/fraunces';
-import frauncesWoff2 from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieNotice from '../components/CookieNotice.astro';
-import { BUSINESS, has } from '../config';
+import { BUSINESS, has, hasStreetAddress } from '../config';
 
 interface Props {
   title: string;
@@ -73,14 +72,6 @@ const localBusiness: Record<string, unknown> = {
     { '@type': 'LocationFeatureSpecification', name: 'Local art on display', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Drag shows & live performance', value: true },
   ],
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: BUSINESS.address.street,
-    addressLocality: BUSINESS.address.city,
-    addressRegion: BUSINESS.address.state,
-    postalCode: BUSINESS.address.zip,
-    addressCountry: 'US',
-  },
   // Same @id reference on every page so the business entity reconciles cleanly
   // when engines merge the graph across the site.
   hasMenu: menuRef ?? { '@id': new URL('/menu/#menu', Astro.site).href },
@@ -88,6 +79,16 @@ const localBusiness: Record<string, unknown> = {
 if (has(BUSINESS.logoPath)) localBusiness.logo = new URL(BUSINESS.logoPath, Astro.site).href;
 if (has(BUSINESS.phone)) localBusiness.telephone = BUSINESS.phone;
 if (has(BUSINESS.email)) localBusiness.email = BUSINESS.email;
+if (hasStreetAddress()) {
+  localBusiness.address = {
+    '@type': 'PostalAddress',
+    streetAddress: BUSINESS.address.street,
+    addressLocality: BUSINESS.address.city,
+    addressRegion: BUSINESS.address.state,
+    postalCode: BUSINESS.address.zip,
+    addressCountry: 'US',
+  };
+}
 if (has(BUSINESS.geo.latitude) && has(BUSINESS.geo.longitude)) {
   localBusiness.geo = {
     '@type': 'GeoCoordinates',
@@ -130,8 +131,6 @@ const schemaBlocks = [localBusiness, ...jsonLd];
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#143a00" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href={frauncesWoff2} />
-
     <slot name="head" />
 
     {

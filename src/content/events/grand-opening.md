@@ -5,10 +5,10 @@
 title: 'Grand Opening Day'
 start: 2026-09-12T08:00:00-04:00
 end: 2026-09-12T18:00:00-04:00
-description: "Stone's Throw Coffee opens its doors on Chapman Highway in South Knoxville — come for the first pours, local art on the walls, and live acoustic music in the afternoon."
+description: "Stone's Throw Coffee opens its doors in South Knoxville — come for the first pours, local art on the walls, and live acoustic music in the afternoon."
 audience: 'Everyone — all ages welcome'
 cost: 'Free'
-accessibility: 'Parking on site. Questions about access? Reach out before the day and we will make it work.'
+accessibility: 'Location, parking, and detailed accessibility information will be added before this event is published.'
 performers: []
 draft: true
 ---

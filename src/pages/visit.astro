@@ -1,11 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import { BUSINESS, fullAddress, has, hoursDisplay } from '../config';
+import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay } from '../config';
 
 const hours = hoursDisplay();
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
-const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress())}&output=embed`;
+const hasLocation = hasStreetAddress();
+const mapsUrl = hasLocation
+  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`
+  : '';
+const mapEmbed = hasLocation
+  ? `https://www.google.com/maps?q=${encodeURIComponent(fullAddress())}&output=embed`
+  : '';
 const socials = [
   { label: 'Instagram', url: BUSINESS.social.instagram },
   { label: 'Facebook', url: BUSINESS.social.facebook },
@@ -15,29 +20,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
-  title="Coffee Shop on Chapman Highway | Visit Stone's Throw Coffee"
-  description="Plan your visit to Stone's Throw Coffee in South Knoxville — address, hours, parking, accessibility notes, and how to find us on Chapman Highway."
+  title="Visit Stone's Throw Coffee | South Knoxville"
+  description="Follow Stone's Throw Coffee for confirmed South Knoxville location, hours, parking, accessibility, and opening details as they are announced."
 >
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow">Directions, hours &amp; parking</p>
+      <p class="eyebrow">Location, hours &amp; access</p>
       <h1>Visit Stone&rsquo;s Throw Coffee</h1>
       <p class="lede">
-        You&rsquo;ll find us on Chapman Highway in South Knoxville — a few minutes from downtown
-        via the Henley Street Bridge, near the South Knoxville greenways.
+        We&rsquo;re working toward the right South Knoxville home. The confirmed address, hours,
+        parking, transit, and accessibility details will be published here before opening.
       </p>
 
       <div class="grid">
         <div class="card">
           <h2>Address</h2>
-          <address>
-            {BUSINESS.name}<br />
-            {BUSINESS.address.street}<br />
-            {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
-          </address>
-          <p style="margin-top: var(--space-2);">
-            <a href={mapsUrl} rel="noopener">Open in Google Maps</a>
-          </p>
+          {hasLocation ? (
+            <>
+              <address>
+                {BUSINESS.name}<br />
+                {BUSINESS.address.street}<br />
+                {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
+              </address>
+              <p style="margin-top: var(--space-2);">
+                <a href={mapsUrl} rel="noopener">Open in Google Maps</a>
+              </p>
+            </>
+          ) : (
+            <p>South Knoxville. Exact location to be announced after the lease is signed.</p>
+          )}
         </div>
         <div class="card">
           <h2>Hours</h2>
@@ -87,79 +98,79 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         </div>
       </div>
 
-      <h2>Map</h2>
-      <!-- Privacy by default: the Google embed (which can set its own cookies)
-           is not loaded until the visitor explicitly asks for it. -->
-      <div class="map-consent" id="map-consent">
-        <p class="map-consent__note">
-          The map is embedded from Google and may set its own cookies, so it loads only when you
-          choose to.
-        </p>
-        <button type="button" class="btn btn--clay" id="map-load-btn">Load the Google map</button>
-        <p class="map-consent__alt">
-          Or <a href={mapsUrl} rel="noopener">open the location in Google Maps</a> in a new tab.
-        </p>
-      </div>
-      <template id="map-embed-template">
-        <iframe
-          class="map-embed"
-          src={mapEmbed}
-          title={`Map showing ${BUSINESS.name} at ${fullAddress()}`}
-          loading="lazy"
-          frameborder="0"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </template>
-      <script is:inline>
-        (function () {
-          var box = document.getElementById('map-consent');
-          var tpl = document.getElementById('map-embed-template');
-          var btn = document.getElementById('map-load-btn');
-          if (!box || !tpl || !btn) return;
-          btn.addEventListener('click', function () {
-            var frame = tpl.content.firstElementChild.cloneNode(true);
-            box.replaceWith(frame);
-            // send keyboard focus to the freshly loaded map
-            frame.setAttribute('tabindex', '-1');
-            if (frame.focus) frame.focus();
-          });
-        })();
-      </script>
+      {hasLocation && (
+        <>
+          <h2>Map</h2>
+          <!-- Privacy by default: the Google embed (which can set its own cookies)
+               is not loaded until the visitor explicitly asks for it. -->
+          <div class="map-consent" id="map-consent">
+            <p class="map-consent__note">
+              The map is embedded from Google and may set its own cookies, so it loads only when you
+              choose to.
+            </p>
+            <button type="button" class="btn btn--clay" id="map-load-btn">Load the Google map</button>
+            <p class="map-consent__alt">
+              Or <a href={mapsUrl} rel="noopener">open the location in Google Maps</a> in a new tab.
+            </p>
+          </div>
+          <template id="map-embed-template">
+            <iframe
+              class="map-embed"
+              src={mapEmbed}
+              title={`Map showing ${BUSINESS.name} at ${fullAddress()}`}
+              loading="lazy"
+              frameborder="0"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </template>
+          <script is:inline>
+            (function () {
+              var box = document.getElementById('map-consent');
+              var tpl = document.getElementById('map-embed-template');
+              var btn = document.getElementById('map-load-btn');
+              if (!box || !tpl || !btn) return;
+              btn.addEventListener('click', function () {
+                var frame = tpl.content.firstElementChild.cloneNode(true);
+                box.replaceWith(frame);
+                frame.setAttribute('tabindex', '-1');
+                if (frame.focus) frame.focus();
+              });
+            })();
+          </script>
+        </>
+      )}
 
       <h2>Parking</h2>
-      <!-- TODO: confirm and expand once you have keys — number of spaces,
-           where overflow goes, anything tricky about the lot entrance. -->
       <p>
-        There is parking at the shop, right off Chapman Highway. Detailed parking notes —
-        including overflow options for event nights — will be posted here before we open.
+        Parking and overflow options will be confirmed once the location is secured. We&rsquo;ll
+        publish clear arrival notes before opening and for any event with special parking needs.
       </p>
 
       <h2>Accessibility</h2>
-      <!-- TODO: replace with concrete details once confirmed in the space:
-           step-free entrance? accessible restroom? table heights? aisle widths? -->
       <p>
-        We want every visit to be easy. We&rsquo;re documenting the details of the space —
-        entrance, restrooms, seating, and parking — and will publish full accessibility notes
-        here before opening day. In the meantime, <a href={`${base}/contact/`}>reach out</a> with any
-        access questions and we&rsquo;ll give you a straight answer.
+        Accessibility is part of the location search, not an afterthought. Once a space is secured,
+        we&rsquo;ll publish concrete details about the entrance, restrooms, seating, aisles, and parking.
+        In the meantime, <a href={`${base}/contact/`}>reach out</a> with any access questions.
       </p>
 
       <h2>Getting here</h2>
-      <p>
-        We&rsquo;re on Chapman Highway (US-441), the main road through South Knoxville, a short
-        drive from the Henley Street Bridge and downtown — and just down Chapman Highway from
-        the Knox Pride Community Center at 4028 Chapman Hwy. KAT Route 41 serves Chapman Highway;
-        check current times at
-        <a href="https://www.katbus.com" target="_blank" rel="noopener noreferrer">katbus.com</a>
-        before visiting.
-      </p>
+      {hasLocation ? (
+        <p>
+          Detailed driving, walking, biking, and transit directions will stay current here. Check
+          current bus times at <a href="https://www.katbus.com" target="_blank" rel="noopener noreferrer">katbus.com</a>
+          before visiting.
+        </p>
+      ) : (
+        <p>
+          Driving, walking, biking, and transit directions will be added as soon as the address is
+          confirmed.
+        </p>
+      )}
 
       <h2>While you&rsquo;re in the neighborhood</h2>
       <p>
         South Knoxville is worth the wander: the Urban Wilderness trails, Ijams Nature Center,
-        the Mary Vestal and Baker Creek greenways, and a growing stretch of local shops along
-        Chapman Highway and Sevier Avenue are all close by — most of them, fittingly, a
-        stone&rsquo;s throw away.
+        the Mary Vestal and Baker Creek greenways, and local shops throughout the neighborhood.
       </p>
 
       <div class="btn-row">

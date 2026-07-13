@@ -24,17 +24,16 @@ export const BUSINESS = {
   name: "Stone's Throw Coffee",
   tagline: 'Coffee, community, and local art in South Knoxville.',
   description:
-    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon on Chapman Highway in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and chaga coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
+    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and chaga coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
 
-  // --- Location (the former South Press space) ---
-  // Street address cross-checked against the Knoxville LGBTQ Business
-  // Directory and Yelp listings for South Press.
-  // TODO: verify the suite letter and ZIP against your lease before launch.
+  // --- Location ---
+  // Keep street and ZIP empty until a lease is signed. Empty location fields
+  // are omitted from visible pages and structured data.
   address: {
-    street: '3615 Chapman Hwy, Suite A',
+    street: '',
     city: 'Knoxville',
     state: 'TN',
-    zip: '37920',
+    zip: '',
   },
 
   // TODO: paste exact coordinates from Google Maps
@@ -46,17 +45,11 @@ export const BUSINESS = {
   // phoneDisplay is what humans see.
   phone: '', // e.g. '+18655551234'
   phoneDisplay: '', // e.g. '(865) 555-1234'
-      email: 'stonesthrowcoffeeco@gmail.com',
+  email: 'stonesthrowcoffeeco@gmail.com',
 
   // --- Hours ---
-  // 7 AM – 6 PM, seven days a week.
-  hours: [
-    {
-      days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '07:00',
-      closes: '18:00',
-    },
-  ] as HoursRule[],
+  // Add confirmed operating hours after the location and staffing plan are set.
+  hours: [] as HoursRule[],
 
   // Tentative opening date. Update on your Google Business Profile too once firm.
   openingDate: '2026-09-01',
@@ -104,9 +97,17 @@ export const BUSINESS = {
 export const has = (v: string | undefined | null): v is string =>
   typeof v === 'string' && v.trim().length > 0;
 
-/** "3615 Chapman Hwy, Suite A, Knoxville, TN 37920" */
+/** True only after a complete street address has been confirmed. */
+export const hasStreetAddress = () =>
+  has(BUSINESS.address.street) &&
+  has(BUSINESS.address.city) &&
+  has(BUSINESS.address.state) &&
+  has(BUSINESS.address.zip);
+
+/** Complete address when confirmed; otherwise the known city/state only. */
 export const fullAddress = () => {
   const a = BUSINESS.address;
+  if (!hasStreetAddress()) return [a.city, a.state].filter(has).join(', ');
   return `${a.street}, ${a.city}, ${a.state} ${a.zip}`;
 };
 

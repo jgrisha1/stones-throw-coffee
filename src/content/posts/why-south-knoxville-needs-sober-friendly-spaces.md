@@ -33,4 +33,4 @@ Stone's Throw Coffee is building that into the foundation, not bolting it on:
   around with an empty hand.
 
 If you've been waiting for a third place that isn't a bar and isn't your
-couch, we're building it on Chapman Highway. [Come find us](/visit/).
+couch, we're building it for South Knoxville. [Follow the opening details](/visit/).

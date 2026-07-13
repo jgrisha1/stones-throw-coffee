@@ -3,10 +3,21 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import MoonDivider from '../components/MoonDivider.astro';
-import { BUSINESS, fullAddress, hoursDisplay } from '../config';
+import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay } from '../config';
 
 const hours = hoursDisplay();
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`;
+const hasLocation = hasStreetAddress();
+const mapsUrl = hasLocation
+  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`
+  : '';
+const tentativeOpening = BUSINESS.openingDate
+  ? new Date(`${BUSINESS.openingDate}T00:00:00Z`).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  : '';
 
 const now = new Date();
 const upcoming = (await getCollection('events', ({ data }) => !data.draft && data.start >= now))
@@ -64,7 +75,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <p class="eyebrow cs-eyebrow">Coming Soon to South Knoxville</p>
         <h1 class="cs-h1">Stone&rsquo;s Throw Coffee is coming soon.</h1>
         <p class="cs-body">
-          A queer-owned coffee shop and community arts space opening soon on Chapman Highway.
+          A queer-owned coffee shop and community arts space opening soon in South Knoxville.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art, author
           readings, acoustic music, mutual aid, and community care.
         </p>
@@ -94,8 +105,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <!-- ── Opening status strip ── -->
   <div class="opening-strip">
     <p class="opening-strip__msg">
-      We&rsquo;re currently building out the space. Follow along for soft-opening details, menu
-      updates, and event announcements.
+      {tentativeOpening ? `Tentatively opening ${tentativeOpening}. ` : ''}
+      We&rsquo;re working toward the right South Knoxville home. Follow along for location, menu,
+      and event announcements.
     </p>
     <p class="opening-strip__links">
       <a href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
@@ -127,11 +139,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         </div>
         <div class="card card--pine">
           <h3>Chaga coffee</h3>
-          {/* Owner review needed before launch: health-related claims such as immunity support
-              and anti-aging should be verified against supplier-approved language and
-              applicable advertising guidance. */}
           <p>
-            Made with chaga for smooth, jitter-free energy and an immunity-supporting boost.
+            Chaga powder stirred into an iced latte for a smooth drink with a mild, earthy note.
             <a href={`${base}/menu/#chaga-coffee`}>More about our chaga coffee &rarr;</a>
           </p>
         </div>
@@ -215,18 +224,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <section class="section section--tint" aria-labelledby="location-heading">
     <div class="wrap">
       <p class="eyebrow">Where to find us</p>
-      <h2 id="location-heading" style="margin-top:0;">South Knoxville, Chapman Highway</h2>
+      <h2 id="location-heading" style="margin-top:0;">Coming to South Knoxville</h2>
       <div class="grid">
         <div>
-          <address>
-            <strong>{BUSINESS.name}</strong><br />
-            {BUSINESS.address.street}<br />
-            {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
-          </address>
-          <p style="margin-top: var(--space-2);">
-            On Chapman Highway in South Knoxville — a stone&rsquo;s throw away from downtown, the greenways, and
-            the Urban Wilderness.
-          </p>
+          {hasLocation ? (
+            <>
+              <address>
+                <strong>{BUSINESS.name}</strong><br />
+                {BUSINESS.address.street}<br />
+                {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
+              </address>
+              <p style="margin-top: var(--space-2);">Confirmed directions will stay current here.</p>
+            </>
+          ) : (
+            <p>
+              We&rsquo;re looking for the right South Knoxville location. We&rsquo;ll publish the
+              confirmed address as soon as the lease is signed.
+            </p>
+          )}
         </div>
         <div>
           <h3 style="margin-top:0;">Hours</h3>
@@ -240,8 +255,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         </div>
       </div>
       <div class="btn-row">
-        <a class="btn btn--clay" href={`${base}/visit/`}>Location &amp; accessibility details</a>
-        <a class="btn btn--clay" href={mapsUrl} rel="noopener">Open in Google Maps</a>
+        <a class="btn btn--clay" href={`${base}/visit/`}>Opening &amp; accessibility details</a>
+        {hasLocation && <a class="btn btn--clay" href={mapsUrl} rel="noopener">Open in Google Maps</a>}
       </div>
     </div>
   </section>

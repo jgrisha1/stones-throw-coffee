@@ -81,17 +81,14 @@ export const MENU: MenuSection[] = [
               ],
   },
   {
-        name: 'Specialty Drinks',
-        items: [
-          {
-                    name: 'Chaga Coffee',
-                    // Owner review needed before launch: health-related claims such as immunity
-                    // support and anti-aging should be verified against supplier-approved
-                    // language and applicable advertising guidance.
-                    description: 'Smooth, jitter-free energy with an immunity-supporting boost.',
-                    prices: [{ label: 'Medium', amount: 6.75 }, { label: 'Large', amount: 7.0 }],
-          },
-              ],
+    name: 'Specialty Drinks',
+    items: [
+      {
+        name: 'Chaga Coffee',
+        description: 'An iced latte blended with chaga powder for a smooth, earthy coffee drink.',
+        prices: [{ label: 'Medium', amount: 6.75 }, { label: 'Large', amount: 7.0 }],
+      },
+    ],
   },
   {
         name: 'Customizations',
