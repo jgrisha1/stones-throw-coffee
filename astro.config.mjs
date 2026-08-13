@@ -4,7 +4,9 @@ import sitemap from '@astrojs/sitemap';
 
 // Single source of truth for the deploy base path. Used both for Astro's
 // `base` and for the markdown link rewriter below, so they can't drift.
-const BASE = '/stones-throw-coffee';
+// Root '/' for the Cloudflare Pages custom-domain deploy (was
+// '/stones-throw-coffee' under the old GitHub Pages project subpath).
+const BASE = '/';
 
 /**
  * Rewrite root-relative links/images in markdown content (e.g. `/menu/`) so
@@ -35,11 +37,12 @@ function rehypeBaseLinks() {
   return (tree) => walk(tree);
 }
 
-// TODO: replace with the real domain once registered, and keep it matching
-// the custom domain you attach in Cloudflare Pages. The sitemap, canonical
-// URLs, and Open Graph URLs are all generated from this value.
+// Primary custom domain served by Cloudflare Pages. The sitemap, canonical
+// URLs, and Open Graph URLs are all generated from this value. (The second
+// registered domain, soknostonesthrow.com, can 301-redirect here via a
+// Cloudflare redirect rule.)
 export default defineConfig({
-  site: 'https://stonesthrowcoffee.com',
+  site: 'https://stonesthrowcoffeeco.com',
   base: BASE,
   integrations: [sitemap()],
   markdown: {
