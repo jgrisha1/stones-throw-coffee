@@ -36,6 +36,11 @@ export const MENU: MenuSection[] = [
           { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.75 }, { label: 'Medium', amount: 5.0 }] },
           { name: 'Macchiato', prices: [{ amount: 4.25 }] },
           { name: 'Americano', prices: [{ label: 'Medium', amount: 4.5 }, { label: 'Large', amount: 4.75 }] },
+          {
+                    name: 'Dirty Chai',
+                    description: 'Spiced chai latte with a shot of espresso.',
+                    prices: [{ label: 'Medium', amount: 5.0 }, { label: 'Large', amount: 5.25 }],
+          },
           { name: 'Double Shot', prices: [{ amount: 2.5 }] },
           { name: 'Add One Shot', prices: [{ amount: 0.75 }] },
           { name: 'Add Two Shots', prices: [{ amount: 1.25 }] },
@@ -59,11 +64,6 @@ export const MENU: MenuSection[] = [
                     name: 'Chai',
                     description: 'Spiced chai latte.',
                     prices: [{ label: 'Medium', amount: 4.5 }, { label: 'Large', amount: 4.75 }],
-          },
-          {
-                    name: 'Dirty Chai',
-                    description: 'Spiced chai latte with a shot of espresso.',
-                    prices: [{ label: 'Medium', amount: 5.0 }, { label: 'Large', amount: 5.25 }],
           },
           {
                     name: 'Steamer',
