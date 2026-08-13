@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import { MENU, FLAVORS, formatPrice } from '../data/menu';
-import { SOURCING, PARTNERS, PEOPLE, showPersonalNames } from '../data/partners';
+import { PARTNERS, PEOPLE, showPersonalNames } from '../data/partners';
 
 // schema.org Menu structured data, generated from the same data the page
 // renders — prices on the page and prices in search results can't drift.
@@ -96,38 +96,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         espresso and milk keep the drink familiar. Follow our
         <a href={`${base}/updates/`}>updates</a> for opening details and event announcements.
       </p>
-      <h2 id="sourcing">Sourcing &amp; Community Partners</h2>
+      <h2 id="community-partners">Community Partners &amp; Associations</h2>
       <p>
         At Stone&rsquo;s Throw Coffee, we believe a local coffee shop should be built with local
-        hands whenever possible. Our coffee, tea, syrups, supplies, merch, menu design, website,
-        and community work are shaped by a growing network of Knoxville-area makers, vendors,
-        artists, and neighbors.
-      </p>
-      <ul class="event-meta">
-        {
-          SOURCING.map((s) => (
-            <li>
-              <strong>{s.what}:</strong> {s.from}
-            </li>
-          ))
-        }
-      </ul>
-      {
-        showPersonalNames && (
-          <ul class="event-meta">
-            {PEOPLE.map((p) => (
-              <li>
-                <strong>{p.role}:</strong> {p.name}
-              </li>
-            ))}
-          </ul>
-        )
-      }
-
-      <h3 id="community-partners">Community Partners &amp; Associations</h3>
-      <p>
-        We&rsquo;re proud to partner with organizations and local businesses who share our
-        commitment to community:
+        hands whenever possible. We&rsquo;re proud to partner with organizations and local
+        businesses who share our commitment to community:
       </p>
       <ul class="event-meta">
         {
@@ -144,6 +117,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           ))
         }
       </ul>
+      {
+        showPersonalNames && (
+          <ul class="event-meta">
+            {PEOPLE.map((p) => (
+              <li>
+                <strong>{p.role}:</strong> {p.name}
+              </li>
+            ))}
+          </ul>
+        )
+      }
 
       <p>
         <em>Final opening prices may shift as costs and supplies change. We&rsquo;ll keep this page
