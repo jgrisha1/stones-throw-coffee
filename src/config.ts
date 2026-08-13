@@ -94,6 +94,16 @@ export const BUSINESS = {
   // TODO: Cloudflare Web Analytics token (Cloudflare dashboard -> Web Analytics).
   // Privacy-friendly, free, no cookie banner needed.
   cloudflareAnalyticsToken: '',
+
+  // --- Search engine verification ---
+  // Paste the token from each tool's "HTML tag" verification method (just the
+  // content value, not the whole tag). Rendered as a <meta> only when filled.
+  // Google: Search Console -> add property -> HTML tag. Bing: Webmaster Tools.
+  // (A domain-level DNS TXT record via Cloudflare is an alternative to these.)
+  verification: {
+    google: '', // <meta name="google-site-verification" content="...">
+    bing: '', //   <meta name="msvalidate.01" content="...">
+  },
 };
 
 /** True once a value is filled in — used to hide placeholders gracefully. */
