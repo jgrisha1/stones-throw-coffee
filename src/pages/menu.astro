@@ -73,9 +73,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
       <div class="media-banner" aria-hidden="true" style={`background-image: url('${base}/images/menu-flavors-botanical-syrups.webp'); margin-top: var(--space-4);`}></div>
 
-      <div class="botanical-divider" aria-hidden="true">
-        <img src={`${base}/images/decor-herbs.png`} alt="" width="56" height="56" loading="lazy" />
-      </div>
       <h2 id="flavors">Flavors</h2>
       <p>
         Choose from classic coffeehouse flavors, cozy bakery flavors, nutty favorites, and
@@ -86,9 +83,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         {FLAVORS.map((flavor) => <li>{flavor}</li>)}
       </ul>
 
-      <div class="botanical-divider" aria-hidden="true">
-        <img src={`${base}/images/decor-mushroom.png`} alt="" width="56" height="56" loading="lazy" />
-      </div>
       <h2 id="chaga-coffee">About our chaga coffee</h2>
       <p>
         If you&rsquo;ve been searching for chaga coffee in Knoxville, this is ours. Our Chaga

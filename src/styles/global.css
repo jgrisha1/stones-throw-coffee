@@ -1087,18 +1087,6 @@ td {
   opacity: 0.35;
 }
 
-/* Inline botanical divider — centered ornament before a heading */
-.botanical-divider {
-  text-align: center;
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-1);
-}
-.botanical-divider img {
-  width: 52px;
-  height: 52px;
-  opacity: 0.55;
-}
-
 /* ── Banner / page-hero images ──────────────────────────────────────
    One consistent treatment for the large photo at the top (or middle) of
    a content page. Lives inside `.wrap`, so it aligns to the same column as
