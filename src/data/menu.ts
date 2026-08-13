@@ -27,18 +27,18 @@ export const MENU: MenuSection[] = [
   {
         name: 'Espresso Drinks',
         items: [
-          { name: 'Latte', prices: [{ label: 'Medium', amount: 4.75 }, { label: 'Large', amount: 5.0 }] },
+          { name: 'Latte', prices: [{ label: 'Medium', amount: 5.0 }, { label: 'Large', amount: 5.25 }] },
           {
                     name: 'Specialty Latte',
                     description: 'Rotating house flavors — announced as we get closer to opening.',
-                    prices: [{ label: 'Medium', amount: 5.25 }, { label: 'Large', amount: 5.5 }],
+                    prices: [{ label: 'Medium', amount: 5.5 }, { label: 'Large', amount: 6.0 }],
           },
-          { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.5 }, { label: 'Medium', amount: 4.75 }] },
+          { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.75 }, { label: 'Medium', amount: 5.0 }] },
           { name: 'Macchiato', prices: [{ amount: 4.25 }] },
-          { name: 'Americano', prices: [{ label: 'Medium', amount: 4.0 }, { label: 'Large', amount: 4.25 }] },
+          { name: 'Americano', prices: [{ label: 'Medium', amount: 4.5 }, { label: 'Large', amount: 4.75 }] },
           { name: 'Double Shot', prices: [{ amount: 2.5 }] },
-          { name: 'Add One Shot', prices: [{ amount: 0.5 }] },
-          { name: 'Add Two Shots', prices: [{ amount: 1.0 }] },
+          { name: 'Add One Shot', prices: [{ amount: 0.75 }] },
+          { name: 'Add Two Shots', prices: [{ amount: 1.25 }] },
               ],
   },
   {
@@ -58,12 +58,17 @@ export const MENU: MenuSection[] = [
           {
                     name: 'Chai',
                     description: 'Spiced chai latte.',
-                    prices: [{ label: 'Medium', amount: 4.25 }, { label: 'Large', amount: 4.5 }],
+                    prices: [{ label: 'Medium', amount: 4.5 }, { label: 'Large', amount: 4.75 }],
           },
           {
                     name: 'Dirty Chai',
                     description: 'Spiced chai latte with a shot of espresso.',
-                    prices: [{ label: 'Medium', amount: 4.75 }, { label: 'Large', amount: 5.0 }],
+                    prices: [{ label: 'Medium', amount: 5.0 }, { label: 'Large', amount: 5.25 }],
+          },
+          {
+                    name: 'Steamer',
+                    description: 'Steamed milk with your choice of flavor.',
+                    prices: [{ label: 'Medium', amount: 3.0 }, { label: 'Large', amount: 3.25 }],
           },
           { name: 'Hot Cocoa', prices: [{ label: 'Medium', amount: 4.0 }, { label: 'Large', amount: 4.25 }] },
               ],
@@ -71,12 +76,12 @@ export const MENU: MenuSection[] = [
   {
         name: 'Coffee',
         items: [
-          { name: 'Iced Coffee', prices: [{ label: 'Medium', amount: 3.5 }, { label: 'Large', amount: 3.75 }] },
-          { name: 'Drip Coffee', prices: [{ label: 'Medium', amount: 2.75 }, { label: 'Large', amount: 3.0 }] },
+          { name: 'Iced Coffee', prices: [{ label: 'Medium', amount: 3.75 }, { label: 'Large', amount: 4.0 }] },
+          { name: 'Drip Coffee', prices: [{ label: 'Medium', amount: 3.75 }, { label: 'Large', amount: 4.0 }] },
           {
                     name: 'Red Eye',
                     description: 'Drip coffee with a shot of espresso.',
-                    prices: [{ label: 'Medium', amount: 4.25 }, { label: 'Large', amount: 4.5 }],
+                    prices: [{ label: 'Medium', amount: 4.75 }, { label: 'Large', amount: 5.0 }],
           },
               ],
   },
@@ -84,8 +89,8 @@ export const MENU: MenuSection[] = [
     name: 'Specialty Drinks',
     items: [
       {
-        name: 'Chaga Coffee',
-        description: 'An iced latte blended with chaga powder for a smooth, earthy coffee drink.',
+        name: 'Mushroom Coffee',
+        description: 'One spoonful of chaga powder added to an iced latte.',
         prices: [{ label: 'Medium', amount: 6.75 }, { label: 'Large', amount: 7.0 }],
       },
     ],
