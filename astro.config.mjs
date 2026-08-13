@@ -38,11 +38,15 @@ function rehypeBaseLinks() {
 }
 
 // Primary custom domain served by Cloudflare Pages. The sitemap, canonical
-// URLs, and Open Graph URLs are all generated from this value. (The second
-// registered domain, soknostonesthrow.com, can 301-redirect here via a
-// Cloudflare redirect rule.)
+// URLs, and Open Graph URLs are all generated from this value.
+//
+// Launching on soknostonesthrow.com for now — it's the domain that's Active in
+// the same Cloudflare account as this Pages project. The preferred domain,
+// stonesthrowcoffeeco.com, lives in a separate Cloudflare account; once we have
+// access, switch `site` to it and add a 301 redirect soknostonesthrow.com ->
+// stonesthrowcoffeeco.com so no links or SEO are lost.
 export default defineConfig({
-  site: 'https://stonesthrowcoffeeco.com',
+  site: 'https://soknostonesthrow.com',
   base: BASE,
   integrations: [sitemap()],
   markdown: {
