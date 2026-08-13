@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import { MENU, FLAVORS, formatPrice } from '../data/menu';
-import { SOURCING, PEOPLE, showPersonalNames } from '../data/partners';
+import { SOURCING, PARTNERS, PEOPLE, showPersonalNames } from '../data/partners';
 
 // schema.org Menu structured data, generated from the same data the page
 // renders — prices on the page and prices in search results can't drift.
@@ -123,6 +123,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           </ul>
         )
       }
+
+      <h3 id="community-partners">Community Partners &amp; Associations</h3>
+      <p>
+        We&rsquo;re proud to partner with organizations and local businesses who share our
+        commitment to community:
+      </p>
+      <ul class="event-meta">
+        {
+          PARTNERS.map((p) => (
+            <li>
+              {p.url ? (
+                <a href={p.url} target="_blank" rel="noopener noreferrer">
+                  {p.name}
+                </a>
+              ) : (
+                p.name
+              )}
+            </li>
+          ))
+        }
+      </ul>
 
       <p>
         <em>Final opening prices may shift as costs and supplies change. We&rsquo;ll keep this page

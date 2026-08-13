@@ -20,6 +20,19 @@ export const SOURCING = [
 ];
 
 /**
+ * Community partners & associations — organizations and local businesses we
+ * work with, distinct from the sourcing suppliers above. Business names are
+ * public. Add a `url` to any entry to turn it into a link.
+ */
+export const PARTNERS: { name: string; url?: string }[] = [
+  { name: 'Choice Health Network' },
+  { name: 'Coffee and Chocolate' },
+  { name: 'Counter Culture Coffee' },
+  { name: 'Frog Juice Kombucha' },
+  { name: 'Small Comforts Kitchen' },
+];
+
+/**
  * INTERNAL — do not publish without approval (see rule above).
  * Renders only when showPersonalNames is true.
  */

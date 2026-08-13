@@ -4,6 +4,8 @@ import MoonDivider from '../components/MoonDivider.astro';
 import { BUSINESS } from '../config';
 
 const gofundme = BUSINESS.gofundme;
+const cashApp = BUSINESS.cashApp;
+const cashAppUrl = BUSINESS.cashAppUrl;
 const facebook = BUSINESS.social.facebook;
 
 const tiers = [
@@ -92,6 +94,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <a class="btn btn--solid" href={gofundme} target="_blank" rel="noopener noreferrer">
           Support the GoFundMe
         </a>
+        {cashAppUrl && (
+          <a class="btn btn--outline" href={cashAppUrl} target="_blank" rel="noopener noreferrer">
+            Give via Cash App ({cashApp})
+          </a>
+        )}
         {facebook && (
           <a class="btn btn--outline" href={facebook} target="_blank" rel="noopener noreferrer">
             Follow Us on Facebook

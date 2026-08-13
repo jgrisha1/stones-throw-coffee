@@ -71,6 +71,9 @@ export const BUSINESS = {
 
   // --- Community funding ---
   gofundme: 'https://www.gofundme.com/f/stones-throw-community-coffee-shop',
+  // Cash App: cashtag for display, cashAppUrl is the canonical cash.app link.
+  cashApp: '$StonesThrowCoffee',
+  cashAppUrl: 'https://cash.app/$StonesThrowCoffee',
 
   // --- Google Business Profile ---
   // TODO: Claim and verify your GBP at https://business.google.com, then paste
