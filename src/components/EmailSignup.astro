@@ -22,6 +22,10 @@ const onUpdates = Astro.url.pathname.replace(/\/?$/, '/') === `${base}/updates/`
     {
       ready ? (
         <form action={BUSINESS.newsletterAction} method="post" target="_blank">
+          {/* Labels the submission in the inbox so signups are distinct from contact messages. */}
+          <input type="hidden" name="_subject" value="New email-list signup — Stone's Throw Coffee" />
+          {/* Honeypot: bots fill this; real users never see it, so filled = spam, dropped by Formspree. */}
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <label class="visually-hidden" for="signup-email">
             Email address
           </label>

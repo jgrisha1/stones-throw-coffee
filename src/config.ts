@@ -82,15 +82,15 @@ export const BUSINESS = {
   googleBusinessProfile: '',
 
   // --- Integrations ---
-  // The existing Formspree account is registered under BUSINESS.email. When
-  // account access is restored, paste its endpoint here (for example,
-  // https://formspree.io/f/abcdwxyz) to activate the Contact/Booking and
-  // artist-application forms.
-  formspreeEndpoint: '',
-  // TODO: newsletter — create a free https://buttondown.com account and paste
-  // your embed action URL (https://buttondown.com/api/emails/embed-subscribe/YOURNAME),
-  // or use a Mailchimp embed action URL.
-  newsletterAction: '',
+  // Formspree form "Stone's Throw Coffee — Email Signup" (separate from the
+  // Jonathan's-website form). Submissions are collected in Formspree AND
+  // emailed to stonesthrowcoffeeco@gmail.com once that address is verified as
+  // the form's recipient. Powers the Contact/Booking + artist-application forms.
+  formspreeEndpoint: 'https://formspree.io/f/mnpazbaz',
+  // Email-signup band posts to the same Formspree form (one form = one shared
+  // 50/mo free quota); a hidden _subject line keeps signups distinct from
+  // contact messages in the inbox.
+  newsletterAction: 'https://formspree.io/f/mnpazbaz',
   // TODO: Cloudflare Web Analytics token (Cloudflare dashboard -> Web Analytics).
   // Privacy-friendly, free, no cookie banner needed.
   cloudflareAnalyticsToken: '',
