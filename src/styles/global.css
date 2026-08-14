@@ -159,6 +159,15 @@ a:hover {
   padding-block: var(--space-5);
 }
 
+/* The logo badge (.wordmark) is lifted out of the header and spills ~74px below
+   the gold divider. A hero page cushions it in its image; a text-first page
+   whose first block is a plain .section does not, so the badge crowds the
+   eyebrow/heading. Give the first content section extra top room to clear it.
+   Heroes use .hero (not .section), so their intended overlap is untouched. */
+main > .section:first-child {
+  padding-top: calc(var(--space-5) + 3.5rem);
+}
+
 .section--tint {
   background: var(--cream-deep);
 }
