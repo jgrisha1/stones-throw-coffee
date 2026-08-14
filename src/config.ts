@@ -52,7 +52,7 @@ export const BUSINESS = {
   hours: [] as HoursRule[],
 
   // Tentative opening date. Update on your Google Business Profile too once firm.
-  openingDate: '2026-09-01',
+  openingDate: '2026-09-26',
 
   priceRange: '$',
 
