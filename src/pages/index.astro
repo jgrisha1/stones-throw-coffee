@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
+import NewsletterPopup from '../components/NewsletterPopup.astro';
 import MoonDivider from '../components/MoonDivider.astro';
 import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay } from '../config';
 
@@ -262,6 +263,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   </section>
 
   <EmailSignup />
+
+  <NewsletterPopup />
 
 </Base>
 

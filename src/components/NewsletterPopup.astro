@@ -1,0 +1,318 @@
+---
+/**
+ * Homepage email-capture popup.
+ *
+ * Rendered hidden, then revealed by the inline script ONCE per visitor after a
+ * short delay / scroll / exit-intent — never on first paint, and never again
+ * once dismissed or signed up (stored in localStorage on the device). Submits
+ * to the same Formspree form as the signup band via AJAX, so the visitor gets
+ * an inline "Thanks!" without leaving the page. Only rendered when a newsletter
+ * endpoint is configured.
+ */
+import { BUSINESS, has } from '../config';
+const ready = has(BUSINESS.newsletterAction);
+---
+
+{
+  ready && (
+    <div
+      class="np-overlay"
+      id="newsletter-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="np-title"
+      aria-describedby="np-desc"
+      hidden
+    >
+      <div class="np-card">
+        <button type="button" class="np-close" id="np-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none">
+            <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+        <p class="np-eyebrow">Stone&rsquo;s Throw Coffee</p>
+        <h2 id="np-title" class="np-title">Be first through the doors</h2>
+        <p id="np-desc" class="np-desc">
+          Get opening news, menu specials, and event announcements as we build the shop.
+          No spam, no selling your info &mdash; just what&rsquo;s happening.
+        </p>
+        <form class="np-form" id="np-form" action={BUSINESS.newsletterAction} method="post">
+          {/* Labels this signup in the inbox; honeypot traps bots. */}
+          <input type="hidden" name="_subject" value="New email-list signup — homepage popup" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+          <label class="visually-hidden" for="np-email">
+            Email address
+          </label>
+          <input
+            id="np-email"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+          />
+          <button class="btn btn--solid" type="submit" id="np-submit">
+            Keep me posted
+          </button>
+        </form>
+        <p class="np-status" id="np-status" role="status" aria-live="polite" />
+        <button type="button" class="np-later" id="np-later">
+          Maybe later
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .np-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 90; /* above cookie-notice (80), below skip-link (100) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: rgba(20, 58, 0, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .np-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .np-card {
+    position: relative;
+    width: min(30rem, 100%);
+    max-height: calc(100dvh - 2.5rem);
+    overflow-y: auto;
+    background: var(--cream);
+    border-top: 5px solid var(--gold);
+    border-radius: 14px;
+    padding: 2.25rem 1.75rem 1.5rem;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transform: translateY(14px) scale(0.98);
+    transition: transform 0.28s ease;
+  }
+  .np-overlay.is-open .np-card {
+    transform: translateY(0) scale(1);
+  }
+  .np-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    display: inline-flex;
+    padding: 0.4rem;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    line-height: 0;
+  }
+  .np-close:hover {
+    background: var(--cream-deep);
+    color: var(--green-deep);
+  }
+  .np-eyebrow {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay-bright);
+  }
+  .np-title {
+    margin: 0 0 0.5rem;
+    color: var(--green);
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+  .np-desc {
+    margin: 0 auto 1.15rem;
+    max-width: 26rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  .np-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+  .np-form input[type='email'] {
+    flex: 1 1 14rem;
+    min-width: 0;
+  }
+  .np-form .btn {
+    flex: 0 0 auto;
+  }
+  .np-status {
+    margin: 0.85rem 0 0;
+    min-height: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--green);
+  }
+  .np-status[data-state='error'] {
+    color: var(--clay-bright);
+  }
+  .np-later {
+    margin-top: 0.4rem;
+    border: 0;
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .np-later:hover {
+    color: var(--green-deep);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .np-overlay,
+    .np-card {
+      transition: none;
+    }
+    .np-card {
+      transform: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'stc-newsletter-popup';
+    var el = document.getElementById('newsletter-popup');
+    if (!el) return;
+
+    // Never re-show once dismissed or signed up.
+    var seen = false;
+    try {
+      var v = localStorage.getItem(KEY);
+      seen = v === 'dismissed' || v === 'signed';
+    } catch (e) {}
+    if (seen) return;
+
+    var card = el.querySelector('.np-card');
+    var form = document.getElementById('np-form');
+    var emailInput = document.getElementById('np-email');
+    var statusEl = document.getElementById('np-status');
+    var submitBtn = document.getElementById('np-submit');
+    var lastFocus = null;
+    var shown = false;
+
+    function store(val) {
+      try {
+        localStorage.setItem(KEY, val);
+      } catch (e) {}
+    }
+
+    function focusables() {
+      return el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') {
+        close('dismissed');
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0];
+      var last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function open() {
+      if (shown) return;
+      shown = true;
+      lastFocus = document.activeElement;
+      el.hidden = false;
+      requestAnimationFrame(function () {
+        el.classList.add('is-open');
+      });
+      document.addEventListener('keydown', onKeydown);
+      setTimeout(function () {
+        if (emailInput) emailInput.focus();
+      }, 60);
+    }
+
+    function close(reason) {
+      el.classList.remove('is-open');
+      document.removeEventListener('keydown', onKeydown);
+      if (reason) store(reason);
+      setTimeout(function () {
+        el.hidden = true;
+      }, 280);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    // Dismiss controls
+    var closeBtn = document.getElementById('np-close');
+    var laterBtn = document.getElementById('np-later');
+    if (closeBtn) closeBtn.addEventListener('click', function () { close('dismissed'); });
+    if (laterBtn) laterBtn.addEventListener('click', function () { close('dismissed'); });
+    el.addEventListener('mousedown', function (e) {
+      if (e.target === el) close('dismissed'); // backdrop click
+    });
+
+    // AJAX submit to Formspree — inline thanks, no new tab.
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (statusEl) { statusEl.removeAttribute('data-state'); statusEl.textContent = 'Signing you up…'; }
+        if (submitBtn) submitBtn.disabled = true;
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        })
+          .then(function (res) {
+            if (res.ok) {
+              store('signed');
+              form.hidden = true;
+              if (statusEl) statusEl.textContent = "Thanks — you're on the list! We'll be in touch.";
+              setTimeout(function () { close(); }, 2200);
+            } else {
+              throw new Error('bad response');
+            }
+          })
+          .catch(function () {
+            if (submitBtn) submitBtn.disabled = false;
+            if (statusEl) {
+              statusEl.setAttribute('data-state', 'error');
+              statusEl.textContent = 'Something went wrong — please try again.';
+            }
+          });
+      });
+    }
+
+    // Triggers: whichever fires first — a delay, a scroll depth, or exit intent.
+    var timer = setTimeout(open, 12000);
+    function onScroll() {
+      var sc = window.scrollY + window.innerHeight;
+      if (sc / document.documentElement.scrollHeight > 0.45) trigger();
+    }
+    function onExit(e) {
+      if (e.clientY <= 0) trigger();
+    }
+    function trigger() {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('mouseout', onExit);
+      open();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('mouseout', onExit);
+  })();
+</script>
