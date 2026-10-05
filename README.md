@@ -25,15 +25,15 @@ Almost everything that still needs a human decision lives in **one file**:
 - [ ] **Phone** — add the confirmed public number before launch
 - [ ] **Confirmed hours** — add after the location and staffing plan are set
 - [x] **Tentative opening date** — September 1, 2026
-- [ ] **GPS coordinates** — add after the lease is signed
-- [ ] **Remaining social URLs** — Facebook is configured; add Instagram and Threads when ready
+- [x] **GPS coordinates** — 35.94103, -83.91029 (replace with the Google pin if it differs)
+- [ ] **Remaining social URLs** — Facebook and Instagram are configured; add Threads when ready
 - [ ] **Existing Formspree endpoint** — the account is registered under
       `stonesthrowcoffeeco@gmail.com`; retrieve the endpoint when account access is restored to
       activate the Contact and artist-application forms
 - [ ] **Newsletter action URL** — activates the email signup bands
       (free at buttondown.com)
 - [ ] **Cloudflare Web Analytics token** — privacy-friendly analytics
-- [ ] **Confirmed street address** — add it only after the lease is signed
+- [x] **Confirmed street address** — 3615 Chapman Hwy, Knoxville, TN 37920
 
 A few content TODOs live as HTML comments in the pages themselves — search
 the repo for `TODO`:

@@ -27,18 +27,18 @@ export const BUSINESS = {
     "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and chaga coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
 
   // --- Location ---
-  // Keep street and ZIP empty until a lease is signed. Empty location fields
-  // are omitted from visible pages and structured data.
+  // Lease signed October 2026: former South Press space. Keep this formatted
+  // exactly as it appears on the Google Business Profile.
   address: {
-    street: '',
+    street: '3615 Chapman Hwy',
     city: 'Knoxville',
     state: 'TN',
-    zip: '',
+    zip: '37920',
   },
 
-  // TODO: paste exact coordinates from Google Maps
-  // (right-click the map pin -> first menu item copies "lat, lng")
-  geo: { latitude: '', longitude: '' },
+  // Matched by the US Census geocoder and OpenStreetMap. Swap in the Google
+  // Maps pin coordinates once the Business Profile is verified, if they differ.
+  geo: { latitude: '35.94103', longitude: '-83.91029' },
 
   // --- Contact ---
   // TODO: fill in before launch. phone is E.164 for structured data,
@@ -67,7 +67,7 @@ export const BUSINESS = {
   // --- Social profiles ---
   // These become schema.org sameAs links, footer icons, and contact fallbacks.
   social: {
-    instagram: '',
+    instagram: 'https://www.instagram.com/stonesthrowcoffeeknox/',
     facebook: 'https://www.facebook.com/stonesthrowcoffeeknox/',
     threads: '',
   },

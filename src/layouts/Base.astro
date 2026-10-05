@@ -95,6 +95,9 @@ if (hasStreetAddress()) {
     postalCode: BUSINESS.address.zip,
     addressCountry: 'US',
   };
+  localBusiness.hasMap = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${BUSINESS.address.street}, ${BUSINESS.address.city}, ${BUSINESS.address.state} ${BUSINESS.address.zip}`
+  )}`;
 }
 if (has(BUSINESS.geo.latitude) && has(BUSINESS.geo.longitude)) {
   localBusiness.geo = {
