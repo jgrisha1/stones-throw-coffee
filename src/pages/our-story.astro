@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PRESS } from '../data/press';
 import MoonDivider from '../components/MoonDivider.astro';
 import { BUSINESS } from '../config';
 const base = import.meta.env.BASE_URL.replace(/\/$/,'');
@@ -175,6 +176,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   </section>
 
   <!-- Closing CTA -->
+  {PRESS.length > 0 && (
+    <section class="section section--tint" id="in-the-news" aria-labelledby="press-heading">
+      <div class="wrap">
+        <h2 id="press-heading" style="margin-top:0;">In the news</h2>
+        <ul class="press-list">
+          {PRESS.map((item) => (
+            <li>
+              <span class="press-list__outlet">{item.outlet}</span>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">{item.headline}</a>
+              <time datetime={item.date}>
+                {new Date(`${item.date}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
   <section class="section section--pine" aria-labelledby="story-cta-heading">
     <div class="wrap" style="text-align: center">
       <h2 id="story-cta-heading" style="color: var(--cream)">Be part of something brewing.</h2>
