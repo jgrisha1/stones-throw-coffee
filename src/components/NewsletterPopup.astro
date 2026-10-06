@@ -310,6 +310,19 @@ const ready = has(BUSINESS.newsletterAction);
       clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
       document.removeEventListener('mouseout', onExit);
+      // Never stack on top of the cookie notice: wait until it's dismissed,
+      // then give the visitor a moment before the popup appears.
+      var notice = document.getElementById('cookie-notice');
+      if (notice && !notice.hidden) {
+        var obs = new MutationObserver(function () {
+          if (notice.hidden) {
+            obs.disconnect();
+            setTimeout(open, 4000);
+          }
+        });
+        obs.observe(notice, { attributes: true, attributeFilter: ['hidden'] });
+        return;
+      }
       open();
     }
     window.addEventListener('scroll', onScroll, { passive: true });

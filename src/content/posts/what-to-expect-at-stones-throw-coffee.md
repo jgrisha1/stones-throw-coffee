@@ -9,7 +9,7 @@ draft: true
 Walking into a new coffee shop shouldn't require a decoder ring. Here's
 exactly what Stone's Throw Coffee will be when you walk in.
 
-**The drinks.** Espresso drinks (lattes from $4.75, cappuccinos, macchiatos,
+**The drinks.** Espresso drinks (lattes from $5, cappuccinos, macchiatos,
 Americanos), dirty chai, hot cocoa, iced and drip coffee, and red eyes for
 the rough mornings. One flavor is always included free, and soy, oat, and
 almond milk are available. Our specialty is the chaga coffee — a spoonful

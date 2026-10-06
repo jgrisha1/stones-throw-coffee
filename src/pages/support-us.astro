@@ -255,7 +255,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 <style define:vars={{ supportImg: `url(${base}/images/support-community-hands.webp)` }}>
   .support-hero {
-    padding-block: var(--space-5);
+    padding-block: 6rem var(--space-5);
     position: relative;
   }
 
@@ -281,7 +281,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(rgba(20,58,0,0.72), rgba(20,58,0,0.55)),
+      linear-gradient(90deg, rgba(20,58,0,0.94) 0%, rgba(20,58,0,0.86) 55%, rgba(20,58,0,0.6) 100%),
       var(--supportImg) center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
@@ -344,7 +344,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   /* Skills grid */
   .skills-grid {
     margin-top: var(--space-3);
-    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
   }
 
   .skills-card {

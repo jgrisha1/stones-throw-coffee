@@ -1,8 +1,11 @@
 name: Deploy to GitHub Pages
 
+# Retired Oct 2026: the live site is served by Cloudflare Pages at
+# stonesthrowknoxville.com. This workflow built the same site to
+# jgrisha1.github.io/stones-throw-coffee/, where it rendered unstyled with
+# broken links (BASE is now '/'). Push trigger removed; manual run kept only
+# as a fallback. Also unpublish GitHub Pages in the repo settings.
 on:
-  push:
-    branches: [ master ]
   workflow_dispatch:
 
 permissions:

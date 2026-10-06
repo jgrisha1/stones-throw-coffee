@@ -30,7 +30,7 @@ const isActive = (link: { href: string; match?: string }) =>
 <header class="site-header">
   <div class="wrap">
     <a class="wordmark" href={`${base}/`} aria-label={`${BUSINESS.name} — home`}>
-      <img src={`${base}/images/logo.webp`} alt={BUSINESS.name} width="112" height="111" loading="eager" />
+      <img src={`${base}/images/logo-224.webp`} srcset={`${base}/images/logo-224.webp 2x, ${base}/images/logo-336.webp 3x`} alt={BUSINESS.name} width="112" height="111" loading="eager" fetchpriority="high" />
     </a>
 
     <button

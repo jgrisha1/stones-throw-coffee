@@ -42,7 +42,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   ogDescription="A queer-owned South Knoxville coffee shop and community arts space built around coffee, local art, sober-friendly events, mutual aid, and community care."
 >
   <!-- hero background is the LCP element but loads via CSS — preload it -->
-  <link slot="head" rel="preload" as="image" href={`${base}/images/home-hero-forest-coffeehouse.webp`} />
+  <link slot="head" rel="preload" as="image" href={`${base}/images/home-hero-forest-coffeehouse.webp`} imagesrcset={`${base}/images/home-hero-forest-coffeehouse-640.webp 640w, ${base}/images/home-hero-forest-coffeehouse-1024.webp 1024w, ${base}/images/home-hero-forest-coffeehouse.webp 1200w`} imagesizes="100vw" />
 
   <!-- ── Hero ── -->
   <section class="hero hero--coming-soon">
@@ -264,7 +264,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 </Base>
 
-<style define:vars={{ heroBg: `url(${base}/images/home-hero-forest-coffeehouse.webp)` }}>
+<style define:vars={{ heroBg: `url(${base}/images/home-hero-forest-coffeehouse.webp)`, heroBgSm: `url(${base}/images/home-hero-forest-coffeehouse-640.webp)`, heroBgMd: `url(${base}/images/home-hero-forest-coffeehouse-1024.webp)` }}>
   /* ── Coming-soon hero ── */
   .hero--coming-soon {
     background: var(--green-deep);
@@ -284,6 +284,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       var(--heroBg) center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
+  }
+
+  /* smaller hero files for smaller screens */
+  @media (max-width: 640px) {
+    .hero-background {
+      background:
+        linear-gradient(180deg, rgba(20,58,0,0.55) 0%, rgba(20,58,0,0.35) 50%, rgba(20,58,0,0.75) 100%),
+        var(--heroBgSm) center / cover no-repeat;
+    }
+  }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .hero-background {
+      background:
+        linear-gradient(180deg, rgba(20,58,0,0.55) 0%, rgba(20,58,0,0.35) 50%, rgba(20,58,0,0.75) 100%),
+        var(--heroBgMd) center / cover no-repeat;
+    }
   }
 
   .hero--coming-soon__wrap {

@@ -177,9 +177,6 @@ main > .section:first-child {
      and accents sit at ~5.5:1 everywhere instead of dropping to ~2.8:1 over
      the light end. Decorative star dots are kept. */
   background:
-    radial-gradient(1.5px 1.5px at 12% 22%, rgba(245, 233, 200, 0.7) 50%, transparent 51%),
-    radial-gradient(1.3px 1.3px at 88% 30%, rgba(211, 161, 61, 0.6) 50%, transparent 51%),
-    radial-gradient(1.2px 1.2px at 70% 72%, rgba(245, 233, 200, 0.45) 50%, transparent 51%),
     var(--green-deep);
   color: var(--cream);
 }
@@ -312,7 +309,7 @@ main > .section:first-child {
    commitment, not a buried link */
 .site-nav a.nav-values {
   font-weight: 700;
-  border-bottom-color: var(--gold);
+  color: var(--honey);
 }
 
 .site-nav a.nav-values:hover,
@@ -1023,6 +1020,9 @@ td {
 }
 
 .values-prose {
+  text-align: left;
+}
+.values-prose h2 {
   text-align: center;
 }
 
@@ -1194,4 +1194,11 @@ td {
 .section--botanical > .wrap {
   position: relative;
   z-index: 1;
+}
+
+/* a page ending on a green band runs straight into the footer: no cream strip
+   between two greens, just the honey rule that matches the header */
+main:has(> section.section--pine:last-of-type) + .site-footer {
+  margin-top: 0;
+  border-top: 3px solid var(--honey);
 }

@@ -24,12 +24,11 @@ Almost everything that still needs a human decision lives in **one file**:
 - [x] **Contact email** — `stonesthrowcoffeeco@gmail.com`
 - [ ] **Phone** — add the confirmed public number before launch
 - [ ] **Confirmed hours** — add after the location and staffing plan are set
-- [x] **Tentative opening date** — September 1, 2026
+- [ ] **Opening date** — the tentative September 1, 2026 date has passed; set `openingDate` once the build-out timeline is firm
 - [x] **GPS coordinates** — 35.94103, -83.91029 (replace with the Google pin if it differs)
 - [ ] **Remaining social URLs** — Facebook and Instagram are configured; add Threads when ready
-- [ ] **Existing Formspree endpoint** — the account is registered under
-      `stonesthrowcoffeeco@gmail.com`; retrieve the endpoint when account access is restored to
-      activate the Contact and artist-application forms
+- [x] **Formspree endpoint** — connected; newsletter, Contact, and artist-application forms
+      share one form and its 50/month free quota (upgrade or split before launch traffic)
 - [ ] **Newsletter action URL** — activates the email signup bands
       (free at buttondown.com)
 - [ ] **Cloudflare Web Analytics token** — privacy-friendly analytics

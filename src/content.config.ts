@@ -48,6 +48,10 @@ const posts = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    /** Optional share image in /public, e.g. /images/posts/storefront.webp (1200x630 works best) */
+    image: z.string().optional(),
+    /** Alt text for the share image */
+    imageAlt: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

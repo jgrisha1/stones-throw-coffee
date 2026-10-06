@@ -47,6 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   title={pageTitle}
   description={post.data.description}
   ogType="article"
+  ogImage={post.data.image}
   jsonLd={[postSchema]}
 >
   <article class="section">
