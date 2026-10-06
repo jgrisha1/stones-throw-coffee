@@ -74,7 +74,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     <div class="wrap hero--coming-soon__wrap">
       <div class="hero-content-card">
         <p class="eyebrow cs-eyebrow">Coming Soon to South Knoxville</p>
-        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee is coming soon.</h1>
+        <h1 class="cs-h1">Stone&rsquo;s Throw Coffee</h1>
         <p class="cs-body">
           A queer-owned coffee shop and community arts space opening soon in South Knoxville.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art, author
@@ -84,9 +84,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <div class="btn-row cs-btns">
           <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">
             Support the GoFundMe
-          </a>
-          <a class="btn btn--clay" href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer">
-            Follow on Facebook
           </a>
           <a class="btn btn--clay-outline" href={`${base}/menu/`}>
             Preview the Menu
@@ -142,7 +139,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           <h3>Chaga coffee</h3>
           <p>
             Chaga powder stirred into an iced latte for a smooth drink with a mild, earthy note.
-            <a href={`${base}/menu/#chaga-coffee`}>More about our chaga coffee &rarr;</a>
+            <a href={`${base}/menu/#chaga-coffee`}>More about our chaga coffee</a>
           </p>
         </div>
       </div>
@@ -169,8 +166,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
             ))}
           </div>
         ) : (
-          <div class="grid">
-            <div class="card card--pine">
+          <div class="grid grid--five">
+            <div class="card">
               <h3>Drag shows</h3>
               <p>A central part of our community: drag performances and showcases that celebrate queer artistry and bring people together.</p>
             </div>
@@ -195,7 +192,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       }
       <div class="btn-row">
         <a class="btn btn--clay" href={`${base}/events/`}>See upcoming events</a>
-        <a class="btn btn--clay" href={`${base}/contact/`}>Book or pitch an event</a>
+        <a class="text-link" href={`${base}/contact/`}>Book or pitch an event</a>
       </div>
     </div>
   </section>
@@ -204,7 +201,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
   <!-- ── Support ── -->
   <section class="section section--pine section--botanical" aria-labelledby="support-heading">
-    <img src={`${base}/images/decor-fern.png`} alt="" width="220" height="220" loading="lazy" aria-hidden="true" class="botanical botanical--tr" />
+    <img src={`${base}/images/decor-moon-stars-transparent.png`} alt="" width="320" height="320" loading="lazy" aria-hidden="true" class="botanical botanical--side" />
     <div class="wrap">
       <p class="eyebrow" style="color: var(--honey)">Help us open</p>
       <h2 id="support-heading" style="margin-top:0; color: var(--cream);">We&rsquo;re building this with you.</h2>
@@ -225,7 +222,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <section class="section section--tint" aria-labelledby="location-heading">
     <div class="wrap">
       <p class="eyebrow">Where to find us</p>
-      <h2 id="location-heading" style="margin-top:0;">Coming to South Knoxville</h2>
+      <h2 id="location-heading" style="margin-top:0;">{hasLocation ? 'Find us on Chapman Highway' : 'Coming to South Knoxville'}</h2>
       <div class="grid">
         <div>
           {hasLocation ? (
@@ -235,7 +232,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
                 {BUSINESS.address.street}<br />
                 {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
               </address>
-              <p style="margin-top: var(--space-2);">Confirmed directions will stay current here.</p>
+              <p style="margin-top: var(--space-2);">In the former South Press space. Parking and accessibility notes are on the Visit page.</p>
             </>
           ) : (
             <p>
@@ -256,7 +253,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       </div>
       <div class="btn-row">
         <a class="btn btn--clay" href={`${base}/visit/`}>Opening &amp; accessibility details</a>
-        {hasLocation && <a class="btn btn--clay" href={mapsUrl} rel="noopener">Open in Google Maps</a>}
+        {hasLocation && <a class="btn btn--clay-outline" href={mapsUrl} rel="noopener">Open in Google Maps</a>}
       </div>
     </div>
   </section>
@@ -283,7 +280,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(100deg, rgba(20,58,0,0.97) 0%, rgba(20,58,0,0.88) 45%, rgba(20,58,0,0.70) 100%),
+      linear-gradient(180deg, rgba(20,58,0,0.55) 0%, rgba(20,58,0,0.35) 50%, rgba(20,58,0,0.75) 100%),
       var(--heroBg) center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
@@ -302,7 +299,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     border-top: 5px solid var(--honey);
     padding: var(--space-4);
     /* card sits centered relative to the page via the .wrap container */
-    width: min(100%, 50rem);
+    width: min(100%, 42rem);
     margin-inline: auto;
     text-align: center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
@@ -418,7 +415,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   @media (max-width: 600px) {
     .hero--coming-soon {
       /* keep enough top space for the spilling logo bubble; trim the ridge */
-      padding-block: var(--space-5) calc(var(--space-3) + 9vw);
+      padding-block: 7.5rem calc(var(--space-3) + 9vw);
     }
     .hero-content-card {
       /* 40px padding eats too much of a ~350px screen — pull it in */

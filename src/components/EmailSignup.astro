@@ -12,7 +12,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const onUpdates = Astro.url.pathname.replace(/\/?$/, '/') === `${base}/updates/`;
 ---
 
-<section class="section section--pine signup-band" aria-labelledby="signup-heading">
+<section class="section section--pine section--botanical signup-band" aria-labelledby="signup-heading">
+  <svg class="botanical botanical--side botanical--sprig" viewBox="0 0 100 160" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M50 160 C 50 120, 46 92, 60 26" />
+      <path d="M52 130 C 40 126, 34 118, 30 110" />
+      <path d="M53 118 C 66 114, 74 106, 78 98" />
+      <path d="M51 104 C 39 100, 33 92, 30 84" />
+      <path d="M54 92 C 67 88, 74 80, 77 72" />
+      <path d="M53 78 C 42 74, 36 66, 33 58" />
+      <path d="M56 64 C 68 60, 74 52, 76 44" />
+      <path d="M58 48 C 51 40, 51 31, 57 23" />
+    </g>
+  </svg>
   <div class="wrap">
     <h2 id="signup-heading" style="margin-top:0;">{heading}</h2>
     <p>
