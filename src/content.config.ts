@@ -16,7 +16,7 @@ const events = defineCollection({
     end: z.coerce.date().optional(),
     /** One- or two-sentence summary used in cards, meta description, and schema. */
     description: z.string(),
-    /** Who it's for, e.g. "All ages" or "Adults — sober-friendly evening" */
+    /** Who it's for, e.g. "All ages" or "Adults - sober-friendly evening" */
     audience: z.string().optional(),
     /** "Free", "$5 suggested donation", "$10 at the door", ... */
     cost: z.string().default('Free'),
@@ -40,7 +40,7 @@ const events = defineCollection({
 
 /**
  * Updates/news posts: one markdown file per post in src/content/posts/.
- * These power the /updates/ section — the weekly content-calendar posts.
+ * These power the /updates/ section - the weekly content-calendar posts.
  */
 const posts = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/posts' }),

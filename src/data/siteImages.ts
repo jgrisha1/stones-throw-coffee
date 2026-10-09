@@ -1,11 +1,11 @@
 /**
- * Site image manifest — every visual asset the site needs, whether created or not.
+ * Site image manifest - every visual asset the site needs, whether created or not.
  *
  * Status values:
- *   'needed'      — not yet created; site shows a CSS placeholder
- *   'placeholder' — generic placeholder image in place; needs real asset
- *   'created'     — created via Canva / generated; needs review/approval
- *   'approved'    — final approved asset, in place
+ *   'needed'      - not yet created; site shows a CSS placeholder
+ *   'placeholder' - generic placeholder image in place; needs real asset
+ *   'created'     - created via Canva / generated; needs review/approval
+ *   'approved'    - final approved asset, in place
  *
  * To add a new asset: add an entry here, then drop the file into public/images/.
  * Canva exports: File → Download → PNG (transparent) or WebP.
@@ -50,14 +50,14 @@ export const SITE_IMAGES: SiteImage[] = [
     page: 'Menu',
     section: 'Page header / featured drink',
     purpose: 'Visual anchor for the menu page; sets a warm coffeehouse mood.',
-  alt: 'Discover Lattes — Artisan Lattes poster with a cup of coffee, cinnamon, and botanical accents on a wooden table.',
+  alt: 'Discover Lattes: Artisan Lattes poster with a cup of coffee, cinnamon, and botanical accents on a wooden table.',
     width: 1200,
     height: 800,
     format: 'webp',
     lazy: true,
     status: 'rejected',
     rejectedNote:
-      'Sourced asset is a Canva ad/poster template ("Discover LATTES" / "Experience the Magic" badge) with large baked-in text and dead space — does not match the no-text spec below, and reads as fragmented/wonky on mobile. Removed from menu.astro; needs a real replacement photo before re-adding.',
+      'Sourced asset is a Canva ad/poster template ("Discover LATTES" / "Experience the Magic" badge) with large baked-in text and dead space - does not match the no-text spec below, and reads as fragmented/wonky on mobile. Removed from menu.astro; needs a real replacement photo before re-adding.',
     canvaPrompt:
      'An "Artisan Lattes" poster-style graphic: "Discover Lattes" heading and "Experience the Magic" badge over a warm wooden table scene with coffee, cinnamon, and botanical accents. Earth tones, soft light, no readable extra text, no hands, no logo.',
     sourceNote: 'Canva AI or Unsplash (search: "specialty latte botanical").',
@@ -89,7 +89,7 @@ export const SITE_IMAGES: SiteImage[] = [
     lazy: false,
     status: 'rejected',
     rejectedNote:
-      'Sourced asset is actually a full Canva event-flyer template (portrait, ~1587x2245) with baked-in placeholder copy — "Warm, Witchy Gatherings", a fake address ("123 Anywhere St."), fake dates, and "reallygreatsite.com" — cropped into the banner this shows as fragmented, unreadable-on-purpose text. Replaced on the live page by events-cafe-interior.webp, a clean crop of the same flyer\'s embedded photo with all text removed.',
+      'Sourced asset is actually a full Canva event-flyer template (portrait, ~1587x2245) with baked-in placeholder copy - "Warm, Witchy Gatherings", a fake address ("123 Anywhere St."), fake dates, and "reallygreatsite.com" - cropped into the banner this shows as fragmented, unreadable-on-purpose text. Replaced on the live page by events-cafe-interior.webp, a clean crop of the same flyer\'s embedded photo with all text removed.',
     canvaPrompt:
       'A cozy small coffee shop stage corner with a microphone, acoustic guitar, books, plants, warm lighting, local art wall, and a welcoming community gathering vibe. Subtle queer-affirming energy without rainbow overload, forest café aesthetic, no readable text, no distorted people.',
     sourceNote: 'Canva AI or Unsplash (search: "coffee shop open mic stage plants").',
@@ -105,7 +105,7 @@ export const SITE_IMAGES: SiteImage[] = [
     format: 'webp',
     lazy: false,
     status: 'approved',
-    canvaPrompt: 'N/A — cropped from events-open-mic-community.webp to isolate a text-free band of the cafe interior.',
+    canvaPrompt: 'N/A - cropped from events-open-mic-community.webp to isolate a text-free band of the cafe interior.',
     sourceNote: 'Cropped in-repo from events-open-mic-community.webp; consider sourcing a higher-resolution dedicated photo before launch.',
   },
   {
@@ -136,7 +136,7 @@ export const SITE_IMAGES: SiteImage[] = [
     status: 'approved',
     canvaPrompt:
       'A symbolic community support image for a queer-owned coffee shop: hands placing coffee cups, small plants, tools, art supplies, and donation items on a wooden table. Warm, hopeful, community-built feeling. Avoid distorted hands. No readable text. No logos.',
-    sourceNote: 'Canva AI. Note: avoid AI hands — use objects-on-table composition instead.',
+    sourceNote: 'Canva AI. Note: avoid AI hands - use objects-on-table composition instead.',
   },
   {
     filename: 'our-story-coffee-plants-books.webp',
@@ -169,7 +169,7 @@ export const SITE_IMAGES: SiteImage[] = [
     status: 'approved',
     canvaPrompt:
       'A warm, plant-filled coffee shop scene with coffee cups, books, mushrooms, ferns, and cozy lighting. Leave clear negative space for optional logo/text overlay. Queer-owned South Knoxville community coffeehouse feeling. No readable generated text, no fake logo.',
-    sourceNote: 'Canva — create at 1200×630px. Overlay logo + site name in Canva text layer.',
+    sourceNote: 'Canva - create at 1200×630px. Overlay logo + site name in Canva text layer.',
   },
 
   // ── Founder portraits (once approved by Casey & Zoey) ────────────────────
@@ -177,7 +177,7 @@ export const SITE_IMAGES: SiteImage[] = [
   {
     filename: 'portrait-casey.webp',
     page: 'Our Story',
-    section: 'Founder card — Casey',
+    section: 'Founder card - Casey',
     purpose: 'Personal photo to replace the SVG placeholder circle.',
     alt: 'Casey Stone, co-owner of Stone\'s Throw Coffee.',
     width: 600,
@@ -185,13 +185,13 @@ export const SITE_IMAGES: SiteImage[] = [
     format: 'webp',
     lazy: true,
     status: 'approved',
-    canvaPrompt: 'N/A — use a real photo provided by Casey.',
+    canvaPrompt: 'N/A - use a real photo provided by Casey.',
     sourceNote: 'Owner-supplied photo only. Crop to square, optimize to WebP at 600×600.',
   },
   {
     filename: 'portrait-zoey.webp',
     page: 'Our Story',
-    section: 'Founder card — Zoey',
+    section: 'Founder card - Zoey',
     purpose: 'Personal photo to replace the SVG placeholder circle.',
     alt: 'Zoey Stone, co-owner of Stone\'s Throw Coffee.',
     width: 600,
@@ -199,7 +199,7 @@ export const SITE_IMAGES: SiteImage[] = [
     format: 'webp',
     lazy: true,
     status: 'approved',
-    canvaPrompt: 'N/A — use a real photo provided by Zoey.',
+    canvaPrompt: 'N/A - use a real photo provided by Zoey.',
     sourceNote: 'Owner-supplied photo only. Crop to square, optimize to WebP at 600×600.',
   },
 
@@ -263,7 +263,7 @@ export const SITE_IMAGES: SiteImage[] = [
     format: 'png',
     lazy: true,
     status: 'approved',
-    canvaPrompt: 'N/A — alpha-fixed in-repo from decor-moon-stars.png (near-white pixels keyed to transparent).',
+    canvaPrompt: 'N/A - alpha-fixed in-repo from decor-moon-stars.png (near-white pixels keyed to transparent).',
     sourceNote: 'Generated in-repo; if re-exporting from Canva, just remember to export with a transparent background.',
   },
   {
@@ -283,7 +283,7 @@ export const SITE_IMAGES: SiteImage[] = [
   },
 ];
 
-/** All images in 'needed' or 'placeholder' state — still to be created. */
+/** All images in 'needed' or 'placeholder' state - still to be created. */
 export const IMAGES_NEEDED = SITE_IMAGES.filter(
   (img) => img.status === 'needed' || img.status === 'placeholder',
 );

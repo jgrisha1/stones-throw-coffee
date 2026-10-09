@@ -17,7 +17,7 @@ interface Props {
   jsonLd?: Record<string, unknown>[];
   /** Error/utility pages: emit robots noindex and skip canonical/og:url. */
   noindex?: boolean;
-  /** Override the business hasMenu value — /menu/ passes a reference to its Menu node. */
+  /** Override the business hasMenu value - /menu/ passes a reference to its Menu node. */
   menuRef?: Record<string, unknown>;
 }
 
@@ -57,13 +57,14 @@ const localBusiness: Record<string, unknown> = {
     name: 'Knoxville',
     containedInPlace: { '@type': 'State', name: 'Tennessee' },
   },
-  // Machine-readable signals for the differentiators that ARE the brand — so
+  // Machine-readable signals for the differentiators that ARE the brand - so
   // answer engines can extract them instead of parsing them out of prose.
   knowsAbout: [
     'queer-owned coffee shop',
     'LGBTQIA2S+ affirming space',
     'sober-friendly events',
-    'chaga coffee',
+    'mushroom coffee',
+    'chaga',
     'matcha',
     'specialty teas',
     'local art',

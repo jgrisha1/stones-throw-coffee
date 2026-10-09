@@ -41,14 +41,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   ogTitle="Stone's Throw Coffee Is Coming Soon to South Knoxville"
   ogDescription="A queer-owned South Knoxville coffee shop and community arts space built around coffee, local art, sober-friendly events, mutual aid, and community care."
 >
-  <!-- hero background is the LCP element but loads via CSS — preload it -->
+  <!-- hero background is the LCP element but loads via CSS - preload it -->
   <link slot="head" rel="preload" as="image" href={`${base}/images/home-hero-forest-coffeehouse.webp`} imagesrcset={`${base}/images/home-hero-forest-coffeehouse-640.webp 640w, ${base}/images/home-hero-forest-coffeehouse-1024.webp 1024w, ${base}/images/home-hero-forest-coffeehouse.webp 1200w`} imagesizes="100vw" />
 
   <!-- ── Hero ── -->
   <section class="hero hero--coming-soon">
     <div class="hero-background" aria-hidden="true"></div>
 
-    <!-- decorative sprigs — mirrored pair for visual balance -->
+    <!-- decorative sprigs - mirrored pair for visual balance -->
     {
       [false, true].map((right) => (
         <svg
@@ -125,7 +125,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <div class="card">
           <h3>Espresso, made kindly</h3>
           <p>
-            Lattes, specialty lattes, cappuccinos, macchiatos, and Americanos — with one
+            Lattes, specialty lattes, cappuccinos, macchiatos, and Americanos, with one
             complimentary flavor included and whole milk, half and half, soy, oat, or almond
             milk available.
           </p>
@@ -138,10 +138,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           </p>
         </div>
         <div class="card card--pine">
-          <h3>Chaga coffee</h3>
+          <h3>Mushroom coffee</h3>
           <p>
             Chaga powder stirred into an iced latte for a smooth drink with a mild, earthy note.
-            <a href={`${base}/menu/#chaga-coffee`}>More about our chaga coffee</a>
+            <a href={`${base}/menu/#mushroom-coffee`}>More about our mushroom coffee</a>
           </p>
         </div>
       </div>
@@ -209,7 +209,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <h2 id="support-heading" style="margin-top:0; color: var(--cream);">We&rsquo;re building this with you.</h2>
       <p style="max-width: var(--measure); color: #e9e0cb;">
         Stone&rsquo;s Throw is community-funded and community-built. Every donation to our GoFundMe
-        helps us open faster — and opens a space that belongs to South Knoxville.
+        helps us open faster, and opens a space that belongs to South Knoxville.
       </p>
       <div class="btn-row">
         <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
@@ -248,7 +248,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
             hours.length ? (
               <ul>{hours.map((line) => <li>{line}</li>)}</ul>
             ) : (
-              <p>Hours coming soon — we&rsquo;ll post them here and on Google before we open.</p>
+              <p>Hours coming soon. We&rsquo;ll post them here and on Google before we open.</p>
             )
           }
         </div>
@@ -310,7 +310,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     text-align: center;
   }
 
-  /* Content card — centered cream panel over the dark background */
+  /* Content card - centered cream panel over the dark background */
   .hero-content-card {
     background: rgba(250, 244, 231, 0.96);
     border-radius: var(--radius);
@@ -331,7 +331,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     margin-inline: auto;
   }
 
-  /* plain text — no leading star (a single ✦ read as a stray bullet) */
+  /* plain text - no leading star (a single ✦ read as a stray bullet) */
   .cs-eyebrow::before {
     content: none;
   }
@@ -363,7 +363,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     color: var(--clay);
     font-size: 1.05rem;
     margin-bottom: var(--space-3);
-    /* inherits .hero p max-width:56ch — center its box too */
+    /* inherits .hero p max-width:56ch - center its box too */
     max-width: none;
     margin-inline: auto;
   }
@@ -386,7 +386,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     }
   }
 
-  /* opening-status strip — sits between hero and first section */
+  /* opening-status strip - sits between hero and first section */
   .opening-strip {
     background: var(--cream-deep);
     border-bottom: 1px solid var(--line);
@@ -401,7 +401,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   .opening-strip__msg {
     margin: 0 auto 0.4rem;
   }
-  /* links as a centered group — labels never break mid-phrase */
+  /* links as a centered group - labels never break mid-phrase */
   .opening-strip__links {
     margin: 0 auto;
     display: flex;
@@ -436,7 +436,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       padding-block: 7.5rem calc(var(--space-3) + 9vw);
     }
     .hero-content-card {
-      /* 40px padding eats too much of a ~350px screen — pull it in */
+      /* 40px padding eats too much of a ~350px screen - pull it in */
       padding: var(--space-3) var(--space-3) var(--space-4);
     }
     .cs-h1 {

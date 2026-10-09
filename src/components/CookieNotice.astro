@@ -1,6 +1,6 @@
 ---
 /**
- * Cookie / privacy notice — a non-modal, dismissible banner.
+ * Cookie / privacy notice - a non-modal, dismissible banner.
  *
  * The site sets no non-essential cookies on load: analytics (when enabled) are
  * cookieless, fonts are self-hosted, and the only third-party that sets cookies
@@ -11,7 +11,7 @@
  * this must become a real opt-in consent banner that blocks those until accepted.
  *
  * Rendered hidden, then revealed by the inline script only if the visitor
- * hasn't dismissed it — this avoids a flash on repeat visits. The dismissal is
+ * hasn't dismissed it - this avoids a flash on repeat visits. The dismissal is
  * stored in localStorage (on the visitor's device), not a server-side cookie.
  */
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -36,7 +36,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     try {
       dismissed = localStorage.getItem(KEY) === 'dismissed';
     } catch (e) {
-      /* storage blocked — show the notice, dismissal just won't persist */
+      /* storage blocked - show the notice, dismissal just won't persist */
     }
     if (!dismissed) el.hidden = false;
 
@@ -47,7 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         try {
           localStorage.setItem(KEY, 'dismissed');
         } catch (e) {
-          /* ignore — nothing else to do */
+          /* ignore - nothing else to do */
         }
       });
     }

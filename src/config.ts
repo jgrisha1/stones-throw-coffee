@@ -4,7 +4,7 @@
  * The header, footer, Visit page, Contact page, and ALL structured data
  * (the JSON-LD that Google reads) pull from this file. Fill in every TODO
  * before launch. Empty strings are automatically omitted from structured
- * data, so nothing incorrect ships — but Google can't rank what isn't here.
+ * data, so nothing incorrect ships - but Google can't rank what isn't here.
  *
  * Keep these values byte-for-byte identical to your Google Business Profile,
  * Yelp, Apple Maps, and Facebook listings. Consistent NAP (name, address,
@@ -24,7 +24,7 @@ export const BUSINESS = {
   name: "Stone's Throw Coffee",
   tagline: 'Coffee, community, and local art in South Knoxville.',
   description:
-    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and chaga coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
+    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and mushroom coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
 
   // --- Location ---
   // Lease signed October 2026: former South Press space. Keep this formatted
@@ -52,7 +52,7 @@ export const BUSINESS = {
   hours: [] as HoursRule[],
 
   // Tentative opening date, e.g. '2026-09-26'. Left blank until the occupancy
-  // certificate is in hand — while empty, the home page shows "coming soon"
+  // certificate is in hand - while empty, the home page shows "coming soon"
   // messaging with no specific date. Set it (and update Google Business Profile)
   // once a date is firm.
   openingDate: '',
@@ -85,7 +85,7 @@ export const BUSINESS = {
   googleBusinessProfile: '',
 
   // --- Integrations ---
-  // Formspree form "Stone's Throw Coffee — Email Signup" (separate from the
+  // Formspree form "Stone's Throw Coffee - Email Signup" (separate from the
   // Jonathan's-website form). Submissions are collected in Formspree AND
   // emailed to stonesthrowcoffeeco@gmail.com once that address is verified as
   // the form's recipient. Powers the Contact/Booking + artist-application forms.
@@ -109,7 +109,7 @@ export const BUSINESS = {
   },
 };
 
-/** True once a value is filled in — used to hide placeholders gracefully. */
+/** True once a value is filled in - used to hide placeholders gracefully. */
 export const has = (v: string | undefined | null): v is string =>
   typeof v === 'string' && v.trim().length > 0;
 

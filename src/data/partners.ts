@@ -3,7 +3,7 @@
  *
  * PRIVACY RULE: personal names are NOT published on the site unless the
  * owners explicitly approve it. Business/vendor names are public. The
- * `people` list below only renders when showPersonalNames is true — flip it
+ * `people` list below only renders when showPersonalNames is true - flip it
  * once each person has said yes (and remove anyone who hasn't).
  *
  * This file also serves as the internal sourcing/credits reference for
@@ -12,15 +12,15 @@
 
 export const showPersonalNames = false;
 
-/** Public-facing vendor/sourcing lines — business names only. */
+/** Public-facing vendor/sourcing lines - business names only. */
 export const SOURCING = [
   { what: 'Tea', from: 'Spirit Tea and Barista Underground' },
-  { what: 'Syrups & flavors', from: 'Monin, plus small-batch and locally sourced ingredients — honey, lavender, rosemary, and seasonal flavors when available' },
+  { what: 'Syrups & flavors', from: 'Monin, plus small-batch and locally sourced ingredients - honey, lavender, rosemary, and seasonal flavors when available' },
   { what: 'Shop supplies', from: 'Barista Underground' },
 ];
 
 /**
- * Community partners & associations — organizations and local businesses we
+ * Community partners & associations - organizations and local businesses we
  * work with, distinct from the sourcing suppliers above. Business names are
  * public. Add a `url` to any entry to turn it into a link.
  */
@@ -33,7 +33,7 @@ export const PARTNERS: { name: string; url?: string }[] = [
 ];
 
 /**
- * INTERNAL — do not publish without approval (see rule above).
+ * INTERNAL - do not publish without approval (see rule above).
  * Renders only when showPersonalNames is true.
  */
 export const PEOPLE = [

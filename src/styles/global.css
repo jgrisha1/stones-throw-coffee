@@ -1,29 +1,29 @@
 /* ------------------------------------------------------------------
-   Stone's Throw Coffee — design system
+   Stone's Throw Coffee - design system
    Green-witch / Appalachian: living forest green, parchment cream, and
    woodland mushroom brown, pulled straight from the logo. Moonlit, herbal,
-   warm — never corporate. All text colors meet WCAG AA on their backgrounds.
+   warm - never corporate. All text colors meet WCAG AA on their backgrounds.
    (Legacy variable names kept; values repointed to the brand palette.)
 ------------------------------------------------------------------- */
 
 :root {
-  /* palette — sampled from the logo */
+  /* palette - sampled from the logo */
   --cream: #faf4e7;
   --cream-deep: #f1e6d0;
-  --green: #186000; /* brand forest green — headings, wordmark, accents */
-  --green-deep: #143a00; /* deep forest — header, hero, footer */
-  --brown: #8a5a30; /* mushroom + botanical brown — links, buttons, line-art */
-  --honey: #d3a13d; /* honey/moon accent on dark backgrounds — 5.47:1 on green-deep (AA) */
+  --green: #186000; /* brand forest green - headings, wordmark, accents */
+  --green-deep: #143a00; /* deep forest - header, hero, footer */
+  --brown: #8a5a30; /* mushroom + botanical brown - links, buttons, line-art */
+  --honey: #d3a13d; /* honey/moon accent on dark backgrounds - 5.47:1 on green-deep (AA) */
 
   /* legacy aliases (existing rules reference these) */
   --night: var(--green-deep); /* dark sections are now deep forest, not midnight */
   --pine: var(--green);
   --pine-deep: var(--green-deep);
   --clay: var(--brown);
-  --clay-bright: #a06a38; /* lighter brown — button hover */
+  --clay-bright: #a06a38; /* lighter brown - button hover */
   --gold: var(--honey);
   --plum: #6f4626; /* eyebrows are now woodland brown, not dusk purple */
-  --moonlight: #cfdcc4; /* pale sage — decorative accents only, not text */
+  --moonlight: #cfdcc4; /* pale sage - decorative accents only, not text */
   --ink: #23291c;
   --ink-soft: #49513f;
   --line: #ded2b8;
@@ -108,7 +108,7 @@ a {
 }
 
 a:hover {
-  /* deeper brown on hover — 7:1 on cream */
+  /* deeper brown on hover - 7:1 on cream */
   color: #6f4626;
 }
 
@@ -238,7 +238,7 @@ main > .section:first-child {
   min-height: 4.5rem;
 }
 
-/* Logo badge — lifted out of the header flow and bubbled over the bottom
+/* Logo badge - lifted out of the header flow and bubbled over the bottom
    edge: a cream seal straddling the gold divider and spilling into the hero.
    Left edge tracks the content column so it stays aligned, not adrift. */
 .wordmark {
@@ -289,7 +289,7 @@ main > .section:first-child {
   border-bottom-color: var(--gold);
 }
 
-/* Support Us — golden pill that draws the eye as primary nav CTA */
+/* Support Us - golden pill that draws the eye as primary nav CTA */
 .site-nav a.nav-cta {
   background: var(--honey);
   color: var(--pine-deep);
@@ -305,7 +305,7 @@ main > .section:first-child {
   border-bottom-color: transparent;
 }
 
-/* "What We Stand For" — always-visible accent so it reads as a stated
+/* "What We Stand For" - always-visible accent so it reads as a stated
    commitment, not a buried link */
 .site-nav a.nav-values {
   font-weight: 700;
@@ -319,7 +319,7 @@ main > .section:first-child {
 }
 
 /* ── Mobile navigation ─────────────────────────────────────────── */
-/* Hamburger toggle — hidden on wide screens */
+/* Hamburger toggle - hidden on wide screens */
 .nav-toggle {
   display: none;
   background: none;
@@ -442,7 +442,7 @@ main > .section:first-child {
   overflow: hidden;
 }
 
-/* botanical sprig line-art tucked into the hero corners — subtle accents,
+/* botanical sprig line-art tucked into the hero corners - subtle accents,
    scaled down so they support the centered hero card rather than frame it */
 .hero-sprig {
   position: absolute;
@@ -478,13 +478,13 @@ main > .section:first-child {
   pointer-events: none;
 }
 
-/* on narrow screens the wrapped eyebrow text reaches the right edge —
+/* on narrow screens the wrapped eyebrow text reaches the right edge,
    tuck the moon out of the way instead of overlapping it */
 @media (max-width: 640px) {
   .hero-moon {
     display: none;
   }
-  /* tighter vertical rhythm on phones — 4rem of section padding top+bottom
+  /* tighter vertical rhythm on phones - 4rem of section padding top+bottom
      reads as dead space on a small screen */
   .section {
     padding-block: var(--space-4);
@@ -568,7 +568,7 @@ main > .section:first-child {
   color: #fff;
 }
 
-/* Light-background outline variant — border + text in clay, fills on hover */
+/* Light-background outline variant - border + text in clay, fills on hover */
 .btn--clay-outline {
   border-color: var(--clay);
   color: var(--clay);
@@ -946,7 +946,7 @@ address {
   color: var(--ink-soft);
 }
 
-/* Cookie / privacy notice — fixed, non-modal bottom banner */
+/* Cookie / privacy notice - fixed, non-modal bottom banner */
 .cookie-notice {
   position: fixed;
   inset-inline: 0;
@@ -964,7 +964,7 @@ address {
   box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* display:flex above would defeat the hidden attribute — restore it */
+/* display:flex above would defeat the hidden attribute - restore it */
 .cookie-notice[hidden] {
   display: none;
 }
@@ -1044,7 +1044,7 @@ td {
 
 /* ── Botanical decorative accents ── */
 
-/* Parent section — enables absolute child positioning */
+/* Parent section - enables absolute child positioning */
 .section--botanical {
   position: relative;
   overflow: hidden;
@@ -1058,7 +1058,7 @@ td {
   display: block;
 }
 
-/* Light ghost variant — for dark (pine/night) backgrounds */
+/* Light ghost variant - for dark (pine/night) backgrounds */
 .botanical--tr {
   top: -24px;
   right: -32px;
@@ -1069,7 +1069,7 @@ td {
   transform: rotate(18deg);
 }
 
-/* Hero mushroom — bottom-right, partially behind ridge wave */
+/* Hero mushroom - bottom-right, partially behind ridge wave */
 .hero-mushroom {
   position: absolute;
   bottom: 48px;
@@ -1123,7 +1123,7 @@ td {
     margin-bottom: var(--space-3);
     border-radius: 8px;
   }
-  /* absolute decorative botanicals can crowd narrow layouts — drop them */
+  /* absolute decorative botanicals can crowd narrow layouts - drop them */
   .botanical {
     display: none;
   }

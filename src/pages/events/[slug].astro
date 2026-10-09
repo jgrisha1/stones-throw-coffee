@@ -13,7 +13,7 @@ const { Content } = await render(event);
 const { title, start, description, audience, cost, accessibility, performers, rsvpUrl, image } =
   event.data;
 const hasLocation = hasStreetAddress();
-const eventLocation = hasLocation ? `${BUSINESS.name}, ${fullAddress()}` : 'South Knoxville, TN — exact location TBA';
+const eventLocation = hasLocation ? `${BUSINESS.name}, ${fullAddress()}` : 'South Knoxville, TN (exact location TBA)';
 
 // Default the end time to two hours after start for calendar links/schema.
 const end = event.data.end ?? new Date(start.valueOf() + 2 * 60 * 60 * 1000);
@@ -37,7 +37,7 @@ const canonical = new URL(`/events/${event.id}/`, Astro.site).href;
 const gcalFmt = (d: Date) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
 const gcalUrl =
   'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-  `&text=${encodeURIComponent(`${title} — ${BUSINESS.name}`)}` +
+  `&text=${encodeURIComponent(`${title} | ${BUSINESS.name}`)}` +
   `&dates=${gcalFmt(start)}/${gcalFmt(end)}` +
   `&details=${encodeURIComponent(`${description}\n\n${canonical}`)}` +
   `&location=${encodeURIComponent(eventLocation)}`;

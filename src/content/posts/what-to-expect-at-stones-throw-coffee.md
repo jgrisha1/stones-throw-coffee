@@ -1,7 +1,7 @@
 ---
 title: "What to Expect at Stone's Throw Coffee"
-description: "Drinks, prices, local art, readings, music, and the kind of room we're building in South Knoxville — a plain-language tour of Stone's Throw Coffee before opening day."
-# Content-calendar week 2 — review, then set draft: false to publish.
+description: "Drinks, prices, local art, readings, music, and the kind of room we're building in South Knoxville: a plain-language tour of Stone's Throw Coffee before opening day."
+# Content-calendar week 2: review, then set draft: false to publish.
 pubDate: 2026-06-17
 draft: true
 ---
@@ -12,7 +12,7 @@ exactly what Stone's Throw Coffee will be when you walk in.
 **The drinks.** Espresso drinks (lattes from $5, cappuccinos, macchiatos,
 Americanos), dirty chai, hot cocoa, iced and drip coffee, and red eyes for
 the rough mornings. One flavor is always included free, and soy, oat, and
-almond milk are available. Our specialty is the chaga coffee — a spoonful
+almond milk are available. Our specialty is the mushroom coffee: a spoonful
 of chaga powder stirred into an iced latte, smoother than it sounds. The full
 [menu with prices](/menu/) is on the site, in real text, not a blurry photo.
 
@@ -20,7 +20,7 @@ of chaga powder stirred into an iced latte, smoother than it sounds. The full
 When you buy something off the wall, a Knoxville artist gets paid.
 
 **The calendar.** Drag shows, author readings, poetry, acoustic sets, open
-mics, book clubs, and queer community nights — most of them free, all of
+mics, book clubs, and queer community nights, most of them free, all of
 them listed on the [events page](/events/) with dates, times, parking notes,
 and who's performing.
 

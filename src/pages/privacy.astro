@@ -3,22 +3,20 @@ import Base from '../layouts/Base.astro';
 import { BUSINESS, fullAddress, has } from '../config';
 
 // ─────────────────────────────────────────────────────────────────────────
-// OWNER / LEGAL REVIEW REQUIRED BEFORE LAUNCH
-// This is an honest, plain-language template built from how the site actually
+// OWNER / LEGAL REVIEW RECOMMENDED
+// This is an honest, plain-language policy built from how the site actually
 // works today (see src/config.ts and the forms). It is NOT legal advice.
-// Before you go live:
 //   • Have someone (ideally counsel) review it for your jurisdiction (TN/US).
-//   • Confirm the named providers below match what you actually switch on:
-//       - Newsletter  → Buttondown / Mailchimp (config.newsletterAction)
-//       - Forms       → Formspree            (config.formspreeEndpoint)
-//       - Analytics   → Cloudflare Web Analytics (config.cloudflareAnalyticsToken)
-//       - Maps        → Google Maps embed (Visit page, click-to-load)
-//     Remove any you don't use; add any you add.
-//   • Update the "Last updated" date whenever you change this page.
+//   • Providers named below match what is switched on right now:
+//       - Forms + email signups → Formspree (config.formspreeEndpoint / newsletterAction)
+//       - Hosting + analytics   → Cloudflare Pages + Cloudflare Web Analytics
+//       - Maps                  → Google Maps embed (Visit page, click-to-load)
+//     If the email list moves to a mailing tool (e.g. Buttondown), name it in
+//     "Who we share it with" and link its privacy policy.
+//   • Update lastUpdated whenever you change this page.
 // ─────────────────────────────────────────────────────────────────────────
 
-// TODO(owner): update when you revise this policy.
-const lastUpdated = 'June 11, 2026';
+const lastUpdated = 'October 9, 2026';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -31,7 +29,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="eyebrow">The fine print, in plain language</p>
       <h1>Privacy &amp; Cookie Policy</h1>
       <p class="lede">
-        {BUSINESS.name} is built to be a welcoming, low-pressure place &mdash; online too. We collect
+        {BUSINESS.name} is built to be a welcoming, low-pressure place, online too. We collect
         as little as possible, we don&rsquo;t sell your information, and we try to explain the rest
         in plain English here.
       </p>
@@ -48,13 +46,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p><strong>Information you choose to give us.</strong></p>
       <ul>
         <li>
-          <strong>Email signups.</strong> If you join our email list, we collect the email address
-          you enter so we can send you shop updates. You can unsubscribe at any time.
+          <strong>Email signups.</strong> If you join our email list, using the sign-up form near the
+          bottom of most pages or the sign-up pop-up on our home page, we collect the email address
+          you enter so we can send you shop updates. You can ask to be removed at any time.
         </li>
         <li>
           <strong>Contact &amp; booking forms.</strong> If you message us or pitch an event, art, a
-          reading, or a performance, we collect what you put in the form &mdash; typically your name,
-          email address, and your message &mdash; so we can reply.
+          reading, or a performance, we collect what you put in the form, typically your name,
+          email address, and your message, so we can reply.
         </li>
       </ul>
       <p><strong>Information collected automatically.</strong></p>
@@ -65,7 +64,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           site secure and working. This is not used to identify you.
         </li>
         <li>
-          <strong>Privacy-friendly analytics.</strong> If enabled, we use a cookieless analytics tool
+          <strong>Privacy-friendly analytics.</strong> We use a cookieless analytics tool
           (Cloudflare Web Analytics) that reports aggregate, anonymous traffic trends. It does not use
           cookies, does not fingerprint you, and does not track you across other sites.
         </li>
@@ -85,10 +84,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         as needed for them to do that job:
       </p>
       <ul>
-        <li><strong>Email newsletter</strong> &mdash; our newsletter provider stores your email address and sends our updates.</li>
-        <li><strong>Form delivery</strong> &mdash; our form provider passes your message along to our inbox.</li>
-        <li><strong>Website hosting &amp; analytics</strong> &mdash; our host serves the site and provides the privacy-friendly, aggregate analytics described above.</li>
-        <li><strong>Maps</strong> &mdash; our Visit page can show a map embedded from Google. See <a href="#cookies">Cookies &amp; tracking</a> below.</li>
+        <li>
+          <strong>Forms &amp; email signups.</strong>
+          <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree</a>
+          receives what you submit through our sign-up, contact, and booking forms, filters out spam,
+          and passes it along to our inbox. It may also keep a copy in our account there.
+        </li>
+        <li>
+          <strong>Website hosting &amp; analytics.</strong>
+          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a>
+          serves the site and provides the privacy-friendly, aggregate analytics described above.
+        </li>
+        <li>
+          <strong>Maps.</strong> Our Visit page can show a map embedded from Google. See
+          <a href="#cookies">Cookies &amp; tracking</a> below.
+        </li>
       </ul>
       <p>We may also share information if the law requires it. Otherwise, it stays with us.</p>
 
@@ -101,17 +111,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <li>
           <strong>Essential only.</strong> The site itself uses only what&rsquo;s necessary to work,
           plus a small piece of browser storage to remember that you&rsquo;ve dismissed our cookie
-          notice (so it doesn&rsquo;t keep reappearing). That preference stays on your device.
+          notice or our sign-up pop-up (so they don&rsquo;t keep reappearing). Those preferences stay
+          on your device.
         </li>
         <li>
-          <strong>Analytics.</strong> Our analytics, when enabled, are cookieless &mdash; no analytics
-          cookies are set.
+          <strong>Analytics.</strong> Our analytics are cookieless, so no analytics cookies are set.
         </li>
         <li>
           <strong>The embedded map.</strong> The map on our <a href={`${base}/visit/`}>Visit page</a> is provided
           by Google and can set its own cookies. Because of that, it <strong>does not load until you
           click to load it</strong>. If you&rsquo;d rather not, you can open the location directly in
-          Google Maps in a new tab instead &mdash; your choice, every time.
+          Google Maps in a new tab instead. Your choice, every time.
         </li>
       </ul>
       <p>
@@ -121,7 +131,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <h2>Your choices</h2>
       <ul>
-        <li><strong>Unsubscribe</strong> from emails any time using the link in any email we send.</li>
+        <li>
+          <strong>Unsubscribe</strong> from our emails any time by emailing us at
+          <a href={`mailto:${BUSINESS.email}`}> {BUSINESS.email}</a>, or by using the unsubscribe link
+          in any email we send.
+        </li>
         <li>
           <strong>Access, correct, or delete</strong> the information you&rsquo;ve given us by emailing
           <a href={`mailto:${BUSINESS.email}`}> {BUSINESS.email}</a>. We&rsquo;ll take care of it.
@@ -130,9 +144,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <h2>How long we keep it</h2>
       <p>
-        We keep your information only as long as we need it for the purpose you gave it to us &mdash;
-        for example, until you unsubscribe, or for a reasonable time after we&rsquo;ve answered your
-        message &mdash; and then we delete or anonymize it.
+        We keep your information only as long as we need it for the purpose you gave it to us, for
+        example, until you unsubscribe, or for a reasonable time after we&rsquo;ve answered your
+        message, and then we delete or anonymize it.
       </p>
 
       <h2>Children&rsquo;s privacy</h2>

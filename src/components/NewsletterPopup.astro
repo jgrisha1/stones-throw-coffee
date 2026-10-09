@@ -3,7 +3,7 @@
  * Homepage email-capture popup.
  *
  * Rendered hidden, then revealed by the inline script ONCE per visitor after a
- * short delay / scroll / exit-intent — never on first paint, and never again
+ * short delay / scroll / exit-intent - never on first paint, and never again
  * once dismissed or signed up (stored in localStorage on the device). Submits
  * to the same Formspree form as the signup band via AJAX, so the visitor gets
  * an inline "Thanks!" without leaving the page. Only rendered when a newsletter
@@ -34,11 +34,11 @@ const ready = has(BUSINESS.newsletterAction);
         <h2 id="np-title" class="np-title">Be first through the doors</h2>
         <p id="np-desc" class="np-desc">
           Get opening news, menu specials, and event announcements as we build the shop.
-          No spam, no selling your info &mdash; just what&rsquo;s happening.
+          No spam, no selling your info. Just what&rsquo;s happening.
         </p>
         <form class="np-form" id="np-form" action={BUSINESS.newsletterAction} method="post">
           {/* Labels this signup in the inbox; honeypot traps bots. */}
-          <input type="hidden" name="_subject" value="New email-list signup — homepage popup" />
+          <input type="hidden" name="_subject" value="New email-list signup: homepage popup" />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <label class="visually-hidden" for="np-email">
             Email address
@@ -266,7 +266,7 @@ const ready = has(BUSINESS.newsletterAction);
       if (e.target === el) close('dismissed'); // backdrop click
     });
 
-    // AJAX submit to Formspree — inline thanks, no new tab.
+    // AJAX submit to Formspree - inline thanks, no new tab.
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -281,7 +281,7 @@ const ready = has(BUSINESS.newsletterAction);
             if (res.ok) {
               store('signed');
               form.hidden = true;
-              if (statusEl) statusEl.textContent = "Thanks — you're on the list! We'll be in touch.";
+              if (statusEl) statusEl.textContent = "Thanks, you're on the list! We'll be in touch.";
               setTimeout(function () { close(); }, 2200);
             } else {
               throw new Error('bad response');
@@ -291,13 +291,13 @@ const ready = has(BUSINESS.newsletterAction);
             if (submitBtn) submitBtn.disabled = false;
             if (statusEl) {
               statusEl.setAttribute('data-state', 'error');
-              statusEl.textContent = 'Something went wrong — please try again.';
+              statusEl.textContent = 'Something went wrong. Please try again.';
             }
           });
       });
     }
 
-    // Triggers: whichever fires first — a delay, a scroll depth, or exit intent.
+    // Triggers: whichever fires first - a delay, a scroll depth, or exit intent.
     var timer = setTimeout(open, 12000);
     function onScroll() {
       var sc = window.scrollY + window.innerHeight;

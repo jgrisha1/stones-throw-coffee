@@ -7,7 +7,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-// pubDate is date-only frontmatter (parsed as UTC midnight) — format in UTC
+// pubDate is date-only frontmatter (parsed as UTC midnight) - format in UTC
 // or the date renders one day early in US timezones.
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-US', {
@@ -21,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 <Base
   title="Updates & News | Stone's Throw Coffee in South Knoxville"
-  description="News from Stone's Throw Coffee in South Knoxville — opening progress, menu news, and featured local artists and authors."
+  description="News from Stone's Throw Coffee in South Knoxville: opening progress, menu news, and featured local artists and authors."
 >
   <section class="section">
     <div class="wrap">
@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <h1>Updates &amp; News</h1>
       <p class="lede">
         Opening progress, menu news, featured artists and authors, and everything happening as we
-        build the shop — written by us, not a marketing robot.
+        build the shop, written by us, not a marketing robot.
       </p>
       {
         posts.length > 0 ? (

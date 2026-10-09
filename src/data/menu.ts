@@ -1,5 +1,5 @@
 /**
- * The menu, as data. Edit prices and items HERE — the Menu page renders this
+ * The menu, as data. Edit prices and items HERE - the Menu page renders this
  * as real HTML text (which Google can read, unlike a flattened image) and
  * also generates schema.org Menu structured data from the same object,
  * so the two can never drift apart.
@@ -30,7 +30,7 @@ export const MENU: MenuSection[] = [
           { name: 'Latte', prices: [{ label: 'Medium', amount: 5.0 }, { label: 'Large', amount: 5.25 }] },
           {
                     name: 'Specialty Latte',
-                    description: 'Rotating house flavors — announced as we get closer to opening.',
+                    description: 'Rotating house flavors, announced as we get closer to opening.',
                     prices: [{ label: 'Medium', amount: 5.5 }, { label: 'Large', amount: 6.0 }],
           },
           { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.75 }, { label: 'Medium', amount: 5.0 }] },
@@ -48,11 +48,11 @@ export const MENU: MenuSection[] = [
   },
   {
         name: 'Tea, Chai & Cocoa',
-        note: 'Specialty teas are also available — selections will be announced as we get closer to opening.',
+        note: 'Specialty teas are also available. Selections will be announced as we get closer to opening.',
         items: [
           {
                     name: 'Premium Loose Leaf Tea',
-                    description: 'Hand-steeped specialty loose leaf — Black, Oolong, White, Green, Earl Grey, or Citrus Chamomile.',
+                    description: 'Hand-steeped specialty loose leaf: Black, Oolong, White, Green, Earl Grey, or Citrus Chamomile.',
                     prices: [{ label: 'Medium', amount: 5.15 }, { label: 'Large', amount: 5.35 }],
           },
           {
@@ -100,13 +100,13 @@ export const MENU: MenuSection[] = [
         note: 'One complimentary flavor is included with any drink. Whole milk and half and half are standard; soy, oat, and almond milk are available.',
         items: [
           { name: 'Additional Flavor', prices: [{ amount: 0.25 }] },
-          { name: 'Alt Milk — soy, oat, or almond', prices: [{ amount: 0.5 }] },
+          { name: 'Alt Milk (soy, oat, or almond)', prices: [{ amount: 0.5 }] },
               ],
   },
   ];
 
 /**
- * Flavor list — rendered as real HTML text on the Menu page (scannable on
+ * Flavor list - rendered as real HTML text on the Menu page (scannable on
  * mobile, readable by Google). One flavor is complimentary with each
  * eligible drink; additional flavors are $0.25 each.
  */

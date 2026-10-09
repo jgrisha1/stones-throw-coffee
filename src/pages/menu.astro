@@ -5,7 +5,7 @@ import { MENU, FLAVORS, formatPrice } from '../data/menu';
 import { PARTNERS, PEOPLE, showPersonalNames } from '../data/partners';
 
 // schema.org Menu structured data, generated from the same data the page
-// renders — prices on the page and prices in search results can't drift.
+// renders - prices on the page and prices in search results can't drift.
 const menuId = new URL('/menu/#menu', Astro.site).href;
 const menuSchema = {
   '@context': 'https://schema.org',
@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 <Base
   title="Menu | Stone's Throw Coffee in South Knoxville"
-  description="The Stone's Throw Coffee menu — handcrafted lattes, dirty chai, specialty teas, matcha, drip, and chaga coffee, priced like a South Knoxville neighborhood shop."
+  description="The Stone's Throw Coffee menu: handcrafted lattes, dirty chai, specialty teas, matcha, drip, and mushroom coffee, priced like a South Knoxville neighborhood shop."
   jsonLd={[menuSchema]}
   menuRef={{ '@id': menuId }}
 >
@@ -44,7 +44,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <p class="eyebrow">Drinks &amp; prices</p>
       <h1>The Menu</h1>
       <p class="lede">
-        Handcrafted espresso drinks, chai, specialty teas, matcha, cocoa, and coffee — made in
+        Handcrafted espresso drinks, chai, specialty teas, matcha, cocoa, and coffee, made in
         South Knoxville, priced like a neighborhood shop. One complimentary flavor is included
         with any drink, and whole milk, half and half, soy, oat, and almond milk are always
         available.
@@ -74,7 +74,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <div class="menu-section">
         <h2 id="food">Food</h2>
         <p class="menu-section__note">
-          We&rsquo;re working on food options to pair with your drink &mdash; details coming as we
+          We&rsquo;re working on food options to pair with your drink. Details coming as we
           get closer to opening. Follow our <a href={`${base}/updates/`}>updates</a> for the latest.
         </p>
       </div>
@@ -91,9 +91,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         {FLAVORS.map((flavor) => <li>{flavor}</li>)}
       </ul>
 
-      <h2 id="chaga-coffee">About our chaga coffee</h2>
+      <h2 id="mushroom-coffee">About our mushroom coffee</h2>
       <p>
-        If you&rsquo;ve been searching for chaga coffee in Knoxville, this is ours. Our Chaga
+        If you&rsquo;ve been searching for mushroom coffee in Knoxville, this is ours. Our Mushroom
         Coffee combines chaga powder with an iced latte. Chaga adds a mild, earthy note while the
         espresso and milk keep the drink familiar. Follow our
         <a href={`${base}/updates/`}>updates</a> for opening details and event announcements.

@@ -31,7 +31,7 @@ const pageTitle = post.data.title.includes("Stone's Throw Coffee")
   ? post.data.title
   : `${post.data.title} | Stone's Throw Coffee`;
 
-// pubDate is date-only frontmatter (parsed as UTC midnight) — format in UTC
+// pubDate is date-only frontmatter (parsed as UTC midnight) - format in UTC
 // or the date renders one day early in US timezones.
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-US', {
