@@ -1,0 +1,16 @@
+# Cloudflare Pages response headers (https://developers.cloudflare.com/pages/configuration/headers/)
+# HSTS is set at the Cloudflare edge (SSL/TLS > Edge Certificates), not here.
+# No Content-Security-Policy on purpose: the site relies on inline scripts (JSON-LD,
+# cookie notice, popup, map consent) plus Formspree, Google Maps and the Cloudflare
+# analytics beacon. A CSP needs hashes/nonces for each, so add one deliberately later.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# Astro fingerprints everything in /_astro/ (hash in the filename), so it can cache forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
