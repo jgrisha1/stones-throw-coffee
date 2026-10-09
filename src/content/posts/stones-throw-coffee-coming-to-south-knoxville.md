@@ -25,8 +25,8 @@ Here's what we're building, plainly:
   a drink in hand to belong.
 
 We'll post the confirmed location, hours, and first events right here on the
-[updates page](/updates/). An email list is on the way too. Watch the
-bottom of any page for the signup once it's live.
+[updates page](/updates/). Our email list is open too, so you can find the
+signup at the bottom of any page.
 
 Until then: we're a stone's throw away, and we're getting the plan ready
 for you. [Follow the opening details](/visit/).
