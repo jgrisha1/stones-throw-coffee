@@ -171,10 +171,23 @@ const schemaBlocks = [localBusiness, ...jsonLd];
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <Header />
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer />
     <CookieNotice />
+    <script is:inline>
+      (function () {
+        var links = document.querySelectorAll('a[target="_blank"]');
+        for (var i = 0; i < links.length; i++) {
+          var a = links[i];
+          if (a.hasAttribute('aria-label') || a.querySelector('.visually-hidden')) continue;
+          var hint = document.createElement('span');
+          hint.className = 'visually-hidden';
+          hint.textContent = ' (opens in a new tab)';
+          a.appendChild(hint);
+        }
+      })();
+    </script>
   </body>
 </html>

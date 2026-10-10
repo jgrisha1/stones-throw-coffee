@@ -899,6 +899,11 @@ address {
 }
 
 /* --- misc --- */
+/* the skip link moves focus here; the container itself needs no focus ring */
+main:focus {
+  outline: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
