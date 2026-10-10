@@ -40,7 +40,7 @@ const events = defineCollection({
 
 /**
  * Updates/news posts: one markdown file per post in src/content/posts/.
- * These power the /updates/ section - the weekly content-calendar posts.
+ * These power the /updates/ section: announcements and news from the shop.
  */
 const posts = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/posts' }),
