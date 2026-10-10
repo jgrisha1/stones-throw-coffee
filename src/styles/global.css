@@ -1024,14 +1024,15 @@ td {
   max-width: var(--measure);
 }
 
+/* Values page: headings and body share one left-aligned text column, centered on the page.
+   (Headings used to be centered across the full width, so long ones stuck out past the
+   paragraphs and short ones floated.) */
 .values-prose {
   text-align: left;
 }
-.values-prose h2 {
-  text-align: center;
-}
 
 .values-prose :is(p, h2, h3, ul, ol) {
+  max-width: 34rem;
   margin-inline: auto;
 }
 
