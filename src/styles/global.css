@@ -1273,3 +1273,6 @@ main:has(> section.section--pine:last-of-type) + .site-footer {
 .coming-soon-events li {
   margin-bottom: var(--space-1);
 }
+.coming-soon-events .menu-item__desc {
+  margin-bottom: var(--space-2);
+}

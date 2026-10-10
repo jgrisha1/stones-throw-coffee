@@ -64,9 +64,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           </li>
         </ul>
         <p class="menu-item__desc">Dates and times will be posted here and sent to our email list.</p>
+        <p>
+          Are you a local author, musician, poet, or artist who wants to be part of it?
+          <a href={`${base}/art-and-authors/`}>Apply to be featured</a> or
+          <a href={`${base}/contact/`}>pitch an event</a>.
+        </p>
       </div>
       {
-        upcoming.length > 0 ? (
+        upcoming.length > 0 && (
           <div class="grid">
             {upcoming.map((event) => (
               <a class="card event-card" href={`${base}/events/${event.id}/`}>
@@ -78,21 +83,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
                 <p class="menu-item__desc">{event.data.cost}</p>
               </a>
             ))}
-          </div>
-        ) : (
-          <div class="card" style="max-width: 44rem;">
-            <h3>The calendar is warming up</h3>
-            <p>
-              Drag shows, book clubs, open mics, workshops, craft nights, vendor markets, and
-              community meetups are all part of the vision for Stone&rsquo;s Throw. We&rsquo;re
-              booking our first events now. Dates will land here first, and by email to everyone on
-              our list.
-            </p>
-            <p>
-              Are you a local author, musician, poet, or artist who wants to be part of it?
-              <a href={`${base}/art-and-authors/`}>Apply to be featured</a> or
-              <a href={`${base}/contact/`}>pitch an event</a>.
-            </p>
           </div>
         )
       }

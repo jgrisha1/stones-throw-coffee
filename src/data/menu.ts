@@ -52,7 +52,7 @@ export const MENU: MenuSection[] = [
         items: [
           {
                     name: 'Premium Loose Leaf Tea',
-                    description: 'Hand-steeped loose leaf. Choose from seven teas, from Honey Orchid Oolong to Chamomile.',
+                    description: 'Hand-steeped loose leaf: black, green, white, oolong, and herbal teas.',
                     prices: [{ label: 'Medium', amount: 5.15 }, { label: 'Large', amount: 5.35 }],
           },
           {
