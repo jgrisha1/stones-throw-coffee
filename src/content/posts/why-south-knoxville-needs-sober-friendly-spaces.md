@@ -1,8 +1,8 @@
 ---
 title: "Why South Knoxville Still Needs Sober-Friendly Community Spaces"
-description: "Most evening gathering places in Knoxville are built around alcohol. Stone's Throw Coffee is building sober-friendly community events into its foundation: here's why that matters."
-# Content-calendar week 4: review, then set draft: false to publish.
-pubDate: 2026-07-01
+seoTitle: "South Knoxville Sober-Friendly Spaces | Stone's Throw Coffee"
+description: "Most evening gathering places in Knoxville revolve around alcohol. Stone's Throw Coffee is building sober-friendly community into its foundation. Here's why."
+pubDate: 2026-10-26
 draft: true
 ---
 
@@ -16,9 +16,9 @@ breweries carry the night. For a lot of folks (queer folks especially, for
 whom nightlife has historically been the *only* gathering infrastructure),
 the choice becomes: drink, or stay home.
 
-South Knoxville has already proven there's real demand for evenings that
-don't revolve around alcohol: readings, art nights, game nights, grief and
-joy in the same room, nobody checking what's in your cup.
+We think South Knoxville is ready for evenings that don't revolve around
+alcohol: readings, art nights, game nights, grief and joy in the same room,
+nobody checking what's in your cup.
 
 Stone's Throw Coffee is building that into the foundation, not bolting it on:
 

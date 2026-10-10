@@ -1,8 +1,7 @@
 ---
 title: "What to Expect at Stone's Throw Coffee"
-description: "Drinks, prices, local art, readings, music, and the kind of room we're building in South Knoxville: a plain-language tour of Stone's Throw Coffee before opening day."
-# Content-calendar week 2: review, then set draft: false to publish.
-pubDate: 2026-06-17
+description: "Drinks, prices, local art, readings, music, and the kind of room we're building in South Knoxville: a plain-language tour before opening day."
+pubDate: 2026-10-12
 draft: true
 ---
 
@@ -29,7 +28,9 @@ means evening events that don't revolve around alcohol. A place you can work
 for an hour, meet somebody, or just sit with a book and not be hurried out.
 
 **The location.** 3615A Chapman Highway in South Knoxville, the former South
-Press space. Directions, parking, and accessibility notes will be added to the
-[visit page](/visit/) before opening.
+Press space. Hours and accessibility details are on the [visit page](/visit/) now, with
+parking notes to come before opening. Every member of our staff will be trained
+to take orders in ASL and Spanish, and most of our seating is wheelchair
+accessible and size inclusive.
 
 Opening details are coming soon. Sign up below and you'll hear it first.
