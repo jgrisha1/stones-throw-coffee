@@ -1,5 +1,5 @@
 ---
-import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay } from '../config';
+import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay, hoursNote } from '../config';
 const hours = hoursDisplay();
 const year = new Date().getFullYear();
 const hasLocation = hasStreetAddress();
@@ -44,8 +44,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               {hours.map((line) => (
                 <li>{line}</li>
               ))}
-              <li>Closed Tuesdays</li>
             </ul>
+            <p style="margin: 0.35rem 0 0; font-size: 0.9em;">{hoursNote()}</p>
           ) : (
             <p>Hours coming soon. Follow along for our opening announcement.</p>
           )

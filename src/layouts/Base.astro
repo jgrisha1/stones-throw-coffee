@@ -108,12 +108,16 @@ if (has(BUSINESS.geo.latitude) && has(BUSINESS.geo.longitude)) {
     longitude: BUSINESS.geo.longitude,
   };
 }
-if (BUSINESS.hours.length) {
-  localBusiness.openingHoursSpecification = BUSINESS.hours.map((rule) => ({
+// Hours go into structured data only once an opening date exists, and are marked valid from
+// that date, so search engines don't show a shop that hasn't opened as "open now".
+const openRules = BUSINESS.hours.filter((rule) => !rule.closed && rule.opens && rule.closes);
+if (openRules.length && has(BUSINESS.openingDate)) {
+  localBusiness.openingHoursSpecification = openRules.map((rule) => ({
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: rule.days,
     opens: rule.opens,
     closes: rule.closes,
+    validFrom: BUSINESS.openingDate,
   }));
 }
 if (sameAs.length) localBusiness.sameAs = sameAs;

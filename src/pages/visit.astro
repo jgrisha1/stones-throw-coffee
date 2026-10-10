@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay } from '../config';
+import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay, hoursNote } from '../config';
 
 const hours = hoursDisplay();
 const hasLocation = hasStreetAddress();
@@ -60,9 +60,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
                   {hours.map((line) => (
                     <li>{line}</li>
                   ))}
-                  <li>Closed Tuesdays</li>
                 </ul>
-                <p class="menu-item__desc" style="margin-top: var(--space-1);">Starting opening day. Date coming soon.</p>
+                <p class="menu-item__desc" style="margin-top: var(--space-1);">{hoursNote()}</p>
               </>
             ) : (
               <p>
@@ -153,8 +152,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
       <h2>Accessibility</h2>
       <p>
-        Every member of our staff is being trained to take orders in ASL and Spanish. Most of our
-        seating is wheelchair accessible and size inclusive, so you can pick a spot that fits you.
+        Every member of our staff will be trained to take orders in ASL and Spanish, so you can
+        expect to order in either language. Most of our seating is wheelchair accessible and size inclusive, so you can pick a spot that fits you.
         More details about the entrance, restrooms, and parking will be posted before opening.
         Questions in the meantime? <a href={`${base}/contact/`}>Reach out</a>.
       </p>

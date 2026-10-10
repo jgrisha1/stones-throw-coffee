@@ -14,10 +14,12 @@
 export interface HoursRule {
   /** schema.org day names: Monday, Tuesday, ... Sunday */
   days: string[];
-  /** 24h time, e.g. '07:00' */
-  opens: string;
-  /** 24h time, e.g. '18:00' */
-  closes: string;
+  /** 24h time, e.g. '07:00'. Omit for a closed day. */
+  opens?: string;
+  /** 24h time, e.g. '18:00'. Omit for a closed day. */
+  closes?: string;
+  /** True for a day the shop is closed: shown on the page, left out of structured data. */
+  closed?: boolean;
 }
 
 export const BUSINESS = {
@@ -48,9 +50,12 @@ export const BUSINESS = {
   email: 'stonesthrowcoffeeco@gmail.com',
 
   // --- Hours ---
-  // 8am to 6pm every day except Tuesday (closed).
+  // 8am to 6pm every day except Tuesday (closed). Shown on the site now, but only emitted
+  // to structured data (schema.org) once openingDate is set, so search engines never show
+  // the shop as open before it has opened.
   hours: [
     { days: ['Monday'], opens: '08:00', closes: '18:00' },
+    { days: ['Tuesday'], closed: true },
     { days: ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '18:00' },
   ] as HoursRule[],
 
@@ -154,5 +159,18 @@ export const hoursDisplay = (): string[] =>
       rule.days.length > 2
         ? `${DAY_ABBREV[rule.days[0]]}–${DAY_ABBREV[rule.days[rule.days.length - 1]]}`
         : rule.days.map((d) => DAY_ABBREV[d]).join(' & ');
+    if (rule.closed || !rule.opens || !rule.closes) return `${days}: Closed`;
     return `${days}: ${formatTime(rule.opens)}–${formatTime(rule.closes)}`;
   });
+
+/** One shared note shown wherever hours appear, so hours never read as "open now". */
+export const hoursNote = (): string => {
+  if (!has(BUSINESS.openingDate)) return 'Starting opening day. Date coming soon.';
+  const d = new Date(`${BUSINESS.openingDate}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+  return `Starting ${d}.`;
+};
