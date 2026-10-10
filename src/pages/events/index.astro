@@ -54,13 +54,39 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <div class="coming-soon-events">
         <h3>Coming soon</h3>
         <ul>
-          <li>
-            <strong>ASL classes</strong> with Jake Barker.
-            <a href="https://www.facebook.com/share/1FY8AgCHN2/" target="_blank" rel="noopener noreferrer">Details on Facebook</a>
+          <li class="host-card">
+            <img
+              class="host-card__logo"
+              src={`${base}/images/sign-of-change-logo.webp`}
+              width="320"
+              height="320"
+              loading="lazy"
+              decoding="async"
+              alt="Sign of Change logo: two rainbow-colored hands above the words Sign of Change, with the tagline Bridging Deaf and LGBTQ+ Communities"
+            />
+            <div class="host-card__body">
+              <p class="host-card__title"><strong>ASL classes</strong> with Jake Barker</p>
+              <p class="host-card__tagline"><em>Sign of Change: Bridging Deaf and LGBTQ+ Communities</em></p>
+              <p>
+                Sign of Change builds bridges between Deaf and hearing communities through inclusive
+                education, cultural awareness, and advocacy. Jake leads its ASL classes, sensitivity
+                trainings, and workshops.
+              </p>
+              <p>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61575062193754"
+                  target="_blank"
+                  rel="noopener noreferrer">Sign of Change on Facebook</a>
+              </p>
+            </div>
           </li>
-          <li>
-            <strong>Poetics of Place: Writing at the Intersection of Queerness &amp; Nature</strong>, a
-            writing workshop hosted by Jaq Hackworthy
+          <li class="host-card">
+            <div class="host-card__body">
+              <p class="host-card__title">
+                <strong>Poetics of Place: Writing at the Intersection of Queerness &amp; Nature</strong>, a
+                writing workshop hosted by Jaq Hackworthy
+              </p>
+            </div>
           </li>
         </ul>
         <p class="menu-item__desc">Dates and times will be posted here and sent to our email list.</p>
