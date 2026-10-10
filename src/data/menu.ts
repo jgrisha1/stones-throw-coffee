@@ -48,11 +48,11 @@ export const MENU: MenuSection[] = [
   },
   {
         name: 'Tea, Chai & Cocoa',
-        note: 'Specialty teas are also available. Selections will be announced as we get closer to opening.',
+        note: 'See our full loose leaf tea list, with tasting notes, below.',
         items: [
           {
                     name: 'Premium Loose Leaf Tea',
-                    description: 'Hand-steeped specialty loose leaf: Black, Oolong, White, Green, Earl Grey, or Citrus Chamomile.',
+                    description: 'Hand-steeped loose leaf. Choose from seven teas, from Honey Orchid Oolong to Chamomile.',
                     prices: [{ label: 'Medium', amount: 5.15 }, { label: 'Large', amount: 5.35 }],
           },
           {
@@ -116,16 +116,28 @@ export const FLAVORS = [
     'Candied orange',
     'Caramel',
     'Chai',
+    'Chocolate',
     'Cinnamon bun',
     'Cookie butter',
     'French vanilla',
-    'Mocha',
+    'Lavender',
     'Peanut butter',
-    'Pistachio',
+    'Pumpkin spice',
     'Roasted hazelnut',
     'Sugar-free caramel',
     'Sugar-free vanilla',
     'White chocolate',
+  ];
+
+/** Loose leaf teas with tasting notes, rendered on the Menu page. */
+export const TEAS: { name: string; notes?: string }[] = [
+    { name: 'Chamomile', notes: 'floral, apple, sweet strawberry' },
+    { name: 'Clear Heart White Tea', notes: 'tangerine, allspice, rose water' },
+    { name: 'Earl Grey', notes: 'blue cornflower, bergamot, citrus' },
+    { name: 'Formosa Green Tea', notes: 'sweet corn, opal apple, mung bean' },
+    { name: 'Honey Alpine Black Tea', notes: 'Madagascar vanilla, sandalwood, brûlée' },
+    { name: 'Honey Orchid Oolong Tea', notes: 'lychee, elderflower, clover honey' },
+    { name: 'Peppermint' },
   ];
 
 

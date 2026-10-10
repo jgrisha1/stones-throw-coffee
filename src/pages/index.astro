@@ -246,7 +246,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           <h3 style="margin-top:0;">Hours</h3>
           {
             hours.length ? (
-              <ul>{hours.map((line) => <li>{line}</li>)}</ul>
+              <ul>{hours.map((line) => <li>{line}</li>)}<li>Closed Tuesdays</li></ul>
             ) : (
               <p>Hours coming soon. We&rsquo;ll post them here and on Google before we open.</p>
             )

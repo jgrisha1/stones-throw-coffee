@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import { MENU, FLAVORS, formatPrice } from '../data/menu';
+import { MENU, FLAVORS, TEAS, formatPrice } from '../data/menu';
 import { PARTNERS, PEOPLE, showPersonalNames } from '../data/partners';
 
 // schema.org Menu structured data, generated from the same data the page
@@ -80,6 +80,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       </div>
 
       <div class="media-banner" aria-hidden="true" style={`background-image: url('${base}/images/menu-flavors-botanical-syrups.webp'); margin-top: var(--space-4);`}></div>
+
+      <h2 id="teas">Loose Leaf Teas</h2>
+      <ul class="tea-list">
+        {TEAS.map((tea) => (
+          <li>
+            <span class="tea-list__name">{tea.name}</span>
+            {tea.notes && <span class="tea-list__notes">{tea.notes}</span>}
+          </li>
+        ))}
+      </ul>
 
       <h2 id="flavors">Flavors</h2>
       <p>

@@ -29,8 +29,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <h1>Visit Stone&rsquo;s Throw Coffee</h1>
       <p class="lede">
         We&rsquo;ve found our home: 3615 Chapman Highway in South Knoxville, the former South Press
-        space. Painting has started, and hours, parking, and accessibility details will be posted
-        here before opening day.
+        space. Painting has started. Hours and accessibility details are below, and parking notes
+        will be posted before opening day.
       </p>
 
       <div class="grid">
@@ -55,11 +55,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           <h2>Hours</h2>
           {
             hours.length ? (
-              <ul style="list-style:none; padding:0; margin:0;">
-                {hours.map((line) => (
-                  <li>{line}</li>
-                ))}
-              </ul>
+              <>
+                <ul style="list-style:none; padding:0; margin:0;">
+                  {hours.map((line) => (
+                    <li>{line}</li>
+                  ))}
+                  <li>Closed Tuesdays</li>
+                </ul>
+                <p class="menu-item__desc" style="margin-top: var(--space-1);">Starting opening day. Date coming soon.</p>
+              </>
             ) : (
               <p>
                 Opening date and hours coming soon. We&rsquo;ll post them here and on our Google
@@ -149,9 +153,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
       <h2>Accessibility</h2>
       <p>
-        Accessibility is part of the build-out, not an afterthought. Before opening, we&rsquo;ll
-        publish concrete details about the entrance, restrooms, seating, aisles, and parking.
-        In the meantime, <a href={`${base}/contact/`}>reach out</a> with any access questions.
+        Every member of our staff is being trained to take orders in ASL and Spanish. Most of our
+        seating is wheelchair accessible and size inclusive, so you can pick a spot that fits you.
+        More details about the entrance, restrooms, and parking will be posted before opening.
+        Questions in the meantime? <a href={`${base}/contact/`}>Reach out</a>.
       </p>
 
       <h2>Getting here</h2>

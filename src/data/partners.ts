@@ -25,11 +25,9 @@ export const SOURCING = [
  * public. Add a `url` to any entry to turn it into a link.
  */
 export const PARTNERS: { name: string; url?: string }[] = [
-  { name: 'Choice Health Network' },
-  { name: 'Coffee and Chocolate' },
-  { name: 'Counter Culture Coffee' },
   { name: 'Frog Juice Kombucha' },
-  { name: 'Small Comforts Kitchen' },
+  { name: 'SoKno Sourdough' },
+  { name: 'Silver Springs Bakery' },
 ];
 
 /**

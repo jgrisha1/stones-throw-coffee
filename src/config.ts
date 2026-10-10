@@ -48,8 +48,11 @@ export const BUSINESS = {
   email: 'stonesthrowcoffeeco@gmail.com',
 
   // --- Hours ---
-  // Add confirmed operating hours after the location and staffing plan are set.
-  hours: [] as HoursRule[],
+  // 8am to 6pm every day except Tuesday (closed).
+  hours: [
+    { days: ['Monday'], opens: '08:00', closes: '18:00' },
+    { days: ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '18:00' },
+  ] as HoursRule[],
 
   // Tentative opening date, e.g. '2026-09-26'. Left blank until the occupancy
   // certificate is in hand - while empty, the home page shows "coming soon"
