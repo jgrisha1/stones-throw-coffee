@@ -47,6 +47,8 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    /** Optional shorter <title>/og:title (aim for 60 characters or fewer); the on-page headline stays `title`. */
+    seoTitle: z.string().optional(),
     pubDate: z.coerce.date(),
     /** Optional share image in /public, e.g. /images/posts/storefront.webp (1200x630 works best) */
     image: z.string().optional(),

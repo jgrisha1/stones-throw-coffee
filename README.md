@@ -32,7 +32,7 @@ Almost everything that still needs a human decision lives in **one file**:
 - [ ] **Newsletter action URL** — activates the email signup bands
       (free at buttondown.com)
 - [ ] **Cloudflare Web Analytics token** — privacy-friendly analytics
-- [x] **Confirmed street address** — 3615 Chapman Hwy, Knoxville, TN 37920
+- [x] **Confirmed street address** — 3615A Chapman Hwy, Knoxville, TN 37920
 
 A few content TODOs live as HTML comments in the pages themselves — search
 the repo for `TODO`:

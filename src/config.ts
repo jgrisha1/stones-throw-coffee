@@ -32,7 +32,7 @@ export const BUSINESS = {
   // Lease signed October 2026: former South Press space. Keep this formatted
   // exactly as it appears on the Google Business Profile.
   address: {
-    street: '3615 Chapman Hwy',
+    street: '3615A Chapman Hwy',
     city: 'Knoxville',
     state: 'TN',
     zip: '37920',

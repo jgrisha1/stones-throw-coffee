@@ -1,6 +1,7 @@
 ---
 title: "Stone's Throw Coffee Is Coming to the Former South Press Location"
-description: "Stone's Throw Coffee, a queer-owned, sober-friendly coffee shop and arts space, is opening at 3615 Chapman Highway in South Knoxville, the former home of South Press."
+seoTitle: "Stone's Throw Coffee Coming to the Former South Press Space"
+description: "Stone's Throw Coffee, a queer-owned, sober-friendly coffee shop and arts space, is opening at 3615A Chapman Highway, the former South Press location."
 pubDate: 2026-10-05
 draft: false
 ---
@@ -37,7 +38,7 @@ And we take that responsibility seriously.
 
 Over the coming weeks, we'll finally be able to show you more of what we've been building: the space, the menu, the art, the people helping make it happen, and, yes, the opening date, when we are absolutely, positively sure we can give you one without immediately having to post a correction afterward. We've learned enough about construction timelines to know better than to tempt fate.
 
-For now, though, we just wanted you to know where to find us: **3615 Chapman Highway, Knoxville, TN 37920.** Directions, parking, and accessibility details will live on our [Visit page](/visit/) as we confirm them.
+For now, though, we just wanted you to know where to find us: **3615A Chapman Highway, Knoxville, TN 37920.** Directions, parking, and accessibility details will live on our [Visit page](/visit/) as we confirm them.
 
 Soon, Stone's Throw Coffee will be opening its doors in a place that already holds a lot of memories for this community.
 

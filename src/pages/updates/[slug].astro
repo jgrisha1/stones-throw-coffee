@@ -27,9 +27,10 @@ const postSchema = {
 };
 
 // don't double the brand when a post title already names the shop
-const pageTitle = post.data.title.includes("Stone's Throw Coffee")
-  ? post.data.title
-  : `${post.data.title} | Stone's Throw Coffee`;
+const baseTitle = post.data.seoTitle ?? post.data.title;
+const pageTitle = baseTitle.includes("Stone's Throw Coffee")
+  ? baseTitle
+  : `${baseTitle} | Stone's Throw Coffee`;
 
 // pubDate is date-only frontmatter (parsed as UTC midnight) - format in UTC
 // or the date renders one day early in US timezones.

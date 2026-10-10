@@ -28,7 +28,7 @@ and who's performing.
 means evening events that don't revolve around alcohol. A place you can work
 for an hour, meet somebody, or just sit with a book and not be hurried out.
 
-**The location.** 3615 Chapman Highway in South Knoxville, the former South
+**The location.** 3615A Chapman Highway in South Knoxville, the former South
 Press space. Directions, parking, and accessibility notes will be added to the
 [visit page](/visit/) before opening.
 
