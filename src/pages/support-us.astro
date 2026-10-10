@@ -270,6 +270,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     margin-top: var(--space-2);
   }
 
+  .support-hero .eyebrow {
+    color: #e9e0cb;
+  }
+
   .support-lede {
     font-size: 1.125rem;
     color: #e9e0cb;
@@ -285,6 +289,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       var(--supportImg) center / cover no-repeat;
     z-index: 0;
     pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .support-hero__image {
+      background:
+        linear-gradient(rgba(20,58,0,0.88), rgba(20,58,0,0.88)),
+        var(--supportImg) center / cover no-repeat;
+    }
   }
 
   /* Tier grid */
