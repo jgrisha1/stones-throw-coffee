@@ -112,7 +112,7 @@ export const BUSINESS = {
   // Google: Search Console -> add property -> HTML tag. Bing: Webmaster Tools.
   // (A domain-level DNS TXT record via Cloudflare is an alternative to these.)
   verification: {
-    google: '', // <meta name="google-site-verification" content="...">
+    google: 'EdbTnniyo59pCt2wLHTaVxuse9J9r94nhjRQNj8yzro', // <meta name="google-site-verification" content="..."> (Search Console, owned by stonesthrowcoffeeco@gmail.com)
     bing: '', //   <meta name="msvalidate.01" content="...">
   },
 };
