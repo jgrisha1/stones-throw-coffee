@@ -14,14 +14,13 @@ export const PRESS: PressItem[] = [
   {
     outlet: 'Knox News',
     headline: "Stone's Throw Coffee opening this month as 'safe space for a stranger'",
-    // Syndicated copy. Swap in the knoxnews.com link once you have it.
-    url: 'https://www.yahoo.com/lifestyle/articles/stones-throw-coffee-opening-month-084232959.html',
+    url: 'https://www.knoxnews.com/story/entertainment/dining/2026/10/02/stones-throw-coffee-opening-this-month-as-safe-space-for-a-stranger/91992718007/',
     date: '2026-10-02',
   },
   {
     outlet: 'WBIR 10News',
-    headline: 'New Knoxville coffee shop opening on Chapman Highway supporting LGBTQ+ community',
-    url: 'https://www.wbir.com/video/news/local/knoxville/new-knoxville-coffee-shop-opening-on-chapman-highway-supporting-lgbtq-community/51-43553672-7f0e-4a12-8dc9-ca4911975a19',
-    date: '2026-09-30',
+    headline: "'It's go time': Stone's Throw Coffee moving into Chapman Highway space that formerly housed South Press Coffee",
+    url: 'https://www.wbir.com/article/news/local/knoxville/stones-throw-coffee-moving-into-space-formerly-housed-south-press-coffee/51-18ca5204-b2a5-4d81-bd3f-c18752e40f18',
+    date: '2026-09-29',
   },
 ];
