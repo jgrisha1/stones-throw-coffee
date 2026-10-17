@@ -101,10 +101,14 @@ const ready = has(BUSINESS.newsletterAction);
   }
   .np-close {
     position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
+    top: 0.35rem;
+    right: 0.35rem;
     display: inline-flex;
-    padding: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -163,7 +167,9 @@ const ready = has(BUSINESS.newsletterAction);
     border: 0;
     background: transparent;
     color: var(--ink-soft);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+    padding: 0 1rem;
     text-decoration: underline;
     text-underline-offset: 3px;
     cursor: pointer;

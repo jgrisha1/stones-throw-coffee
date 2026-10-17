@@ -63,7 +63,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       </p>
       {
         formReady ? (
-          <form class="stack" action={BUSINESS.formspreeEndpoint} method="POST">
+          <form class="stack" action={BUSINESS.formspreeEndpoint} method="POST" data-ajax-form data-success="Thanks! We got your application and will be in touch.">
             <label>
               Your name
               <input type="text" name="name" required autocomplete="name" />

@@ -833,6 +833,7 @@ input,
 select,
 textarea {
   font: inherit;
+  font-size: 1.0625rem; /* 17px: 16px+ stops iOS zooming the page on focus */
   color: var(--ink);
   background: #fffdf6;
   border: 1.5px solid var(--line);
@@ -1192,6 +1193,7 @@ td {
   }
   .cookie-notice .btn {
     padding: 0.45rem 1rem;
+    min-height: 44px;
     flex-shrink: 0;
   }
 }
@@ -1329,4 +1331,45 @@ main:has(> section.section--pine:last-of-type) + .site-footer {
 }
 .coming-soon-events .menu-item__desc {
   margin-bottom: var(--space-2);
+}
+
+/* --- inline form status --- */
+/* A form that submitted in the background is hidden (display:grid/flex would beat [hidden]). */
+form[hidden] {
+  display: none !important;
+}
+.form-status {
+  margin: var(--space-2) 0 0;
+  font-weight: 600;
+  color: inherit; /* works on both the light pages and the dark signup band */
+}
+.form-status:empty {
+  display: none;
+}
+.form-status:focus {
+  outline: none;
+}
+/* an error is marked by a rule down the side, not by color alone */
+.form-status[data-state='error'] {
+  border-left: 3px solid currentColor;
+  padding-left: 0.75rem;
+}
+
+/* --- phone tap targets --- */
+/* Standalone links get a 44px-tall tap area. Links inside running text are left alone so
+   paragraphs don't pick up gaps. The home-strip and Our Story card links are handled in
+   their own (page-scoped) styles. */
+@media (max-width: 767px), (pointer: coarse) {
+  .site-footer a,
+  .text-link,
+  .tap-link,
+  .card li > a,
+  .resource__name a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .site-footer li {
+    margin: 0;
+  }
 }

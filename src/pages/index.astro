@@ -423,6 +423,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   .opening-strip__links a:hover {
     text-decoration-color: currentColor;
   }
+  @media (max-width: 767px), (pointer: coarse) {
+    .opening-strip__links {
+      gap: 0 1.5rem;
+    }
+    .opening-strip__links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+    /* the dots separate links on one line; once they wrap they only dangle */
+    .opening-strip__dot {
+      display: none;
+    }
+  }
   .opening-strip__dot {
     color: var(--line);
   }
