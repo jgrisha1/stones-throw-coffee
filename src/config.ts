@@ -86,6 +86,12 @@ export const BUSINESS = {
   cashApp: '$StonesThrowCoffee',
   cashAppUrl: 'https://cash.app/$StonesThrowCoffee',
 
+  // --- Merch ---
+  // Sold through a Knoxville designer's Etsy shop. This links to the shop's "Stone's Throw Coffee"
+  // section only (section_id), because the same shop also sells the designer's unrelated designs.
+  merchUrl: 'https://www.etsy.com/shop/MeowMimiDesigns?section_id=60971555',
+  merchShopName: 'MeowMimiDesigns',
+
   // --- Google Business Profile ---
   // TODO: Claim and verify your GBP at https://business.google.com, then paste
   // the public profile URL here. It feeds the footer and Visit page.

@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import { BUSINESS, has } from '../config';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// What is in the shop today. Names only: prices and stock are set by the shop and change,
+// so they are deliberately not copied here.
+const GROUPS = [
+  { title: 'Wear it', items: 'A signature tee and a lightweight hooded sweatshirt' },
+  { title: 'Sip from it', items: 'A speckled ceramic camp mug, a clear glass mug, and a thermal tumbler' },
+  { title: 'Carry it', items: 'A heavy tote bag and a key chain' },
+  { title: 'Stick it', items: 'Vinyl stickers' },
+  { title: 'For the pup', items: 'A small-breed pet bandana' },
+];
+const ready = has(BUSINESS.merchUrl);
+---
+
+<Base
+  title="Stone's Throw Merch | Tees, Mugs, Stickers & More"
+  description="Stone's Throw Coffee merch: tees, sweatshirts, mugs, tumblers, totes, stickers, and more, sold through a Knoxville designer's Etsy shop."
+>
+  <section class="section section--pine">
+    <div class="wrap" style="text-align: center;">
+      <p class="eyebrow" style="color: var(--honey); margin-inline: auto;">Merch</p>
+      <h1 style="color: var(--cream); max-width: 24ch; margin-inline: auto; text-wrap: balance;">
+        Take a little Stone&rsquo;s Throw home.
+      </h1>
+      <p style="color: #e9e0cb; max-width: 50ch; margin-inline: auto; font-size: 1.1rem; text-wrap: balance;">
+        Tees, sweatshirts, mugs, tumblers, totes, stickers, and a bandana for the pup, all in our
+        Stone&rsquo;s Throw designs.
+      </p>
+      {
+        ready && (
+          <div class="btn-row" style="justify-content: center; margin-top: var(--space-3);">
+            <a class="btn btn--solid" href={BUSINESS.merchUrl} target="_blank" rel="noopener noreferrer">
+              Shop our merch on Etsy
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What&rsquo;s in the shop</h2>
+      <p class="lede">A few of the things you&rsquo;ll find right now.</p>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));">
+        {
+          GROUPS.map((g) => (
+            <div class="card">
+              <h3>{g.title}</h3>
+              <p>{g.items}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="menu-item__desc" style="margin-top: var(--space-2);">
+        What&rsquo;s available, and the prices, are set by the shop and can change.
+      </p>
+
+      <h2 style="margin-top: var(--space-4);">How it works</h2>
+      <p>
+        Our merch is sold through {BUSINESS.merchShopName}, a Knoxville designer&rsquo;s Etsy shop.
+        The shop prints each piece when you order it. When you tap the button, you&rsquo;ll leave
+        our site: your order, payment, shipping, and any returns are handled by that shop and by
+        Etsy, not by us.
+      </p>
+      <p>
+        Questions about an order? Message the shop on Etsy. Questions about Stone&rsquo;s Throw?
+        <a href={`${base}/contact/`}>Get in touch</a>.
+      </p>
+      <p class="menu-item__desc">
+        {BUSINESS.merchShopName} also sells the designer&rsquo;s own designs, so you may see a few
+        other things in the shop. The button takes you straight to the Stone&rsquo;s Throw section.
+      </p>
+      {
+        ready && (
+          <div class="btn-row">
+            <a class="btn btn--solid" href={BUSINESS.merchUrl} target="_blank" rel="noopener noreferrer">
+              Shop our merch on Etsy
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Base>

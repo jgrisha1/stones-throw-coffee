@@ -351,7 +351,19 @@ main > .section:first-child {
   display: block;
 }
 
-@media (max-width: 1024px) {
+/* Nine nav links need a bit less room on small laptops, just above where the nav collapses into
+   the phone menu (1100px). Without this the first link slides under the logo. */
+@media (min-width: 1101px) and (max-width: 1180px) {
+  .site-nav ul {
+    gap: 0.25rem 0.85rem;
+  }
+  .site-nav a {
+    font-size: 0.95rem;
+  }
+}
+
+/* The nav collapses into the menu button at 1100px and below (was 1024px before the Merch link). */
+@media (max-width: 1100px) {
   .nav-toggle {
     display: flex;
     align-items: center;
