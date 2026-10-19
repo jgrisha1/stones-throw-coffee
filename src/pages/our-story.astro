@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { PRESS } from '../data/press';
 import MoonDivider from '../components/MoonDivider.astro';
-import { BUSINESS } from '../config';
+import { BUSINESS, has } from '../config';
 const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
@@ -175,9 +175,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     </div>
   </section>
 
-  <!-- Closing CTA -->
+  <!-- Video from the owners -->
+  {has(BUSINESS.storyVideoUrl) && (
+    <section class="section section--tint" id="watch" aria-labelledby="video-heading">
+      <div class="wrap" style="text-align: center;">
+        <p class="eyebrow" style="margin-inline: auto;">Watch</p>
+        <h2 id="video-heading" style="margin-top: 0;">A message from us to you</h2>
+        <p style="max-width: 50ch; margin-inline: auto;">
+          A short thank-you video from all of us at Stone&rsquo;s Throw, for everyone who has helped
+          get us to where we are now. It runs 1 minute 51 seconds and has captions.
+        </p>
+        <div class="btn-row" style="justify-content: center; margin-top: var(--space-3);">
+          <a class="btn btn--solid" href={BUSINESS.storyVideoUrl} target="_blank" rel="noopener noreferrer">
+            Watch on Facebook
+          </a>
+        </div>
+        <p class="menu-item__desc" style="max-width: 50ch; margin: var(--space-2) auto 0;">
+          Videographer: Elle Watson. Music: &ldquo;Against All Odds&rdquo; by Nick Petrov, from
+          <a href="https://www.bensound.com/" target="_blank" rel="noopener noreferrer">Bensound</a>.
+          The button takes you to Facebook, which has its own privacy practices.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <!-- In the news -->
   {PRESS.length > 0 && (
-    <section class="section section--tint" id="in-the-news" aria-labelledby="press-heading">
+    <section class="section" id="in-the-news" aria-labelledby="press-heading">
       <div class="wrap">
         <h2 id="press-heading" style="margin-top:0;">In the news</h2>
         <ul class="press-list">

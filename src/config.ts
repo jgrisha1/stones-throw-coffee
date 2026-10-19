@@ -92,6 +92,11 @@ export const BUSINESS = {
   merchUrl: 'https://www.etsy.com/shop/MeowMimiDesigns?section_id=60971555',
   merchShopName: 'MeowMimiDesigns',
 
+  // --- Story video ---
+  // The owners' "A message from us to you" video (1:51, captioned), posted on Facebook Oct 19, 2026.
+  // Linked, not embedded, so nothing loads from Facebook until someone chooses to watch.
+  storyVideoUrl: 'https://www.facebook.com/reel/933174852949904/',
+
   // --- Google Business Profile ---
   // TODO: Claim and verify your GBP at https://business.google.com, then paste
   // the public profile URL here. It feeds the footer and Visit page.
