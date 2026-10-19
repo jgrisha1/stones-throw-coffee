@@ -4,6 +4,16 @@ import { PRESS } from '../data/press';
 import MoonDivider from '../components/MoonDivider.astro';
 import { BUSINESS, has } from '../config';
 const base = import.meta.env.BASE_URL.replace(/\/$/,'');
+
+// Transcript of public/video/message-from-us.mp4. Keep in step with message-from-us.en.vtt.
+const TRANSCRIPT = [
+  'Zoey: Hello, my name is Zoey Stone. My pronouns are she/her, and I am a born and raised proud Knoxvillian.',
+  'Casey: My name is Casey Stone. My pronouns are they/them, and I’ve lived here over a decade.',
+  'And we are the proud owners of Stone’s Throw Coffee. We want to personally thank each and every one of you who have contributed in any way to getting Stone’s Throw off the ground. Because of your support and our grind, pun intended, we’ve been able to take Stone’s Throw Coffee from a theoretical conversation to an eight month project that’s almost finished.',
+  'We’ve been working hard nonstop behind the scenes to build a space different than anything Knoxville has had before. We’ve created a dark academia style coffee shop with thoughtfully selected menu items and intentional inclusion that goes beyond all are welcome here. Our staff will be trained in taking orders in Spanish, American Sign Language, and English. We have a room dedicated to mental decompression. Rotating local artwork will be sold year-round. This is proudly a safe space that just as proudly stands against hate.',
+  'We know that times are tough and budgets are tighter than ever. We hope to build something that will last beyond right now. At this point, we’re continuing to ask for contributions within your means to push us through opening day. With your help, we’ll be able to establish that long-term space that the Knoxville community and the surrounding areas deserve.',
+  'As we said in the beginning, my spouse and I have grown lasting roots in this community. You sharing this video will help our community-centered coffee shop spread roots through Knoxville and the surrounding areas, and we cannot wait to see you at Stone’s Throw Coffee.',
+];
 ---
 
 <Base
@@ -175,29 +185,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     </div>
   </section>
 
-  <!-- Video from the owners -->
-  {has(BUSINESS.storyVideoUrl) && (
-    <section class="section section--tint" id="watch" aria-labelledby="video-heading">
-      <div class="wrap" style="text-align: center;">
-        <p class="eyebrow" style="margin-inline: auto;">Watch</p>
-        <h2 id="video-heading" style="margin-top: 0;">A message from us to you</h2>
-        <p style="max-width: 50ch; margin-inline: auto;">
-          A short thank-you video from all of us at Stone&rsquo;s Throw, for everyone who has helped
-          get us to where we are now. It runs 1 minute 51 seconds and has captions.
-        </p>
-        <div class="btn-row" style="justify-content: center; margin-top: var(--space-3);">
-          <a class="btn btn--solid" href={BUSINESS.storyVideoUrl} target="_blank" rel="noopener noreferrer">
-            Watch on Facebook
-          </a>
-        </div>
-        <p class="menu-item__desc" style="max-width: 50ch; margin: var(--space-2) auto 0;">
-          Videographer: Elle Watson. Music: &ldquo;Against All Odds&rdquo; by Nick Petrov, from
-          <a href="https://www.bensound.com/" target="_blank" rel="noopener noreferrer">Bensound</a>.
-          The button takes you to Facebook, which has its own privacy practices.
-        </p>
+  <!-- Video from the owners (self-hosted: public/video/) -->
+  <section class="section section--tint" id="watch" aria-labelledby="video-heading">
+    <div class="wrap" style="text-align: center;">
+      <p class="eyebrow" style="margin-inline: auto;">Watch</p>
+      <h2 id="video-heading" style="margin-top: 0;">A message from us to you</h2>
+      <p style="max-width: 50ch; margin-inline: auto;">
+        A short thank-you video from all of us at Stone&rsquo;s Throw, for everyone who has helped
+        get us to where we are now. It runs 1 minute 50 seconds and has captions.
+      </p>
+      <div class="story-video">
+        <video
+          controls
+          playsinline
+          preload="none"
+          width="1280"
+          height="720"
+          poster={`${base}/video/message-from-us-poster.webp`}
+          aria-label="A message from the owners of Stone's Throw Coffee"
+        >
+          <source src={`${base}/video/message-from-us.mp4`} type="video/mp4" />
+          <track kind="captions" srclang="en" label="English" src={`${base}/video/message-from-us.en.vtt`} default />
+          <p>
+            Your browser can&rsquo;t play this video. You can
+            <a href={`${base}/video/message-from-us.mp4`}>download it</a> or read the transcript below.
+          </p>
+        </video>
       </div>
-    </section>
-  )}
+      <details class="story-transcript">
+        <summary>Read the transcript</summary>
+        {TRANSCRIPT.map((p) => <p>{p}</p>)}
+      </details>
+      <p class="menu-item__desc" style="max-width: 50ch; margin: var(--space-2) auto 0;">
+        Videographer: Elle Watson. Music: &ldquo;Against All Odds&rdquo; by Nick Petrov, from
+        <a href="https://www.bensound.com/" target="_blank" rel="noopener noreferrer">Bensound</a>.
+        {has(BUSINESS.storyVideoUrl) && (
+          <>
+            {' '}Also on <a href={BUSINESS.storyVideoUrl} target="_blank" rel="noopener noreferrer">Facebook</a>.
+          </>
+        )}
+      </p>
+    </div>
+  </section>
 
   <!-- In the news -->
   {PRESS.length > 0 && (
@@ -371,4 +400,42 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     color: var(--ink-soft);
     margin-bottom: var(--space-4);
   }
+
+  /* hosted video */
+  .story-video {
+    max-width: 52rem;
+    margin: var(--space-3) auto 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--line);
+  }
+  .story-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .story-transcript {
+    max-width: 52rem;
+    margin: var(--space-2) auto 0;
+    text-align: left;
+  }
+  .story-transcript summary {
+    cursor: pointer;
+    font-weight: 700;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pine);
+  }
+  .story-transcript summary::before {
+    content: '\25B8';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+  .story-transcript[open] summary::before { transform: rotate(90deg); }
+  @media (prefers-reduced-motion: reduce) { .story-transcript summary::before { transition: none; } }
 </style>
