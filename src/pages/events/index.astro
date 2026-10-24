@@ -27,6 +27,13 @@ const fmtTime = (d: Date) =>
     minute: '2-digit',
     timeZone: 'America/New_York',
   });
+const fmtMonth = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', timeZone: 'America/New_York' }).toUpperCase();
+const fmtDay = (d: Date) => d.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'America/New_York' });
+const fmtWeekday = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'long', timeZone: 'America/New_York' });
+// "4:00 PM to 6:00 PM" when the event has an end time, otherwise just the start
+const fmtRange = (start: Date, end?: Date) =>
+  (end ? `${fmtTime(start)} to ${fmtTime(end)}` : fmtTime(start)).replace(/\s(AM|PM)/g, ' $1'); // keep "9:00 AM" together when wrapping
 const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
@@ -36,7 +43,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 >
   <section class="section">
     <div class="wrap">
-      <div class="media-banner" aria-hidden="true" style={`background-image: linear-gradient(rgba(20,58,0,0.28), rgba(20,58,0,0.2)), url('${base}/images/events-cafe-interior.webp');`}></div>
+      <div class="media-banner events-banner" aria-hidden="true" style={`background-image: linear-gradient(rgba(20,58,0,0.28), rgba(20,58,0,0.2)), url('${base}/images/events-cafe-interior.webp');`}></div>
       <p class="eyebrow">What&rsquo;s happening</p>
       <h1>Events at Stone&rsquo;s Throw Coffee</h1>
       <p class="lede">
@@ -50,28 +57,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <a href={`${base}/art-and-authors/`}>apply to be featured</a>.
       </p>
 
-      <h2>Upcoming events</h2>
+      <h2 id="upcoming">Upcoming events</h2>
       {
-        upcoming.length > 0 && (
-          <div class="grid">
+        upcoming.length > 0 ? (
+          <ul class="event-list">
             {upcoming.map((event) => (
-              <a class="card event-card" href={`${base}/events/${event.id}/`}>
-                <time datetime={event.data.start.toISOString()}>
-                  {fmtDate(event.data.start)} · {fmtTime(event.data.start)}
-                </time>
-                <h3>{event.data.title}</h3>
-                <p>{event.data.description}</p>
-                {event.data.cost && <p class="menu-item__desc">{event.data.cost}</p>}
-              </a>
+              <li>
+                <a class="event-row" href={`${base}/events/${event.id}/`}>
+                  <span class="event-row__date" aria-hidden="true">
+                    <span class="event-row__month">{fmtMonth(event.data.start)}</span>
+                    <span class="event-row__day">{fmtDay(event.data.start)}</span>
+                  </span>
+                  <span class="event-row__body">
+                    <time datetime={event.data.start.toISOString()}>
+                      {fmtWeekday(event.data.start)}, {fmtRange(event.data.start, event.data.end)}
+                    </time>
+                    <h3>{event.data.title}</h3>
+                    <p>{event.data.description}</p>
+                    {event.data.cost && <p class="event-row__cost">{event.data.cost}</p>}
+                    <span class="event-row__more">Details and calendar link <span aria-hidden="true">&rarr;</span></span>
+                  </span>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
+        ) : (
+          <p>New dates are being added. Check back soon, or join the email list below.</p>
         )
       }
 
-      <div class="coming-soon-events">
-        <h3>Also coming soon (dates to be announced)</h3>
+      <div class="coming-soon-events" id="coming-soon">
+        <h2>Also coming soon</h2>
+        <p class="menu-item__desc">Dates and details to be announced.</p>
         <ul>
-          <li class="host-card">
+          <li class="host-card host-card--wide">
             <img
               class="host-card__logo"
               src={`${base}/images/sign-of-change-logo.webp`}
@@ -100,39 +119,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           </li>
           <li class="host-card">
             <div class="host-card__body">
-              <p class="host-card__title"><strong>Friendsgiving</strong>, Monday, November 23</p>
-              <p>Time and details TBD.</p>
+              <p class="host-card__title"><strong>Friendsgiving</strong></p>
+              <p>Monday, November 23. Time and details TBD.</p>
             </div>
           </li>
           <li class="host-card">
             <div class="host-card__body">
               <p class="host-card__title">
-                <strong>Poetics of Place: Writing at the Intersection of Queerness &amp; Nature</strong>, a
-                writing workshop hosted by Jaq Hackworthy
+                <strong>Poetics of Place: Writing at the Intersection of Queerness &amp; Nature</strong>
               </p>
+              <p>A writing workshop hosted by Jaq Hackworthy.</p>
             </div>
           </li>
         </ul>
-        <p class="menu-item__desc">Dates and times will be posted here and sent to our email list.</p>
+      </div>
+
+      <div class="pitch-note">
         <p>
-          Are you a local author, musician, poet, or artist who wants to be part of it?
-          <a href={`${base}/art-and-authors/`}>Apply to be featured</a> or
-          <a href={`${base}/contact/`}>pitch an event</a>.
+          <strong>Want to be part of it?</strong> Local authors, musicians, poets, and artists:
+          <a href={`${base}/art-and-authors/`}>apply to be featured</a> or
+          <a href={`${base}/contact/`}>pitch an event</a>. Dates and times are posted here and sent
+          to our email list.
         </p>
       </div>
+
       {
         past.length > 0 && (
           <>
             <h2>Recent events</h2>
-            <div class="grid">
+            <ul class="event-list event-list--past">
               {past.map((event) => (
-                <a class="card event-card" href={`${base}/events/${event.id}/`}>
-                  <time datetime={event.data.start.toISOString()}>{fmtDate(event.data.start)}</time>
-                  <h3>{event.data.title}</h3>
-                  <p>{event.data.description}</p>
+                <li>
+                <a class="event-row" href={`${base}/events/${event.id}/`}>
+                  <span class="event-row__date" aria-hidden="true">
+                    <span class="event-row__month">{fmtMonth(event.data.start)}</span>
+                    <span class="event-row__day">{fmtDay(event.data.start)}</span>
+                  </span>
+                  <span class="event-row__body">
+                    <time datetime={event.data.start.toISOString()}>
+                      {fmtWeekday(event.data.start)}, {fmtDate(event.data.start).replace(/^[A-Za-z]+, /, '')}
+                    </time>
+                    <h3>{event.data.title}</h3>
+                    <p>{event.data.description}</p>
+                  </span>
                 </a>
+              </li>
               ))}
-            </div>
+            </ul>
           </>
         )
       }
@@ -164,3 +197,108 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   </section>
   <EmailSignup heading="Get event announcements first" />
 </Base>
+
+<style>
+  /* shorter banner so the events themselves sit nearer the top */
+  .events-banner { aspect-ratio: 16 / 4.5; margin-bottom: var(--space-3); }
+  @media (max-width: 640px) { .events-banner { aspect-ratio: 16 / 7; } }
+
+  /* upcoming and recent events: one row per event with a date badge */
+  .event-list {
+    list-style: none;
+    margin: var(--space-2) 0 var(--space-3);
+    padding: 0;
+    max-width: none; /* override the global ul reading-measure cap */
+    display: grid;
+    gap: var(--space-2);
+  }
+  .event-list li { margin: 0; }
+  .event-row {
+    display: grid;
+    grid-template-columns: 5.25rem 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .event-row:hover,
+  .event-row:focus-visible {
+    border-color: var(--green);
+    box-shadow: 0 4px 14px rgba(20, 58, 0, 0.1);
+  }
+  @media (prefers-reduced-motion: reduce) { .event-row { transition: none; } }
+  .event-row__date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--green-deep);
+    color: var(--cream);
+    border-radius: 8px;
+    padding: 0.55rem 0.25rem 0.6rem;
+    line-height: 1;
+    text-align: center;
+  }
+  .event-row__month {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--honey);
+  }
+  .event-row__day {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+  }
+  .event-row__body { min-width: 0; }
+  .event-row__body time {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.98rem;
+    color: var(--clay);
+  }
+  .event-row__body h3 { margin: 0.2rem 0 0.35rem; }
+  .event-row__body p { margin: 0 0 0.4rem; }
+  .event-row__more {
+    display: inline-block;
+    margin-top: 0.15rem;
+    color: var(--green);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .event-list--past .event-row { opacity: 0.9; }
+  @media (max-width: 560px) {
+    .event-row { grid-template-columns: 4rem 1fr; gap: var(--space-2); padding: var(--space-2); }
+    .event-row__day { font-size: 1.7rem; }
+  }
+
+  /* "also coming soon": a two-column set of cards instead of a narrow stack */
+  .coming-soon-events { max-width: none; margin-top: var(--space-4); }
+  .coming-soon-events h2 { margin-top: 0; }
+  .coming-soon-events ul {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+    align-items: stretch;
+  }
+  .coming-soon-events .host-card--wide { grid-column: 1 / -1; }
+  .coming-soon-events .host-card { height: 100%; }
+  @media (max-width: 760px) { .coming-soon-events ul { grid-template-columns: 1fr; } }
+
+  /* the "want to be part of it" call-out */
+  .pitch-note {
+    background: var(--cream-deep);
+    border-left: 4px solid var(--honey);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: var(--space-2) var(--space-3);
+    margin: var(--space-3) 0 var(--space-4);
+    max-width: none;
+  }
+  .pitch-note p { margin: 0; max-width: none; }
+</style>
