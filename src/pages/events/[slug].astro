@@ -42,8 +42,8 @@ const gcalUrl =
   `&details=${encodeURIComponent(`${description}\n\n${canonical}`)}` +
   `&location=${encodeURIComponent(eventLocation)}`;
 
-const isFree = /free/i.test(cost);
-const priceMatch = cost.match(/\$?(\d+(?:\.\d{1,2})?)/);
+const isFree = !!cost && /free/i.test(cost);
+const priceMatch = cost ? cost.match(/\$?(\d+(?:\.\d{1,2})?)/) : null;
 const eventSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Event',
@@ -55,7 +55,7 @@ const eventSchema: Record<string, unknown> = {
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   organizer: { '@type': 'Organization', name: BUSINESS.name, url: Astro.site?.href },
 };
-// Only state a price when the cost is known (free or a dollar amount); "cost to be announced" claims nothing.
+// Only state a price when the cost is known (free or a dollar amount); no cost set claims nothing.
 if (isFree || priceMatch) {
   eventSchema.isAccessibleForFree = isFree;
   eventSchema.offers = {
@@ -107,7 +107,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <li>
           {eventLocation}
         </li>
-        <li>{cost}</li>
+        {cost && <li>{cost}</li>}
         {audience && <li>{audience}</li>}
         {accessibility && <li>{accessibility}</li>}
       </ul>

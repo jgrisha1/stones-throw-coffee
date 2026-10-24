@@ -61,7 +61,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
                 </time>
                 <h3>{event.data.title}</h3>
                 <p>{event.data.description}</p>
-                <p class="menu-item__desc">{event.data.cost}</p>
+                {event.data.cost && <p class="menu-item__desc">{event.data.cost}</p>}
               </a>
             ))}
           </div>
@@ -101,7 +101,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           <li class="host-card">
             <div class="host-card__body">
               <p class="host-card__title"><strong>Friendsgiving</strong>, Monday, November 23</p>
-              <p>More info to come.</p>
+              <p>Time and details TBD.</p>
             </div>
           </li>
           <li class="host-card">

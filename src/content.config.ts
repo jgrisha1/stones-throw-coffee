@@ -18,8 +18,8 @@ const events = defineCollection({
     description: z.string(),
     /** Who it's for, e.g. "All ages" or "Adults - sober-friendly evening" */
     audience: z.string().optional(),
-    /** "Free", "$5 suggested donation", "$10 at the door", ... */
-    cost: z.string().default('Free'),
+    /** Optional: "Free", "$5 suggested donation", ... Leave it out and no price is shown or put in structured data. */
+    cost: z.string().optional(),
     /** Accessibility & parking notes specific to this event. */
     accessibility: z.string().optional(),
     performers: z

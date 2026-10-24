@@ -9,7 +9,8 @@ start: 2026-09-01T18:30:00-04:00
 end: 2026-09-01T20:30:00-04:00
 description: 'One or two plain sentences about the event. Used on cards, in Google results, and on Facebook shares.'
 audience: 'All ages welcome'
-cost: 'Free'
+# Optional: leave cost out entirely if you do not want a price shown (e.g. cost: 'Free' or '$5 at the door')
+# cost: 'Free'
 accessibility: 'Accessibility or parking notes specific to this event.'
 performers:
   - name: 'Performer or Author Name'
