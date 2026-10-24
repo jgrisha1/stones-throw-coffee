@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
+import { NEARBY } from '../data/nearby';
 import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay, hoursNote, isOpen, openingDateWeekday } from '../config';
 
 const hours = hoursDisplay();
@@ -175,9 +176,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
       <h2>While you&rsquo;re in the neighborhood</h2>
       <p>
-        South Knoxville is worth the wander: the Urban Wilderness trails, Ijams Nature Center,
-        the Mary Vestal and Baker Creek greenways, and local shops throughout the neighborhood.
+        South Knoxville is worth the wander. Here are a few places nearby, each linked to its own
+        site:
       </p>
+      <ul class="nearby-list">
+        {
+          NEARBY.map((p) => (
+            <li>
+              <a href={p.url} target="_blank" rel="noopener noreferrer">{p.name}</a>
+              <span>{p.blurb}</span>
+            </li>
+          ))
+        }
+      </ul>
 
       <div class="btn-row">
         <a class="btn btn--clay" href={`${base}/menu/`}>View the menu</a>
@@ -187,3 +198,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   </section>
   <EmailSignup />
 </Base>
+
+<style>
+  .nearby-list {
+    list-style: none;
+    margin: var(--space-2) 0 var(--space-3);
+    padding: 0;
+  }
+  .nearby-list li {
+    margin: 0;
+    padding: 0.35rem 0 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nearby-list a {
+    display: inline-block;
+    padding: 0.5rem 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .nearby-list span {
+    display: block;
+    color: var(--ink-soft);
+  }
+</style>
