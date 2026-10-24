@@ -53,16 +53,19 @@ const eventSchema: Record<string, unknown> = {
   endDate: end.toISOString(),
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  isAccessibleForFree: isFree,
   organizer: { '@type': 'Organization', name: BUSINESS.name, url: Astro.site?.href },
-  offers: {
+};
+// Only state a price when the cost is known (free or a dollar amount); "cost to be announced" claims nothing.
+if (isFree || priceMatch) {
+  eventSchema.isAccessibleForFree = isFree;
+  eventSchema.offers = {
     '@type': 'Offer',
-    price: isFree ? '0' : (priceMatch?.[1] ?? '0'),
+    price: isFree ? '0' : priceMatch![1],
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     url: rsvpUrl ?? canonical,
-  },
-};
+  };
+}
 if (hasLocation) {
   eventSchema.location = {
     '@type': 'Place',
