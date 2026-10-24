@@ -26,7 +26,7 @@ export const BUSINESS = {
   name: "Stone's Throw Coffee",
   tagline: 'Coffee, community, and local art in South Knoxville.',
   description:
-    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening soon in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and mushroom coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
+    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening October 31, 2026 in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and mushroom coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
 
   // --- Location ---
   // Lease signed October 2026: former South Press space. Keep this formatted
@@ -59,11 +59,10 @@ export const BUSINESS = {
     { days: ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '18:00' },
   ] as HoursRule[],
 
-  // Tentative opening date, e.g. '2026-09-26'. Left blank until the occupancy
-  // certificate is in hand - while empty, the home page shows "coming soon"
-  // messaging with no specific date. Set it (and update Google Business Profile)
-  // once a date is firm.
-  openingDate: '',
+  // Opening date (ISO). Set Oct 19, 2026: officially opening Saturday, October 31, 2026.
+  // Setting it turns on the dated copy across the site and emits hours to structured data
+  // (valid from this date). If it ever slips, change it here and update Google Business Profile.
+  openingDate: '2026-10-31',
 
   priceRange: '$',
 
@@ -174,14 +173,17 @@ export const hoursDisplay = (): string[] =>
     return `${days}: ${formatTime(rule.opens)}–${formatTime(rule.closes)}`;
   });
 
+const openingFmt = (opts: Intl.DateTimeFormatOptions): string =>
+  has(BUSINESS.openingDate)
+    ? new Date(`${BUSINESS.openingDate}T00:00:00Z`).toLocaleDateString('en-US', { ...opts, timeZone: 'UTC' })
+    : '';
+/** "October 31" (empty until openingDate is set) */
+export const openingDateShort = (): string => openingFmt({ month: 'long', day: 'numeric' });
+/** "Saturday, October 31" (empty until openingDate is set) */
+export const openingDateWeekday = (): string => openingFmt({ weekday: 'long', month: 'long', day: 'numeric' });
+
 /** One shared note shown wherever hours appear, so hours never read as "open now". */
 export const hoursNote = (): string => {
   if (!has(BUSINESS.openingDate)) return 'Starting opening day. Date coming soon.';
-  const d = new Date(`${BUSINESS.openingDate}T00:00:00Z`).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
-  return `Starting ${d}.`;
+  return `Starting ${openingFmt({ weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}.`;
 };

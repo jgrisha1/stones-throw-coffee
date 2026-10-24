@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { PRESS } from '../data/press';
 import MoonDivider from '../components/MoonDivider.astro';
-import { BUSINESS, has } from '../config';
+import { BUSINESS, has, openingDateShort, openingDateWeekday } from '../config';
 const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
 // Transcript of public/video/message-from-us.mp4. Keep in step with message-from-us.en.vtt.
@@ -24,7 +24,7 @@ const TRANSCRIPT = [
   <!-- Page header -->
   <section class="section section--pine story-header">
     <div class="wrap">
-      <p class="eyebrow">Opening soon &middot; South Knoxville</p>
+      <p class="eyebrow">{openingDateShort() ? `Opening ${openingDateShort()}` : 'Opening soon'} &middot; South Knoxville</p>
       <h1>Our Story</h1>
       <p class="story-lede">
         A queer-owned coffee shop built by and for South Knoxville.
@@ -252,7 +252,7 @@ const TRANSCRIPT = [
     <div class="wrap" style="text-align: center">
       <h2 id="story-cta-heading" style="color: var(--cream)">Be part of something brewing.</h2>
       <p style="color: #e9e0cb; max-width: 50ch; margin-inline: auto;">
-        Stone&rsquo;s Throw is community-funded and opening soon. Support the GoFundMe or follow us for the opening announcement.
+        Stone&rsquo;s Throw is community-funded and {openingDateWeekday() ? `opens ${openingDateWeekday()}` : 'opening soon'}. Support the GoFundMe or follow us for updates.
       </p>
       <div class="btn-row" style="justify-content: center; margin-top: var(--space-3)">
         <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>

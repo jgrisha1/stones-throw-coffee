@@ -4,21 +4,15 @@ import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import NewsletterPopup from '../components/NewsletterPopup.astro';
 import MoonDivider from '../components/MoonDivider.astro';
-import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay, hoursNote } from '../config';
+import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay, hoursNote, openingDateShort, openingDateWeekday } from '../config';
 
 const hours = hoursDisplay();
 const hasLocation = hasStreetAddress();
 const mapsUrl = hasLocation
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress())}`
   : '';
-const tentativeOpening = BUSINESS.openingDate
-  ? new Date(`${BUSINESS.openingDate}T00:00:00Z`).toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC',
-    })
-  : '';
+const openShort = openingDateShort();
+const openWeekday = openingDateWeekday();
 
 const now = new Date();
 const upcoming = (await getCollection('events', ({ data }) => !data.draft && data.start >= now))
@@ -36,9 +30,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
-  title="Stone's Throw Coffee | Coming Soon to South Knoxville"
-  description="Queer-owned coffee shop and community arts space coming soon to 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open."
-  ogTitle="Stone's Throw Coffee Is Coming Soon to South Knoxville"
+  title={openShort ? `Stone's Throw Coffee | Opening ${openShort} in South Knoxville` : "Stone's Throw Coffee | Coming Soon to South Knoxville"}
+  description={openShort ? `Queer-owned coffee shop and community arts space opening ${openShort} at 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open.` : "Queer-owned coffee shop and community arts space coming soon to 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open."}
+  ogTitle={openShort ? `Stone's Throw Coffee Opens ${openShort} in South Knoxville` : "Stone's Throw Coffee Is Coming Soon to South Knoxville"}
   ogDescription="A queer-owned South Knoxville coffee shop and community arts space built around coffee, local art, sober-friendly events, mutual aid, and community care."
 >
   <!-- hero background is the LCP element but loads via CSS - preload it -->
@@ -73,10 +67,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
     <div class="wrap hero--coming-soon__wrap">
       <div class="hero-content-card">
-        <p class="eyebrow cs-eyebrow">Coming Soon to South Knoxville</p>
+        <p class="eyebrow cs-eyebrow">{openShort ? `Opening ${openShort} in South Knoxville` : 'Coming Soon to South Knoxville'}</p>
         <h1 class="cs-h1">Stone&rsquo;s Throw Coffee</h1>
         <p class="cs-body">
-          A queer-owned coffee shop and community arts space opening soon in South Knoxville.
+          A queer-owned coffee shop and community arts space {openWeekday ? `opening ${openWeekday}` : 'opening soon'} in South Knoxville.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art, author
           readings, acoustic music, mutual aid, and community care.
         </p>
@@ -103,9 +97,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <!-- ── Opening status strip ── -->
   <div class="opening-strip">
     <p class="opening-strip__msg">
-      {tentativeOpening ? `Tentatively opening ${tentativeOpening}. ` : ''}
+      {openWeekday ? `We open ${openWeekday}. ` : ''}
       We&rsquo;ve found our home at 3615 Chapman Highway, Suite A, the former South Press space. Follow
-      along for menu, opening date, and event announcements.
+      along for menu and event announcements.
     </p>
     <p class="opening-strip__links">
       <a href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
