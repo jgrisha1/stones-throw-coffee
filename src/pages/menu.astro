@@ -114,9 +114,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         hands whenever possible. We&rsquo;re proud to partner with local
         businesses who share our commitment to community:
       </p>
+      <ul class="partner-grid">
+        {
+          PARTNERS.filter((p) => p.image).map((p) => (
+            <li class="partner-card">
+              <div class="partner-card__img">
+                <img src={`${base}/images/partners/${p.image}`} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+              </div>
+              <p class="partner-card__name">
+                {p.url ? (
+                  <a href={p.url} target="_blank" rel="noopener noreferrer">{p.name}</a>
+                ) : (
+                  p.name
+                )}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
       <ul class="event-meta">
         {
-          PARTNERS.map((p) => (
+          PARTNERS.filter((p) => !p.image).map((p) => (
             <li>
               {p.url ? (
                 <a href={p.url} target="_blank" rel="noopener noreferrer">
@@ -149,3 +167,44 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   </section>
   <EmailSignup heading="Menu specials, straight to your inbox" />
 </Base>
+
+<style>
+  .partner-grid {
+    list-style: none;
+    margin: var(--space-3) 0;
+    padding: 0;
+    max-width: none; /* override the global ul reading-measure cap */
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  }
+  .partner-card {
+    margin: 0;
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .partner-card__img {
+    background: #fff;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .partner-card__img img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+  .partner-card__name {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-display, inherit);
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-top: 1px solid var(--line);
+  }
+</style>
