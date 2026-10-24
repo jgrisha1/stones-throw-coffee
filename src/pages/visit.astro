@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay, hoursNote, openingDateWeekday } from '../config';
+import { BUSINESS, fullAddress, has, hasStreetAddress, hoursDisplay, hoursNote, isOpen, openingDateWeekday } from '../config';
 
 const hours = hoursDisplay();
 const hasLocation = hasStreetAddress();
@@ -29,8 +29,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <h1>Visit Stone&rsquo;s Throw Coffee</h1>
       <p class="lede">
         We&rsquo;ve found our home: 3615 Chapman Highway, Suite A, in South Knoxville, the former South Press
-        space. {openingDateWeekday() ? `We open ${openingDateWeekday()}. ` : ''}Hours and accessibility details are below, and parking notes
-        will be posted before opening day.
+        space. {!isOpen() && openingDateWeekday() ? `We open ${openingDateWeekday()}. ` : ''}Hours, parking, and accessibility details are below.
       </p>
 
       <div class="grid">
@@ -61,7 +60,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
                     <li>{line}</li>
                   ))}
                 </ul>
-                <p class="menu-item__desc" style="margin-top: var(--space-1);">{hoursNote()}</p>
+                {hoursNote() && <p class="menu-item__desc" style="margin-top: var(--space-1);">{hoursNote()}</p>}
               </>
             ) : (
               <p>
@@ -146,15 +145,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
       <h2>Parking</h2>
       <p>
-        We&rsquo;re confirming parking and overflow options now. We&rsquo;ll publish clear arrival
-        notes before opening and for any event with special parking needs.
+        We&rsquo;re still finalizing the parking details for our lot and any overflow, and we&rsquo;ll
+        post them here. Until then, the map above shows exactly where we are. If you have questions
+        about getting here, or you&rsquo;re arriving with a mobility device, <a href={`${base}/contact/`}>send us a
+        note</a> and we&rsquo;ll help.
       </p>
 
       <h2>Accessibility</h2>
       <p>
         Every member of our staff will be trained to take orders in ASL and Spanish, so you can
         expect to order in either language. Most of our seating is wheelchair accessible and size inclusive, so you can pick a spot that fits you.
-        More details about the entrance, restrooms, and parking will be posted before opening.
+        More details about the entrance and restrooms will be posted here soon.
         Questions in the meantime? <a href={`${base}/contact/`}>Reach out</a>.
       </p>
 

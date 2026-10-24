@@ -40,12 +40,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h2>Hours</h2>
         {
           hours.length ? (
-            <ul style="list-style:none; padding:0; margin:0;">
-              {hours.map((line) => (
-                <li>{line}</li>
-              ))}
-            </ul>
-            <p style="margin: 0.35rem 0 0; font-size: 0.9em;">{hoursNote()}</p>
+            <>
+              <ul style="list-style:none; padding:0; margin:0;">
+                {hours.map((line) => (
+                  <li>{line}</li>
+                ))}
+              </ul>
+              {hoursNote() && <p style="margin: 0.35rem 0 0; font-size: 0.9em;">{hoursNote()}</p>}
+            </>
           ) : (
             <p>Hours coming soon. Follow along for our opening announcement.</p>
           )
@@ -93,7 +95,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
     </div>
     <div class="footer-moon" aria-hidden="true">
-      <img src={`${base}/images/decor-moon-stars-transparent.png`} alt="" width="56" height="56" loading="lazy" />
+      <img src={`${base}/images/decor-moon-stars-transparent.webp`} alt="" width="56" height="56" loading="lazy" />
     </div>
     <div class="legal">
       <span>&copy; {year} {BUSINESS.name} &middot; South Knoxville, TN</span>

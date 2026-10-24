@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import NewsletterPopup from '../components/NewsletterPopup.astro';
 import MoonDivider from '../components/MoonDivider.astro';
-import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay, hoursNote, openingDateShort, openingDateWeekday } from '../config';
+import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay, hoursNote, hoursSummary, isOpen, openingDateShort, openingDateWeekday } from '../config';
 
 const hours = hoursDisplay();
 const hasLocation = hasStreetAddress();
@@ -13,6 +13,8 @@ const mapsUrl = hasLocation
   : '';
 const openShort = openingDateShort();
 const openWeekday = openingDateWeekday();
+const open = isOpen();
+const hoursLine = hoursSummary();
 
 const now = new Date();
 const upcoming = (await getCollection('events', ({ data }) => !data.draft && data.start >= now))
@@ -30,13 +32,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
-  title={openShort ? `Stone's Throw Coffee | Opening ${openShort} in South Knoxville` : "Stone's Throw Coffee | Coming Soon to South Knoxville"}
-  description={openShort ? `Queer-owned coffee shop and community arts space opening ${openShort} at 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open.` : "Queer-owned coffee shop and community arts space coming soon to 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open."}
-  ogTitle={openShort ? `Stone's Throw Coffee Opens ${openShort} in South Knoxville` : "Stone's Throw Coffee Is Coming Soon to South Knoxville"}
+  title={open ? "Stone's Throw Coffee | Queer-Owned Coffee in South Knoxville" : openShort ? `Stone's Throw Coffee | Opening ${openShort} in South Knoxville` : "Stone's Throw Coffee | Coming Soon to South Knoxville"}
+  description={open ? "Queer-owned, sober-friendly coffee shop and community arts space at 3615 Chapman Hwy, Ste A in South Knoxville. See the menu, hours, and upcoming events." : openShort ? `Queer-owned coffee shop and community arts space opening ${openShort} at 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open.` : "Queer-owned coffee shop and community arts space coming soon to 3615 Chapman Hwy, Ste A in South Knoxville. Preview the menu and help us open."}
+  ogTitle={open ? "Stone's Throw Coffee Is Open in South Knoxville" : openShort ? `Stone's Throw Coffee Opens ${openShort} in South Knoxville` : "Stone's Throw Coffee Is Coming Soon to South Knoxville"}
   ogDescription="A queer-owned South Knoxville coffee shop and community arts space built around coffee, local art, sober-friendly events, mutual aid, and community care."
 >
   <!-- hero background is the LCP element but loads via CSS - preload it -->
-  <link slot="head" rel="preload" as="image" href={`${base}/images/home-hero-forest-coffeehouse.webp`} imagesrcset={`${base}/images/home-hero-forest-coffeehouse-640.webp 640w, ${base}/images/home-hero-forest-coffeehouse-1024.webp 1024w, ${base}/images/home-hero-forest-coffeehouse.webp 1200w`} imagesizes="100vw" />
+  <link slot="head" rel="preload" as="image" href={`${base}/images/home-hero-forest-coffeehouse.webp`} imagesrcset={`${base}/images/home-hero-forest-coffeehouse-640.webp 640w, ${base}/images/home-hero-forest-coffeehouse-1024.webp 1024w, ${base}/images/home-hero-forest-coffeehouse.webp 1200w`} imagesizes="100vw" fetchpriority="high" />
 
   <!-- ── Hero ── -->
   <section class="hero hero--coming-soon">
@@ -67,20 +69,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 
     <div class="wrap hero--coming-soon__wrap">
       <div class="hero-content-card">
-        <p class="eyebrow cs-eyebrow">{openShort ? `Opening ${openShort} in South Knoxville` : 'Coming Soon to South Knoxville'}</p>
+        <p class="eyebrow cs-eyebrow">{open ? 'Now open in South Knoxville' : openShort ? `Opening ${openShort} in South Knoxville` : 'Coming Soon to South Knoxville'}</p>
         <h1 class="cs-h1">Stone&rsquo;s Throw Coffee</h1>
         <p class="cs-body">
-          A queer-owned coffee shop and community arts space {openWeekday ? `opening ${openWeekday}` : 'opening soon'} in South Knoxville.
+          A queer-owned coffee shop and community arts space {open ? 'in' : openWeekday ? `opening ${openWeekday}` : 'opening soon'} in South Knoxville.
           We&rsquo;re building a sober-friendly gathering place for good coffee, local art, author
           readings, acoustic music, mutual aid, and community care.
         </p>
         <p class="cs-tagline">Just a Stone&rsquo;s Throw away.</p>
+        {
+          hasLocation && (
+            <p class="cs-info">
+              <strong>3615 Chapman Hwy, Ste A</strong>{hoursLine ? ` · ${hoursLine}` : ''}
+            </p>
+          )
+        }
         <div class="btn-row cs-btns">
           <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">
             Support the GoFundMe
           </a>
           <a class="btn btn--clay-outline" href={`${base}/menu/`}>
-            Preview the Menu
+            {open ? 'See the Menu' : 'Preview the Menu'}
+          </a>
+          <a class="btn btn--clay-outline" href={`${base}/visit/`}>
+            Hours &amp; directions
           </a>
         </div>
       </div>
@@ -97,7 +109,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <!-- ── Opening status strip ── -->
   <div class="opening-strip">
     <p class="opening-strip__msg">
-      {openWeekday ? `We open ${openWeekday}. ` : ''}
+      {open ? hoursLine ? `We're open ${hoursLine}. ` : '' : openWeekday ? `We open ${openWeekday}. ` : ''}
       We&rsquo;ve found our home at 3615 Chapman Highway, Suite A, the former South Press space. Follow
       along for menu and event announcements.
     </p>
@@ -242,7 +254,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
             hours.length ? (
               <>
                 <ul>{hours.map((line) => <li>{line}</li>)}</ul>
-                <p class="menu-item__desc">{hoursNote()}</p>
+                {hoursNote() && <p class="menu-item__desc">{hoursNote()}</p>}
               </>
             ) : (
               <p>Hours coming soon. We&rsquo;ll post them here and on Google before we open.</p>
@@ -354,6 +366,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     margin-bottom: var(--space-2);
   }
 
+  .cs-info {
+    margin: 0 0 var(--space-2);
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
   .cs-tagline {
     font-family: var(--font-display);
     font-style: italic;

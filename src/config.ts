@@ -182,8 +182,27 @@ export const openingDateShort = (): string => openingFmt({ month: 'long', day: '
 /** "Saturday, October 31" (empty until openingDate is set) */
 export const openingDateWeekday = (): string => openingFmt({ weekday: 'long', month: 'long', day: 'numeric' });
 
-/** One shared note shown wherever hours appear, so hours never read as "open now". */
+/** Today's date in Eastern time (YYYY-MM-DD). Evaluated at BUILD time: the site is static, so it
+ *  is rebuilt on opening day (see .github/workflows/open-day-rebuild.yml) to flip the copy. */
+const todayET = (): string => new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+/** True once the build date reaches openingDate. Drives every "coming soon" / "now open" switch. */
+export const isOpen = (): boolean => has(BUSINESS.openingDate) && todayET() >= BUSINESS.openingDate;
+
+/** Short hours line for hero/strip use, e.g. "8am–6pm, closed Tuesdays" (empty if hours are irregular). */
+export const hoursSummary = (): string => {
+  const open = BUSINESS.hours.filter((r) => !r.closed && r.opens && r.closes);
+  if (!open.length) return '';
+  const spans = new Set(open.map((r) => `${formatTime(r.opens!)}–${formatTime(r.closes!)}`));
+  if (spans.size !== 1) return '';
+  const closedDays = BUSINESS.hours.filter((r) => r.closed).flatMap((r) => r.days);
+  const span = [...spans][0];
+  return closedDays.length ? `${span}, closed ${closedDays.map((d) => `${d}s`).join(' and ')}` : `${span} daily`;
+};
+
+/** One shared note shown wherever hours appear, so hours never read as "open now" before opening.
+ *  Empty once the shop is open (callers hide it). */
 export const hoursNote = (): string => {
+  if (isOpen()) return '';
   if (!has(BUSINESS.openingDate)) return 'Starting opening day. Date coming soon.';
   return `Starting ${openingFmt({ weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}.`;
 };
