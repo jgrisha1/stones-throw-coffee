@@ -42,7 +42,7 @@ export const PARTNERS: { name: string; url?: string; image?: string; alt?: strin
     width: 480,
     height: 480,
   },
-  { name: 'Silver Springs Bakery' },
+  { name: 'Silver Springs Bakery', url: 'https://www.instagram.com/silverspringsbakery/' },
 ];
 
 /**
