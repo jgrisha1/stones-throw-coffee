@@ -118,9 +118,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         {
           PARTNERS.filter((p) => p.image).map((p) => (
             <li class="partner-card">
-              <div class="partner-card__img">
-                <img src={`${base}/images/partners/${p.image}`} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
-              </div>
+              {p.full ? (
+                <a
+                  class="partner-card__img partner-card__zoom"
+                  href={`${base}/images/partners/${p.full}`}
+                  data-lightbox
+                  data-alt={p.alt}
+                  aria-label={`Enlarge the ${p.name} image`}
+                >
+                  <img src={`${base}/images/partners/${p.image}`} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+                  <span class="partner-card__hint" aria-hidden="true">Tap to enlarge</span>
+                </a>
+              ) : (
+                <div class="partner-card__img">
+                  <img src={`${base}/images/partners/${p.image}`} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+                </div>
+              )}
               <p class="partner-card__name">
                 {p.url ? (
                   <a href={p.url} target="_blank" rel="noopener noreferrer">{p.name}</a>
@@ -132,6 +145,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
           ))
         }
       </ul>
+      <dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+        <button type="button" class="lightbox__close" aria-label="Close enlarged image">&times;</button>
+        <img src="" alt="" />
+      </dialog>
       <ul class="event-meta">
         {
           PARTNERS.filter((p) => !p.image).map((p) => (
@@ -167,6 +184,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   </section>
   <EmailSignup heading="Menu specials, straight to your inbox" />
 </Base>
+
+<script>
+  // Click-to-enlarge for partner images. Without JS the link just opens the big image.
+  const dlg = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const big = dlg?.querySelector('img') as HTMLImageElement | null;
+  if (dlg && big && typeof dlg.showModal === 'function') {
+    document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        big.src = a.href;
+        big.alt = a.dataset.alt || '';
+        dlg.showModal();
+      });
+    });
+    dlg.querySelector('.lightbox__close')?.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close(); // click on the dark backdrop
+    });
+  }
+</script>
 
 <style>
   .partner-grid {
@@ -206,5 +243,74 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     font-weight: 700;
     font-size: 1.05rem;
     border-top: 1px solid var(--line);
+  }
+  .partner-card__zoom {
+    position: relative;
+    cursor: zoom-in;
+  }
+  .partner-card__hint {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    background: rgba(20, 58, 0, 0.9);
+    color: #faf4e7;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+  }
+  .partner-card__zoom:focus-visible { outline: 3px solid var(--honey); outline-offset: -3px; }
+  .lightbox {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: 96vw;
+    max-height: 96vh;
+    overflow: visible;
+  }
+  .lightbox::backdrop { background: rgba(10, 20, 5, 0.85); }
+  .lightbox img {
+    display: block;
+    max-width: 96vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    background: #fff;
+  }
+  .lightbox__close {
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #faf4e7;
+    background: #143a00;
+    color: #faf4e7;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox__close:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+  /* phones: show the image large and let people scroll or pinch around it, with the close button pinned */
+  @media (max-width: 600px) {
+    .lightbox {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .lightbox img {
+      max-width: none;
+      max-height: none;
+      width: 200vw;
+      margin: 3.5rem 0 1rem;
+      border-radius: 0;
+    }
+    .lightbox__close { position: fixed; top: 0.5rem; right: 0.5rem; }
   }
 </style>

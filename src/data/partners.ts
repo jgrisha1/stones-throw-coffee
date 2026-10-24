@@ -24,16 +24,19 @@ export const SOURCING = [
  * work with, distinct from the sourcing suppliers above. Business names are
  * public. Add a `url` to any entry to turn it into a link.
  */
-export const PARTNERS: { name: string; url?: string; image?: string; alt?: string; width?: number; height?: number }[] = [
+export const PARTNERS: { name: string; url?: string; image?: string; alt?: string; width?: number; height?: number; full?: string }[] = [
   {
     name: 'Frog Juice Kombucha',
+    url: 'https://frogjuicekombucha.com/',
     image: 'frog-juice.webp',
+    full: 'frog-juice-large.webp', // click-to-enlarge version (1206 px wide)
     alt: 'Frog Juice artisanal kombucha label on a rainbow background, listing its flavors and the local farms it partners with, and ending with "Made with real ingredients, grown by real farmers"',
     width: 960,
     height: 744,
   },
   {
     name: 'SoKno Sourdough',
+    url: 'https://soknosourdough.com/',
     image: 'so-kno-sourdough.webp',
     alt: 'SoKno Sourdough logo: a loaf of sourdough in a dark cast-iron pot on a sage green circle',
     width: 480,
