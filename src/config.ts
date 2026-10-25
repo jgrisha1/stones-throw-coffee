@@ -187,6 +187,9 @@ const todayET = (): string => new Date().toLocaleDateString('en-CA', { timeZone:
 /** True once the build date reaches openingDate. Drives every "coming soon" / "now open" switch. */
 export const isOpen = (): boolean => has(BUSINESS.openingDate) && todayET() >= BUSINESS.openingDate;
 
+/** True through opening day (build date on or before openingDate): drives the opening-day popup. */
+export const openingAnnouncementActive = (): boolean => has(BUSINESS.openingDate) && todayET() <= BUSINESS.openingDate;
+
 /** Short hours line for hero/strip use, e.g. "8am–6pm, closed Tuesdays" (empty if hours are irregular). */
 export const hoursSummary = (): string => {
   const open = BUSINESS.hours.filter((r) => !r.closed && r.opens && r.closes);

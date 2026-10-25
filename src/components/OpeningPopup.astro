@@ -1,0 +1,279 @@
+---
+/**
+ * Opening-day announcement popup, with an email signup.
+ *
+ * Mounted by Base.astro on every page, but only rendered while the announcement is active
+ * (the build date is on or before openingDate). It opens once per browser session, a moment
+ * after the first page loads, and again in a later visit until the person signs up. The script
+ * also checks the date in the browser, so a visitor who loads an older build after opening day
+ * is not shown it. It replaces the home-page newsletter popup during opening week, because
+ * two popups at once would be too much; the signup form posts to the same Formspree list.
+ */
+import { BUSINESS, has, hoursSummary, isOpen, openingDateWeekday } from '../config';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const ready = has(BUSINESS.newsletterAction) && has(BUSINESS.openingDate);
+const open = isOpen();
+const hours = hoursSummary().split(',')[0]; // "8am–6pm"
+---
+
+{
+  ready && (
+    <div
+      class="op-overlay"
+      id="opening-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="op-title"
+      aria-describedby="op-desc"
+      data-open-date={BUSINESS.openingDate}
+      hidden
+    >
+      <div class="op-card" tabindex="-1">
+        <button type="button" class="op-close" id="op-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none">
+            <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+        <img
+          class="op-poster"
+          src={`${base}/images/grand-opening-poster.webp`}
+          width="480"
+          height="600"
+          alt="Grand opening poster: October 31st 2026, 8:00am to 6:00pm, with the Stone's Throw Coffee logo held between two hands"
+          decoding="async"
+        />
+        <div class="op-body">
+          <p class="op-eyebrow">Grand opening</p>
+          <h2 id="op-title" class="op-title">{open ? "We're open today!" : 'Join us opening day!'}</h2>
+          <p class="op-date">
+            {openingDateWeekday()}{hours ? ` · ${hours}` : ''}
+          </p>
+          <p id="op-desc" class="op-desc">
+            Come celebrate our very first day with us, and browse our vendor market. We&rsquo;re at 3615
+            Chapman Hwy, Ste A in South Knoxville.
+          </p>
+          <form class="op-form" id="op-form" action={BUSINESS.newsletterAction} method="post">
+            <input type="hidden" name="_subject" value="New email-list signup: opening-day popup" />
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+            <label class="visually-hidden" for="op-email">Email address</label>
+            <input id="op-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+            <button class="btn btn--solid" type="submit" id="op-submit">Keep me posted</button>
+          </form>
+          <p class="op-fine">Get opening news and event announcements. No spam, no selling your info.</p>
+          <p class="op-status" id="op-status" role="status" aria-live="polite" />
+          <div class="op-actions">
+            <a class="op-more" href={`${base}/events/grand-opening/`}>Grand opening details</a>
+            <button type="button" class="op-later" id="op-later">Maybe later</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .op-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 90; /* above the cookie notice (80), below the skip link (100) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: rgba(20, 58, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .op-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .op-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    width: min(46rem, 100%);
+    max-height: calc(100dvh - 2.5rem);
+    overflow-y: auto;
+    background: var(--cream);
+    border-top: 5px solid var(--gold);
+    border-radius: 14px;
+    padding: 2rem 1.75rem 1.5rem;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+    transform: translateY(14px) scale(0.98);
+    transition: transform 0.28s ease;
+  }
+  .op-card:focus { outline: none; }
+  .op-overlay.is-open .op-card { transform: translateY(0) scale(1); }
+  .op-poster {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(20, 58, 0, 0.15);
+  }
+  .op-body { text-align: left; min-width: 0; }
+  .op-close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.35rem;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    line-height: 0;
+  }
+  .op-close:hover { background: var(--cream-deep); color: var(--green-deep); }
+  .op-eyebrow {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brown);
+  }
+  .op-title {
+    margin: 0 0 0.3rem;
+    color: var(--green);
+    font-size: 1.75rem;
+    line-height: 1.12;
+  }
+  .op-date {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--green-deep);
+  }
+  .op-desc { margin: 0 0 1rem; color: var(--ink-soft); font-size: 1rem; max-width: 30rem; }
+  .op-form { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .op-form input[type='email'] { flex: 1 1 13rem; min-width: 0; }
+  .op-form .btn { flex: 0 0 auto; }
+  .op-fine { margin: 0.55rem 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .op-status { margin: 0.6rem 0 0; min-height: 1.25rem; font-size: 0.95rem; color: var(--green); }
+  .op-status[data-state='error'] { color: var(--brown); }
+  .op-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; margin-top: 0.4rem; }
+  .op-more,
+  .op-later {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .op-more { color: var(--green); font-weight: 700; }
+  .op-later { color: var(--ink-soft); }
+  .op-later:hover { color: var(--green-deep); }
+  @media (max-width: 640px) {
+    .op-card { grid-template-columns: 1fr; gap: 0.75rem; padding: 2.25rem 1.25rem 1.25rem; }
+    .op-poster { display: none; } /* the same details are in the text, and the form stays above the fold */
+    .op-title { font-size: 1.55rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .op-overlay, .op-card { transition: none; }
+    .op-card { transform: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var el = document.getElementById('opening-popup');
+    if (!el) return;
+    var SESSION_KEY = 'stc-opening-popup-seen';
+    var LOCAL_KEY = 'stc-opening-popup';
+
+    // Stop showing after opening day (the page may be an older build), once per session, and never again after signing up.
+    var openDate = el.getAttribute('data-open-date');
+    var todayET = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+    if (openDate && todayET > openDate) return;
+    try {
+      if (sessionStorage.getItem(SESSION_KEY)) return;
+      if (localStorage.getItem(LOCAL_KEY) === 'signed') return;
+    } catch (e) {}
+
+    var card = el.querySelector('.op-card');
+    var form = document.getElementById('op-form');
+    var statusEl = document.getElementById('op-status');
+    var submitBtn = document.getElementById('op-submit');
+    var lastFocus = null;
+    var shown = false;
+
+    function focusables() {
+      return el.querySelectorAll('button, [href], input:not([type=hidden]):not([tabindex="-1"]), select, textarea');
+    }
+    function onKeydown(e) {
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key !== 'Tab') return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === card)) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
+    function open() {
+      if (shown) return;
+      shown = true;
+      try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
+      lastFocus = document.activeElement;
+      el.hidden = false;
+      requestAnimationFrame(function () { el.classList.add('is-open'); });
+      document.addEventListener('keydown', onKeydown);
+      setTimeout(function () { if (card) card.focus(); }, 60); // focus the card, not the email box, so phones do not pop the keyboard
+    }
+    function close() {
+      el.classList.remove('is-open');
+      document.removeEventListener('keydown', onKeydown);
+      setTimeout(function () { el.hidden = true; }, 280);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    var closeBtn = document.getElementById('op-close');
+    var laterBtn = document.getElementById('op-later');
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (laterBtn) laterBtn.addEventListener('click', close);
+    el.addEventListener('mousedown', function (e) { if (e.target === el) close(); });
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (statusEl) { statusEl.removeAttribute('data-state'); statusEl.textContent = 'Signing you up…'; }
+        if (submitBtn) submitBtn.disabled = true;
+        fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('bad response');
+            try { localStorage.setItem(LOCAL_KEY, 'signed'); } catch (err) {}
+            form.hidden = true;
+            if (statusEl) statusEl.textContent = "Thanks, you're on the list! See you opening day.";
+            setTimeout(close, 2600);
+          })
+          .catch(function () {
+            if (submitBtn) submitBtn.disabled = false;
+            if (statusEl) { statusEl.setAttribute('data-state', 'error'); statusEl.textContent = 'Something went wrong. Please try again.'; }
+          });
+      });
+    }
+
+    // A moment after the page loads, so it never blocks first paint.
+    setTimeout(open, 1500);
+  })();
+</script>
