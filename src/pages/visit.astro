@@ -99,6 +99,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
             }
             <li><a href={`${base}/contact/`}>Contact &amp; event booking</a></li>
           </ul>
+          {!has(BUSINESS.phoneDisplay) && (
+            <p class="menu-item__desc" style="margin-top: var(--space-1);">
+              We don&rsquo;t have a phone line. Email or a message on Instagram or Facebook is the best way to reach us.
+            </p>
+          )}
         </div>
       </div>
 
