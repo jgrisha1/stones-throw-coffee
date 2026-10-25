@@ -39,7 +39,7 @@ const ogImageUrl = new URL(ogImage, Astro.site);
 
 // CafeOrCoffeeShop structured data, built from src/config.ts on every page.
 // Empty config values are omitted so placeholders never ship to Google.
-const sameAs = Object.values(BUSINESS.social).filter(has);
+const sameAs = [...Object.values(BUSINESS.social), BUSINESS.googleBusinessProfile].filter(has);
 const localBusiness: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'CafeOrCoffeeShop',

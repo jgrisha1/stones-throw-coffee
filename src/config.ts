@@ -97,10 +97,9 @@ export const BUSINESS = {
   storyVideoUrl: 'https://www.facebook.com/reel/933174852949904/',
 
   // --- Google Business Profile ---
-  // TODO: Claim and verify your GBP at https://business.google.com, then paste
-  // the public profile URL here. It feeds the footer and Visit page.
-  // Format: 'https://maps.app.goo.gl/YOURLINK' or the full g.co URL.
-  googleBusinessProfile: '',
+  // Public listing (Google Maps place id as a cid link; it opens the Stone's Throw listing).
+  // It feeds the footer link and the structured-data sameAs list.
+  googleBusinessProfile: 'https://maps.google.com/?cid=9070852357310786264',
 
   // --- Integrations ---
   // Formspree form "Stone's Throw Coffee - Email Signup" (separate from the
