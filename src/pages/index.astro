@@ -211,11 +211,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <section class="section section--pine section--botanical" aria-labelledby="support-heading">
     <img src={`${base}/images/decor-moon-stars-transparent.png`} alt="" width="320" height="320" loading="lazy" aria-hidden="true" class="botanical botanical--side" />
     <div class="wrap">
-      <p class="eyebrow" style="color: var(--honey)">Help us open</p>
+      <p class="eyebrow" style="color: var(--honey)">{open ? 'Support Stone’s Throw' : 'Help us open'}</p>
       <h2 id="support-heading" style="margin-top:0; color: var(--cream);">We&rsquo;re building this with you.</h2>
       <p style="max-width: var(--measure); color: #e9e0cb;">
-        Stone&rsquo;s Throw is community-funded and community-built. Every donation to our GoFundMe
-        helps us open faster, and opens a space that belongs to South Knoxville.
+        {open
+          ? 'Stone’s Throw is community-funded and community-built. Every donation to our GoFundMe helps cover our opening costs and equipment, and keeps this a space that belongs to South Knoxville.'
+          : 'Stone’s Throw is community-funded and community-built. Every donation to our GoFundMe helps us open faster, and opens a space that belongs to South Knoxville.'}
       </p>
       <div class="btn-row">
         <a class="btn btn--solid" href={BUSINESS.gofundme} target="_blank" rel="noopener noreferrer">Support the GoFundMe</a>
@@ -263,7 +264,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         </div>
       </div>
       <div class="btn-row">
-        <a class="btn btn--clay" href={`${base}/visit/`}>Opening &amp; accessibility details</a>
+        <a class="btn btn--clay" href={`${base}/visit/`}>{open ? 'Hours & accessibility details' : 'Opening & accessibility details'}</a>
         {hasLocation && <a class="btn btn--clay-outline" href={mapsUrl} rel="noopener">Open in Google Maps</a>}
       </div>
     </div>

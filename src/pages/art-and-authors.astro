@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import { BUSINESS, has } from '../config';
+import { BUSINESS, has, isOpen } from '../config';
 
 const formReady = has(BUSINESS.formspreeEndpoint);
 const base = import.meta.env.BASE_URL.replace(/\/$/,'');
@@ -35,8 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       <p>
         We&rsquo;ll rotate local art on our walls and stock vendor shelves with work by Knoxville
         makers. Each feature will come with an artist bio, prices if the work is for sale, and a
-        link back to the artist&rsquo;s own site or shop. Our first featured artists will be
-        announced before opening day.
+        link back to the artist&rsquo;s own site or shop. {isOpen() ? 'Our first featured artists will be announced soon.' : 'Our first featured artists will be announced before opening day.'}
       </p>
 
       <h2>Author readings</h2>

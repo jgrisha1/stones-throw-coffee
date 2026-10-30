@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import { MENU, FLAVORS, TEAS, formatPrice } from '../data/menu';
 import { PARTNERS, PEOPLE, showPersonalNames } from '../data/partners';
+import { isOpen } from '../config';
 
 // schema.org Menu structured data, generated from the same data the page
 // renders - prices on the page and prices in search results can't drift.
@@ -177,8 +178,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       }
 
       <p>
-        <em>Final opening prices may shift as costs and supplies change. We&rsquo;ll keep this page
-        updated as opening day gets closer.</em>
+        <em>{isOpen()
+          ? 'Prices may shift as costs and supplies change. We’ll keep this page updated.'
+          : 'Final opening prices may shift as costs and supplies change. We’ll keep this page updated as opening day gets closer.'}</em>
       </p>
     </div>
   </section>

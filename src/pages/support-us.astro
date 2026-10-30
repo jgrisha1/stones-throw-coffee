@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import MoonDivider from '../components/MoonDivider.astro';
-import { BUSINESS } from '../config';
+import { BUSINESS, isOpen } from '../config';
 
+const open = isOpen();
 const gofundme = BUSINESS.gofundme;
 const cashApp = BUSINESS.cashApp;
 const cashAppUrl = BUSINESS.cashAppUrl;
@@ -11,7 +12,7 @@ const facebook = BUSINESS.social.facebook;
 const tiers = [
   {
     range: '$1–$100',
-    perks: ['A thank-you on our donor wall, ready for opening day.'],
+    perks: [open ? 'A thank-you on our donor wall.' : 'A thank-you on our donor wall, ready for opening day.'],
   },
   {
     range: '$101–$200',
@@ -42,8 +43,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 
 <Base
-  title="Support Our Opening | Stone's Throw Coffee"
-  description="Help Stone's Throw Coffee open in South Knoxville: support our GoFundMe, give skills or supplies, and help build a queer-owned, sober-friendly coffee shop."
+  title={open ? "Support Stone's Throw | Stone's Throw Coffee" : "Support Our Opening | Stone's Throw Coffee"}
+  description={open ? "Support Stone's Throw Coffee in South Knoxville: give to our GoFundMe, give skills or supplies, and help sustain a queer-owned, sober-friendly coffee shop." : "Help Stone's Throw Coffee open in South Knoxville: support our GoFundMe, give skills or supplies, and help build a queer-owned, sober-friendly coffee shop."}
   jsonLd={[{
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -56,7 +57,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
       {
         '@type': 'Question',
         name: "What happens if the GoFundMe doesn't reach its goal?",
-        acceptedAnswer: { '@type': 'Answer', text: "We're still opening. Our GoFundMe goal helps us get there sooner and better-equipped. Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out." }
+        acceptedAnswer: { '@type': 'Answer', text: open ? "We're open either way. Our GoFundMe goal helps us be better-equipped. Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out." : "We're still opening. Our GoFundMe goal helps us get there sooner and better-equipped. Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out." }
       },
       {
         '@type': 'Question',
@@ -81,14 +82,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   <section class="section--pine support-hero">
     <div class="wrap">
       <p class="eyebrow">Community-funded</p>
-      <h1>Help Us Open the Doors</h1>
+      <h1>{open ? 'Help Keep Our Doors Open' : 'Help Us Open the Doors'}</h1>
       <p class="support-lede">
-        Stone&rsquo;s Throw Coffee is being built with community support from the ground up.
+        {open
+          ? 'Stone’s Throw Coffee was built with community support from the ground up.'
+          : 'Stone’s Throw Coffee is being built with community support from the ground up.'}
       </p>
       <p class="support-lede">
-        Supporting our GoFundMe is one of the best ways to help us open as quickly as possible.
-        Every donation helps us move closer to building a sober-friendly, queer-owned coffee shop
-        where people can gather, create, organize, rest, and belong.
+        {open
+          ? 'Supporting our GoFundMe is one of the best ways to help us settle in and grow. Every donation helps us keep a sober-friendly, queer-owned coffee shop where people can gather, create, organize, rest, and belong.'
+          : 'Supporting our GoFundMe is one of the best ways to help us open as quickly as possible. Every donation helps us move closer to building a sober-friendly, queer-owned coffee shop where people can gather, create, organize, rest, and belong.'}
       </p>
       <div class="btn-row">
         <a class="btn btn--solid" href={gofundme} target="_blank" rel="noopener noreferrer">
@@ -208,7 +211,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         </details>
         <details>
           <summary>What happens if the GoFundMe doesn&rsquo;t reach its goal?</summary>
-          <p>We&rsquo;re still opening. Our GoFundMe goal helps us get there sooner and better-equipped. Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out. Contributions matter at any level.</p>
+          <p>{open ? 'We’re open either way. Our GoFundMe goal helps us be better-equipped.' : 'We’re still opening. Our GoFundMe goal helps us get there sooner and better-equipped.'} Every dollar raised directly reduces how much we need to borrow or sacrifice on equipment and build-out. Contributions matter at any level.</p>
         </details>
         <details>
           <summary>Is Stone&rsquo;s Throw really queer-owned?</summary>
@@ -231,8 +234,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     <div class="wrap" style="text-align: center">
       <h2 style="color: var(--cream)">Ready to help?</h2>
       <p style="color: var(--cream); max-width: 52ch; margin-inline: auto">
-        Every contribution (dollars, skills, tools, or signal boosts) brings us
-        closer to opening day. Thank you for believing in this space.
+        Every contribution (dollars, skills, tools, or signal boosts) {open ? 'helps keep this space going' : 'brings us closer to opening day'}.
+        Thank you for believing in this space.
       </p>
       <div class="btn-row" style="justify-content: center">
         <a class="btn btn--solid" href={gofundme} target="_blank" rel="noopener noreferrer">
