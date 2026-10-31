@@ -9,10 +9,10 @@
  * is not shown it. It replaces the home-page newsletter popup during opening week, because
  * two popups at once would be too much; the signup form posts to the same Formspree list.
  */
-import { BUSINESS, has, hoursSummary, isOpen, openingDateWeekday } from '../config';
+import { BUSINESS, has, hoursSummary, openingDayReached, openingDateWeekday } from '../config';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ready = has(BUSINESS.newsletterAction) && has(BUSINESS.openingDate);
-const open = isOpen();
+const open = openingDayReached(); // the popup keeps its "join us" wording until the real opening day
 const hours = hoursSummary().split(',')[0]; // "8am–6pm"
 ---
 

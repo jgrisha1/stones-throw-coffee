@@ -184,8 +184,14 @@ export const openingDateWeekday = (): string => openingFmt({ weekday: 'long', mo
 /** Today's date in Eastern time (YYYY-MM-DD). Evaluated at BUILD time: the site is static, so it
  *  is rebuilt on opening day (see .github/workflows/open-day-rebuild.yml) to flip the copy. */
 const todayET = (): string => new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
-/** True once the build date reaches openingDate. Drives every "coming soon" / "now open" switch. */
-export const isOpen = (): boolean => has(BUSINESS.openingDate) && todayET() >= BUSINESS.openingDate;
+/** The date (ET) the site starts reading "now open", set a day ahead of openingDate by the owners' request
+ *  so the open copy is live the evening before. openingDate itself stays the real day (hours, schema, popup). */
+const SITE_OPEN_FROM = '2026-10-30';
+/** True once the build date reaches the site-open date. Drives every "coming soon" / "now open" switch. */
+export const isOpen = (): boolean =>
+  has(BUSINESS.openingDate) && todayET() >= (SITE_OPEN_FROM < BUSINESS.openingDate ? SITE_OPEN_FROM : BUSINESS.openingDate);
+/** True once the real opening day arrives (build date on or after openingDate). */
+export const openingDayReached = (): boolean => has(BUSINESS.openingDate) && todayET() >= BUSINESS.openingDate;
 
 /** True through opening day (build date on or before openingDate): drives the opening-day popup. */
 export const openingAnnouncementActive = (): boolean => has(BUSINESS.openingDate) && todayET() <= BUSINESS.openingDate;
