@@ -2,17 +2,17 @@
 title: 'Grand Opening Day'
 start: 2026-10-31T08:00:00-04:00
 end: 2026-10-31T18:00:00-04:00
-description: "Stone's Throw Coffee opens its doors at 3615 Chapman Hwy, Ste A in South Knoxville, with a vendor market on our first day featuring Forbidden Wing Bookshop, Cozy Relief, Roshani Designs, The Oil Well, and Within the Oaken Eye. Come for the first pours, see the space, and try the menu."
+description: "Stone's Throw Coffee opened its doors on October 31, 2026 at 3615 Chapman Hwy, Ste A in South Knoxville, with a vendor market on our first day featuring Forbidden Wing Bookshop, Cozy Relief, Roshani Designs, The Oil Well, and Within the Oaken Eye. Thank you to everyone who came out for our first day."
 audience: 'Everyone welcome'
 accessibility: 'Our staff are trained to take orders in ASL and Spanish. See the Visit page for seating, entrance, and parking details.'
 performers: []
 draft: false
 ---
 
-This is the day the lights come on. We open at 8am and stay open until 6pm, pouring lattes,
+This was the day the lights came on. We opened at 8am and stayed open until 6pm, pouring lattes,
 dirty chai, and our mushroom coffee from open to close.
 
-Our first day is also a vendor market, so come browse and say hello to the vendors. If you've been waiting for a place like this, come see it on day one. We can't wait to meet you.
+Our first day was also a vendor market, with local makers set up inside the shop. Thank you to everyone who showed up, and to the vendors who joined us. Come see the space any day we're open.
 
 ## Opening day vendors
 
@@ -22,4 +22,3 @@ Our first day is also a vendor market, so come browse and say hello to the vendo
 - **The Oil Well:** jewelry
 - **Within the Oaken Eye:** tarot readings
 
-The vendor lineup may change, so check back for updates.
