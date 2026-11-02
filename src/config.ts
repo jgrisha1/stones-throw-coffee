@@ -65,6 +65,8 @@ export const BUSINESS = {
   openingDate: '2026-10-31',
 
   priceRange: '$',
+  // Confirmed by the owners Nov 2, 2026. Shown on the Visit page and in schema.org paymentAccepted.
+  paymentAccepted: 'Cash, Credit Card, Debit Card, Contactless',
 
   // Round mushroom-and-moon logo, white background keyed to transparent.
   // Flows into the CafeOrCoffeeShop structured data. To refresh it, drop a new
