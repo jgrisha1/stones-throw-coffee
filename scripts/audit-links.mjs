@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST = path.resolve('dist');
-const BASE = '/stones-throw-coffee';
+const BASE = '';
 const htmlFiles = [];
 
 (function walk(dir) {

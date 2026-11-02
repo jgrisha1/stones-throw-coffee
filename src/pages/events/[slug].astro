@@ -80,7 +80,8 @@ if (hasLocation) {
     },
   };
 }
-if (image) eventSchema.image = new URL(image, Astro.site).href;
+// Google wants an image on events; fall back to the site share image.
+eventSchema.image = new URL(image ?? '/images/og-stones-throw-coffee.webp', Astro.site).href;
 if (performers.length) {
   eventSchema.performer = performers.map((p) => ({ '@type': 'Person', name: p.name }));
 }

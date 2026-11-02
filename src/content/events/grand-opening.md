@@ -2,7 +2,7 @@
 title: 'Grand Opening Day'
 start: 2026-10-31T08:00:00-04:00
 end: 2026-10-31T18:00:00-04:00
-description: "Stone's Throw Coffee opened its doors on October 31, 2026 at 3615 Chapman Hwy, Ste A in South Knoxville, with a vendor market on our first day featuring Forbidden Wing Bookshop, Cozy Relief, Roshani Designs, The Oil Well, and Within the Oaken Eye. Thank you to everyone who came out for our first day."
+description: "Stone's Throw Coffee opened October 31, 2026 at 3615 Chapman Hwy, Ste A in South Knoxville, with a vendor market of local makers. Thank you to everyone who came!"
 audience: 'Everyone welcome'
 accessibility: 'Our staff are trained to take orders in ASL and Spanish. See the Visit page for seating, entrance, and parking details.'
 performers: []

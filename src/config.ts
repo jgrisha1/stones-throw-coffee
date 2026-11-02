@@ -26,7 +26,7 @@ export const BUSINESS = {
   name: "Stone's Throw Coffee",
   tagline: 'Coffee, community, and local art in South Knoxville.',
   description:
-    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space opening October 31, 2026 in South Knoxville, serving handcrafted espresso, specialty teas, matcha, and mushroom coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
+    "Stone's Throw Coffee is a queer-owned, LGBTQIA2S+ affirming coffee shop and community arts space in South Knoxville, open since October 31, 2026, serving handcrafted espresso, specialty teas, matcha, and mushroom coffee alongside drag shows, local art, author readings, acoustic music, vendor markets, and sober-friendly community events.",
 
   // --- Location ---
   // Lease signed October 2026: former South Press space. Keep this formatted
