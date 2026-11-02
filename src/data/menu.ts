@@ -30,7 +30,7 @@ export const MENU: MenuSection[] = [
           { name: 'Latte', prices: [{ label: 'Medium', amount: 5.0 }, { label: 'Large', amount: 5.25 }] },
           {
                     name: 'Specialty Latte',
-                    description: 'Rotating house flavors, announced as we get closer to opening.',
+                    description: 'Rotating seasonal house flavors. Check our socials or the specials board for what’s on now.',
                     prices: [{ label: 'Medium', amount: 5.5 }, { label: 'Large', amount: 6.0 }],
           },
           { name: 'Cappuccino', prices: [{ label: 'Small', amount: 4.75 }, { label: 'Medium', amount: 5.0 }] },
