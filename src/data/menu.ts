@@ -96,6 +96,23 @@ export const MENU: MenuSection[] = [
     ],
   },
   {
+    name: 'Snacks & Bottled Drinks',
+    items: [
+      {
+        name: 'Snack Pack',
+        description: 'Vegan and gluten-free, assembled in house.',
+        prices: [{ amount: 5.0 }],
+      },
+      { name: 'Half Pound Gourmet Cookies', prices: [{ amount: 6.0 }] },
+      { name: 'Bagel with Cream Cheese', prices: [{ amount: 5.5 }] },
+      {
+        name: 'Frog Juice Kombucha',
+        description: 'Artisanal kombucha from our partners at Frog Juice.',
+        prices: [{ amount: 6.0 }],
+      },
+    ],
+  },
+  {
         name: 'Customizations',
         note: 'One complimentary flavor is included with any drink. Whole milk and half and half are standard; soy, oat, and almond milk are available.',
         items: [
