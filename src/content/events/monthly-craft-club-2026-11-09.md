@@ -1,5 +1,5 @@
 ---
-title: 'Monthly Craft Club: Perler Beads'
+title: 'Monthly Craft Club'
 start: 2026-11-09T16:00:00-05:00
 end: 2026-11-09T17:30:00-05:00
 description: "The first of our Monthly Craft Nights at Stone's Throw Coffee. November's craft is Perler beads, with supplies and instructions included."
