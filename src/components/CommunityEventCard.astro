@@ -1,0 +1,45 @@
+---
+import type { CommunityEvent } from '../data/community-events';
+
+interface Props {
+  event: CommunityEvent;
+}
+const { event: e } = Astro.props;
+---
+
+<li>
+  <span class="around-knox__tag">Community event</span>
+  <strong>{e.title}</strong>
+  <span class="around-knox__when">
+    {e.when}
+    {e.where && <> &middot; {e.where}</>}
+  </span>
+  <span>{e.blurb}</span>
+  <a href={e.url} target="_blank" rel="noopener noreferrer">
+    {e.linkLabel} <span aria-hidden="true">&nearr;</span>
+    <span class="visually-hidden"> (opens in a new tab)</span>
+  </a>
+</li>
+
+<style>
+  li {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3);
+  }
+  strong { font-family: var(--font-display); }
+  .around-knox__tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .around-knox__when { color: var(--clay); font-size: 0.95rem; }
+  a { margin-top: auto; font-weight: 700; }
+</style>

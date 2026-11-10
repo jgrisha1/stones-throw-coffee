@@ -2,7 +2,11 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import EmailSignup from '../../components/EmailSignup.astro';
+import CommunityEventCard from '../../components/CommunityEventCard.astro';
 import { COMMUNITY_EVENTS } from '../../data/community-events';
+
+// how many community cards show before the "See more" fold
+const AROUND_VISIBLE = 3;
 
 const now = new Date();
 const aroundKnoxville = COMMUNITY_EVENTS.filter((e) => new Date(e.end) >= now).sort(
@@ -168,21 +172,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
               we think our neighbors would like to know. Check each organizer for current details.
             </p>
             <ul>
-              {aroundKnoxville.map((e) => (
-                <li>
-                  <strong>{e.title}</strong>
-                  <span class="around-knox__when">
-                    {e.when}
-                    {e.where && <> &middot; {e.where}</>}
-                  </span>
-                  <span>{e.blurb}</span>
-                  <a href={e.url} target="_blank" rel="noopener noreferrer">
-                    {e.linkLabel} <span aria-hidden="true">&nearr;</span>
-                    <span class="visually-hidden"> (opens in a new tab)</span>
-                  </a>
-                </li>
-              ))}
+              {aroundKnoxville.slice(0, AROUND_VISIBLE).map((e) => <CommunityEventCard event={e} />)}
             </ul>
+            {aroundKnoxville.length > AROUND_VISIBLE && (
+              <details class="around-knox__more">
+                <summary>
+                  See {aroundKnoxville.length - AROUND_VISIBLE} more around Knoxville
+                </summary>
+                <ul>
+                  {aroundKnoxville.slice(AROUND_VISIBLE).map((e) => <CommunityEventCard event={e} />)}
+                </ul>
+              </details>
+            )}
             <p class="menu-item__desc">
               More holiday happenings are on the{' '}
               <a href="https://www.visitknoxville.com/events/" target="_blank" rel="noopener noreferrer">Visit Knoxville events calendar</a>.
@@ -369,19 +370,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-2);
   }
-  .around-knox li {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    background: #fffdf6;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: var(--space-2) var(--space-3);
+  .around-knox__more { margin: var(--space-2) 0; }
+  .around-knox__more summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0.4rem 0;
+    width: fit-content;
   }
-  .around-knox li strong { font-family: var(--font-display); }
-  .around-knox__when { color: var(--clay); font-size: 0.95rem; }
-  .around-knox li a { margin-top: auto; font-weight: 700; }
+  .around-knox__more summary:focus-visible { outline: 3px solid var(--honey); outline-offset: 3px; }
   @media (max-width: 760px) { .around-knox ul { grid-template-columns: 1fr; } }
 
   /* "also coming soon": a two-column set of cards instead of a narrow stack */
