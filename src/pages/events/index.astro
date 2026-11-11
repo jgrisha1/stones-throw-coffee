@@ -99,7 +99,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
         <ul>
           <li>
             <strong>Dungeons &amp; Dragons</strong>
-            <span>Every Sunday at 2:00 PM</span>
+            <span>Every Sunday, 2:00 to 6:00 PM</span>
+            <a
+              href="https://www.facebook.com/events/1663408475286791/"
+              target="_blank"
+              rel="noopener noreferrer">See all dates on Facebook<span class="visually-hidden"> (opens in a new tab)</span></a>
           </li>
           <li>
             <strong>Tarot readings</strong>
@@ -357,6 +361,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
   }
   .weekly-events li strong { display: block; font-family: var(--font-display); }
   .weekly-events li span { color: var(--clay); }
+  .weekly-events li a { font-weight: 700; }
 
   /* community events from around Knoxville (not ours) */
   .around-knox { max-width: none; margin-top: var(--space-4); }
