@@ -2,7 +2,7 @@
 title: 'Friendsgiving 2026'
 start: 2026-11-23T16:00:00-05:00
 end: 2026-11-23T20:00:00-05:00
-description: "Our first Friendsgiving at Stone's Throw Coffee: a drop-in evening of community and holiday dishes."
+description: "Our first Friendsgiving at Stone's Throw Coffee in South Knoxville on Monday, November 23: a drop-in evening of community and holiday dishes."
 accessibility: 'Our space is fully ADA compliant. See the Visit page for details.'
 rsvpUrl: 'https://www.facebook.com/events/1389777076284165/'
 draft: false

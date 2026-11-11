@@ -2,7 +2,7 @@
 title: 'ASL Coffee Chat, December 5'
 start: 2026-12-05T09:00:00-05:00
 end: 2026-12-05T11:00:00-05:00
-description: "An ASL coffee chat on Saturday, December 5 at Stone's Throw Coffee, led by Jake Barker (he/him) of Sign of Change."
+description: "Join an ASL coffee chat at Stone's Throw Coffee in South Knoxville on Saturday, December 5, led by Jake Barker (he/him) of Sign of Change."
 accessibility: 'Our space is fully ADA compliant. See the Visit page for details.'
 performers:
   - name: 'Jake Barker (he/him)'

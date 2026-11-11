@@ -130,7 +130,50 @@ if (openRules.length && has(BUSINESS.openingDate)) {
 }
 if (sameAs.length) localBusiness.sameAs = sameAs;
 
-const schemaBlocks = [localBusiness, ...jsonLd];
+// BreadcrumbList for every inner page (the home page and noindex pages skip it).
+// Section pages get Home > Section; detail pages (events, updates) get Home > Section > Page.
+const crumbLabels: Record<string, string> = {
+  events: 'Events',
+  updates: 'Updates',
+  menu: 'Menu',
+  merch: 'Merch',
+  visit: 'Visit Us',
+  'our-story': 'Our Story',
+  values: 'What We Stand For',
+  resources: 'Queer Resources',
+  'art-and-authors': 'Local Art & Makers',
+  'support-us': 'Support Us',
+  contact: 'Contact',
+  privacy: 'Privacy',
+};
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbs: { name: string; url: string }[] = [];
+if (!noindex && pathSegments.length) {
+  breadcrumbs.push({ name: 'Home', url: new URL('/', Astro.site).href });
+  pathSegments.forEach((seg, i) => {
+    const isDetailPage = i === pathSegments.length - 1 && pathSegments.length > 1;
+    breadcrumbs.push({
+      name: isDetailPage ? title.split(' | ')[0] : (crumbLabels[seg] ?? seg),
+      url: new URL(`/${pathSegments.slice(0, i + 1).join('/')}/`, Astro.site).href,
+    });
+  });
+}
+const breadcrumbSchema: Record<string, unknown>[] = breadcrumbs.length
+  ? [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: c.name,
+          item: c.url,
+        })),
+      },
+    ]
+  : [];
+
+const schemaBlocks = [localBusiness, ...breadcrumbSchema, ...jsonLd];
 ---
 
 <!doctype html>
