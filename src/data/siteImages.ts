@@ -161,7 +161,7 @@ export const SITE_IMAGES: SiteImage[] = [
     page: 'All pages (social share)',
     section: 'Open Graph image',
     purpose: 'Default social preview when a page link is shared on Facebook / Threads / iMessage.',
-    alt: 'Warm plant-filled coffee shop scene with coffee cups, books, ferns, mushrooms, and cozy lighting.',
+    alt: 'Stone's Throw Coffee logo on deep green with the words Now open in South Knoxville.',
     width: 1200,
     height: 630,
     format: 'webp',

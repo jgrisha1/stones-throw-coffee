@@ -23,7 +23,7 @@ const base = Buffer.from(`<svg width="${W}" height="${H}">
 </svg>`);
 
 const text = Buffer.from(`<svg width="${W}" height="${H}">
-  <text x="${W / 2}" y="500" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" fill="${CREAM}">Coming soon to South Knoxville</text>
+  <text x="${W / 2}" y="500" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" fill="${CREAM}">Now open in South Knoxville</text>
   <text x="${W / 2}" y="556" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="27" fill="${GOLD}">Queer-owned coffee &#183; community &#183; local art</text>
 </svg>`);
 
