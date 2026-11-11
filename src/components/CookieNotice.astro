@@ -2,10 +2,11 @@
 /**
  * Cookie / privacy notice - a non-modal, dismissible banner.
  *
- * The site sets no non-essential cookies on load: analytics (when enabled) are
- * cookieless, fonts are self-hosted, and the only third-party that sets cookies
- * (the Google Maps embed) is click-to-load on the Visit page. So this is an
- * honest transparency *notice*, not a consent gate.
+ * The site sets no tracking or advertising cookies: analytics (when enabled) are
+ * cookieless and fonts are self-hosted. The one third party that can set its own
+ * cookies is the Google Maps embed, which loads automatically on the Visit page
+ * (the owners chose this on 2026-11-11), so the notice and the privacy policy say
+ * so. This is an honest transparency *notice*, not a consent gate.
  *
  * If a tracking cookie is ever added (ad pixels, non-cookieless analytics, etc.)
  * this must become a real opt-in consent banner that blocks those until accepted.
@@ -19,7 +20,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <aside id="cookie-notice" class="cookie-notice" aria-label="Cookie notice" hidden>
   <p class="cookie-notice__text">
-    No tracking cookies here.
+    We use no tracking or ad cookies. The Google map on our Visit page may set its own.
     <a href={`${base}/privacy/#cookies`}>Privacy &amp; Cookie Policy</a>
   </p>
   <button type="button" class="btn btn--solid cookie-notice__dismiss" id="cookie-notice-dismiss">
