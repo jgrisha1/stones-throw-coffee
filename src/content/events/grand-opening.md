@@ -20,5 +20,5 @@ Our first day was also a vendor market, with local makers set up inside the shop
 - **Cozy Relief:** patches, clothing, and prints
 - **Roshani Designs:** stickers and prints
 - **The Oil Well:** jewelry
-- **Within the Oaken Eye:** tarot readings
+- **Within the Oaken Eye:** tarot readings, bone throws, and Reiki
 
