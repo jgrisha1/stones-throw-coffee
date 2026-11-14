@@ -1,0 +1,63 @@
+---
+/**
+ * A responsive row of real shop photos. Each photo needs alt text that describes
+ * what is in it; width/height are the intrinsic pixel size (they reserve space so
+ * the page does not jump while images load).
+ */
+interface Photo {
+  src: string; // path inside /public, e.g. /images/shop-window-sunset.webp
+  alt: string;
+  width: number;
+  height: number;
+}
+interface Props {
+  photos: Photo[];
+}
+const { photos } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<ul class="photo-strip" role="list">
+  {
+    photos.map((p) => (
+      <li>
+        <img
+          src={`${base}${p.src}`}
+          alt={p.alt}
+          width={p.width}
+          height={p.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .photo-strip {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+  @media (min-width: 820px) {
+    .photo-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .photo-strip li {
+    margin: 0;
+  }
+  .photo-strip img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+</style>

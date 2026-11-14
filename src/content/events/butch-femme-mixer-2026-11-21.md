@@ -5,6 +5,7 @@ end: 2026-11-21T18:00:00-05:00
 description: "Butches of East Tennessee presents a Butch-Femme Mixer at Stone's Throw Coffee: an evening of fun for butches, femmes, and anyone between."
 accessibility: 'Our space is fully ADA compliant. See the Visit page for details.'
 rsvpUrl: 'https://www.instagram.com/butchesofeasttn/p/DfNzvGeKsRR/'
+image: '/images/events/butch-femme-mixer.webp'
 draft: false
 ---
 

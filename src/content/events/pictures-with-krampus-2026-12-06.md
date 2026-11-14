@@ -6,6 +6,7 @@ description: "Get your holiday photo with Krampus at Stone's Throw Coffee in Sou
 audience: 'Content note: scary costumes and scary actors'
 accessibility: 'Our space is fully ADA compliant. See the Visit page for details.'
 rsvpUrl: 'https://www.facebook.com/events/1139686618447202'
+image: '/images/events/pictures-with-krampus.webp'
 draft: false
 ---
 

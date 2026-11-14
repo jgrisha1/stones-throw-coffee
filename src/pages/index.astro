@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import NewsletterPopup from '../components/NewsletterPopup.astro';
 import MoonDivider from '../components/MoonDivider.astro';
+import PhotoStrip from '../components/PhotoStrip.astro';
 import { BUSINESS, fullAddress, hasStreetAddress, hoursDisplay, hoursNote, hoursSummary, isOpen, openingAnnouncementActive, openingDateShort, openingDateWeekday } from '../config';
 
 const hours = hoursDisplay();
@@ -161,8 +162,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
     </div>
   </section>
 
+  <!-- ── A look inside (real shop photos) ── -->
+  <section class="section" aria-labelledby="inside-heading">
+    <div class="wrap">
+      <p class="eyebrow">Inside the shop</p>
+      <h2 id="inside-heading" style="margin-top:0;">A look inside</h2>
+      <p>
+        Plants, warm light, and a few good mugs. Come see it in person, or
+        <a href={`${base}/visit/`}>plan your visit</a>.
+      </p>
+      <PhotoStrip
+        photos={[
+          { src: '/images/shop-window-sunset.webp', alt: 'Sunset glowing pink through the shop window, with a hanging plant and a crocheted moon-phase banner.', width: 720, height: 960 },
+          { src: '/images/shop-monstera-cups.webp', alt: 'Two black cups on saucers in front of a framed monstera leaf print.', width: 800, height: 1095 },
+          { src: '/images/shop-green-glass.webp', alt: 'A green glass tumbler in front of a monstera leaf print.', width: 800, height: 962 },
+          { src: '/images/shop-matcha-whisk.webp', alt: 'A matcha whisk and bowl, a smoke-gray glass, and a red mug in front of a framed monstera print.', width: 800, height: 973 },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- ── Events ── -->
-  <section class="section" aria-labelledby="events-heading">
+  <section class="section section--tint" aria-labelledby="events-heading">
     <div class="wrap">
       <p class="eyebrow">On the calendar</p>
       <h2 id="events-heading" style="margin-top:0;">More than coffee</h2>
