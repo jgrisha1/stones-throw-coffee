@@ -45,6 +45,28 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     end: '2026-11-20T19:00:00-05:00',
   },
   {
+    title: 'Fantasy of Trees',
+    when: 'November 25 to 29, 2026 (hours vary by day)',
+    where: 'Knoxville Convention Center',
+    blurb:
+      'Hundreds of decorated Christmas trees, family activities, and holiday vendors, all raising money for Dolly Parton Children’s Hospital.',
+    url: 'https://www.dollychildrens.org/ways-to-give/events/fantasy-of-trees/fantasy-at-a-glance/',
+    linkLabel: 'Fantasy of Trees',
+    start: '2026-11-25T09:00:00-05:00',
+    end: '2026-11-29T18:00:00-05:00',
+  },
+  {
+    title: 'Regal Celebration of Lights',
+    when: 'Friday, November 27, 5:15 to 9 PM',
+    where: 'Krutch Park Extension and Market Square',
+    blurb:
+      'The city lights its 42-foot Christmas in the City tree at 6 PM, with live holiday music and kids’ activities after the lighting.',
+    url: 'https://www.knoxvilletn.gov/1008/Regal-Celebration-of-Lights',
+    linkLabel: 'City of Knoxville',
+    start: '2026-11-27T17:15:00-05:00',
+    end: '2026-11-27T21:00:00-05:00',
+  },
+  {
     title: 'Santa at the Sunsphere',
     when: 'December 4 to 6, 2026',
     where: 'Sunsphere',
