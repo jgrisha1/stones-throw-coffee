@@ -1,6 +1,7 @@
 ---
 title: 'ASL Coffee Chat, November 21'
-start: 2026-11-21T11:00:00-05:00
+start: 2026-11-21T09:00:00-05:00
+end: 2026-11-21T11:00:00-05:00
 description: "Join an ASL coffee chat at Stone's Throw Coffee in South Knoxville on Saturday, November 21, led by Jake Barker (he/him) of Sign of Change."
 accessibility: 'Our space is fully ADA compliant. See the Visit page for details.'
 performers:
