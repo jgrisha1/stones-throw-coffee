@@ -15,6 +15,7 @@ double check his list of names and take photos with anyone brave enough to get c
 having it early enough in the month to make it onto your holiday cards!
 
 A movie will be playing in the background, and we&rsquo;ll have Krampus-themed drink specials and decor.
-He may even have some trinkets for all the folks who aren&rsquo;t on his naughty list.
+He may even have some trinkets for all the folks who aren&rsquo;t on his naughty list. We&rsquo;ll also
+be handing out a poem by our resident poet.
 
 **Please note:** this event is not suitable for people who can&rsquo;t handle scary costumes or scary actors.
