@@ -67,6 +67,17 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     end: '2026-11-27T21:00:00-05:00',
   },
   {
+    title: 'Holidays on Ice',
+    when: 'November 27, 2026 to January 3, 2027 (hours vary by day)',
+    where: 'Market Square',
+    blurb:
+      'Outdoor ice skating in the heart of downtown, with themed nights, skate parties, and Sunday ice cream sundaes.',
+    url: 'https://www.knoxvilletn.gov/1013/Knoxvilles-Holidays-on-Ice',
+    linkLabel: 'City of Knoxville',
+    start: '2026-11-27T12:00:00-05:00',
+    end: '2027-01-03T21:00:00-05:00',
+  },
+  {
     title: 'Santa at the Sunsphere',
     when: 'December 4 to 6, 2026',
     where: 'Sunsphere',
