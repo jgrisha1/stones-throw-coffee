@@ -40,7 +40,7 @@ the repo for `TODO`:
 - `src/pages/our-story.astro` — Casey & Zoey's real story and the real
   origin of the name (drafted as a frame with [bracketed] prompts)
 - `src/pages/visit.astro` — parking details, accessibility specifics, KAT
-  route number, and a possible Knox Pride Center mention once confirmed
+  route number
 - **Logo** — export the round mushroom-moon logo from Canva as a PNG
   (1000px+, ideally transparent background) to `public/images/logo.png`,
   then set `logoPath: '/images/logo.png'` in `src/config.ts` so it flows

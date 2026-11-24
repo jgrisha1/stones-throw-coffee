@@ -40,7 +40,6 @@ Set up or claim **before opening** at business.google.com:
 - [ ] Facebook page + Instagram + Threads
 - [ ] Knoxville LGBTQ Friendly Business Directory (knoxlgbtbusinesses.com)
 - [ ] Visit Knoxville business listing
-- [ ] Knox Pride community calendar / partnerships (if appropriate)
 - [ ] SoKno community listings
 - [ ] Nextdoor business page
 
