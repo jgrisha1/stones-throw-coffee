@@ -78,6 +78,16 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     end: '2027-01-03T21:00:00-05:00',
   },
   {
+    title: 'WIVK Christmas Parade',
+    when: 'Friday, December 4, 7 PM',
+    where: 'Gay Street, downtown Knoxville',
+    blurb: 'The annual holiday parade marches down Gay Street from Main Street to Jackson Avenue.',
+    url: 'https://www.knoxvilletn.gov/1004/Christmas-in-the-City',
+    linkLabel: 'City of Knoxville',
+    start: '2026-12-04T19:00:00-05:00',
+    end: '2026-12-04T21:00:00-05:00',
+  },
+  {
     title: 'Santa at the Sunsphere',
     when: 'December 4 to 6, 2026',
     where: 'Sunsphere',
